@@ -4,13 +4,21 @@ var gulp = require('gulp')
 , minifyCss = require('gulp-minify-css')
 , concat = require('gulp-concat')
 , paths = {
-    src: ['./src/style/palettes/*.styl','./src/style/containers/*.styl']
+    src: ['./src/style/**/*.styl']
   , dist: ['./dist/']
   };
 
-gulp.task('minify-css',function(){
-  return gulp.src(paths.src)
+gulp.task('gen-css',function(){
+  return gulp.src(['./src/style/containers/index.styl'])
   .pipe(stylus())
+  .pipe(concat('gumga-layout.css'))
+  .pipe(gulp.dest('./dist'))
+})
+gulp.task('watch-css',function(){
+  gulp.watch(paths.src,['gen-css'])
+});
+gulp.task('minify-css',function(){
+  return gulp.src(['./dist/gumga-layout.css'])
   .pipe(rename('gumga-layout.min.css'))
   .pipe(minifyCss())
   .pipe(gulp.dest('./dist'))

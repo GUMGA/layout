@@ -1,1 +1,1 @@
-header{background-color:#f44336}
+footer,header{background-color:#009688}body{margin:0;padding:0}header{height:100px}main{display:flex}main>nav{order:1;width:300px}main>.content{flex:1;order:2}main>aside{order:3;width:300px}footer{height:50px}

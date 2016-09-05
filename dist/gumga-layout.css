@@ -1,0 +1,37 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  color: #212121;
+}
+a {
+  color: #212121;
+}
+header {
+  height: 100px;
+  background-color: #2196f3;
+}
+header > nav {
+  background-color: transparent;
+}
+main {
+  display: flex;
+}
+main > nav {
+  order: 1;
+  width: 300px;
+  background-color: #536dfe;
+}
+main > .content {
+  flex: 1;
+  order: 2;
+  background-color: #536dfe;
+}
+main > aside {
+  order: 3;
+  width: 300px;
+  background-color: #536dfe;
+}
+footer {
+  height: 50px;
+  background-color: #2196f3;
+}
