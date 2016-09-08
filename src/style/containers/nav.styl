@@ -4,3 +4,18 @@ main > nav
   order: main.nav.order
   width: main.nav.width
   background-color: main.nav.backgroundColor
+  border-color: main.nav.borderColor
+  border-right-width: 1px
+  border-right-style: solid
+  transition: all 200ms ease-out
+  
+main > nav.collapsed
+  margin-left: -(main.nav.width)
+
+main > nav > header figure
+    
+main > nav > header img
+  width: 100%
+
+main > nav ul.menu
+  border-bottom: 1px solid colors.divider

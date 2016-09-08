@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +8,6 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
     <!-- Gumga Layout -->
     <link rel="stylesheet" href="../../dist/gumga-layout.css">
@@ -24,9 +21,23 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-
+  <body data-ng-controller="controller">
     <header>
+      <div class="searchbar">
+        <div class="icon back">
+          <button type="button" class="btn btn-default" data-ng-click="toggleSearch()">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </button>
+        </div>
+        <div class="query">
+          <input type="text" class="form-control" placeholder="Procurar...">
+        </div>
+        <div class="icon search">
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
       <nav class="navbar">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -36,25 +47,36 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Brand</a>
+            <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+              <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </a>
           </div>
-
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="#">Link</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Organizações <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
+                  <li><a href="#">DB1</a></li>
+                  <li><a href="#">SG Sistemas</a></li>
+                  <li><a href="#">Grands Sistemas</a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li>
+                    <a href="#">
+                      Gumga
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Link</a></li>
+              <li>
+                <a href="#" data-ng-click="toggleSearch()">
+                  <span class="glyphicon glyphicon-search"></span>
+                </a>
+              </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -69,9 +91,53 @@
       </nav>
     </header>
     <main>
-      <div class="content">Content</div>
-      <nav>Nav</nav>
-      <aside>Aside</aside>
+      <div class="content">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p>Conteúdo principal</p>
+            <button type="button" class="btn btn-default">Default</button>
+            <button type="button" class="btn btn-info">Info</button>
+            <button type="button" class="btn btn-success">Success</button>
+            <button type="button" class="btn btn-warning">Warning</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <header>
+          <figure>
+            <img src="../../images/avatar-default.svg" alt="">
+          </figure>
+          <h3></h3>
+        </header>
+        <div class="panel">
+          <div class="panel-body">
+            <form>
+              <input type="text" class="form-control">
+            </form>
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">Item 1</li>
+          <li class="list-group-item">Item 2</li>
+          <li class="list-group-item">Item 3</li>
+          <li class="list-group-item">Item 4</li>
+          <li class="list-group-item">Item 5</li>
+          <li class="list-group-item">Item 6</li>
+          <li class="list-group-item">Item 7</li>
+          <li class="list-group-item">Item 8</li>
+        </ul>
+      </nav>
+      <!--<aside>
+        <div class="panel panel-default">
+          <header class="panel-heading">Sidebar</header>
+          <div class="panel-body">
+          </div>
+          <footer class="panel-footer">
+            Última atualização em 10/08/2016
+          </footer>
+        </div>
+      </aside>-->
     </main>
     <footer>Footer</footer>
 
@@ -83,6 +149,7 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
+    <script src="../../bower_components/angular/angular.min.js"></script>
+    <script src="../controller.js"></script>
   </body>
 </html>

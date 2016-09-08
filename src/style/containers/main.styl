@@ -3,6 +3,11 @@
 main
   display flex
 
+sm = 500px
+@media (max-width: sm)
+  main > aside
+    display none
+    
 @import 'nav'
 @import 'content'
 @import 'aside'

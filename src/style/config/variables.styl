@@ -1,5 +1,5 @@
 // Palera de cores que será usada
-@import '../palettes/blue-indigo'
+@import '../palettes/gumga'
 
 colors = {
   'darkPrimary': darkPrimary
@@ -9,27 +9,38 @@ colors = {
   'accent': accent,
   'primaryText': primaryText,
   'secundaryText': secundaryText,
-  'divider': divider
+  'divider': divider,
+  'background': background
+}
+
+fonts = {
+  roboto: true,
+  size: 1.3rem
+}
+
+body = {
+  backgroundColor: background
 }
 
 header = {
-  height: 100px
+  height: 52px
 }
 
 main = {
   content: {
     order: 2
-    backgroundColor: accent
+    backgroundColor: transparent
   },
   nav: {
     order: 1,
-    width: 300px
-    backgroundColor: accent
+    width: 250px
+    backgroundColor: #fff
+    borderColor: #ddd
   },
   aside: {
     order: 3,
     width: 300px
-    backgroundColor: accent
+    backgroundColor: transparent
   },
 }
 

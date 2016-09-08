@@ -2,36 +2,124 @@ body {
   margin: 0px;
   padding: 0px;
   color: #212121;
+  background-color: #f5f5f5;
 }
 a {
   color: #212121;
 }
-header {
-  height: 100px;
-  background-color: #2196f3;
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900';
+body {
+  font-size: 1.6rem;
+  font-family: 'Roboto', sans-serif;
 }
-header > nav {
+body > header {
+  position: relative;
+}
+body > header .navbar {
+  height: 52px;
+  margin-bottom: 0px;
+  border-radius: 0px;
+  background-color: #009688;
+  transition: all 200ms ease-out;
+}
+body > header > nav .navbar-brand {
+  color: #fff;
+}
+body > header > nav {
   background-color: transparent;
+}
+body > header .nav > li > a {
+  color: #fff;
+}
+body > header .nav > li > a:focus,
+body > header .nav > li > a:hover {
+  color: #212121;
+  background-color: #009688;
+}
+body > header .nav .open > a,
+body > header .nav .open > a:focus,
+body > header .nav .open > a:hover {
+  color: #fff;
+  background-color: #00796b;
+  border-color: transparent;
+}
+body > header .nav ul.dropdown-menu {
+  font-size: 1.6rem;
+}
+.searchbar {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  display: flex;
+  height: 52px;
+  background-color: #fff;
+  transition: all 200ms ease-out;
+}
+.searchbar.searchShow {
+  z-index: 5;
+  opacity: 1;
+}
+.searchbar .icon {
+  margin: 7.5px 15px;
+  width: 40px;
+}
+.searchbar .icon.back {
+  order: 1;
+}
+.searchbar .query {
+  flex: 1;
+  order: 2;
+  margin: 7.5px 0;
+}
+.searchbar .icon.search {
+  order: 3;
+}
+header .searchbar .searchbar-nav a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
 }
 main {
   display: flex;
 }
+@media (max-width: 500px) {
+  main > aside {
+    display: none;
+  }
+}
 main > nav {
   order: 1;
-  width: 300px;
-  background-color: #536dfe;
+  width: 250px;
+  background-color: #fff;
+  border-color: #ddd;
+  border-right-width: 1px;
+  border-right-style: solid;
+  transition: all 200ms ease-out;
+}
+main > nav.collapsed {
+  margin-left: -250px;
+}
+main > nav > header figure,
+main > nav > header img {
+  width: 100%;
+}
+main > nav ul.menu {
+  border-bottom: 1px solid #bdbdbd;
 }
 main > .content {
   flex: 1;
   order: 2;
-  background-color: #536dfe;
+  background-color: transparent;
+}
+main > .content > .panel {
+  margin: 15px;
 }
 main > aside {
   order: 3;
   width: 300px;
-  background-color: #536dfe;
+  background-color: transparent;
 }
-footer {
+body > footer {
   height: 50px;
-  background-color: #2196f3;
+  background-color: #009688;
 }
