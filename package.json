@@ -28,5 +28,8 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.5.0"
+  },
+  "dependencies": {
+    "material-design-icons": "^3.0.1"
   }
 }
