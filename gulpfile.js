@@ -10,7 +10,10 @@ var gulp = require('gulp')
 
 gulp.task('gen-css',function(){
   return gulp.src(['./src/style/containers/index.styl'])
-  .pipe(stylus())
+  .pipe(stylus({
+    'include css': true
+  }))
+  // .pipe(stylus())
   .pipe(concat('gumga-layout.css'))
   .pipe(gulp.dest('./dist'))
 })

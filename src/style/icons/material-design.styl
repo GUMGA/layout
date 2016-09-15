@@ -1,0 +1,174 @@
+@import '../config/paths'
+@import '../config/icons'
+
+if iconsMaterialDesignFont
+  @font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(pathFontMaterialDesign + 'MaterialIcons-Regular.eot'); /* For IE6-8 */
+    src: local('Material Icons'),
+        local('MaterialIcons-Regular'),
+        url(pathFontMaterialDesign + 'MaterialIcons-Regular.woff2') format('woff2'),
+        url(pathFontMaterialDesign + 'MaterialIcons-Regular.woff') format('woff'),
+        url(pathFontMaterialDesign + 'MaterialIcons-Regular.ttf') format('truetype');
+  }
+
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+  
+//
+// Conditional include CSS from Material Design SVG Icons
+//
+if iconsMaterialDesignSvgAction
+  @import pathIconMaterialDesignSvg+'svg-sprite-action.css'
+
+if iconsMaterialDesignSvgAlert
+  @import pathIconMaterialDesignSvg+'svg-sprite-alert.css'
+
+if iconsMaterialDesignSvgAv
+  @import pathIconMaterialDesignSvg + 'svg-sprite-av.css'
+
+if iconsMaterialDesignSvgCommunication
+  @import pathIconMaterialDesignSvg + 'svg-sprite-communication.css'
+
+if iconsMaterialDesignSvgContent
+  @import pathIconMaterialDesignSvg + 'svg-sprite-content.css'
+
+if iconsMaterialDesignSvgDevice
+  @import pathIconMaterialDesignSvg + 'svg-sprite-device.css'
+
+if iconsMaterialDesignSvgEditor
+  @import pathIconMaterialDesignSvg + 'svg-sprite-editor.css'
+
+if iconsMaterialDesignSvgFile
+  @import pathIconMaterialDesignSvg + 'svg-sprite-file.css'
+
+if iconsMaterialDesignSvgHardware
+  @import pathIconMaterialDesignSvg + 'svg-sprite-hardware.css'
+
+if iconsMaterialDesignSvgImage
+  @import pathIconMaterialDesignSvg + 'svg-sprite-image.css'
+
+if iconsMaterialDesignSvgMaps
+  @import pathIconMaterialDesignSvg + 'svg-sprite-maps.css'
+
+if iconsMaterialDesignSvgNavigation
+  @import pathIconMaterialDesignSvg + 'svg-sprite-navigation.css'
+
+if iconsMaterialDesignSvgNotification
+  @import pathIconMaterialDesignSvg + 'svg-sprite-notification.css'
+
+if iconsMaterialDesignSvgPlaces
+  @import pathIconMaterialDesignSvg + 'svg-sprite-places.css'
+
+if iconsMaterialDesignSvgSocial
+  @import pathIconMaterialDesignSvg + 'svg-sprite-social.css'
+
+if iconsMaterialDesignSvgToggle
+  @import pathIconMaterialDesignSvg + 'svg-sprite-toggle.css'
+
+
+//
+// Conditional include CSS from Material Design PNG Icons
+//
+if iconsMaterialDesignPngAction
+  @import pathIconMaterialDesignPng + 'sprite-action-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-action-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-action-white.css'
+
+if iconsMaterialDesignPngAlert
+  @import pathIconMaterialDesignPng + 'sprite-alert-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-alert-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-alert-white.css'
+
+if iconsMaterialDesignPngAv
+  @import pathIconMaterialDesignPng + 'sprite-av-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-av-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-av-white.css'
+
+if iconsMaterialDesignPngCommunication
+  @import pathIconMaterialDesignPng + 'sprite-communication-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-communication-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-communication-white.css'
+
+if iconsMaterialDesignPngContent
+  @import pathIconMaterialDesignPng + 'sprite-content-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-content-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-content-white.css'
+
+if iconsMaterialDesignPngDevice
+  @import pathIconMaterialDesignPng + 'sprite-device-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-device-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-device-white.css'
+
+if iconsMaterialDesignPngEditor
+  @import pathIconMaterialDesignPng + 'sprite-editor-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-editor-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-editor-white.css'
+
+if iconsMaterialDesignPngFile
+  @import pathIconMaterialDesignPng + 'sprite-file-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-file-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-file-white.css'
+
+if iconsMaterialDesignPngHardware
+  @import pathIconMaterialDesignPng + 'sprite-hardware-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-hardware-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-hardware-white.css'
+
+if iconsMaterialDesignPngImage
+  @import pathIconMaterialDesignPng + 'sprite-image-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-image-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-image-white.css'
+
+if iconsMaterialDesignPngMaps
+  @import pathIconMaterialDesignPng + 'sprite-maps-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-maps-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-maps-white.css'
+
+if iconsMaterialDesignPngNavigation
+  @import pathIconMaterialDesignPng + 'sprite-navigation-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-navigation-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-navigation-white.css'
+
+if iconsMaterialDesignPngNotification
+  @import pathIconMaterialDesignPng + 'sprite-notification-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-notification-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-notification-white.css'
+
+if iconsMaterialDesignPngPlaces
+  @import pathIconMaterialDesignPng + 'sprite-places-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-places-white.css'
+
+if iconsMaterialDesignPngSocial
+  @import pathIconMaterialDesignPng + 'sprite-social-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-social-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-social-white.css'
+
+if iconsMaterialDesignPngToggle
+  @import pathIconMaterialDesignPng + 'sprite-toggle-black.css'
+  @import pathIconMaterialDesignPng + 'sprite-toggle-grey600.css'
+  @import pathIconMaterialDesignPng + 'sprite-toggle-white.css'
