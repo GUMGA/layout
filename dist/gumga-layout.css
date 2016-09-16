@@ -35,6 +35,35 @@ a {
 /* Support for IE. */
   font-feature-settings: 'liga';
 }
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900';
+body {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
+h1 {
+  color: #f44336;
+  font-size: 56px;
+}
+h2 {
+  color: #000;
+  font-size: 45px;
+}
+h3 {
+  color: #000;
+  font-size: 34px;
+}
+h4 {
+  color: #000;
+  font-size: 24px;
+}
+h5 {
+  color: #000;
+  font-size: 20px;
+}
+h6 {
+  color: #000;
+  font-size: 16px;
+}
 .panel.gmd {
   border: 0;
   border-radius: 2px;
