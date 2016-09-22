@@ -1,3 +1,15 @@
+<!--
+darkPrimary   = #D32F2F
+primary       = #F44336
+lightPrimary  = #FFCDD2
+textIcons     = #FFFFFF
+accent        = #607D8B
+primaryText   = #212121
+secundaryText = #757575
+divider       = #BDBDBD
+background    = #F5F5F5
+-->
+
 <!DOCTYPE html>
 <html lang="en" data-ng-app="app">
   <head>
@@ -22,6 +34,8 @@
     <![endif]-->
   </head>
   <body data-ng-controller="controller">
+    
+    
     <header>
       <div class="searchbar">
         <div class="icon back">
@@ -91,47 +105,239 @@
       </nav>
     </header>
     <main>
-      <div class="content">
-        <div class="panel">
-          <h1>Typography 1</h1>
-          <h2>Typography 2</h2>
-          <h3>Typography 3</h3>
-          <h4>Typography 4</h4>
-          <h5>Typography 5</h5>
-          <h6>Typography 6</h6>
-          <p>Paragraph</p>
+      <div class="container content">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Typography</div>
+              <div class="panel-body">
+                <h1>Typography 1</h1>
+                <h2>Typography 2</h2>
+                <h3>Typography 3</h3>
+                <h4>Typography 4</h4>
+                <h5>Typography 5</h5>
+                <h6>Typography 6</h6>
+                <p>Paragraph</p>
+                <pre>&lt;h1&gt;Typography 1&lt;/h1&gt;
+&lt;h2&gt;Typography 2&lt;/h2&gt;
+&lt;h3&gt;Typography 3&lt;/h3&gt;
+&lt;h4&gt;Typography 4&lt;/h4&gt;
+&lt;h5&gt;Typography 5&lt;/h5&gt;
+&lt;h6&gt;Typography 6&lt;/h6&gt;
+&lt;p&gt;Paragraph&lt;/p&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Form</div>
+              <div class="panel-body">
+                <form>
+                  <div class="form-group">
+                    <input type="email" class="form-control gmd" id="exampleInputEmail1">
+                    <span class="bar"></span>
+                    <label for="exampleInputEmail1" class="control-label">Nome completo</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control gmd" id="exampleInputEmail1">
+                    <span class="bar"></span>
+                    <label for="exampleInputEmail1" class="control-label">Endereço de e-mail</label>
+                  </div>
+                </form>
+                <pre>&lt;form&gt;
+  &lt;div class="form-group gmd"&gt;
+    &lt;input type="email" class="form-control gmd" id="exampleInputEmail1"&gt;
+    &lt;span class="bar"&gt;&lt;/span&gt;
+    &lt;label for="exampleInputEmail1" class="control-label"&gt;Email address&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">
+                Buttons
+              </div>
+              <div class="panel-body">
+
+                <div>
+                  <h6>
+                    Normal
+                  </h6>
+                  
+                  <button type="button" class="btn gmd btn-primary">Primary</button>
+                  <button type="button" class="btn gmd btn-success">Success</button>
+                  <button type="button" class="btn gmd btn-info">Info</button>
+                  <button type="button" class="btn gmd btn-warning">Warning</button>
+                  <button type="button" class="btn gmd btn-danger">Danger</button>
+                  <button type="button" class="btn gmd btn-link">Link</button>
+                  <pre>&lt;button type="button" class="btn gmd btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-link"&gt;Link&lt;/button&gt;</pre>
+                </div>
+
+                <div>
+                  <h6>
+                    Disabled
+                  </h6>
+                  
+                  <button type="button" class="btn gmd btn-primary" disabled="disabled">Primary</button>
+                  <button type="button" class="btn gmd btn-success" disabled="disabled">Success</button>
+                  <button type="button" class="btn gmd btn-info" disabled="disabled">Info</button>
+                  <button type="button" class="btn gmd btn-warning" disabled="disabled">Warning</button>
+                  <button type="button" class="btn gmd btn-danger" disabled="disabled">Danger</button>
+                  <button type="button" class="btn gmd btn-link" disabled="disabled">Link</button>
+                  <pre>&lt;button type="button" class="btn gmd btn-primary" disabled="disabled"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-success" disabled="disabled"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-info" disabled="disabled"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-warning" disabled="disabled"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-danger" disabled="disabled"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-link" disabled="disabled"&gt;Link&lt;/button&gt;</pre>
+                </div>
+
+                <div>
+                  <h6>
+                    Float Action Button
+                  </h6>
+                  
+                  <button type="button" class="btn gmd fab btn-primary">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-success">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-info">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-warning">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-danger">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn btn-success gmd fab fixed">
+                    <i class="material-icons">add</i>
+                  </button>
+
+                  <pre>&lt;button type="button" class="btn gmd fab btn-primary"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-success"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-info"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-warning"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-danger"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-success gmd fab fixed"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">
+                Tabs
+              </div>
+              <div class="panel-body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs gmd" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="home"><h2>Home content</h2></div>
+                  <div role="tabpanel" class="tab-pane" id="profile"><h2>Profile content</h2></div>
+                  <div role="tabpanel" class="tab-pane" id="messages"><h2>Message content</h2></div>
+                  <div role="tabpanel" class="tab-pane" id="settings"><h2>Settings</h2></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Badge</div>
+              <div class="panel-body">
+                <button class="btn btn-primary" badge="4" type="button">
+                  Messages
+                </button>
+                <button class="btn btn-primary gmd" badge="6" type="button">
+                  Messages
+                </button>
+                <a href="#" badge="10">Inbox</a>
+                <pre>&lt;button class="btn btn-primary" badge="4" type="button"&gt; Messages &lt;/button&gt;
+&lt;button class="btn btn-primary gmd" badge="6" type="button"&gt; Messages &lt;/button&gt;
+&lt;a href="#" badge="10"&gt;Inbox&lt;/a&gt;</pre>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-4">
-               
-                <!-- Panel Card -->
+
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Dropdown</div>
+              <div class="panel-body">
+                
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Dropdown
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Card</div>
+              <div class="panel-body">
                 <div class="panel gmd">
                   <div class="panel-heading">
-                    <i class="material-icons">face</i>
-                    Panel Card Title
+                    Card Title
                   </div>
                   <div class="panel-body">
-                    <i class="material-icons">face</i>
-                    <i class="material-icons orange600">face</i>
+                    <p>Texto</p>
                   </div>
                   <div class="panel-footer">
                     <button type="button" class="btn gmd btn-default">Cancelar</button>
                     <button type="button" class="btn gmd btn-success">Concordo</button>
                   </div>
                 </div>
-                            
               </div>
             </div>
-            <p>Conteúdo principal</p>
-            <button type="button" class="btn gmd btn-default">Default</button>
-            <button type="button" class="btn gmd btn-info">Info</button>
-            <button type="button" class="btn gmd btn-success">Success</button>
-            <button type="button" class="btn gmd btn-warning">Warning</button>
-            <button type="button" class="btn gmd btn-danger">Danger</button>
           </div>
         </div>
+
       </div>
       <nav>
         <header>
