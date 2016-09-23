@@ -267,6 +267,29 @@ h6 {
 .btn[badge]::after {
   margin-top: -12px;
 }
+.dropdown.gmd .dropdown-menu,
+.dropup.gmd .dropdown-menu {
+  padding: 0;
+  border-width: 0 1 1;
+  border-color: #fff;
+  border-radius: 0;
+  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.175);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.175);
+}
+.dropdown.gmd .dropdown-menu > li > a,
+.dropup.gmd .dropdown-menu > li > a {
+  padding: 10px 20px;
+  transition: 0.2s ease background-color;
+  -moz-transition: 0.2s ease background-color;
+  -webkit-transition: 0.2s ease background-color;
+}
+.dropdown.gmd .dropdown-header,
+.dropup.gmd .dropdown-header {
+  padding: 10px 20px;
+}
+.navbar-nav > li > .dropdown-menu.gmd {
+  margin-top: 2px;
+}
 .panel.gmd {
   border: 0;
   border-radius: 2px;
