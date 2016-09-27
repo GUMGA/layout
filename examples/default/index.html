@@ -19,7 +19,8 @@ background    = #F5F5F5
     <title>Gumga Layout</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     
     <!-- Gumga Layout -->
     <link rel="stylesheet" href="../../dist/gumga-layout.css">
@@ -134,7 +135,7 @@ background    = #F5F5F5
               <div class="panel-body">
                 <form>
                   <div class="form-group">
-                    <input type="email" class="form-control gmd" id="exampleInputEmail1">
+                    <input type="email" class="form-control gmd" id="exampleInputEmail1" value="qwe">
                     <span class="bar"></span>
                     <label for="exampleInputEmail1" class="control-label">Nome completo</label>
                   </div>
@@ -246,32 +247,69 @@ background    = #F5F5F5
               </div>
             </div>
           </div>
-          
+        </div>
+
+        <div class="row">          
           <div class="col-md-8 col-md-offset-2">
             <div class="panel gmd">
               <div class="panel-heading">
                 Tabs
               </div>
               <div class="panel-body">
-                <!-- Nav tabs -->
                 <ul class="nav nav-tabs gmd" role="tablist">
                   <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
                   <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
                   <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
                   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
                 </ul>
-
-                <!-- Tab panes -->
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="home"><h2>Home content</h2></div>
                   <div role="tabpanel" class="tab-pane" id="profile"><h2>Profile content</h2></div>
                   <div role="tabpanel" class="tab-pane" id="messages"><h2>Message content</h2></div>
                   <div role="tabpanel" class="tab-pane" id="settings"><h2>Settings</h2></div>
                 </div>
+                
+                <pre>&lt;ul class="nav nav-tabs gmd" role="tablist"&gt;
+  &lt;li role="presentation" class="active"&gt;&lt;a href="#home" aria-controls="home" role="tab" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tab-content"&gt;
+  &lt;div role="tabpanel" class="tab-pane active" id="home"&gt;&lt;h2&gt;Home content&lt;/h2&gt;&lt;/div&gt;
+  &lt;div role="tabpanel" class="tab-pane" id="profile"&gt;&lt;h2&gt;Profile content&lt;/h2&gt;&lt;/div&gt;
+  &lt;div role="tabpanel" class="tab-pane" id="messages"&gt;&lt;h2&gt;Message content&lt;/h2&gt;&lt;/div&gt;
+  &lt;div role="tabpanel" class="tab-pane" id="settings"&gt;&lt;h2&gt;Settings&lt;/h2&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
               </div>
             </div>
           </div>
-          
+        </div>
+
+        <div class="row">          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">
+                Pills
+              </div>
+              <div class="panel-body">
+                <ul class="nav gmd nav-pills">
+                  <li role="presentation" class="active"><a>Home</a></li>
+                  <li role="presentation"><a>Profile</a></li>
+                  <li role="presentation"><a>Messages</a></li>
+                </ul>
+                
+                <pre>&lt;ul class="nav gmd nav-pills"&gt;
+  &lt;li role="presentation" class="active"&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a&gt;Messages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">          
           <div class="col-md-8 col-md-offset-2">
             <div class="panel gmd">
               <div class="panel-heading">Badge</div>
@@ -312,6 +350,21 @@ background    = #F5F5F5
                   </ul>
                 </div>
                 
+                <pre>&lt;div class="dropdown gmd"&gt;
+  &lt;button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"&gt;
+    Dropdown
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu" aria-labelledby="dropdownMenu1"&gt;
+    &lt;li class="dropdown-header"&gt;Dropdown header&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li role="separator" class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</pre>
+                
                 <div class="dropup gmd">
                   <button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dropup
@@ -348,6 +401,18 @@ background    = #F5F5F5
                     <button type="button" class="btn gmd btn-success">Concordo</button>
                   </div>
                 </div>
+                <pre>&lt;div class="panel gmd"&gt;
+  &lt;div class="panel-heading"&gt;
+    Card Title
+  &lt;/div&gt;
+  &lt;div class="panel-body"&gt;
+    &lt;p&gt;Texto&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="panel-footer"&gt;
+    &lt;button type="button" class="btn gmd btn-default"&gt;Cancelar&lt;/button&gt;
+    &lt;button type="button" class="btn gmd btn-success"&gt;Concordo&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
               </div>
             </div>
           </div>
@@ -357,7 +422,8 @@ background    = #F5F5F5
       <nav>
         <header>
           <figure>
-            <img src="../../images/avatar-default.svg" alt="">
+            <!--<img src="../../images/avatar-default.svg" alt="">-->
+            <img src="../../images/gumga.png" alt="">
           </figure>
           <h3></h3>
         </header>
@@ -394,12 +460,14 @@ background    = #F5F5F5
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!--<script src="js/bootstrap.min.js"></script>-->
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
     <script src="../../bower_components/angular/angular.min.js"></script>
     <script src="../controller.js"></script>
   </body>
