@@ -63,7 +63,8 @@ background    = #F5F5F5
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-              <span class="glyphicon glyphicon-menu-hamburger"></span>
+              <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
+              <i class="material-icons">menu</i>
             </a>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -133,9 +134,9 @@ background    = #F5F5F5
             <div class="panel gmd">
               <div class="panel-heading">Form</div>
               <div class="panel-body">
-                <form>
+                <form name="form">
                   <div class="form-group">
-                    <input type="email" class="form-control gmd" id="exampleInputEmail1" value="qwe">
+                    <input type="email" class="form-control gmd" ng-model="example.email" id="exampleInputEmail1" required>
                     <span class="bar"></span>
                     <label for="exampleInputEmail1" class="control-label">Nome completo</label>
                   </div>
@@ -413,6 +414,33 @@ background    = #F5F5F5
     &lt;button type="button" class="btn gmd btn-success"&gt;Concordo&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Alert</div>
+              <div class="panel-body">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+                <div class="alert alert-info alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+                <pre></pre>
               </div>
             </div>
           </div>
