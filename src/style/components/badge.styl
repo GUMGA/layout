@@ -1,0 +1,23 @@
+.badge.gmd
+  position: absolute
+  margin-top: -6px
+  margin-right: 16px
+
+[badge]::after
+  content: attr(badge)
+  position: absolute
+  margin-top: -6px
+  min-width: 16px
+  padding: 3px
+  font-size: 12px
+  font-weight: 700
+  line-height: 1
+  color: #fff
+  text-align: center
+  white-space: nowrap
+  vertical-align: middle
+  background-color: colors.darkPrimary
+  border-radius: 6px
+
+.btn[badge]::after
+  margin-top: -12px

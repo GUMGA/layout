@@ -1,0 +1,68 @@
+@import '../config/variables'
+
+body > header
+  position: relative
+  
+body > header .navbar
+  height: header.height
+  margin-bottom: 0px
+  border-radius: 0px
+  background-color: colors.primary
+  transition: all 200ms ease-out
+  
+body > header > nav .navbar-brand
+  color: colors.textIcons
+
+body > header > nav
+  background-color: transparent
+  
+body > header .nav > li > a
+  color: colors.textIcons
+  
+body > header .nav > li > a:focus,
+body > header .nav > li > a:hover
+  color: colors.primaryText
+  background-color: colors.primary
+
+body > header .nav .open > a,
+body > header .nav .open > a:focus,
+body > header .nav .open > a:hover
+  color: colors.textIcons
+  background-color: colors.darkPrimary
+  border-color: transparent
+
+body > header .nav ul.dropdown-menu
+  font-size: 1.6rem
+
+.searchbar
+  position: absolute
+  width: 100%
+  opacity: 0
+  display: flex
+  height: header.height
+  background-color: #fff
+  transition: all 200ms ease-out
+
+.searchbar.searchShow
+  z-index: 5
+  opacity: 1
+  
+.searchbar .icon
+  margin: 7.5px 15px
+  width: 40px
+  
+.searchbar .icon.back
+  order: 1
+  
+.searchbar .query
+  flex: 1
+  order: 2
+  margin: 7.5px 0
+
+.searchbar .icon.search
+  order: 3
+
+header .searchbar .searchbar-nav a
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;

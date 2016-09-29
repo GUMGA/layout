@@ -1,0 +1,506 @@
+<!--
+darkPrimary   = #D32F2F
+primary       = #F44336
+lightPrimary  = #FFCDD2
+textIcons     = #FFFFFF
+accent        = #607D8B
+primaryText   = #212121
+secundaryText = #757575
+divider       = #BDBDBD
+background    = #F5F5F5
+-->
+
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gumga Layout</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+    
+    <!-- Gumga Layout -->
+    <link rel="stylesheet" href="../../dist/gumga-layout.css">
+    <!-- Bootstrap -->
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body data-ng-controller="controller">
+    
+    
+    <header>
+      <div class="searchbar">
+        <div class="icon back">
+          <button type="button" class="btn btn-default" data-ng-click="toggleSearch()">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </button>
+        </div>
+        <div class="query">
+          <input type="text" class="form-control" placeholder="Procurar...">
+        </div>
+        <div class="icon search">
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </div>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+              <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
+              <i class="material-icons">menu</i>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Organizações <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">DB1</a></li>
+                  <li><a href="#">SG Sistemas</a></li>
+                  <li><a href="#">Grands Sistemas</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <a href="#">
+                      Gumga
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#" data-ng-click="toggleSearch()">
+                  <span class="glyphicon glyphicon-search"></span>
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container content">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Typography</div>
+              <div class="panel-body">
+                <h1>Typography 1</h1>
+                <h2>Typography 2</h2>
+                <h3>Typography 3</h3>
+                <h4>Typography 4</h4>
+                <h5>Typography 5</h5>
+                <h6>Typography 6</h6>
+                <p>Paragraph</p>
+                <pre>&lt;h1&gt;Typography 1&lt;/h1&gt;
+&lt;h2&gt;Typography 2&lt;/h2&gt;
+&lt;h3&gt;Typography 3&lt;/h3&gt;
+&lt;h4&gt;Typography 4&lt;/h4&gt;
+&lt;h5&gt;Typography 5&lt;/h5&gt;
+&lt;h6&gt;Typography 6&lt;/h6&gt;
+&lt;p&gt;Paragraph&lt;/p&gt;</pre>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Form</div>
+              <div class="panel-body">
+                <form name="form">
+                  <div class="form-group">
+                    <input type="email" class="form-control gmd" ng-model="example.email" id="exampleInputEmail1" required>
+                    <span class="bar"></span>
+                    <label for="exampleInputEmail1" class="control-label">Nome completo</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control gmd" id="exampleInputEmail1">
+                    <span class="bar"></span>
+                    <label for="exampleInputEmail1" class="control-label">Endereço de e-mail</label>
+                  </div>
+                </form>
+                <pre>&lt;form&gt;
+  &lt;div class="form-group gmd"&gt;
+    &lt;input type="email" class="form-control gmd" id="exampleInputEmail1"&gt;
+    &lt;span class="bar"&gt;&lt;/span&gt;
+    &lt;label for="exampleInputEmail1" class="control-label"&gt;Email address&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">
+                Buttons
+              </div>
+              <div class="panel-body">
+
+                <div>
+                  <h6>
+                    Normal
+                  </h6>
+                  
+                  <button type="button" class="btn gmd btn-primary">Primary</button>
+                  <button type="button" class="btn gmd btn-success">Success</button>
+                  <button type="button" class="btn gmd btn-info">Info</button>
+                  <button type="button" class="btn gmd btn-warning">Warning</button>
+                  <button type="button" class="btn gmd btn-danger">Danger</button>
+                  <button type="button" class="btn gmd btn-link">Link</button>
+                  <pre>&lt;button type="button" class="btn gmd btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-link"&gt;Link&lt;/button&gt;</pre>
+                </div>
+
+                <div>
+                  <h6>
+                    Disabled
+                  </h6>
+                  
+                  <button type="button" class="btn gmd btn-primary" disabled="disabled">Primary</button>
+                  <button type="button" class="btn gmd btn-success" disabled="disabled">Success</button>
+                  <button type="button" class="btn gmd btn-info" disabled="disabled">Info</button>
+                  <button type="button" class="btn gmd btn-warning" disabled="disabled">Warning</button>
+                  <button type="button" class="btn gmd btn-danger" disabled="disabled">Danger</button>
+                  <button type="button" class="btn gmd btn-link" disabled="disabled">Link</button>
+                  <pre>&lt;button type="button" class="btn gmd btn-primary" disabled="disabled"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-success" disabled="disabled"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-info" disabled="disabled"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-warning" disabled="disabled"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-danger" disabled="disabled"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-link" disabled="disabled"&gt;Link&lt;/button&gt;</pre>
+                </div>
+
+                <div>
+                  <h6>
+                    Float Action Button
+                  </h6>
+                  
+                  <button type="button" class="btn gmd fab btn-primary">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-success">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-info">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-warning">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn gmd fab btn-danger">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <button type="button" class="btn btn-success gmd fab fixed">
+                    <i class="material-icons">add</i>
+                  </button>
+
+                  <pre>&lt;button type="button" class="btn gmd fab btn-primary"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-success"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-info"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-warning"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn gmd fab btn-danger"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-success gmd fab fixed"&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
+&lt;/button&gt;</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">
+                Tabs
+              </div>
+              <div class="panel-body">
+                <ul class="nav nav-tabs gmd" role="tablist">
+                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="home"><h2>Home content</h2></div>
+                  <div role="tabpanel" class="tab-pane" id="profile"><h2>Profile content</h2></div>
+                  <div role="tabpanel" class="tab-pane" id="messages"><h2>Message content</h2></div>
+                  <div role="tabpanel" class="tab-pane" id="settings"><h2>Settings</h2></div>
+                </div>
+                
+                <pre>&lt;ul class="nav nav-tabs gmd" role="tablist"&gt;
+  &lt;li role="presentation" class="active"&gt;&lt;a href="#home" aria-controls="home" role="tab" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tab-content"&gt;
+  &lt;div role="tabpanel" class="tab-pane active" id="home"&gt;&lt;h2&gt;Home content&lt;/h2&gt;&lt;/div&gt;
+  &lt;div role="tabpanel" class="tab-pane" id="profile"&gt;&lt;h2&gt;Profile content&lt;/h2&gt;&lt;/div&gt;
+  &lt;div role="tabpanel" class="tab-pane" id="messages"&gt;&lt;h2&gt;Message content&lt;/h2&gt;&lt;/div&gt;
+  &lt;div role="tabpanel" class="tab-pane" id="settings"&gt;&lt;h2&gt;Settings&lt;/h2&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">
+                Pills
+              </div>
+              <div class="panel-body">
+                <ul class="nav gmd nav-pills">
+                  <li role="presentation" class="active"><a>Home</a></li>
+                  <li role="presentation"><a>Profile</a></li>
+                  <li role="presentation"><a>Messages</a></li>
+                </ul>
+                
+                <pre>&lt;ul class="nav gmd nav-pills"&gt;
+  &lt;li role="presentation" class="active"&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li role="presentation"&gt;&lt;a&gt;Messages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Badge</div>
+              <div class="panel-body">
+                <button class="btn btn-primary" badge="4" type="button">
+                  Messages
+                </button>
+                <button class="btn btn-primary gmd" badge="6" type="button">
+                  Messages
+                </button>
+                <a href="#" badge="10">Inbox</a>
+                <pre>&lt;button class="btn btn-primary" badge="4" type="button"&gt; Messages &lt;/button&gt;
+&lt;button class="btn btn-primary gmd" badge="6" type="button"&gt; Messages &lt;/button&gt;
+&lt;a href="#" badge="10"&gt;Inbox&lt;/a&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Dropdown</div>
+              <div class="panel-body">
+                
+                <div class="dropdown gmd">
+                  <button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Dropdown
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li class="dropdown-header">Dropdown header</li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div>
+                
+                <pre>&lt;div class="dropdown gmd"&gt;
+  &lt;button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"&gt;
+    Dropdown
+    &lt;span class="caret"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu" aria-labelledby="dropdownMenu1"&gt;
+    &lt;li class="dropdown-header"&gt;Dropdown header&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;li role="separator" class="divider"&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</pre>
+                
+                <div class="dropup gmd">
+                  <button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropup
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Card</div>
+              <div class="panel-body">
+                <div class="panel gmd">
+                  <div class="panel-heading">
+                    Card Title
+                  </div>
+                  <div class="panel-body">
+                    <p>Texto</p>
+                  </div>
+                  <div class="panel-footer">
+                    <button type="button" class="btn gmd btn-default">Cancelar</button>
+                    <button type="button" class="btn gmd btn-success">Concordo</button>
+                  </div>
+                </div>
+                <pre>&lt;div class="panel gmd"&gt;
+  &lt;div class="panel-heading"&gt;
+    Card Title
+  &lt;/div&gt;
+  &lt;div class="panel-body"&gt;
+    &lt;p&gt;Texto&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="panel-footer"&gt;
+    &lt;button type="button" class="btn gmd btn-default"&gt;Cancelar&lt;/button&gt;
+    &lt;button type="button" class="btn gmd btn-success"&gt;Concordo&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">          
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel gmd">
+              <div class="panel-heading">Alert</div>
+              <div class="panel-body">
+                <div class="alert gmd alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                  <a class="action" href="#">Desfazer</a>
+                </div>
+                <div class="alert gmd alert-info alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                  <a class="action" href="#">Desfazer</a>
+                </div>
+                <div class="alert gmd alert-warning alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                  <a class="action" href="#">Desfazer</a>
+                </div>
+                <div class="alert gmd alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                  <a class="action" href="#">Desfazer</a>
+                </div>
+                <pre></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <nav>
+        <header>
+          <figure>
+            <!--<img src="../../images/avatar-default.svg" alt="">-->
+            <img src="../../images/gumga.png" alt="">
+          </figure>
+          <h3></h3>
+        </header>
+        <div class="panel">
+          <div class="panel-body">
+            <form>
+              <input type="text" class="form-control">
+            </form>
+          </div>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">Item 1</li>
+          <li class="list-group-item">Item 2</li>
+          <li class="list-group-item">Item 3</li>
+          <li class="list-group-item">Item 4</li>
+          <li class="list-group-item">Item 5</li>
+          <li class="list-group-item">Item 6</li>
+          <li class="list-group-item">Item 7</li>
+          <li class="list-group-item">Item 8</li>
+        </ul>
+      </nav>
+      <!--<aside>
+        <div class="panel panel-default">
+          <header class="panel-heading">Sidebar</header>
+          <div class="panel-body">
+          </div>
+          <footer class="panel-footer">
+            Última atualização em 10/08/2016
+          </footer>
+        </div>
+      </aside>-->
+    </main>
+    <footer>Footer</footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <script src="../../bower_components/angular/angular.min.js"></script>
+    <script src="../controller.js"></script>
+  </body>
+</html>
