@@ -340,6 +340,44 @@ h6 {
   -moz-transition: 0.4s ease all;
   -webkit-transition: 0.4s ease all;
 }
+.alert.gmd {
+  color: #fff;
+}
+.alert.gmd a {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.alert.gmd.alert-success strong,
+.alert.gmd.alert-success a {
+  color: #5cb85c;
+}
+.alert.gmd.alert-info strong,
+.alert.gmd.alert-info a {
+  color: #5bc0de;
+}
+.alert.gmd.alert-warning strong,
+.alert.gmd.alert-warning a {
+  color: #f0ad4e;
+}
+.alert.gmd.alert-danger strong,
+.alert.gmd.alert-danger a {
+  color: #d9534f;
+}
+.alert.gmd.alert-success,
+.alert.gmd.alert-info,
+.alert.gmd.alert-warning,
+.alert.gmd.alert-danger {
+  background-color: #323232;
+  border-color: #323232;
+}
+.alert.gmd .action {
+  float: right;
+}
+.alert.gmd.alert-dismissible .close {
+  color: #fff;
+}
 body > header {
   position: relative;
 }
