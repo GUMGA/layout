@@ -179,7 +179,7 @@ h6 {
   -webkit-transition: 0.2s ease all;
 }
 .form-control.gmd:focus ~ label,
-.form-control.gmd[value] ~ label {
+.form-control.gmd.active ~ label {
   content: attr(value);
   top: -20px;
   font-size: 14px;
@@ -268,6 +268,11 @@ h6 {
 }
 .btn[badge]::after {
   margin-top: -12px;
+}
+li [badge]::after {
+  top: 2px;
+  right: 2px;
+  margin-top: 0;
 }
 .dropdown.gmd .dropdown-menu,
 .dropup.gmd .dropdown-menu {
@@ -378,39 +383,47 @@ h6 {
 .alert.gmd.alert-dismissible .close {
   color: #fff;
 }
-body > header {
+.gumga-layout > header {
   position: relative;
 }
-body > header .navbar {
+.gumga-layout > header .navbar {
   height: 52px;
   margin-bottom: 0px;
   border-radius: 0px;
   background-color: #009688;
   transition: all 200ms ease-out;
 }
-body > header > nav .navbar-brand {
+.gumga-layout > header > nav .navbar-brand {
   color: #fff;
 }
-body > header > nav {
+.gumga-layout > header > nav {
   background-color: transparent;
 }
-body > header .nav > li > a {
+.gumga-layout > header .nav > li > a {
   color: #fff;
 }
-body > header .nav > li > a:focus,
-body > header .nav > li > a:hover {
+.gumga-layout > header .nav > li > a:focus,
+.gumga-layout > header .nav > li > a:hover {
   color: #212121;
   background-color: #009688;
 }
-body > header .nav .open > a,
-body > header .nav .open > a:focus,
-body > header .nav .open > a:hover {
+.gumga-layout > header .nav .open > a,
+.gumga-layout > header .nav .open > a:focus,
+.gumga-layout > header .nav .open > a:hover {
   color: #fff;
   background-color: #00796b;
   border-color: transparent;
 }
-body > header .nav ul.dropdown-menu {
+.gumga-layout > header .nav.notifications > li > a {
+  padding-top: 15px;
+  padding-bottom: 6px;
+}
+.gumga-layout > header .nav ul.dropdown-menu {
   font-size: 1.6rem;
+}
+.gumga-layout > header .navbar .search .form-control.gmd {
+  color: #fff;
+  background-color: transparent;
 }
 .searchbar {
   position: absolute;

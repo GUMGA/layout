@@ -1,38 +1,46 @@
 @import '../config/variables'
 
-body > header
+.gumga-layout > header
   position: relative
   
-body > header .navbar
+.gumga-layout > header .navbar
   height: header.height
   margin-bottom: 0px
   border-radius: 0px
   background-color: colors.primary
   transition: all 200ms ease-out
   
-body > header > nav .navbar-brand
+.gumga-layout > header > nav .navbar-brand
   color: colors.textIcons
 
-body > header > nav
+.gumga-layout > header > nav
   background-color: transparent
   
-body > header .nav > li > a
+.gumga-layout > header .nav > li > a
   color: colors.textIcons
   
-body > header .nav > li > a:focus,
-body > header .nav > li > a:hover
+.gumga-layout > header .nav > li > a:focus,
+.gumga-layout > header .nav > li > a:hover
   color: colors.primaryText
   background-color: colors.primary
 
-body > header .nav .open > a,
-body > header .nav .open > a:focus,
-body > header .nav .open > a:hover
+.gumga-layout > header .nav .open > a,
+.gumga-layout > header .nav .open > a:focus,
+.gumga-layout > header .nav .open > a:hover
   color: colors.textIcons
   background-color: colors.darkPrimary
   border-color: transparent
 
-body > header .nav ul.dropdown-menu
+.gumga-layout > header .nav.notifications > li > a
+  padding-top: 15px
+  padding-bottom: 6px
+
+.gumga-layout > header .nav ul.dropdown-menu
   font-size: 1.6rem
+
+.gumga-layout > header .navbar .search .form-control.gmd
+  color: #fff
+  background-color: transparent
 
 .searchbar
   position: absolute
@@ -66,3 +74,5 @@ header .searchbar .searchbar-nav a
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+
+
