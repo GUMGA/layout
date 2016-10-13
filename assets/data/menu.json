@@ -1,0 +1,53 @@
+[
+  {
+    "type": "header",
+    "label": "Home"
+  },
+  {
+    "type": "item",
+    "label": "Home",
+    "URL": "welcome",
+    "icon": "home",
+    "key": "CRUD-BASE"
+  },
+  {
+    "type": "item",
+    "label": "Usuários",
+    "URL": "user",
+    "icon": "group",
+    "children": [
+      {
+        "type": "item",
+        "label": "Criar novo",
+        "URL": "user.new",
+        "icon": "add",
+        "key": "CRUD-USER"
+      },
+      {
+        "type": "item",
+        "label": "Editar",
+        "URL": "user.edit",
+        "icon": "edit",
+        "key": "CRUD-ADMIN"
+      }
+    ]
+  },
+  {
+    "type": "item",
+    "label": "Produtos",
+    "URL": "welcome",
+    "key": "CRUD-ADMIN"
+  },
+  {
+    "type": "separator"
+  },
+  {
+    "type": "header",
+    "label": "Produtos"
+  },
+  {
+    "label": "Últimos cadastrados",
+    "URL": "welcome",
+    "key": "CRUD-ADMIN"
+  }
+]

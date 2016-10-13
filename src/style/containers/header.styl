@@ -1,68 +1,121 @@
 @import '../config/variables'
 
-body > header
+.gumga-layout > header
   position: relative
   
-body > header .navbar
-  height: header.height
+.gumga-layout > header .navbar
   margin-bottom: 0px
   border-radius: 0px
   background-color: colors.primary
   transition: all 200ms ease-out
   
-body > header > nav .navbar-brand
+.gumga-layout > header > nav .navbar-brand
   color: colors.textIcons
 
-body > header > nav
+.gumga-layout > header .navbar-header button.search
+  margin-right: 5px
+
+.gumga-layout > header .navbar-toggle
+  margin-top: 0
+  margin-bottom: 0
+
+.gumga-layout > header > nav
   background-color: transparent
   
-body > header .nav > li > a
+.gumga-layout > header .navbar-form.search
+  width: 30%
+
+.gumga-layout > header .navbar-form.search .form-group,
+.gumga-layout > header .navbar-form.search .input-group
+  width: 100%
+
+.gumga-layout > header .navbar-form.search .input-group-addon
+  width: 50px
+  
+.gumga-layout > header .navbar-form.search .input-group-addon,
+.gumga-layout > header .navbar-form.search .form-control
+  padding: 0px 10px
+  background-color: rgba(255,255,255, .80)
+  border: 0
+
+.gumga-layout > header .navbar-form.search .form-control
+  width: 100%
+  box-shadow: none
+  color: colors.primaryText
+  &::placeholder
+    color: #fff
+
+.gumga-layout > header .nav > li > a
   color: colors.textIcons
   
-body > header .nav > li > a:focus,
-body > header .nav > li > a:hover
+.gumga-layout > header .nav > li > a:focus,
+.gumga-layout > header .nav > li > a:hover
   color: colors.primaryText
   background-color: colors.primary
 
-body > header .nav .open > a,
-body > header .nav .open > a:focus,
-body > header .nav .open > a:hover
+.gumga-layout > header .nav .open > a,
+.gumga-layout > header .nav .open > a:focus,
+.gumga-layout > header .nav .open > a:hover
   color: colors.textIcons
   background-color: colors.darkPrimary
   border-color: transparent
 
-body > header .nav ul.dropdown-menu
+.gumga-layout > header .nav.organizations > li > a,
+.gumga-layout > header .nav.notifications > li > a,
+.gumga-layout > header .nav.search > li > a,
+.gumga-layout > header .nav.apps > li > a
+  padding-top: 15px
+  padding-bottom: 6px
+
+.gumga-layout > header .nav.organizations > li .form-group
+  margin-bottom: 12px
+
+.gumga-layout > header .nav ul.dropdown-menu
   font-size: 1.6rem
 
-.searchbar
+.gumga-layout > header .navbar .search .form-control.gmd
+  color: #fff
+  background-color: transparent
+
+.gumga-layout > header .searchbar
   position: absolute
   width: 100%
   opacity: 0
   display: flex
-  height: header.height
   background-color: #fff
   transition: all 200ms ease-out
 
-.searchbar.searchShow
+.gumga-layout > header .searchbar.searchShow
   z-index: 5
   opacity: 1
   
-.searchbar .icon
+.gumga-layout > header .searchbar .icon
   margin: 7.5px 15px
   width: 40px
   
-.searchbar .icon.back
+.gumga-layout > header .searchbar .icon.back
   order: 1
   
-.searchbar .query
+.gumga-layout > header .searchbar .query
   flex: 1
   order: 2
   margin: 7.5px 0
 
-.searchbar .icon.search
+.gumga-layout > header .searchbar .icon.search
   order: 3
 
-header .searchbar .searchbar-nav a
+.gumga-layout > header .searchbar .icon button
+  background-color: transparent
+  border-color: transparent
+  
+.gumga-layout > header .searchbar .query .form-control
+  border-color: transparent
+  box-shadow: none
+  -webkit-box-shadow: none
+
+.gumga-layout > header .searchbar .searchbar-nav a
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+
+

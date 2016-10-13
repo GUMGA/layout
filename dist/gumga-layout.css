@@ -179,7 +179,7 @@ h6 {
   -webkit-transition: 0.2s ease all;
 }
 .form-control.gmd:focus ~ label,
-.form-control.gmd[value] ~ label {
+.form-control.gmd.active ~ label {
   content: attr(value);
   top: -20px;
   font-size: 14px;
@@ -268,6 +268,11 @@ h6 {
 }
 .btn[badge]::after {
   margin-top: -12px;
+}
+li [badge]::after {
+  top: 2px;
+  right: 2px;
+  margin-top: 0;
 }
 .dropdown.gmd .dropdown-menu,
 .dropup.gmd .dropdown-menu {
@@ -378,69 +383,121 @@ h6 {
 .alert.gmd.alert-dismissible .close {
   color: #fff;
 }
-body > header {
+.gumga-layout > header {
   position: relative;
 }
-body > header .navbar {
-  height: 52px;
+.gumga-layout > header .navbar {
   margin-bottom: 0px;
   border-radius: 0px;
   background-color: #009688;
   transition: all 200ms ease-out;
 }
-body > header > nav .navbar-brand {
+.gumga-layout > header > nav .navbar-brand {
   color: #fff;
 }
-body > header > nav {
+.gumga-layout > header .navbar-header button.search {
+  margin-right: 5px;
+}
+.gumga-layout > header .navbar-toggle {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.gumga-layout > header > nav {
   background-color: transparent;
 }
-body > header .nav > li > a {
+.gumga-layout > header .navbar-form.search {
+  width: 30%;
+}
+.gumga-layout > header .navbar-form.search .form-group,
+.gumga-layout > header .navbar-form.search .input-group {
+  width: 100%;
+}
+.gumga-layout > header .navbar-form.search .input-group-addon {
+  width: 50px;
+}
+.gumga-layout > header .navbar-form.search .input-group-addon,
+.gumga-layout > header .navbar-form.search .form-control {
+  padding: 0px 10px;
+  background-color: rgba(255,255,255,0.8);
+  border: 0;
+}
+.gumga-layout > header .navbar-form.search .form-control {
+  width: 100%;
+  box-shadow: none;
+  color: #212121;
+}
+.gumga-layout > header .navbar-form.search .form-control::placeholder {
   color: #fff;
 }
-body > header .nav > li > a:focus,
-body > header .nav > li > a:hover {
+.gumga-layout > header .nav > li > a {
+  color: #fff;
+}
+.gumga-layout > header .nav > li > a:focus,
+.gumga-layout > header .nav > li > a:hover {
   color: #212121;
   background-color: #009688;
 }
-body > header .nav .open > a,
-body > header .nav .open > a:focus,
-body > header .nav .open > a:hover {
+.gumga-layout > header .nav .open > a,
+.gumga-layout > header .nav .open > a:focus,
+.gumga-layout > header .nav .open > a:hover {
   color: #fff;
   background-color: #00796b;
   border-color: transparent;
 }
-body > header .nav ul.dropdown-menu {
+.gumga-layout > header .nav.organizations > li > a,
+.gumga-layout > header .nav.notifications > li > a,
+.gumga-layout > header .nav.search > li > a,
+.gumga-layout > header .nav.apps > li > a {
+  padding-top: 15px;
+  padding-bottom: 6px;
+}
+.gumga-layout > header .nav.organizations > li .form-group {
+  margin-bottom: 12px;
+}
+.gumga-layout > header .nav ul.dropdown-menu {
   font-size: 1.6rem;
 }
-.searchbar {
+.gumga-layout > header .navbar .search .form-control.gmd {
+  color: #fff;
+  background-color: transparent;
+}
+.gumga-layout > header .searchbar {
   position: absolute;
   width: 100%;
   opacity: 0;
   display: flex;
-  height: 52px;
   background-color: #fff;
   transition: all 200ms ease-out;
 }
-.searchbar.searchShow {
+.gumga-layout > header .searchbar.searchShow {
   z-index: 5;
   opacity: 1;
 }
-.searchbar .icon {
+.gumga-layout > header .searchbar .icon {
   margin: 7.5px 15px;
   width: 40px;
 }
-.searchbar .icon.back {
+.gumga-layout > header .searchbar .icon.back {
   order: 1;
 }
-.searchbar .query {
+.gumga-layout > header .searchbar .query {
   flex: 1;
   order: 2;
   margin: 7.5px 0;
 }
-.searchbar .icon.search {
+.gumga-layout > header .searchbar .icon.search {
   order: 3;
 }
-header .searchbar .searchbar-nav a {
+.gumga-layout > header .searchbar .icon button {
+  background-color: transparent;
+  border-color: transparent;
+}
+.gumga-layout > header .searchbar .query .form-control {
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.gumga-layout > header .searchbar .searchbar-nav a {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
@@ -448,30 +505,89 @@ header .searchbar .searchbar-nav a {
 main {
   display: flex;
 }
-main > nav {
+.gumga-layout > nav {
   order: 1;
-  width: 250px;
+  width: 300px;
   background-color: #fff;
   border-color: #ddd;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  -webkit-transform: translateX(-300px);
+  transform: translateX(-300px);
+  -webkit-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0s;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0s;
   border-right-width: 1px;
   border-right-style: solid;
-  transition: all 200ms ease-out;
+  z-index: 100;
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.28);
+  box-shadow: 0 0 4px rgba(0,0,0,0.28);
 }
-main > nav.collapsed {
-  margin-left: -250px;
+.gumga-layout > nav.collapsed {
+  visibility: visible;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
 }
-main > nav > header figure,
-main > nav > header img {
+.gumga-layout > nav > header figure,
+.gumga-layout > nav > header img {
   width: 100%;
 }
-main > nav ul.menu {
-  border-bottom: 1px solid #bdbdbd;
+.gumga-layout > nav ul.menu {
+  border-bottom: 1px solid #eaeaea;
 }
 @media (max-width: 768px) {
-  main > nav {
-    position: absolute;
+  .gumga-layout > nav {
     bototm: 0px;
   }
+}
+gl-menu ul {
+  padding: 0;
+  list-style: none;
+}
+gl-menu ul > li {
+  margin-top: 6px 0 0;
+  color: #212121;
+  padding: 8px 0 8px 16px;
+}
+gl-menu ul > li:hover {
+  background-color: #f5f5f5;
+}
+gl-menu ul > li.header:hover,
+gl-menu ul > li.header > a:hover {
+  color: #212121;
+  background-color: transparent;
+}
+gl-menu ul > li:hover a,
+gl-menu ul > li.header > a:hover a {
+  color: #757575;
+}
+gl-menu ul li.header > a {
+  font-size: 20px;
+  color: #757575;
+}
+gl-menu ul li a > .material-icons {
+  font-size: 18px;
+}
+gl-menu ul li > a {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+}
+gl-menu ul li > a:hover {
+  color: #757575;
+  text-decoration: none;
+}
+gl-menu ul li.active > a {
+  color: #00796b;
+}
+gl-menu ul li.divider {
+  height: 1px;
+  margin: 9px 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #eaeaea;
 }
 main > .content {
   flex: 1;
