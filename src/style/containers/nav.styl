@@ -1,26 +1,85 @@
 @import '../config/variables'
 
-main > nav
+.gumga-layout > nav
   order: main.nav.order
   width: main.nav.width
   background-color: main.nav.backgroundColor
   border-color: main.nav.borderColor
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  visibility: hidden
+  -webkit-transform: translateX(-(main.nav.width))
+  transform: translateX(-(main.nav.width))
+  -webkit-transition: all .25s cubic-bezier(0.4,0.0,0.2,1), visibility 0s linear 0s;
+  transition: all .25s cubic-bezier(0.4,0.0,0.2,1), visibility 0s linear 0s;
   border-right-width: 1px
   border-right-style: solid
-  transition: all 200ms ease-out
+  z-index: 100
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,.28);
+  box-shadow: 0 0 4px rgba(0,0,0,.28);
   
-main > nav.collapsed
-  margin-left: -(main.nav.width)
+.gumga-layout > nav.collapsed
+  visibility: visible
+  -webkit-transform: translateX(0)
+  transform: translateX(0)
 
-main > nav > header figure
+.gumga-layout > nav > header figure
     
-main > nav > header img
+.gumga-layout > nav > header img
   width: 100%
 
-main > nav ul.menu
+.gumga-layout > nav ul.menu
   border-bottom: 1px solid colors.divider
   
 @media (max-width: screen.sm)
-  main > nav
-    position: absolute
+  .gumga-layout > nav
     bototm: 0px
+
+gl-menu ul
+  padding: 0
+  list-style: none
+  
+gl-menu ul > li
+  margin-top: 6px 0 0
+  color: colors.primaryText
+  padding: 8px 0 8px 16px
+  &:hover
+    background-color: colors.background
+
+gl-menu ul > li.header,
+gl-menu ul > li.header > a
+  &:hover
+    color: colors.primaryText
+    background-color: transparent
+  
+gl-menu ul > li,
+gl-menu ul > li.header > a
+  &:hover a
+    color: colors.secundaryText
+  
+gl-menu ul li.header > a
+  font-size: 20px
+  color: colors.secundaryText
+  
+gl-menu ul li a > .material-icons
+  font-size: 18px
+
+gl-menu ul li > a
+  display: inline-block
+  font-size: 16px
+  line-height: 1
+  &:hover
+    color: colors.secundaryText
+    text-decoration: none
+
+gl-menu ul li.active > a
+  color: colors.darkPrimary
+
+gl-menu ul li.divider
+  height: 1px
+  margin: 9px 0
+  padding: 0
+  overflow: hidden
+  background-color: colors.divider
