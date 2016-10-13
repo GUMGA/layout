@@ -1,6 +1,6 @@
 @import '../config/variables'
 
-.gumga-layout > nav
+.gumga-layout nav > .menu
   order: main.nav.order
   width: main.nav.width
   background-color: main.nav.backgroundColor
@@ -20,21 +20,21 @@
   -webkit-box-shadow: 0 0 4px rgba(0,0,0,.28);
   box-shadow: 0 0 4px rgba(0,0,0,.28);
   
-.gumga-layout > nav.collapsed
+.gumga-layout nav > .menu.collapsed
   visibility: visible
   -webkit-transform: translateX(0)
   transform: translateX(0)
 
-.gumga-layout > nav > header figure
+.gumga-layout nav > .menu > header figure
     
-.gumga-layout > nav > header img
+.gumga-layout nav > .menu > header img
   width: 100%
 
-.gumga-layout > nav ul.menu
+.gumga-layout nav > .menu ul.menu
   border-bottom: 1px solid colors.divider
   
 @media (max-width: screen.sm)
-  .gumga-layout > nav
+  .gumga-layout nav > .menu
     bototm: 0px
 
 gl-menu ul

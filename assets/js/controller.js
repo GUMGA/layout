@@ -5,7 +5,7 @@ angular
   controller.$inject = ['$scope', '$http', '$timeout']
   function controller($scope, $http, $timeout) {
     $scope.navCollapse = function() {
-      document.querySelector('.gumga-layout > nav')
+      document.querySelector('.gumga-layout nav > .menu')
         .classList.toggle('collapsed')
     }
     $scope.toggleSearch = function() {
