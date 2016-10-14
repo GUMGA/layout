@@ -30,8 +30,8 @@ let Component = {
     
     ctrl.allow = item => {
       if (ctrl.keys.length > 0) {
+        if (!item.key && (item.children && item.children.length == 0)) return true
         return ctrl.keys.includes(item.key)
-        // if (!item.key && (item.children && item.children.length == 0)) return true
         // if (item.key && (item.children && item.children.length == 0)) return ctrl.keys.includes(item.key)
         // return ctrl.allowByChildren(item.children)
         //   if (item.children && item.children.length == 0) 
