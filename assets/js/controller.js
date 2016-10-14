@@ -28,6 +28,6 @@ angular
         .then(function(response) {
           $scope.keys = response.data
         })
-    }, 2000)
+    }, 1000)
     
   }

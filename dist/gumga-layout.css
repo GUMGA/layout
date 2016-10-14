@@ -11,8 +11,8 @@ a {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot"); /* For IE6-8 */
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2") format('woff2'), url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff") format('woff'), url("../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf") format('truetype');
+  src: url("../bower_components/material-design-icons/iconfont/MaterialIcons-Regular.eot"); /* For IE6-8 */
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url("../bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff2") format('woff2'), url("../bower_components/material-design-icons/iconfont/MaterialIcons-Regular.woff") format('woff'), url("../bower_components/material-design-icons/iconfont/MaterialIcons-Regular.ttf") format('truetype');
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -504,7 +504,7 @@ main {
 }
 .gumga-layout nav > .menu {
   order: 1;
-  width: 300px;
+  width: 250px;
   background-color: #fff;
   border-color: #ddd;
   position: absolute;
@@ -512,8 +512,8 @@ main {
   bottom: 0;
   left: 0;
   visibility: hidden;
-  -webkit-transform: translateX(-300px);
-  transform: translateX(-300px);
+  -webkit-transform: translateX(-250px);
+  transform: translateX(-250px);
   -webkit-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0s;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0s;
   border-right-width: 1px;
@@ -573,11 +573,11 @@ gl-menu ul li > a {
   line-height: 1;
 }
 gl-menu ul li > a:hover {
-  color: #757575;
+  color: #00796b;
   text-decoration: none;
 }
-gl-menu ul li.active > a {
-  color: #00796b;
+gl-menu ul li > a.active {
+  color: #009688;
 }
 gl-menu ul li.divider {
   height: 1px;

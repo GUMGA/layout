@@ -6,27 +6,27 @@
   {
     "type": "item",
     "label": "Home",
-    "URL": "welcome",
+    "state": "welcome",
     "icon": "home",
     "key": "CRUD-BASE"
   },
   {
     "type": "item",
     "label": "Usuários",
-    "URL": "user",
+    "state": "user",
     "icon": "group",
     "children": [
       {
         "type": "item",
         "label": "Criar novo",
-        "URL": "user.new",
+        "state": "user.new",
         "icon": "add",
         "key": "CRUD-USER"
       },
       {
         "type": "item",
         "label": "Editar",
-        "URL": "user.edit",
+        "state": "user.edit",
         "icon": "edit",
         "key": "CRUD-ADMIN"
       }
@@ -35,7 +35,7 @@
   {
     "type": "item",
     "label": "Produtos",
-    "URL": "welcome",
+    "state": "welcome",
     "key": "CRUD-ADMIN"
   },
   {
@@ -47,7 +47,7 @@
   },
   {
     "label": "Últimos cadastrados",
-    "URL": "welcome",
+    "state": "welcome",
     "key": "CRUD-ADMIN"
   }
 ]

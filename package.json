@@ -52,7 +52,6 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "angular": "^1.5.8",
-    "material-design-icons": "^3.0.1"
+    "angular": "^1.5.8"
   }
 }
