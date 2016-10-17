@@ -30,4 +30,20 @@ angular
         })
     }, 1000)
     
+    $scope.notifications = [
+      {
+        image: 'images/avatar-default.svg',
+        content: 'Alerta de notificação!'
+      },
+      {
+        image: 'images/avatar-default.svg',
+        content: 'Alerta de notificação!'
+      }
+    ]
+    $scope.onView = function(event, item) {
+      event.stopPropagation()
+      console.log(event)
+      console.log(item)
+    }
+    
   }

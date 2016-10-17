@@ -451,8 +451,33 @@ li [badge]::after {
 .gumga-layout header > .navbar .nav.organizations > li .form-group {
   margin-bottom: 12px;
 }
-.gumga-layout header > .navbar .nav ul.dropdown-menu {
+.gumga-layout header > .navbar .nav.notifications ul.dropdown-menu {
+  width: 300px;
+}
+.gumga-layout header > .navbar .nav.notifications .media {
+  background-color: #f7f7f7;
+  border-radius: 4px;
+}
+.gumga-layout header > .navbar .nav.notifications .media:hover {
+  background-color: #f1f1f1;
+}
+.gumga-layout header > .navbar .nav.notifications .media .media-object {
+  width: 60px;
+}
+.gumga-layout header > .navbar .nav.notifications .media .media-body {
+  padding: 6px 0;
+}
+.gumga-layout header > .navbar .nav.notifications ul.dropdown-menu {
   font-size: 1.6rem;
+  padding: 15px;
+  background-color: #e5e5e5;
+}
+.gumga-layout header > .navbar .nav.notifications ul.dropdown-menu > li {
+  margin-bottom: 5px;
+  padding: 0;
+}
+.gumga-layout header > .navbar .nav.notifications ul.dropdown-menu > li:hover {
+  background-color: transparent;
 }
 .gumga-layout header > .search .form-control.gmd {
   color: #fff;
