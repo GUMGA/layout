@@ -1,15 +1,83 @@
 var gulp = require('gulp')
-, stylus = require('gulp-stylus')
-, rename = require('gulp-rename')
-, minifyCss = require('gulp-minify-css')
-, concat = require('gulp-concat')
-, paths = {
-    style: ['./src/style/**/*.styl']
-  , components: ['./src/components/**/*.js']
-  , dist: ['./dist/']
-  };
-  
-gulp.task('gen-css',function(){
+
+var stylus = require('gulp-stylus')
+var rename = require('gulp-rename')
+var minify = require('gulp-minify-css')
+var concat = require('gulp-concat')
+
+var browserify = require('browserify')
+var watchify = require('watchify')
+var babelify = require('babelify')
+
+var source = require('vinyl-source-stream')
+var buffer = require('vinyl-buffer')
+var merge = require('utils-merge')
+
+var rename = require('gulp-rename')
+var uglify = require('gulp-uglify')
+var sourcemaps = require('gulp-sourcemaps')
+
+var livereload = require('gulp-livereload')
+
+/* nicer browserify errors */
+var gutil = require('gulp-util')
+var chalk = require('chalk')
+
+var liveserver = require('gulp-live-server');
+var server = liveserver.static()
+
+function map_error(err) {
+  if (err.fileName) {
+    // regular error
+    gutil.log(chalk.red(err.name)
+      + ': '
+      + chalk.yellow(err.fileName.replace(__dirname + '/src/components/', ''))
+      + ': '
+      + 'Line '
+      + chalk.magenta(err.lineNumber)
+      + ' & '
+      + 'Column '
+      + chalk.magenta(err.columnNumber || err.column)
+      + ': '
+      + chalk.blue(err.description))
+  } else {
+    // browserify error..
+    gutil.log(chalk.red(err.name)
+      + ': '
+      + chalk.yellow(err.message))
+  }
+
+  this.end()
+}
+
+gulp.task('serve', function() {
+  //1. serve with default settings 
+  var server = liveserver.static(); 
+  server.start();
+ 
+  //use gulp.watch to trigger server actions(notify, start or stop) 
+  gulp.watch(['dist/*.css','dist/*.js', 'index.html'], function (file) {
+    server.notify.apply(server, [file]);
+  });
+});
+
+gulp.task('watchify', function () {
+  var args = merge(watchify.args, { debug: true })
+  var bundler = watchify(browserify('./src/components/index.js', args)).transform(babelify, { /* opts */ })
+  bundle_js(bundler)
+  bundler.on('update', function () {
+    gutil.log(chalk.yellow('JS files updated.'))
+    bundle_js(bundler)
+  })
+  gulp.watch(['./src/style/**/*.styl'], ['bundle_css'])
+})
+
+gulp.task('bundle_css', function () {
+  gutil.log(chalk.yellow('CSS files updated.'))
+  bundle_css()
+})
+
+function bundle_css() {
   return gulp.src(['./src/style/containers/index.styl'])
   .pipe(stylus({
     'include css': true
@@ -17,13 +85,40 @@ gulp.task('gen-css',function(){
   // .pipe(stylus())
   .pipe(concat('gumga-layout.css'))
   .pipe(gulp.dest('./dist'))
+  // .pipe(livereload())
+}
+
+function bundle_js(bundler) {
+  return bundler.bundle()
+    .on('error', map_error)
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest('dist'))
+    .pipe(rename('gumga-layout.min.js'))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+      // capture sourcemaps from transforms
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist'))
+    // .pipe(livereload())
+}
+
+// Without watchify
+gulp.task('browserify', function () {
+  var bundler = browserify('./src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
+
+  return bundle_js(bundler)
 })
-gulp.task('watch-css',function(){
-  gulp.watch(paths.style,['gen-css'])
-});
-gulp.task('minify-css',function(){
-  return gulp.src(['./dist/gumga-layout.css'])
-  .pipe(rename('gumga-layout.min.css'))
-  .pipe(minifyCss())
-  .pipe(gulp.dest('./dist'))
+
+// Without sourcemaps
+gulp.task('browserify-production', function () {
+  var bundler = browserify('./src/components/index.js').transform(babelify, {/* options */ })
+
+  return bundler.bundle()
+    .on('error', map_error)
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(rename('gumga-layout.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'))
 })

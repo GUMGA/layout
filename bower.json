@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "homepage": "https://github.com/GUMGA/layout",
   "authors": [
     "Gui Seek <guiseek@gmail.com>"
@@ -20,5 +20,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "~1.5.8",
+    "bootstrap": "~3.3.7",
+    "material-design-icons": "~3.0.1"
+  }
 }

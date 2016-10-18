@@ -20,30 +20,15 @@ var Component = {
     menu: '<',
     keys: '<'
   },
-  template: '\n    <ul>\n      <li ng-repeat="item in $ctrl.menu" ng-show="$ctrl.allow(item)" ng-class="{header: item.type == \'header\', divider: item.type == \'separator\'}">\n        <a ng-if="item.label != \'separator\'">\n          <i ng-if="item.icon" class="material-icons" ng-bind="item.icon"></i>\n          <span ng-bind="item.label"></span>\n        </a>\n        <gl-menu ng-if="item.children.length > 0" menu="item.children"></gl-menu>\n      </li>\n    </ul>\n  ',
+  template: '\n    <ul>\n      <li data-ng-repeat="item in $ctrl.menu" data-ng-show="$ctrl.allow(item)" data-ng-class="{header: item.type == \'header\', divider: item.type == \'separator\'}">\n        <a ng-if="item.type != \'separator\'" ui-sref="item.state">\n          <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n          <span ng-bind="item.label"></span>\n        </a>\n        <gl-menu data-ng-if="item.children.length > 0" menu="item.children" keys="$ctrl.keys"></gl-menu>\n      </li>\n    </ul>\n  ',
   controller: function controller() {
     var ctrl = this;
     ctrl.keys = ctrl.keys || [];
 
-    // ctrl.allowByChildren = children => {
-    //   if (ctrl.keys.length > 0) {
-    //     if (children && children.length) {
-    //       return children.filter(child => {
-    //         return ctrl.keys.includes(child.key)
-    //       })
-    //     }
-    //   }
-    // }
-
     ctrl.allow = function (item) {
       if (ctrl.keys.length > 0) {
-        if (!item.key && item.children && item.children.length == 0) return true;
+        if (!item.key) return true;
         return ctrl.keys.includes(item.key);
-        // if (item.key && (item.children && item.children.length == 0)) return ctrl.keys.includes(item.key)
-        // return ctrl.allowByChildren(item.children)
-        //   if (item.children && item.children.length == 0) 
-        //   if (item.children && item.children.length > 0) return item.children.reduce(child => ctrl.keys.includes(child.key))
-        // } 
       }
     };
   }
