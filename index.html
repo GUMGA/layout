@@ -170,23 +170,31 @@ background    = #F5F5F5
                 <div class="panel-body">
                   <form name="form">
                     <div class="form-group">
-                      <input type="email" class="form-control gmd" ng-model="example.email" id="exampleInputEmail1" required>
+                      <input type="text" class="form-control gmd" ng-model="example.text" id="text" required>
                       <span class="bar"></span>
-                      <label for="exampleInputEmail1" class="control-label">Nome completo</label>
+                      <label for="text" class="control-label">Nome completo</label>
                     </div>
                     <div class="form-group">
-                      <input type="email" class="form-control gmd" id="exampleInputEmail1">
+                      <input type="color" class="form-control gmd" id="color">
                       <span class="bar"></span>
-                      <label for="exampleInputEmail1" class="control-label">Endereço de e-mail</label>
+                      <label for="color" class="control-label">Color</label>
+                    </div>
+                    <div class="form-group">
+                      <gmd-select gmd-model="example.select" gmd-options="select" placeholder="Placeholder"></gmd-select>
+                      <p>{{example.select}}</p>
                     </div>
                   </form>
                   <pre>&lt;form&gt;
-    &lt;div class="form-group gmd"&gt;
-      &lt;input type="email" class="form-control gmd" id="exampleInputEmail1"&gt;
-      &lt;span class="bar"&gt;&lt;/span&gt;
-      &lt;label for="exampleInputEmail1" class="control-label"&gt;Email address&lt;/label&gt;
-    &lt;/div&gt;
-  &lt;/form&gt;</pre>
+  &lt;div class="form-group gmd"&gt;
+    &lt;input type="email" class="form-control gmd" id="exampleInputEmail1"&gt;
+    &lt;span class="bar"&gt;&lt;/span&gt;
+    &lt;label for="exampleInputEmail1" class="control-label"&gt;Email address&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;gmd-select gmd-model="example.select" gmd-options="select" placeholder="Placeholder"&gt;&lt;/gmd-select&gt;
+    &lt;p&gt;{{example.select}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</pre>
                 </div>
               </div>
             </div>

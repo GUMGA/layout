@@ -1,3 +1,4 @@
+import Gmd  from './gmd/index.js'
 import Menu from './menu/component.js'
 import Notification from './notification/component.js'
 

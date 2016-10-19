@@ -297,6 +297,16 @@ li [badge]::after {
 .navbar-nav > li > .dropdown-menu.gmd {
   margin-top: 2px;
 }
+gmd-select .dropdown.gmd .dropdown-menu {
+  top: -2px;
+}
+gmd-select .dropdown.gmd button.gmd {
+  text-transform: none;
+  font-weight: normal;
+}
+gmd-select .dropdown.gmd .placeholder {
+  color: #757575;
+}
 .panel.gmd {
   border: 0;
   border-radius: 2px;
