@@ -307,6 +307,10 @@ gmd-select .dropdown.gmd button.gmd {
 gmd-select .dropdown.gmd .placeholder {
   color: #757575;
 }
+gmd-select .dropdown.gmd .dropdown-menu .active {
+  color: #00796b;
+  background-color: #f5f5f5;
+}
 .panel.gmd {
   border: 0;
   border-radius: 2px;

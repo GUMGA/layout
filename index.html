@@ -180,7 +180,7 @@ background    = #F5F5F5
                       <label for="color" class="control-label">Color</label>
                     </div>
                     <div class="form-group">
-                      <gmd-select gmd-model="example.select" gmd-options="select" placeholder="Placeholder"></gmd-select>
+                      <gmd-select ng-model="example.select" on-update="change(option)" options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
                       <p>{{example.select}}</p>
                     </div>
                   </form>
@@ -191,8 +191,7 @@ background    = #F5F5F5
     &lt;label for="exampleInputEmail1" class="control-label"&gt;Email address&lt;/label&gt;
   &lt;/div&gt;
   &lt;div class="form-group"&gt;
-    &lt;gmd-select gmd-model="example.select" gmd-options="select" placeholder="Placeholder"&gt;&lt;/gmd-select&gt;
-    &lt;p&gt;{{example.select}}&lt;/p&gt;
+    &lt;gmd-select ng-model="example.select" on-update="change(option)" options="options" option="name" placeholder="- Selecione uma pessoa -"&gt;&lt;/gmd-select&gt;
   &lt;/div&gt;
 &lt;/form&gt;</pre>
                 </div>
