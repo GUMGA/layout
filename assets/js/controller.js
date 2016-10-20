@@ -53,6 +53,9 @@ angular
     $scope.change = function(option) {
       console.log(option)
     }
+    $scope.example = {
+      text: 'Gui'
+    }
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}
     // } 

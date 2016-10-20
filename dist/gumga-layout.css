@@ -151,6 +151,7 @@ h6 {
   font-size: 24px;
   color: #fff;
 }
+gmd-input,
 .form-group {
   margin-bottom: 30px;
   position: relative;
@@ -170,10 +171,10 @@ h6 {
 .form-control.gmd ~ label {
   color: #999;
   font-weight: normal;
-  position: absolute;
+  position: relative;
   pointer-events: none;
   left: 5px;
-  top: 10px;
+  top: -25px;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
@@ -181,7 +182,7 @@ h6 {
 .form-control.gmd:focus ~ label,
 .form-control.gmd.active ~ label {
   content: attr(value);
-  top: -20px;
+  top: -50px;
   font-size: 14px;
   color: #009688;
 }

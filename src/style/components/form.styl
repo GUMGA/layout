@@ -1,12 +1,14 @@
-.form-group 
+gmd-input
+
+.form-group
   margin-bottom: 30px
   position: relative
 
 .form-control.gmd
-  padding:10px 10px 10px 5px
-  display:block
-  width:100%
-  border:none
+  padding: 10px 10px 10px 5px
+  display: block
+  width: 100%
+  border: none
   box-shadow: none
   border-radius: 0
   border-bottom: 1px solid #ccc
@@ -18,10 +20,10 @@
 .form-control.gmd ~ label
   color: #999
   font-weight: normal
-  position: absolute
+  position: relative
   pointer-events: none
   left: 5px
-  top: 10px
+  top: -25px
   transition: 0.2s ease all
   -moz-transition: 0.2s ease all
   -webkit-transition: 0.2s ease all
@@ -29,7 +31,7 @@
 .form-control.gmd:focus ~ label,
 .form-control.gmd.active ~ label
   content: attr(value)
-  top:-20px
+  top:-50px
   font-size:14px
   color: colors.primary
 

@@ -169,19 +169,24 @@ background    = #F5F5F5
                 <div class="panel-heading">Form</div>
                 <div class="panel-body">
                   <form name="form">
-                    <div class="form-group">
-                      <input type="text" class="form-control gmd" ng-model="example.text" id="text" required>
-                      <span class="bar"></span>
-                      <label for="text" class="control-label">Nome completo</label>
-                    </div>
-                    <div class="form-group">
-                      <input type="color" class="form-control gmd" id="color">
-                      <span class="bar"></span>
-                      <label for="color" class="control-label">Color</label>
-                    </div>
-                    <div class="form-group">
-                      <gmd-select ng-model="example.select" on-update="change(option)" options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
-                      <p>{{example.select}}</p>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <gmd-input>
+                          <input type="text" class="form-control gmd" ng-model="example.text" id="text" required>
+                          <span class="bar"></span>
+                          <label for="text" class="control-label">Nome completo</label>
+                        </gmd-input>
+                      </div>
+                      <div class="col-md-4">
+                        <gmd-input>
+                          <input type="email" class="form-control gmd" ng-model="example.email" id="email" required>
+                          <span class="bar"></span>
+                          <label for="email" class="control-label">Endereço de e-mail</label>
+                        </gmd-input>
+                      </div>
+                      <div class="col-md-4">
+                        <gmd-select ng-model="example.select" on-update="change(option)" options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
+                      </div>
                     </div>
                   </form>
                   <pre>&lt;form&gt;
@@ -210,18 +215,20 @@ background    = #F5F5F5
                       Normal
                     </h6>
                     
+                    <button type="button" class="btn gmd btn-default">Default</button>
                     <button type="button" class="btn gmd btn-primary">Primary</button>
                     <button type="button" class="btn gmd btn-success">Success</button>
                     <button type="button" class="btn gmd btn-info">Info</button>
                     <button type="button" class="btn gmd btn-warning">Warning</button>
                     <button type="button" class="btn gmd btn-danger">Danger</button>
                     <button type="button" class="btn gmd btn-link">Link</button>
-                    <pre>&lt;button type="button" class="btn gmd btn-primary"&gt;Primary&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-success"&gt;Success&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-info"&gt;Info&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-warning"&gt;Warning&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-danger"&gt;Danger&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-link"&gt;Link&lt;/button&gt;</pre>
+                    <pre>&lt;button type="button" class="btn gmd btn-default"&gt;Default&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-link"&gt;Link&lt;/button&gt;</pre>
                   </div>
 
                   <div>
@@ -229,18 +236,20 @@ background    = #F5F5F5
                       Disabled
                     </h6>
                     
+                    <button type="button" class="btn gmd btn-default" disabled="disabled">Default</button>
                     <button type="button" class="btn gmd btn-primary" disabled="disabled">Primary</button>
                     <button type="button" class="btn gmd btn-success" disabled="disabled">Success</button>
                     <button type="button" class="btn gmd btn-info" disabled="disabled">Info</button>
                     <button type="button" class="btn gmd btn-warning" disabled="disabled">Warning</button>
                     <button type="button" class="btn gmd btn-danger" disabled="disabled">Danger</button>
                     <button type="button" class="btn gmd btn-link" disabled="disabled">Link</button>
-                    <pre>&lt;button type="button" class="btn gmd btn-primary" disabled="disabled"&gt;Primary&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-success" disabled="disabled"&gt;Success&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-info" disabled="disabled"&gt;Info&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-warning" disabled="disabled"&gt;Warning&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-danger" disabled="disabled"&gt;Danger&lt;/button&gt;
-  &lt;button type="button" class="btn gmd btn-link" disabled="disabled"&gt;Link&lt;/button&gt;</pre>
+                    <pre>&lt;button type="button" class="btn gmd btn-default" disabled="disabled"&gt;Default&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-primary" disabled="disabled"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-success" disabled="disabled"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-info" disabled="disabled"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-warning" disabled="disabled"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-danger" disabled="disabled"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn gmd btn-link" disabled="disabled"&gt;Link&lt;/button&gt;</pre>
                   </div>
 
                   <div>
