@@ -61,3 +61,49 @@ gmd-input
 .form-control.gmd:focus ~ .bar:before,
 .form-control.gmd:focus ~ .bar:after
   width: 50%
+  
+.form-control.gmd.ng-invalid ~ .bar:before,
+.form-control.gmd.ng-invalid ~ .bar:after
+  background-color: #d9534f
+
+.form-control.gmd.ng-invalid
+  border-color: #d9534f
+   
+.form-control.gmd.ng-invalid ~ label
+  color: #d9534f
+
+.checkbox label
+  padding-left: 24px
+
+input[type="checkbox"].gmd:before,
+input[type="checkbox"].gmd:after
+  transition: all .3s
+  
+input[type="checkbox"].gmd:after
+  margin-top: -5px
+  margin-left: -4px
+  display: inline-block
+  content: ' '
+  width: 20px
+  height: 20px
+  border: 2px solid #999
+  border-radius: 2px
+  background-color: #fff
+  
+input[type="checkbox"].gmd:checked:after
+  background-color: colors.primary
+  border-color: colors.primary
+  
+input[type="checkbox"].gmd:checked:before
+  transform: rotate(45deg);
+  position: absolute;
+  left: 3px;
+  top: -3px;
+  width: 6px;
+  height: 13px;
+  border-width: 2px;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  border-color: #fff
+  content: '';
