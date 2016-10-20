@@ -172,7 +172,7 @@ background    = #F5F5F5
                     <div class="row">
                       <div class="col-md-4">
                         <gmd-input>
-                          <input type="text" class="form-control gmd" ng-model="example.text" id="text" required>
+                          <input type="text" class="form-control gmd" ng-model="example.text" id="text" ng-maxlength="10" required>
                           <span class="bar"></span>
                           <label for="text" class="control-label">Nome completo</label>
                         </gmd-input>
@@ -211,12 +211,12 @@ background    = #F5F5F5
                 <div class="panel-body">
 
                   <div>
-                    <h6>
+                    <h5>
                       Normal
-                    </h6>
+                    </h5>
                     
-                    <button type="button" class="btn gmd btn-default">Default</button>
-                    <button type="button" class="btn gmd btn-primary">Primary</button>
+                    <button type="button" class="btn gmd btn-primary" gmd-ripple>Primary</button>
+                    <button type="button" class="btn gmd btn-default" gmd-ripple>Default</button>
                     <button type="button" class="btn gmd btn-success">Success</button>
                     <button type="button" class="btn gmd btn-info">Info</button>
                     <button type="button" class="btn gmd btn-warning">Warning</button>
@@ -229,6 +229,25 @@ background    = #F5F5F5
 &lt;button type="button" class="btn gmd btn-warning"&gt;Warning&lt;/button&gt;
 &lt;button type="button" class="btn gmd btn-danger"&gt;Danger&lt;/button&gt;
 &lt;button type="button" class="btn gmd btn-link"&gt;Link&lt;/button&gt;</pre>
+                  </div>
+
+                  <div>
+                    <h5>
+                      Raised
+                    </h5>
+                    
+                    <button type="button" class="btn gmd raised btn-primary" gmd-ripple>Primary</button>
+                    <button type="button" class="btn gmd raised btn-default" gmd-ripple>Default</button>
+                    <button type="button" class="btn gmd raised btn-success">Success</button>
+                    <button type="button" class="btn gmd raised btn-info">Info</button>
+                    <button type="button" class="btn gmd raised btn-warning">Warning</button>
+                    <button type="button" class="btn gmd raised btn-danger">Danger</button>
+                    <pre>&lt;button type="button" class="btn gmd raised btn-default"&gt;Default&lt;/button&gt;
+&lt;button type="button" class="btn gmd raised btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn gmd raised btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn gmd raised btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn gmd raised btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn gmd raised btn-danger"&gt;Danger&lt;/button&gt;</pre>
                   </div>
 
                   <div>
