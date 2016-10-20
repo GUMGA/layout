@@ -88,6 +88,17 @@ function bundle_css() {
   // .pipe(livereload())
 }
 
+gulp.task('minify_css', function () {
+  minify_css()
+})
+
+function minify_css() {
+  return gulp.src(['./dist/gumga-layout.css'])
+  .pipe(rename('gumga-layout.min.css'))
+  .pipe(minify())
+  .pipe(gulp.dest('./dist'))
+}
+
 function bundle_js(bundler) {
   return bundler.bundle()
     .on('error', map_error)

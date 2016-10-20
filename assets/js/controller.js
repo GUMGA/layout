@@ -45,5 +45,19 @@ angular
       console.log(event)
       console.log(item)
     }
-    
+    $scope.options = [
+      {name: 'Guilherme', id: 1},
+      {name: 'Felipe', id: 2},
+      {name: 'Mateus', id: 3}
+    ]
+    $scope.change = function(option) {
+      console.log(option)
+    }
+    $scope.example = {
+      text: 'Gui'
+    }
+    // $scope.example = {
+    //   select: {label: 'option 3', value: 'option3'}
+    // } 
+
   }

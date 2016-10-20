@@ -6,7 +6,7 @@ let Component = {
   template: `
     <ul>
       <li data-ng-repeat="item in $ctrl.menu" data-ng-show="$ctrl.allow(item)" data-ng-class="{header: item.type == 'header', divider: item.type == 'separator'}">
-        <a ng-if="item.type != 'separator'" ui-sref="item.state">
+        <a ng-if="item.type != 'separator'" ui-sref="{{item.state}}">
           <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>
           <span ng-bind="item.label"></span>
         </a>
