@@ -88,9 +88,7 @@ function bundle_css() {
   // .pipe(livereload())
 }
 
-gulp.task('minify_css', function () {
-  minify_css()
-})
+gulp.task('minify_css', minify_css)
 
 function minify_css() {
   return gulp.src(['./dist/gumga-layout.css'])
@@ -98,6 +96,9 @@ function minify_css() {
   .pipe(minify())
   .pipe(gulp.dest('./dist'))
 }
+
+
+gulp.task('bundle_js', bundle_js)
 
 function bundle_js(bundler) {
   return bundler.bundle()
@@ -132,4 +133,8 @@ gulp.task('browserify-production', function () {
     .pipe(rename('gumga-layout.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
+})
+
+gulp.task('production', function() {
+  
 })

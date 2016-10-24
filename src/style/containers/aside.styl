@@ -1,11 +1,23 @@
 @import '../config/variables'
 
-main > aside
-  order: main.aside.order
-  width: main.aside.width
-  background-color: main.aside.backgroundColor
-  
-@media (max-width: screen.sm)
-  main > aside
-    display none
-    
+.gumga-layout aside.gl-aside
+  order: aside.order
+  width: aside.width
+  background-color: aside.backgroundColor
+  position: fixed
+  top: 0
+  bottom: 0
+  right: 0
+  -webkit-transform: translateX(aside.width)
+  transform: translateX(aside.width)
+  -webkit-transition: all .25s cubic-bezier(0.4,0.0,0.2,1), visibility 0s linear 0s;
+  transition: all .25s cubic-bezier(0.4,0.0,0.2,1), visibility 0s linear 0s;
+  z-index: layer.aside
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,.28);
+  box-shadow: 0 0 4px rgba(0,0,0,.28);
+  z-index: layer.aside
+
+.gumga-layout aside.gl-aside.collapsed
+  visibility: visible
+  -webkit-transform: translateX(0)
+  transform: translateX(0)

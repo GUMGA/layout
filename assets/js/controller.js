@@ -5,7 +5,11 @@ angular
   controller.$inject = ['$scope', '$http', '$timeout']
   function controller($scope, $http, $timeout) {
     $scope.navCollapse = function() {
-      document.querySelector('.gumga-layout nav > .menu')
+      document.querySelector('.gumga-layout nav.gl-nav')
+        .classList.toggle('collapsed')
+    }
+    $scope.asideCollapse = function() {
+      document.querySelector('.gumga-layout aside.gl-aside')
         .classList.toggle('collapsed')
     }
     $scope.toggleSearch = function() {
@@ -50,6 +54,7 @@ angular
       {name: 'Felipe', id: 2},
       {name: 'Mateus', id: 3}
     ]
+    $scope.optionss = ['Guilherme','Felipe','Mateus']
     $scope.change = function(option) {
       console.log(option)
     }

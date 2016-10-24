@@ -34,7 +34,7 @@ background    = #F5F5F5
   <body data-ng-controller="controller">
     <div class="gumga-layout">
           
-      <header>
+      <header class="gl-header">
         <div class="searchbar">
           <div class="icon back">
             <button type="button" data-ng-click="toggleSearch()">
@@ -103,7 +103,7 @@ background    = #F5F5F5
                   </div>
                 </div>
               </form>
-              
+
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -185,7 +185,7 @@ background    = #F5F5F5
                         </gmd-input>
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" on-update="change(option)" options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <gmd-select ng-model="example.select" on-update="change(option)" options="optionss" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
                       </div>
                     </div>
                     <div class="row">
@@ -193,7 +193,24 @@ background    = #F5F5F5
                         <div class="checkbox">
                           <label>
                             <input type="checkbox" class="gmd" data-ng-model="example.check">
+                            <span class="box"></span>
                             Check me out
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <span class="box"></span>
+                            Click-me
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <span class="box"></span>
+                            Click-me
                           </label>
                         </div>
                       </div>
@@ -216,22 +233,51 @@ background    = #F5F5F5
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">
+                  Nav & Aside
+                </div>
+                <div class="panel-body">
+
+                  <h5>
+                    Alternar
+                  </h5>
+
+                  <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="navCollapse()">Alternar Nav</button>
+                  <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="asideCollapse()">Alternar Aside</button>
+                  
+                  
+                  <pre>$scope.navCollapse = function() {
+  document.querySelector('.gumga-layout nav.gl-nav')
+    .classList.toggle('collapsed')
+}
+$scope.asideCollapse = function() {
+  document.querySelector('.gumga-layout aside.gl-aside')
+    .classList.toggle('collapsed')
+}</pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel gmd">
+                <div class="panel-heading">
                   Buttons
                 </div>
                 <div class="panel-body">
+
+                  <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="asideCollapse()">Abrir Aside</button>
 
                   <div>
                     <h5>
                       Normal
                     </h5>
                     
-                    <button type="button" class="btn gmd btn-primary" gmd-ripple>Primary</button>
-                    <button type="button" class="btn gmd btn-default" gmd-ripple>Default</button>
-                    <button type="button" class="btn gmd btn-success">Success</button>
-                    <button type="button" class="btn gmd btn-info">Info</button>
-                    <button type="button" class="btn gmd btn-warning">Warning</button>
-                    <button type="button" class="btn gmd btn-danger">Danger</button>
-                    <button type="button" class="btn gmd btn-link">Link</button>
+                    <button type="button" class="btn gmd btn-primary gmd-ripple">Primary</button>
+                    <button type="button" class="btn gmd btn-default gmd-ripple">Default</button>
+                    <button type="button" class="btn gmd btn-success gmd-ripple">Success</button>
+                    <button type="button" class="btn gmd btn-info gmd-ripple">Info</button>
+                    <button type="button" class="btn gmd btn-warning gmd-ripple">Warning</button>
+                    <button type="button" class="btn gmd btn-danger gmd-ripple">Danger</button>
+                    <button type="button" class="btn gmd btn-link gmd-ripple">Link</button>
                     <pre>&lt;button type="button" class="btn gmd btn-default"&gt;Default&lt;/button&gt;
 &lt;button type="button" class="btn gmd btn-primary"&gt;Primary&lt;/button&gt;
 &lt;button type="button" class="btn gmd btn-success"&gt;Success&lt;/button&gt;
@@ -246,12 +292,12 @@ background    = #F5F5F5
                       Raised
                     </h5>
                     
-                    <button type="button" class="btn gmd raised btn-primary" gmd-ripple>Primary</button>
-                    <button type="button" class="btn gmd raised btn-default" gmd-ripple>Default</button>
-                    <button type="button" class="btn gmd raised btn-success">Success</button>
-                    <button type="button" class="btn gmd raised btn-info">Info</button>
-                    <button type="button" class="btn gmd raised btn-warning">Warning</button>
-                    <button type="button" class="btn gmd raised btn-danger">Danger</button>
+                    <button type="button" class="btn gmd raised btn-primary gmd-ripple gmd-ripple-light">Primary</button>
+                    <button type="button" class="btn gmd raised btn-default gmd-ripple gmd-ripple-light">Default</button>
+                    <button type="button" class="btn gmd raised btn-success gmd-ripple gmd-ripple-light">Success</button>
+                    <button type="button" class="btn gmd raised btn-info gmd-ripple gmd-ripple-light">Info</button>
+                    <button type="button" class="btn gmd raised btn-warning gmd-ripple gmd-ripple-light">Warning</button>
+                    <button type="button" class="btn gmd raised btn-danger gmd-ripple gmd-ripple-light">Danger</button>
                     <pre>&lt;button type="button" class="btn gmd raised btn-default"&gt;Default&lt;/button&gt;
 &lt;button type="button" class="btn gmd raised btn-primary"&gt;Primary&lt;/button&gt;
 &lt;button type="button" class="btn gmd raised btn-success"&gt;Success&lt;/button&gt;
@@ -556,35 +602,33 @@ background    = #F5F5F5
 
         </div>
 
-        <!--<aside>
-          <div class="panel panel-default">
-            <header class="panel-heading">Sidebar</header>
-            <div class="panel-body">
-            </div>
-            <footer class="panel-footer">
-              Última atualização em 10/08/2016
-            </footer>
-          </div>
-        </aside>-->
       </main>
-      <nav>
-        <div class="menu collapsed">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-              <i class="material-icons">menu</i>
-            </a>
-            <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-              Gumga Studio
-            </a>
-          </div>
-          <header>
-            <figure>
-              <img src="../../images/logo-gumga-studio.png" alt="">
-            </figure>
-          </header>
-          <gl-menu menu="menu" keys="keys"></gl-menu>
+      <nav class="gl-nav collapsed">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+            <i class="material-icons">menu</i>
+          </a>
+          <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+            Gumga Studio
+          </a>
         </div>
+        <header>
+          <figure>
+            <img src="../../images/logo-gumga-studio.png" alt="">
+          </figure>
+        </header>
+        <gl-menu menu="menu" keys="keys"></gl-menu>
       </nav>
+      <aside class="gl-aside">
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+      </aside>
+      
+      
       <footer>Footer</footer>
 
     </div>
@@ -600,7 +644,7 @@ background    = #F5F5F5
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <script src="dist/gumga-layout.min.js"></script>
     <script src="assets/js/controller.js"></script>
   </body>
