@@ -3,6 +3,7 @@ let Component = {
     ngModel: '=',
     options: '<',
     option: '@',
+    value: '@',
     placeholder: '@?',
     onUpdate: "&?"
   },
@@ -26,7 +27,7 @@ let Component = {
   controller: function() {
     let ctrl = this
     ctrl.select = option => {
-      ctrl.ngModel = option
+      ctrl.ngModel = (ctrl.value) ? option[ctrl.value] : option
       if (ctrl.onUpdate) ctrl.onUpdate({option: option})
     }
     ctrl.unselect = () => ctrl.ngModel = undefined

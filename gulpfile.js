@@ -9,6 +9,8 @@ var browserify = require('browserify')
 var watchify = require('watchify')
 var babelify = require('babelify')
 
+var fs = require('fs')
+var path = require('path')
 var source = require('vinyl-source-stream')
 var buffer = require('vinyl-buffer')
 var merge = require('utils-merge')
@@ -113,6 +115,27 @@ function bundle_js(bundler) {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'))
     // .pipe(livereload())
+}
+
+gulp.task('export', build)
+function build() {
+  var dest,
+      dir = (gutil.env.dest) ? gutil.env.dest : 'gumga-layout' 
+  if (path.isAbsolute(dir)) {
+    dest = dir
+  } else {
+    var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
+    dest = home + '/' + dir
+  }
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(dest)
+  }
+  var destIcons = dest + '/icons/'
+  fs.mkdirSync(destIcons)
+  gulp.src('./bower_components/material-design-icons/iconfont/*.{eot,woff2,woff,ttf}')
+    .pipe(gulp.dest(destIcons))
+  gulp.src('./dist/*.min.{js,css}')
+    .pipe(gulp.dest(dest))
 }
 
 // Without watchify

@@ -1,7 +1,6 @@
 @import '../config/variables'
 
 .gumga-layout nav.gl-nav
-  order: nav.order
   width: nav.width
   background-color: nav.backgroundColor
   z-index: layer.nav
@@ -22,10 +21,10 @@
   width: 8px
 
 .gumga-layout nav.gl-nav::-webkit-scrollbar-track
-  background-color: nav.backgroundColor
+  background-color: nav.scrollTrack
  
 .gumga-layout nav.gl-nav::-webkit-scrollbar-thumb
-  background-color: colors.lightPrimary
+  background-color: nav.scrollThumb
   border-radius: 3px
 
 
@@ -52,10 +51,9 @@ gl-menu ul
   
 gl-menu ul > li
   margin-top: 6px 0 0
-  color: colors.primaryText
   padding: 8px 0 8px 16px
   &:hover
-    background-color: colors.background
+    background-color: nav.menu.navBackgroundColorHover
 
 gl-menu ul > li.header,
 gl-menu ul > li.header > a
@@ -63,14 +61,13 @@ gl-menu ul > li.header > a
     color: colors.primaryText
     background-color: transparent
   
-gl-menu ul > li,
 gl-menu ul > li.header > a
-  &:hover a
-    color: colors.secundaryText
+  &:hover
+    color: nav.menu.headerColor
   
 gl-menu ul li.header > a
-  font-size: 20px
-  color: colors.secundaryText
+  font-size: nav.menu.headerSize
+  color: nav.menu.headerColor
   
 gl-menu ul li a > .material-icons
   font-size: 18px
@@ -79,12 +76,13 @@ gl-menu ul li > a
   display: inline-block
   font-size: 16px
   line-height: 1
+  color: nav.menu.navColor
   &:hover
-    color: colors.darkPrimary
+    color: nav.menu.navColorHover
     text-decoration: none
 
 gl-menu ul li > a.active
-  color: colors.primary
+  color: nav.menu.navColorActive
 
 gl-menu ul li.divider
   height: 1px

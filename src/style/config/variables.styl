@@ -25,28 +25,52 @@ layer = {
 }
 
 body = {
-  backgroundColor: background
+  backgroundColor: colors.background
 }
 
 header = {
   height: 52px
+  navColor: colors.textIcons
+  navColorHover: colors.primaryText
+  navBackgroundColorHover: colors.primary
+  navBackgroundColorFocus: colors.darkPrimary
+  backgroundColor: colors.background
+  apps: {
+    navBackgroundColorHover: colors.lightPrimary
+    backgroundColor: colors.textIcons
+  }
+  notifications: {
+    navBackgroundColor: colors.textIcons
+    navBackgroundColorHover: colors.lightPrimary
+    backgroundColor: colors.background
+  }
 }
+
+nav = {
+  width: 250px
+  menu: {
+    headerSize: 20px
+    headerColor: colors.secundaryText
+    navColor: colors.primaryText
+    navColorHover: colors.darkPrimary
+    navColorActive: colors.primary
+    navBackgroundColorHover: colors.background
+  }
+  scrollTrack: #fff
+  scrollThumb: colors.lightPrimary
+  backgroundColor: #fff
+}
+
+aside = {
+  width: 300px
+  backgroundColor: #fff
+}
+
 
 main = {
   content: {
-    order: 2
     backgroundColor: transparent
   }
-}
-nav = {
-  order: 1
-  width: 250px
-  backgroundColor: #fff
-}
-aside = {
-  order: 3
-  width: 300px
-  backgroundColor: #fff
 }
 
 footer = {
