@@ -58,9 +58,11 @@ angular
     $scope.change = function(option) {
       console.log(option)
     }
-    $scope.example = {
-      text: 'Gui'
-    }
+    $timeout(function() {
+      $scope.example = {
+        text: 'Gui'
+      }
+    }, 1000)
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}
     // } 

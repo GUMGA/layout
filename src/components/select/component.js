@@ -10,7 +10,7 @@ let Component = {
   template: `
     <div class="dropdown gmd">
       <button class="btn btn-default gmd dropdown-toggle" type="button" id="gmdSelect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        <span data-ng-bind="$ctrl.ngModel[$ctrl.option] || $ctrl.ngModel"></span>
+        <span data-ng-bind="$ctrl.selected"></span>
         <span data-ng-bind="$ctrl.placeholder" data-ng-hide="$ctrl.ngModel" class="placeholder"></span>
         <span class="caret"></span>
       </button>
@@ -27,6 +27,7 @@ let Component = {
   controller: function() {
     let ctrl = this
     ctrl.select = option => {
+      ctrl.selected = option[ctrl.option] || option
       ctrl.ngModel = (ctrl.value) ? option[ctrl.value] : option
       if (ctrl.onUpdate) ctrl.onUpdate({option: option})
     }

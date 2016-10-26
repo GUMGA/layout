@@ -61,14 +61,14 @@ gmd-input
 .form-control.gmd:focus ~ .bar:after
   width: 50%
   
-.form-control.gmd.ng-invalid ~ .bar:before,
-.form-control.gmd.ng-invalid ~ .bar:after
+.form-control.gmd.ng-invalid.ng-touched ~ .bar:before,
+.form-control.gmd.ng-invalid.ng-touched ~ .bar:after
   background-color: #d9534f
 
-.form-control.gmd.ng-invalid
+.form-control.gmd.ng-invalid.ng-touched
   border-color: #d9534f
    
-.form-control.gmd.ng-invalid ~ label
+.form-control.gmd.ng-invalid.ng-touched ~ label
   color: #d9534f
 
 .checkbox label,

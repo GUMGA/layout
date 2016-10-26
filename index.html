@@ -196,7 +196,8 @@ background    = #F5F5F5
                         </gmd-input>
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" on-update="change(option)" options="optionss" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <gmd-select ng-model="example.select" on-update="change(option)" options="options" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <pre>{{example.select | json}}</pre>
                       </div>
                     </div>
                     <div class="row">

@@ -52,18 +52,7 @@ function map_error(err) {
   this.end()
 }
 
-gulp.task('serve', function() {
-  //1. serve with default settings 
-  var server = liveserver.static(); 
-  server.start();
- 
-  //use gulp.watch to trigger server actions(notify, start or stop) 
-  gulp.watch(['dist/*.css','dist/*.js', 'index.html'], function (file) {
-    server.notify.apply(server, [file]);
-  });
-});
-
-gulp.task('watchify', function () {
+gulp.task('watch', function () {
   var args = merge(watchify.args, { debug: true })
   var bundler = watchify(browserify('./src/components/index.js', args)).transform(babelify, { /* opts */ })
   bundle_js(bundler)
@@ -71,14 +60,13 @@ gulp.task('watchify', function () {
     gutil.log(chalk.yellow('JS files updated.'))
     bundle_js(bundler)
   })
-  gulp.watch(['./src/style/**/*.styl'], ['bundle_css'])
+  gulp.watch(['./src/style/**/*.styl'], ['bundle-css'])
 })
 
-gulp.task('bundle_css', function () {
+gulp.task('bundle-css', function () {
   gutil.log(chalk.yellow('CSS files updated.'))
   bundle_css()
 })
-
 function bundle_css() {
   return gulp.src(['./src/style/containers/index.styl'])
   .pipe(stylus({
@@ -90,32 +78,16 @@ function bundle_css() {
   // .pipe(livereload())
 }
 
-gulp.task('minify_css', minify_css)
-
-function minify_css() {
+gulp.task('bundle-css-production', function () {
   return gulp.src(['./dist/gumga-layout.css'])
   .pipe(rename('gumga-layout.min.css'))
   .pipe(minify())
   .pipe(gulp.dest('./dist'))
-}
+})
 
+gulp.task('bundle', ['bundle-js', 'bundle-css'])
 
-gulp.task('bundle_js', bundle_js)
-
-function bundle_js(bundler) {
-  return bundler.bundle()
-    .on('error', map_error)
-    .pipe(source('app.js'))
-    .pipe(buffer())
-    .pipe(gulp.dest('dist'))
-    .pipe(rename('gumga-layout.min.js'))
-    .pipe(sourcemaps.init({ loadMaps: true }))
-      // capture sourcemaps from transforms
-    .pipe(uglify())
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist'))
-    // .pipe(livereload())
-}
+gulp.task('release', ['bundle-js-production', 'bundle-css-production'])
 
 gulp.task('export', build)
 function build() {
@@ -138,15 +110,30 @@ function build() {
     .pipe(gulp.dest(dest))
 }
 
+
 // Without watchify
-gulp.task('browserify', function () {
+function bundle_js(bundler) {
+  return bundler.bundle()
+    .on('error', map_error)
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest('dist'))
+    .pipe(rename('gumga-layout.min.js'))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+      // capture sourcemaps from transforms
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist'))
+}
+
+gulp.task('bundle-js', function () {
   var bundler = browserify('./src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
 
   return bundle_js(bundler)
 })
 
 // Without sourcemaps
-gulp.task('browserify-production', function () {
+gulp.task('bundle-js-production', function () {
   var bundler = browserify('./src/components/index.js').transform(babelify, {/* options */ })
 
   return bundler.bundle()
@@ -156,8 +143,4 @@ gulp.task('browserify-production', function () {
     .pipe(rename('gumga-layout.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'))
-})
-
-gulp.task('production', function() {
-  
 })
