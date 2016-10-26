@@ -5,9 +5,10 @@ let Component = {
   template: `
     <div ng-transclude></div>
   `,
-  controller: ['$element','$timeout', function($element,$timeout) {
+  controller: ['$scope','$element','$attrs','$timeout', '$parse', function($scope, $element, $attrs, $timeout,$parse) {
     let ctrl = this,
-        input
+        input,
+        model
         
     let changeActive = target => {
       if (target.value) {
@@ -18,8 +19,12 @@ let Component = {
     }
     ctrl.$postLink = () => {
       input = angular.element($element.find('input'))
+      model = input.attr('ng-model') || input.attr('data-ng-model')
       $timeout(() => {
-        changeActive(input[0])
+        $scope.$parent.$watch(model, val => {
+          if (val != undefined) input[0].value = val
+          changeActive(input[0])
+        })
       })
       input.bind('blur', e => {
         changeActive(e.target)

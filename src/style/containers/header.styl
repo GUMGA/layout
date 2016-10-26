@@ -1,9 +1,16 @@
 @import '../config/variables'
 
+.gumga-layout .gl-header
+  z-index: layer.header
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+
 .gumga-layout header > .navbar
   margin-bottom: 0px
   border-radius: 0px
-  background-color: colors.primary !important
+  background-color: colors.primary
   transition: all 200ms ease-out
   
 .gumga-layout header > .navbar .navbar-brand
@@ -16,9 +23,6 @@
   margin-top: 0
   margin-bottom: 0
 
-.gumga-layout header > .navbar
-  background-color: transparent
-  
 .gumga-layout header > .navbar .navbar-form.search
   width: 30%
 
@@ -47,15 +51,21 @@
   
 .gumga-layout header > .navbar .nav > li > a:focus,
 .gumga-layout header > .navbar .nav > li > a:hover
-  color: colors.primaryText
-  background-color: colors.primary
+  color: header.navColorHover
+  background-color: header.navBackgroundColorHover
 
 .gumga-layout header > .navbar .nav .open > a,
-.gumga-layout header > .navbar .nav .open > a:focus,
-.gumga-layout header > .navbar .nav .open > a:hover
-  color: colors.textIcons
-  background-color: colors.darkPrimary
-  border-color: transparent
+.gumga-layout header > .navbar .nav .open > a:hover,
+.gumga-layout header > .navbar .nav .open > a:focus
+    color: header.navColor
+    background-color: header.navBackgroundColorFocus
+    border-color: transparent
+  
+.gumga-layout header > .navbar .nav.organizations > li,
+.gumga-layout header > .navbar .nav.notifications > li,
+.gumga-layout header > .navbar .nav.search > li,
+.gumga-layout header > .navbar .nav.apps > li
+  margin: 0 8px
 
 .gumga-layout header > .navbar .nav.organizations > li > a,
 .gumga-layout header > .navbar .nav.notifications > li > a,
@@ -64,6 +74,22 @@
   padding-top: 15px
   padding-bottom: 6px
 
+.gumga-layout header > .navbar .nav.apps .dropdown-menu
+  background-color: header.apps.backgroundColor
+  
+.gumga-layout header > .navbar .nav.apps .dropdown-menu > .apps-icons
+  padding: 6px
+
+.gumga-layout header > .navbar .nav.apps > li .table
+  margin-bottom: 0
+      
+.gumga-layout header > .navbar .nav.apps > li .table td
+  border-radius: 6px
+  border-top: 0
+  &:hover
+    background-color: header.apps.navBackgroundColorHover
+
+
 .gumga-layout header > .navbar .nav.organizations > li .form-group
   margin-bottom: 12px
 
@@ -71,10 +97,10 @@
   width: 300px
 
 .gumga-layout header > .navbar .nav.notifications .media
-  background-color: #f7f7f7
+  background-color: header.notifications.navBackgroundColor
   border-radius: 4px
   &:hover
-    background-color: #f1f1f1
+    background-color: header.notifications.navBackgroundColorHover
     
 .gumga-layout header > .navbar .nav.notifications .media .media-object
   width: 60px
@@ -84,8 +110,8 @@
 
 .gumga-layout header > .navbar .nav.notifications ul.dropdown-menu
   font-size: 1.6rem
-  padding: 15px
-  background-color: #e5e5e5
+  padding: 10px
+  background-color: header.notifications.backgroundColor
 
 .gumga-layout header > .navbar .nav.notifications ul.dropdown-menu > li
   margin-bottom: 5px
@@ -130,8 +156,8 @@
   
 .gumga-layout header > .searchbar .query .form-control
   border-color: transparent
-  box-shadow: none
   -webkit-box-shadow: none
+  box-shadow: none
 
 .gumga-layout header > .searchbar .searchbar-nav a
   padding-top: 10px;

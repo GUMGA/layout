@@ -21,7 +21,7 @@ let Component = {
     ctrl.allow = item => {
       if (ctrl.keys.length > 0) {
         if (!item.key) return true
-        return ctrl.keys.includes(item.key)
+        return ctrl.keys.indexOf(item.key) > -1
       }
     }
   }

@@ -34,7 +34,7 @@ background    = #F5F5F5
   <body data-ng-controller="controller">
     <div class="gumga-layout">
           
-      <header>
+      <header class="gl-header">
         <div class="searchbar">
           <div class="icon back">
             <button type="button" data-ng-click="toggleSearch()">
@@ -103,7 +103,7 @@ background    = #F5F5F5
                   </div>
                 </div>
               </form>
-              
+
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -122,11 +122,22 @@ background    = #F5F5F5
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     <i class="material-icons">apps</i>
-                   </a>
+                  </a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Finance</a></li>
-                    <li><a href="#">Frente de caixa</a></li>
+                    <li class="apps-icons">
+                      <table class="table">
+                        <tr>
+                          <td><a href="#"><img src="images/logo-gs.png" alt=""></a></td>
+                          <td><a href="#"><img src="images/logo-gs.png" alt=""></a></td>
+                          <td><a href="#"><img src="images/logo-gs.png" alt=""></a></td>
+                        </tr>
+                        <tr>
+                          <td><a href="#"><img src="images/logo-gs.png" alt=""></a></td>
+                          <td><a href="#"><img src="images/logo-gs.png" alt=""></a></td>
+                          <td><a href="#"><img src="images/logo-gs.png" alt=""></a></td>
+                        </tr>
+                      </table>
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -185,7 +196,8 @@ background    = #F5F5F5
                         </gmd-input>
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" on-update="change(option)" options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <gmd-select ng-model="example.select" on-update="change(option)" options="options" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <pre>{{example.select | json}}</pre>
                       </div>
                     </div>
                     <div class="row">
@@ -193,22 +205,182 @@ background    = #F5F5F5
                         <div class="checkbox">
                           <label>
                             <input type="checkbox" class="gmd" data-ng-model="example.check">
+                            <span class="box"></span>
                             Check me out
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <span class="box"></span>
+                            Click-me
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <span class="box"></span>
+                            Click-me
                           </label>
                         </div>
                       </div>
                     </div>
                   </form>
-                  <pre>&lt;form&gt;
-  &lt;div class="form-group gmd"&gt;
-    &lt;input type="email" class="form-control gmd" id="exampleInputEmail1"&gt;
-    &lt;span class="bar"&gt;&lt;/span&gt;
-    &lt;label for="exampleInputEmail1" class="control-label"&gt;Email address&lt;/label&gt;
+                  <pre>&lt;div class="row"&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;gmd-input&gt;
+      &lt;input type="text" class="form-control gmd" ng-model="example.text" id="text" ng-maxlength="10" required&gt;
+      &lt;span class="bar"&gt;&lt;/span&gt;
+      &lt;label for="text" class="control-label"&gt;Nome completo&lt;/label&gt;
+    &lt;/gmd-input&gt;
   &lt;/div&gt;
-  &lt;div class="form-group"&gt;
-    &lt;gmd-select ng-model="example.select" on-update="change(option)" options="options" option="name" placeholder="- Selecione uma pessoa -"&gt;&lt;/gmd-select&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;gmd-input&gt;
+      &lt;input type="email" class="form-control gmd" ng-model="example.email" id="email" required&gt;
+      &lt;span class="bar"&gt;&lt;/span&gt;
+      &lt;label for="email" class="control-label"&gt;Endereço de e-mail&lt;/label&gt;
+    &lt;/gmd-input&gt;
   &lt;/div&gt;
-&lt;/form&gt;</pre>
+  &lt;div class="col-md-4"&gt;
+    &lt;gmd-select ng-model="example.select" on-update="change(option)" options="optionss" option="name" placeholder="- Selecione uma pessoa -"&gt;&lt;/gmd-select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;div class="checkbox"&gt;
+      &lt;label&gt;
+        &lt;input type="checkbox" class="gmd" data-ng-model="example.check"&gt;
+        &lt;span class="box"&gt;&lt;/span&gt;
+        Check me out
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;div class="radio"&gt;
+      &lt;label&gt;
+        &lt;input type="radio" name="optionsRadios" class="gmd" value="option1" checked&gt;
+        &lt;span class="box"&gt;&lt;/span&gt;
+        Click-me
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="radio"&gt;
+      &lt;label&gt;
+        &lt;input type="radio" name="optionsRadios" class="gmd" value="option1" checked&gt;
+        &lt;span class="box"&gt;&lt;/span&gt;
+        Click-me
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel gmd">
+                <div class="panel-heading">
+                  Nav & Aside
+                </div>
+                <div class="panel-body">
+
+                  <h5 class="page-header">
+                    Alternar
+                  </h5>
+
+                  <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="navCollapse()">Alternar Nav</button>
+                  <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="asideCollapse()">Alternar Aside</button>
+                  
+                  
+                  <pre>$scope.navCollapse = function() {
+  document.querySelector('.gumga-layout nav.gl-nav')
+    .classList.toggle('collapsed')
+}
+$scope.asideCollapse = function() {
+  document.querySelector('.gumga-layout aside.gl-aside')
+    .classList.toggle('collapsed')
+}</pre>
+
+                  <h5 class="page-header">
+                    Menu
+                  </h5>
+
+                  <h6>JS</h6>
+                  <pre>$http.get('assets/data/menu.json')
+  .then(function(response) {
+    $scope.menu = response.data
+  })
+$http.get('assets/data/keys.json')
+  .then(function(response) {
+      $scope.keys = response.data
+  })</pre>
+                  
+                  <h6>HTML</h6>
+                  <pre>&lt;gl-menu menu="menu" keys="keys"&gt;&lt;/gl-menu&gt;</pre>
+                  
+                  <h6>JSON keys</h6>
+                  <pre>[
+  "CRUD-BASE",
+  "CRUD-ADMIN",
+  "CRUD-USER"
+]</pre>
+                  <h6>JSON menu</h6>
+                  <pre>[
+  {
+    "type": "header",
+    "label": "Home"
+  },
+  {
+    "type": "item",
+    "label": "Home",
+    "state": "welcome",
+    "icon": "home",
+    "key": "CRUD-BASE"
+  },
+  {
+    "type": "item",
+    "label": "Usuários",
+    "state": "user",
+    "icon": "group",
+    "children": [
+      {
+        "type": "item",
+        "label": "Criar novo",
+        "state": "user.new",
+        "icon": "add",
+        "key": "CRUD-USER"
+      },
+      {
+        "type": "item",
+        "label": "Editar",
+        "state": "user.edit",
+        "icon": "edit",
+        "key": "CRUD-ADMIN"
+      }
+    ]
+  },
+  {
+    "type": "item",
+    "label": "Produtos",
+    "state": "welcome",
+    "key": "CRUD-ADMIN"
+  },
+  {
+    "type": "separator"
+  },
+  {
+    "type": "header",
+    "label": "Produtos"
+  },
+  {
+    "label": "Últimos cadastrados",
+    "state": "welcome",
+    "key": "CRUD-ADMIN"
+  }
+]
+</pre>
+
                 </div>
               </div>
             </div>
@@ -219,19 +391,18 @@ background    = #F5F5F5
                   Buttons
                 </div>
                 <div class="panel-body">
-
                   <div>
                     <h5>
                       Normal
                     </h5>
                     
-                    <button type="button" class="btn gmd btn-primary" gmd-ripple>Primary</button>
-                    <button type="button" class="btn gmd btn-default" gmd-ripple>Default</button>
-                    <button type="button" class="btn gmd btn-success">Success</button>
-                    <button type="button" class="btn gmd btn-info">Info</button>
-                    <button type="button" class="btn gmd btn-warning">Warning</button>
-                    <button type="button" class="btn gmd btn-danger">Danger</button>
-                    <button type="button" class="btn gmd btn-link">Link</button>
+                    <button type="button" class="btn gmd btn-primary gmd-ripple">Primary</button>
+                    <button type="button" class="btn gmd btn-default gmd-ripple">Default</button>
+                    <button type="button" class="btn gmd btn-success gmd-ripple">Success</button>
+                    <button type="button" class="btn gmd btn-info gmd-ripple">Info</button>
+                    <button type="button" class="btn gmd btn-warning gmd-ripple">Warning</button>
+                    <button type="button" class="btn gmd btn-danger gmd-ripple">Danger</button>
+                    <button type="button" class="btn gmd btn-link gmd-ripple">Link</button>
                     <pre>&lt;button type="button" class="btn gmd btn-default"&gt;Default&lt;/button&gt;
 &lt;button type="button" class="btn gmd btn-primary"&gt;Primary&lt;/button&gt;
 &lt;button type="button" class="btn gmd btn-success"&gt;Success&lt;/button&gt;
@@ -246,12 +417,12 @@ background    = #F5F5F5
                       Raised
                     </h5>
                     
-                    <button type="button" class="btn gmd raised btn-primary" gmd-ripple>Primary</button>
-                    <button type="button" class="btn gmd raised btn-default" gmd-ripple>Default</button>
-                    <button type="button" class="btn gmd raised btn-success">Success</button>
-                    <button type="button" class="btn gmd raised btn-info">Info</button>
-                    <button type="button" class="btn gmd raised btn-warning">Warning</button>
-                    <button type="button" class="btn gmd raised btn-danger">Danger</button>
+                    <button type="button" class="btn gmd raised btn-primary gmd-ripple gmd-ripple-light">Primary</button>
+                    <button type="button" class="btn gmd raised btn-default gmd-ripple gmd-ripple-light">Default</button>
+                    <button type="button" class="btn gmd raised btn-success gmd-ripple gmd-ripple-light">Success</button>
+                    <button type="button" class="btn gmd raised btn-info gmd-ripple gmd-ripple-light">Info</button>
+                    <button type="button" class="btn gmd raised btn-warning gmd-ripple gmd-ripple-light">Warning</button>
+                    <button type="button" class="btn gmd raised btn-danger gmd-ripple gmd-ripple-light">Danger</button>
                     <pre>&lt;button type="button" class="btn gmd raised btn-default"&gt;Default&lt;/button&gt;
 &lt;button type="button" class="btn gmd raised btn-primary"&gt;Primary&lt;/button&gt;
 &lt;button type="button" class="btn gmd raised btn-success"&gt;Success&lt;/button&gt;
@@ -556,35 +727,33 @@ background    = #F5F5F5
 
         </div>
 
-        <!--<aside>
-          <div class="panel panel-default">
-            <header class="panel-heading">Sidebar</header>
-            <div class="panel-body">
-            </div>
-            <footer class="panel-footer">
-              Última atualização em 10/08/2016
-            </footer>
-          </div>
-        </aside>-->
       </main>
-      <nav>
-        <div class="menu collapsed">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-              <i class="material-icons">menu</i>
-            </a>
-            <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-              Gumga Studio
-            </a>
-          </div>
-          <header>
-            <figure>
-              <img src="../../images/logo-gumga-studio.png" alt="">
-            </figure>
-          </header>
-          <gl-menu menu="menu" keys="keys"></gl-menu>
+      <nav class="gl-nav collapsed">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+            <i class="material-icons">menu</i>
+          </a>
+          <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+            Gumga Studio
+          </a>
         </div>
+        <header>
+          <figure>
+            <img src="../../images/logo-gumga-studio.png" alt="">
+          </figure>
+        </header>
+        <gl-menu menu="menu" keys="keys"></gl-menu>
       </nav>
+      <aside class="gl-aside">
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+        <h3>Aside</h3>
+      </aside>
+      
+      
       <footer>Footer</footer>
 
     </div>
@@ -600,7 +769,7 @@ background    = #F5F5F5
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <script src="dist/gumga-layout.min.js"></script>
     <script src="assets/js/controller.js"></script>
   </body>

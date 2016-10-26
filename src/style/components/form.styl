@@ -5,7 +5,6 @@ gmd-input
   position: relative
 
 .form-control.gmd
-  padding: 10px 10px 10px 5px
   display: block
   width: 100%
   border: none
@@ -62,24 +61,30 @@ gmd-input
 .form-control.gmd:focus ~ .bar:after
   width: 50%
   
-.form-control.gmd.ng-invalid ~ .bar:before,
-.form-control.gmd.ng-invalid ~ .bar:after
+.form-control.gmd.ng-invalid.ng-touched ~ .bar:before,
+.form-control.gmd.ng-invalid.ng-touched ~ .bar:after
   background-color: #d9534f
 
-.form-control.gmd.ng-invalid
+.form-control.gmd.ng-invalid.ng-touched
   border-color: #d9534f
    
-.form-control.gmd.ng-invalid ~ label
+.form-control.gmd.ng-invalid.ng-touched ~ label
   color: #d9534f
 
-.checkbox label
+.checkbox label,
+.radio label
   padding-left: 24px
 
-input[type="checkbox"].gmd:before,
-input[type="checkbox"].gmd:after
+.checkbox input[type="checkbox"].gmd + .box:before,
+.checkbox input[type="checkbox"].gmd + .box:after,
+.radio input[type="radio"].gmd + .box:before,
+.radio input[type="radio"].gmd + .box:after
   transition: all .3s
   
-input[type="checkbox"].gmd:after
+.checkbox input[type="checkbox"].gmd + .box:after
+  position: absolute;
+  left: 4px;
+  top: 3px;
   margin-top: -5px
   margin-left: -4px
   display: inline-block
@@ -89,16 +94,17 @@ input[type="checkbox"].gmd:after
   border: 2px solid #999
   border-radius: 2px
   background-color: #fff
+  z-index: 1000
   
-input[type="checkbox"].gmd:checked:after
+.checkbox input[type="checkbox"].gmd:checked + .box:after
   background-color: colors.primary
   border-color: colors.primary
   
-input[type="checkbox"].gmd:checked:before
+.checkbox input[type="checkbox"].gmd:checked + .box:before
   transform: rotate(45deg);
   position: absolute;
-  left: 3px;
-  top: -3px;
+  left: 7px;
+  top: 0px;
   width: 6px;
   height: 13px;
   border-width: 2px;
@@ -107,3 +113,37 @@ input[type="checkbox"].gmd:checked:before
   border-left: 0;
   border-color: #fff
   content: '';
+  z-index: 10000
+  
+  
+.radio input[type="radio"].gmd + .box:after
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  margin-top: -5px
+  margin-left: -4px
+  display: inline-block
+  content: ' '
+  width: 20px
+  height: 20px
+  border: 2px solid colors.primary
+  border-radius: 50%
+  background-color: #fff
+  z-index: 1000
+
+.radio input[type="radio"].gmd + .box:before
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  width: 10px
+  height: 10px
+  border-radius: 50%
+  background-color: colors.primary
+  content: '';
+  z-index: 10000
+  -webkit-transform: scale3d(0, 0, 1);
+  transform: scale3d(0, 0, 1);
+  
+.radio input[type="radio"].gmd:checked + .box:before
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
