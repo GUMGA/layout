@@ -10,11 +10,11 @@
 .gumga-layout header > .navbar
   margin-bottom: 0px
   border-radius: 0px
-  background-color: colors.primary
+  background-color: header.backgroundColor
   transition: all 200ms ease-out
   
 .gumga-layout header > .navbar .navbar-brand
-  color: colors.textIcons
+  color: header.navColor
 
 .gumga-layout header > .navbar .navbar-header button.search
   margin-right: 5px
@@ -42,12 +42,12 @@
 .gumga-layout header > .navbar .navbar-form.search .form-control
   width: 100%
   box-shadow: none
-  color: colors.primaryText
+  color: header.searchColor
   &::placeholder
-    color: #fff
+    color: header.searchPlaceholderColor
 
 .gumga-layout header > .navbar .nav > li > a
-  color: colors.textIcons
+  color: header.navColor
   
 .gumga-layout header > .navbar .nav > li > a:focus,
 .gumga-layout header > .navbar .nav > li > a:hover

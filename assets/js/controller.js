@@ -21,18 +21,14 @@ angular
       .then(function(response) {
         $scope.organizations = response.data
       })
-    $timeout(function() {      
-      $http.get('assets/data/menu.json')
-        .then(function(response) {
-          $scope.menu = response.data
-        })
-    }, 1000)
-    $timeout(function() {      
-      $http.get('assets/data/keys.json')
-        .then(function(response) {
-          $scope.keys = response.data
-        })
-    }, 1000)
+    $http.get('assets/data/menu.json')
+      .then(function(response) {
+        $scope.menu = response.data
+      })
+    $http.get('assets/data/keys.json')
+      .then(function(response) {
+        $scope.keys = response.data
+      })
     
     $scope.notifications = [
       {
@@ -56,12 +52,18 @@ angular
     ]
     $scope.optionss = ['Guilherme','Felipe','Mateus']
     $scope.change = function(option) {
-      console.log(option)
+      // console.log(option)
+    }
+    $scope.example = {
+      text: '',
+      select: ''
+    }
+    $scope.setSelect = function() {
+      $scope.example.select = 'Guilherme'
     }
     $timeout(function() {
-      $scope.example = {
-        text: 'Gui'
-      }
+      $scope.example.text = 'Gui'
+      $scope.example.select = 'Felipe'
     }, 1000)
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}
