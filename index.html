@@ -196,7 +196,7 @@ background    = #F5F5F5
                         </gmd-input>
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" on-update="change(option)" options="options" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <gmd-select ng-model="example.select" options="optionss" placeholder="- Selecione uma pessoa -"></gmd-select>
                         <pre>{{example.select | json}}</pre>
                       </div>
                     </div>
@@ -675,7 +675,42 @@ $http.get('assets/data/keys.json')
             </div>
           </div>
 
-          <div class="row">          
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel gmd">
+                <div class="panel-heading">Progress</div>
+                <div class="panel-body">
+                  <div class="progress gmd">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                      <span class="sr-only">60% Complete</span>
+                    </div>
+                  </div>
+                  <div class="progress gmd">
+                    <div class="indeterminate" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                      <span class="sr-only">60% Complete</span>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel gmd">
+                <div class="panel-heading">Spinner</div>
+                <div class="panel-body">
+                  <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">Alert</div>
