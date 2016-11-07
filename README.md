@@ -154,9 +154,13 @@ footer = {
 }
 ```
 
-
 ## Tarefas gulp para desenvolvimento
 
+### Requesitos
+
+`npm i`
+
+``
 
 Comando | Descrição
 ------------ | -------------
@@ -164,3 +168,7 @@ Comando | Descrição
 ```% gulp bundle``` | Concatena os arquivos e faz o transpilling entre versões.
 ```% gulp release``` | Cria os arquivos já minificados para uso.
 ```% gulp export``` | Cria um diretório numa pasta específica, se informada com parâmetro ```--dest nome_do_dir```, caso contrário gumga-layout. Sempre no seu diretório home.
+
+
+## Configuração
+
