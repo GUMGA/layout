@@ -30,7 +30,13 @@ gmd-select .dropdown.gmd button.gmd
     
 gmd-select .dropdown.gmd .placeholder
   color: colors.secundaryText
-  
+
+gmd-select .dropdown.gmd .dropdown-menu li:not(:first-child)
+  cursor: pointer
+
+gmd-select .dropdown.gmd .dropdown-menu li:first-child a:hover
+  background: none
+    
 gmd-select .dropdown.gmd .dropdown-menu .active
   color: colors.darkPrimary
   background-color: #f5f5f5

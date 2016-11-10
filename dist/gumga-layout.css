@@ -274,6 +274,18 @@ gmd-input,
 .radio label {
   padding-left: 24px;
 }
+.checkbox input[type="checkbox"].gmd,
+.radio input[type="radio"].gmd {
+  visibility: hidden;
+}
+.checkbox input[type="checkbox"].gmd ~ .ripple-effect {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 50px;
+  height: 50px;
+  z-index: 200;
+}
 .checkbox input[type="checkbox"].gmd + .box:before,
 .checkbox input[type="checkbox"].gmd + .box:after,
 .radio input[type="radio"].gmd + .box:before,
@@ -440,6 +452,12 @@ gmd-select .dropdown.gmd button.gmd {
 }
 gmd-select .dropdown.gmd .placeholder {
   color: #757575;
+}
+gmd-select .dropdown.gmd .dropdown-menu li:not(:first-child) {
+  cursor: pointer;
+}
+gmd-select .dropdown.gmd .dropdown-menu li:first-child a:hover {
+  background: none;
 }
 gmd-select .dropdown.gmd .dropdown-menu .active {
   color: #5d5d5d;

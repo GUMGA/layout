@@ -179,7 +179,7 @@ background    = #F5F5F5
               <div class="panel gmd">
                 <div class="panel-heading">Form</div>
                 <div class="panel-body">
-                  <form name="form">
+                  <form name="gmdForm">
                     <div class="row">
                       <div class="col-md-4">
                         <gmd-input>
@@ -187,6 +187,7 @@ background    = #F5F5F5
                           <span class="bar"></span>
                           <label for="text" class="control-label">Nome completo</label>
                         </gmd-input>
+                        {{example.text}}
                       </div>
                       <div class="col-md-4">
                         <gmd-input>
@@ -194,9 +195,10 @@ background    = #F5F5F5
                           <span class="bar"></span>
                           <label for="email" class="control-label">Endereço de e-mail</label>
                         </gmd-input>
+                        {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" options="optionss" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <gmd-select ng-model="example.select" name="select" required options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
                         <pre>{{example.select | json}}</pre>
                       </div>
                     </div>
@@ -206,7 +208,8 @@ background    = #F5F5F5
                           <label>
                             <input type="checkbox" class="gmd" data-ng-model="example.check">
                             <span class="box"></span>
-                            Check me out
+                            <!--<span class="ripple-effect gmd-ripple"></span>-->
+                            Check me out {{example.check}}
                           </label>
                         </div>
                       </div>
@@ -225,6 +228,9 @@ background    = #F5F5F5
                             Click-me
                           </label>
                         </div>
+                      </div>
+                      <div class="col-md-4">
+                        {{gmdForm.select}}
                       </div>
                     </div>
                   </form>
