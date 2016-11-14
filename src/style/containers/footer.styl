@@ -1,5 +1,22 @@
 @import '../config/variables'
 
-body > footer
+.gumga-layout footer.gl-footer
+  z-index: layer.footer
+  padding: footer.padding
   height: footer.height
-  background-color: colors.primary
+  color: footer.color
+  font-size: footer.fontSize
+  background-color: footer.backgroundColor
+
+.gumga-layout footer.gl-footer a
+  color: footer.navColor
+
+.gumga-layout footer.gl-footer a:focus,
+.gumga-layout footer.gl-footer a:hover
+  color: footer.navColorHover
+
+.gumga-layout footer.gl-footer.fixed
+  position: fixed
+  right: 0
+  bottom: 0
+  left: 0

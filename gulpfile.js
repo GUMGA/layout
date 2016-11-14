@@ -89,26 +89,68 @@ gulp.task('bundle', ['bundle-js', 'bundle-css'])
 
 gulp.task('release', ['bundle-js-production', 'bundle-css-production'])
 
+
 gulp.task('export', build)
 function build() {
   var dest,
-      dir = (gutil.env.dest) ? gutil.env.dest : 'gumga-layout' 
+      dir = (gutil.env.dest) ? gutil.env.dest : 'gumga-layout'
   if (path.isAbsolute(dir)) {
     dest = dir
   } else {
     var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
     dest = home + '/' + dir
   }
-  if (!fs.existsSync(dest)) {
-    fs.mkdirSync(dest)
+  var dir = './gumga-layout'
+  
+  var createFolder = () => {
+    fs.mkdir(dir, function(err, folder) {
+      if (!err) {
+        gulp.src('./dist/*.min.{js,css}')
+          .pipe(gulp.dest(dir))
+
+        var iconfont = dir + '/iconfont/'
+        fs.mkdir(iconfont, function(err, folder) {
+          if (!err) {
+            gulp.src('./assets/iconfont/*.{eot,woff2,woff,ttf}')
+              .pipe(gulp.dest(iconfont))
+          }
+        })
+
+      }
+    })    
   }
-  var destIcons = dest + '/icons/'
-  fs.mkdirSync(destIcons)
-  gulp.src('./bower_components/material-design-icons/iconfont/*.{eot,woff2,woff,ttf}')
-    .pipe(gulp.dest(destIcons))
-  gulp.src('./dist/*.min.{js,css}')
-    .pipe(gulp.dest(dest))
+  if (fs.existsSync(dir)) {
+    fs.rmdir(dir, createFolder)
+  } else {
+    createFolder()
+  }
+  
+  // var iconfont = dir + '/iconfont/'
+  // fs.mkdir(iconfont)
+  // gulp.src('./assets/iconfont/*.{eot,woff2,woff,ttf}')
+  //   .pipe(gulp.dest(iconfont))
 }
+
+// gulp.task('export', build)
+// function build() {
+//   var dest,
+//       dir = (gutil.env.dest) ? gutil.env.dest : 'gumga-layout' 
+//   if (path.isAbsolute(dir)) {
+//     dest = dir
+//   } else {
+//     var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
+//     dest = home + '/' + dir
+//   }
+//   if (!fs.existsSync(dest)) {
+//     fs.mkdirSync(dest)
+//   }
+//   var destIcons = dest + '/icons/'
+//   fs.mkdirSync(destIcons)
+//   gulp.src('./bower_components/material-design-icons/iconfont/*.{eot,woff2,woff,ttf}')
+//     .pipe(gulp.dest(destIcons))
+//   gulp.src('./dist/*.min.{js,css}')
+//     .pipe(gulp.dest(dest))
+// }
 
 
 // Without watchify

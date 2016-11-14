@@ -1,4 +1,5 @@
 let Component = {
+  require: ['ngModel','ngRequired'],
   bindings: {
     ngModel: '=',
     options: '<',
@@ -16,7 +17,7 @@ let Component = {
       </button>
       <ul class="dropdown-menu" aria-labelledby="gmdSelect">
         <li>
-          <a data-ng-click="$ctrl.unselect()" data-ng-bind="$ctrl.placeholder"></a>
+          <a data-ng-bind="$ctrl.placeholder"></a>
         </li>
         <li data-ng-repeat="option in $ctrl.options">
           <a data-ng-click="$ctrl.select(option)" data-ng-bind="option[$ctrl.option] || option" data-ng-class="{active: $ctrl.isActive(option)}"></a>
@@ -24,12 +25,24 @@ let Component = {
       </ul>
     </div>
   `,
-  controller: ['$scope','$attrs','$timeout', function($scope,$attrs,$timeout) {
+  controller: ['$scope','$attrs','$timeout','$element', function($scope,$attrs,$timeout,$element) {
     let ctrl = this
+    ,   ngModelCtrl = $element.controller('ngModel')
+    
+    let validate = input => {
+      let valid = ngModelCtrl.$isEmpty(input)
+      ngModelCtrl.$setValidity('required', valid)
+      return input
+    }
+    ngModelCtrl.$parsers.unshift(validate)
+    ngModelCtrl.$formatters.push(validate)
+    
     ctrl.selected = ctrl.ngModel
     $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
-      if (val != undefined && oldVal == undefined) {
+      // if (val != undefined && oldVal == undefined) {
+      if (val != undefined) {
         ctrl.selected = val[ctrl.option] || val
+        ngModelCtrl.$setTouched()
       }
     })
     ctrl.isActive = option => {
@@ -39,11 +52,12 @@ let Component = {
       ctrl.selected = option[ctrl.option] || option
       ctrl.ngModel = (ctrl.value) ? option[ctrl.value] : option
       if (ctrl.onUpdate) ctrl.onUpdate({option: option})
+      ngModelCtrl.$setTouched()
     }
-    ctrl.unselect = () => {
-      ctrl.ngModel = undefined
-      ctrl.selected = undefined
-    }
+    // ctrl.unselect = () => {
+    //   ctrl.ngModel = undefined
+    //   ctrl.selected = undefined
+    // }
   }]
 }
 

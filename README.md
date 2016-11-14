@@ -66,19 +66,28 @@ cd src/style/config
       * backgroundColor: cor de fundo do elemento dropdown do componente de notificações
   * nav
     * width: tamanho da largura do container nav
-      * menu
-        * headerSize: tamanho da fonte do item cabeçalho do menu
-        * headerColor: cor da fonte do item cabeçalho do menu
-        * navColor: cor do texto dos itens de navegação do menu
-        * navColorHover cor do texto dos itens de navegação do menu no evento hover
-        * navColorActive: cor do texto do item de navegação ativo do menu
-        * navBackgroundColorHover: cor do fundo do bloco de navegação do menu no evento hover
-      * scrollTrack: cor do fundo da barra de rolagem
-      * scrollThumb: cor da barra de rolagem
-      * backgroundColor: cor de fundo do container nav
+    * menu
+      * headerSize: tamanho da fonte do item cabeçalho do menu
+      * headerColor: cor da fonte do item cabeçalho do menu
+      * navColor: cor do texto dos itens de navegação do menu
+      * navColorHover cor do texto dos itens de navegação do menu no evento hover
+      * navColorActive: cor do texto do item de navegação ativo do menu
+      * navBackgroundColorHover: cor do fundo do bloco de navegação do menu no evento hover
+    * scrollTrack: cor do fundo da barra de rolagem
+    * scrollThumb: cor da barra de rolagem
+    * backgroundColor: cor de fundo do container nav
   * main
   * aside
   * footer
+    * height: altura do rodapé, em pixels
+    * padding: margem interna do rodapé, em pixels
+    * color: cor do texto normal
+    * fontSize: tamanho da fonte, em pixels
+    * navColor: cor dos links
+    * navColorHover: cor dos links quando sobrepostos pelo cursor
+    * backgroundColor: cor de fundo
+
+
  
 #### Exemplo
 ```
@@ -97,6 +106,7 @@ colors = {
   'background': background
 }
 
+// Criado para dividir os containers em camadas (z-index)
 layer = {
   header: 1003
   nav: 1002
@@ -150,17 +160,33 @@ main = {
 }
 
 footer = {
-  height: 50px
+  height: 52px
+  padding: 15px
+  color: colors.secundaryText
+  fontSize: 18px
+  navColor: colors.lightPrimary
+  navColorHover: colors.darkPrimary
+  backgroundColor: colors.primary
 }
 ```
 
+## Instalação de dependências para uso ou desenvolvimento
 
-## Tarefas gulp para desenvolvimento
+```npm install```
+
+## Tarefas / Comandos
+As tarefas gulp do gumga-layout, ajudam no desenvolvimento, bem como para geração e exportação com suas possíveis customizações.
 
 
 Comando | Descrição
 ------------ | -------------
-```% gulp watch``` | Cria watchers para detectar alterações no código, usado para desenvolvimento.
-```% gulp bundle``` | Concatena os arquivos e faz o transpilling entre versões.
-```% gulp release``` | Cria os arquivos já minificados para uso.
-```% gulp export``` | Cria um diretório numa pasta específica, se informada com parâmetro ```--dest nome_do_dir```, caso contrário gumga-layout. Sempre no seu diretório home.
+```gulp watch``` | Cria watchers para detectar alterações no código, usado para desenvolvimento.
+```gulp bundle``` | Concatena os arquivos e faz o transpilling entre versões.
+```gulp release``` | Cria os arquivos já minificados para uso.
+```gulp export``` | Cria um diretório numa pasta específica, se informada com parâmetro ```--dest nome_do_dir```, caso contrário gumga-layout. Sempre no seu diretório home.
+
+
+### TO-DO
+- gulp export, verificar pq ícones não está sendo copiado
+- gulp export, alterar da home para o diretório corrente, se já houver o diretório, sobreescrever
+- Remover ícones em PNG e SVG, manter apenas em webfont (motivo: o pacote tem quase 100mb)
