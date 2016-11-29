@@ -22,7 +22,8 @@ background    = #F5F5F5
     <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Gumga Layout -->
-    <link rel="stylesheet" href="gumga-layout/gumga-layout.min.css">
+    <!--<link rel="stylesheet" href="gumga-layout/gumga-layout.min.css">-->
+    <link rel="stylesheet" href="dist/gumga-layout.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,12 +81,14 @@ background    = #F5F5F5
                       </div>
                     </li>
                     <li data-ng-repeat="org in organizations | filter: org_search">
-                      <a href="#" data-ng-bind="org.name"></a>
+                      <a href="#">
+                        <span data-ng-bind="org.name"></span>
+                      </a>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
                       <a href="#">
-                        Gumga
+                        Gumga Gumga 
                         <span class="glyphicon glyphicon-ok"></span>
                       </a>
                     </li>
@@ -198,8 +201,69 @@ background    = #F5F5F5
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" name="select" required options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
-                        <pre>{{example.select | json}}</pre>
+                        <gmd-select ng-model="example.select">
+                          <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">
+                            {{option.name}}
+                          </gmd-option>
+                        </gmd-select>
+                        {{example.select}}
+                        
+<!--<div class="dropdown gmd">
+  <button class="btn gmd btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <div class="dropdown-menu gmd" aria-labelledby="dropdownMenu1">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </div>
+</div>                        -->
+                        
+<!--<gmd-select ng-model="example.select" class="ng-pristine ng-isolate-scope ng-touched ng-invalid ng-invalid-required ng-not-empty">
+    <div class="dropdown gmd">
+      <button class="btn btn-default gmd dropdown-toggle" type="button" id="gmdSelect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span data-ng-bind="$ctrl.selected" class="ng-binding">Email</span>
+        <span data-ng-bind="$ctrl.placeholder" data-ng-hide="$ctrl.selected" class="placeholder ng-binding ng-hide"></span>
+        <span class="caret"></span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="gmdSelect" ng-transclude="">
+      <li ng-repeat="option in options" ng-value="option.id" class="ng-scope ng-isolate-scope" value="1">
+    <li>
+      <a data-ng-click="$ctrl.select(option)" data-ng-show="option[$ctrl.option]" data-ng-class="{active: $ctrl.isActive(option)}" ng-transclude="" class="ng-hide active"><span class="ng-binding ng-scope">
+                            Guilherme
+                          </span></a>
+    </li>
+  </li>
+    <li>
+      <a data-ng-click="$ctrl.select(option)" data-ng-show="option[$ctrl.option]" data-ng-class="{active: $ctrl.isActive(option)}" ng-transclude="" class="ng-hide active"><span class="ng-binding ng-scope">
+                            Felipe
+                          </span></a>
+    </li>
+    <li>
+      <a data-ng-click="$ctrl.select(option)" data-ng-show="option[$ctrl.option]" data-ng-class="{active: $ctrl.isActive(option)}" ng-transclude="" class="ng-hide active"><span class="ng-binding ng-scope">
+                            Mateus
+                          </span></a>
+    </li>
+                        </ul>
+    </div>
+  </gmd-select>-->
+                        <!--<gmd-select ng-model="example.select" name="select" required options="types" option="label" value="value" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <pre>{{example.select | json}}</pre>-->
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <!--<gmd-select ng-model="example.select1" name="select" required options="types" option="label" value="value" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <pre>{{example.select1 | json}}</pre>-->
+                      </div>
+                      <div class="col-md-4">
+                      </div>
+                      <div class="col-md-4">
+                        <!--<gmd-select ng-model="example.select3" name="select" required options="optionss" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <pre>{{example.select3 | json}}</pre>-->
                       </div>
                     </div>
                     <div class="row">
@@ -230,7 +294,7 @@ background    = #F5F5F5
                         </div>
                       </div>
                       <div class="col-md-4">
-                        {{gmdForm.select}}
+                        {{gmdForm.select.$error}}
                       </div>
                     </div>
                   </form>
@@ -840,7 +904,8 @@ $http.get('assets/data/keys.json')
 
     <!--<script src="bower_components/angular/angular.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="gumga-layout/gumga-layout.min.js"></script>
+    <script src="dist/gumga-layout.min.js"></script>
+    <!--<script src="gumga-layout/gumga-layout.min.js"></script>-->
     <script src="assets/js/controller.js"></script>
   </body>
 </html>

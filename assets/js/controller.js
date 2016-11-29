@@ -48,22 +48,38 @@ angular
     $scope.options = [
       {name: 'Guilherme', id: 1},
       {name: 'Felipe', id: 2},
-      {name: 'Mateus', id: 3}
+      {name: 'Mateus', id: 3},
+      {name: 'Munif', id: 2},
+      {name: 'Rafael', id: 2},
+      {name: 'Bruno', id: 2},
+      {name: 'Luiz', id: 2}
     ]
     $scope.optionss = ['Guilherme','Felipe','Mateus']
     $scope.change = function(option) {
       // console.log(option)
     }
+    $scope.types = [
+      {
+        label: "Visual",
+        value: "StudioBoardAlertVisual",
+      },
+      {
+        label: "Email",
+        value: "StudioBoardAlertEmail"
+      }
+    ]
     $scope.example = {
       text: '',
       select: ''
     }
     $scope.setSelect = function() {
-      $scope.example.select = 'Guilherme'
+      // $scope.example.select = 'Guilherme'
     }
+    $scope.example.select = 'Guilherme'
     $timeout(function() {
       $scope.example.text = 'Gui'
-      $scope.example.select = 'Felipe'
+      $scope.example.select = {name: 'Guilherme', id: 1}
+      // $scope.example.select = 'Guilherme'
     }, 1000)
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}
