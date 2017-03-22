@@ -1,5 +1,5 @@
 angular
-  .module('app', ['gumga.layout'])
+  .module('app', ['gumga.layout', 'ui.bootstrap'])
   .controller('controller', controller)
   
   controller.$inject = ['$scope', '$http', '$timeout']
