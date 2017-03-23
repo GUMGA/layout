@@ -199,6 +199,62 @@ h6 {
   font-size: 24px;
   color: #fff;
 }
+.btn.gmd.fab .material-icons .btn.gmd.raised.btn-primary-color,
+.btn.gmd.fab .material-icons color: #fff,
+.btn.gmd.fab .material-icons background-color: colors.primary,
+.btn.gmd.fab .material-icons opacity: .9,
+.btn.gmd.fab .material-icons:hover {
+  opacity: 1;
+}
+.btn.gmd.raised.btn-primary-color-light {
+  color: #fff;
+  background-color: #337ab7;
+  opacity: 0.9;
+}
+.btn.gmd.raised.btn-primary-color-light:hover {
+  opacity: 1;
+}
+.btn.gmd.raised.btn-primary-color-dark {
+  color: #fff;
+  background-color: #2f4050;
+  opacity: 0.9;
+}
+.btn.gmd.raised.btn-primary-color-dark:hover {
+  opacity: 1;
+}
+.btn.gmd.btn-primary-color {
+  color: #233646;
+  background-color: transparent;
+}
+.btn.gmd.btn-primary-color:hover {
+  color: #fff;
+  background-color: #233646;
+}
+.btn.gmd.btn-primary-color-light {
+  color: #337ab7;
+  background-color: transparent;
+}
+.btn.gmd.btn-primary-color-light:hover {
+  color: #fff;
+  background-color: #337ab7;
+}
+.btn.gmd.btn-primary-color-dark {
+  color: #2f4050;
+  background-color: transparent;
+}
+.btn.gmd.btn-primary-color-dark:hover {
+  color: #fff;
+  background-color: #2f4050;
+}
+.btn.gmd.fab.btn-primary-color {
+  background-color: #233646;
+}
+.btn.gmd.fab.btn-primary-color-light {
+  background-color: #337ab7;
+}
+.btn.gmd.fab.btn-primary-color-dark {
+  background-color: #2f4050;
+}
 gmd-input,
 .form-group {
   margin-bottom: 30px;
@@ -447,8 +503,57 @@ gmd-select .dropdown.gmd .dropdown-menu {
   top: -2px;
 }
 gmd-select .dropdown.gmd button.gmd {
+  background: transparent;
   text-transform: none;
   font-weight: normal;
+  outline: none;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  padding: 0;
+}
+gmd-select .dropdown-menu {
+  max-width: 100%;
+}
+gmd-select .item-select {
+  width: 100%;
+  max-width: 87%;
+  display: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-top: 8px;
+  margin: 0;
+  padding-left: 10px;
+  float: left;
+  padding-bottom: 5px;
+}
+gmd-select .dropdown.gmd button.gmd > .caret {
+  float: right;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+gmd-select .select-option {
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+gmd-select .dropdown.gmd label.floating-dropdown {
+  position: absolute;
+  top: -16px;
+  transition: 0.2s ease display;
+  -moz-transition: 0.2s ease display;
+  -webkit-transition: 0.2s ease display;
+  font-weight: 400;
+}
+.btn-default.active,
+.btn-default:active,
+.open>.dropdown-toggle.btn-default {
+  border-color: transparent;
 }
 gmd-select .dropdown.gmd .placeholder {
   color: #757575;

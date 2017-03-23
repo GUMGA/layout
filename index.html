@@ -22,7 +22,7 @@ background    = #F5F5F5
     <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Gumga Layout -->
-    <link rel="stylesheet" href="gumga-layout/gumga-layout.min.css">
+    <link rel="stylesheet" href="dist/gumga-layout.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,7 +33,7 @@ background    = #F5F5F5
   </head>
   <body data-ng-controller="controller">
     <div class="gumga-layout">
-          
+
       <header class="gl-header">
         <div class="searchbar">
           <div class="icon back">
@@ -92,7 +92,7 @@ background    = #F5F5F5
                   </ul>
                 </li>
               </ul>
-              
+
               <form class="navbar-form navbar-left search hidden-sm hidden-xs">
                 <div class="form-group">
                   <div class="input-group">
@@ -198,7 +198,15 @@ background    = #F5F5F5
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" name="select" required options="options" option="name" placeholder="- Selecione uma pessoa -"></gmd-select>
+                        <gmd-select
+                          ng-model="example.select"
+                          name="select"
+                          required
+                          options="options"
+                          option="name"
+                          placeholder="Selecione uma pessoa"></gmd-select>
+                        <br>
+                        <br>
                         <pre>{{example.select | json}}</pre>
                       </div>
                     </div>
@@ -297,8 +305,8 @@ background    = #F5F5F5
 
                   <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="navCollapse()">Alternar Nav</button>
                   <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="asideCollapse()">Alternar Aside</button>
-                  
-                  
+
+
                   <pre>$scope.navCollapse = function() {
   document.querySelector('.gumga-layout nav.gl-nav')
     .classList.toggle('collapsed')
@@ -321,10 +329,10 @@ $http.get('assets/data/keys.json')
   .then(function(response) {
       $scope.keys = response.data
   })</pre>
-                  
+
                   <h6>HTML</h6>
                   <pre>&lt;gl-menu menu="menu" keys="keys"&gt;&lt;/gl-menu&gt;</pre>
-                  
+
                   <h6>JSON keys</h6>
                   <pre>[
   "CRUD-BASE",
@@ -401,7 +409,7 @@ $http.get('assets/data/keys.json')
                     <h5>
                       Normal
                     </h5>
-                    
+
                     <button type="button" class="btn gmd btn-primary gmd-ripple">Primary</button>
                     <button type="button" class="btn gmd btn-default gmd-ripple">Default</button>
                     <button type="button" class="btn gmd btn-success gmd-ripple">Success</button>
@@ -422,7 +430,7 @@ $http.get('assets/data/keys.json')
                     <h5>
                       Raised
                     </h5>
-                    
+
                     <button type="button" class="btn gmd raised btn-primary gmd-ripple gmd-ripple-light">Primary</button>
                     <button type="button" class="btn gmd raised btn-default gmd-ripple gmd-ripple-light">Default</button>
                     <button type="button" class="btn gmd raised btn-success gmd-ripple gmd-ripple-light">Success</button>
@@ -441,7 +449,7 @@ $http.get('assets/data/keys.json')
                     <h6>
                       Disabled
                     </h6>
-                    
+
                     <button type="button" class="btn gmd btn-default" disabled="disabled">Default</button>
                     <button type="button" class="btn gmd btn-primary" disabled="disabled">Primary</button>
                     <button type="button" class="btn gmd btn-success" disabled="disabled">Success</button>
@@ -462,7 +470,7 @@ $http.get('assets/data/keys.json')
                     <h6>
                       Float Action Button
                     </h6>
-                    
+
                     <button type="button" class="btn gmd fab btn-primary">
                       <i class="material-icons">add</i>
                     </button>
@@ -506,7 +514,7 @@ $http.get('assets/data/keys.json')
             </div>
           </div>
 
-          <div class="row">          
+          <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">
@@ -525,7 +533,7 @@ $http.get('assets/data/keys.json')
                     <div role="tabpanel" class="tab-pane" id="messages"><h2>Message content</h2></div>
                     <div role="tabpanel" class="tab-pane" id="settings"><h2>Settings</h2></div>
                   </div>
-                  
+
                   <pre>&lt;ul class="nav nav-tabs gmd" role="tablist"&gt;
     &lt;li role="presentation" class="active"&gt;&lt;a href="#home" aria-controls="home" role="tab" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li role="presentation"&gt;&lt;a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
@@ -543,7 +551,7 @@ $http.get('assets/data/keys.json')
             </div>
           </div>
 
-          <div class="row">          
+          <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">
@@ -555,7 +563,7 @@ $http.get('assets/data/keys.json')
                     <li role="presentation"><a>Profile</a></li>
                     <li role="presentation"><a>Messages</a></li>
                   </ul>
-                  
+
                   <pre>&lt;ul class="nav gmd nav-pills"&gt;
     &lt;li role="presentation" class="active"&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li role="presentation"&gt;&lt;a&gt;Profile&lt;/a&gt;&lt;/li&gt;
@@ -566,7 +574,7 @@ $http.get('assets/data/keys.json')
             </div>
           </div>
 
-          <div class="row">          
+          <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">Badge</div>
@@ -597,7 +605,7 @@ $http.get('assets/data/keys.json')
               <div class="panel gmd">
                 <div class="panel-heading">Dropdown</div>
                 <div class="panel-body">
-                  
+
                   <div class="dropdown gmd">
                     <button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                       Dropdown
@@ -612,7 +620,7 @@ $http.get('assets/data/keys.json')
                       <li><a href="#">Separated link</a></li>
                     </ul>
                   </div>
-                  
+
                   <pre>&lt;div class="dropdown gmd"&gt;
     &lt;button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"&gt;
       Dropdown
@@ -627,7 +635,7 @@ $http.get('assets/data/keys.json')
       &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;</pre>
-                  
+
                   <div class="dropup gmd">
                     <button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Dropup
@@ -641,7 +649,7 @@ $http.get('assets/data/keys.json')
                       <li><a href="#">Separated link</a></li>
                     </ul>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -696,12 +704,12 @@ $http.get('assets/data/keys.json')
                       <span class="sr-only">60% Complete</span>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
@@ -724,13 +732,13 @@ $http.get('assets/data/keys.json')
                         <span aria-hidden="true">&raquo;</span>
                       </a>
                     </li>
-                  </ul>          
-          
+                  </ul>
+
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
@@ -822,11 +830,11 @@ $http.get('assets/data/keys.json')
         <h3>Aside</h3>
         <h3>Aside</h3>
       </aside>
-      
+
       <footer class="gl-footer fixed">
         <p>Gumga Layout <a href="#">footer</a></p>
       </footer>
-      
+
     </div>
 
 
@@ -840,7 +848,9 @@ $http.get('assets/data/keys.json')
 
     <!--<script src="bower_components/angular/angular.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="gumga-layout/gumga-layout.min.js"></script>
+    <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
+    <script src="dist/gumga-layout.min.js"></script>
+
     <script src="assets/js/controller.js"></script>
   </body>
 </html>
