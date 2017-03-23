@@ -22,8 +22,7 @@ background    = #F5F5F5
     <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Gumga Layout -->
-    <!--<link rel="stylesheet" href="gumga-layout/gumga-layout.min.css">-->
-    <link rel="stylesheet" href="dist/gumga-layout.css">
+    <link rel="stylesheet" href="dist/gumga-layout.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +33,6 @@ background    = #F5F5F5
   </head>
   <body data-ng-controller="controller">
     <div class="gumga-layout">
-          
       <header class="gl-header">
         <div class="searchbar">
           <div class="icon back">
@@ -95,7 +93,7 @@ background    = #F5F5F5
                   </ul>
                 </li>
               </ul>
-              
+
               <form class="navbar-form navbar-left search hidden-sm hidden-xs">
                 <div class="form-group">
                   <div class="input-group">
@@ -201,69 +199,16 @@ background    = #F5F5F5
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select">
-                          <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">
-                            {{option.name}}
-                          </gmd-option>
-                        </gmd-select>
-                        {{example.select}}
-                        
-<!--<div class="dropdown gmd">
-  <button class="btn gmd btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Dropdown
-    <span class="caret"></span>
-  </button>
-  <div class="dropdown-menu gmd" aria-labelledby="dropdownMenu1">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </div>
-</div>                        -->
-                        
-<!--<gmd-select ng-model="example.select" class="ng-pristine ng-isolate-scope ng-touched ng-invalid ng-invalid-required ng-not-empty">
-    <div class="dropdown gmd">
-      <button class="btn btn-default gmd dropdown-toggle" type="button" id="gmdSelect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span data-ng-bind="$ctrl.selected" class="ng-binding">Email</span>
-        <span data-ng-bind="$ctrl.placeholder" data-ng-hide="$ctrl.selected" class="placeholder ng-binding ng-hide"></span>
-        <span class="caret"></span>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="gmdSelect" ng-transclude="">
-      <li ng-repeat="option in options" ng-value="option.id" class="ng-scope ng-isolate-scope" value="1">
-    <li>
-      <a data-ng-click="$ctrl.select(option)" data-ng-show="option[$ctrl.option]" data-ng-class="{active: $ctrl.isActive(option)}" ng-transclude="" class="ng-hide active"><span class="ng-binding ng-scope">
-                            Guilherme
-                          </span></a>
-    </li>
-  </li>
-    <li>
-      <a data-ng-click="$ctrl.select(option)" data-ng-show="option[$ctrl.option]" data-ng-class="{active: $ctrl.isActive(option)}" ng-transclude="" class="ng-hide active"><span class="ng-binding ng-scope">
-                            Felipe
-                          </span></a>
-    </li>
-    <li>
-      <a data-ng-click="$ctrl.select(option)" data-ng-show="option[$ctrl.option]" data-ng-class="{active: $ctrl.isActive(option)}" ng-transclude="" class="ng-hide active"><span class="ng-binding ng-scope">
-                            Mateus
-                          </span></a>
-    </li>
-                        </ul>
-    </div>
-  </gmd-select>-->
-                        <!--<gmd-select ng-model="example.select" name="select" required options="types" option="label" value="value" placeholder="- Selecione uma pessoa -"></gmd-select>
-                        <pre>{{example.select | json}}</pre>-->
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <!--<gmd-select ng-model="example.select1" name="select" required options="types" option="label" value="value" placeholder="- Selecione uma pessoa -"></gmd-select>
-                        <pre>{{example.select1 | json}}</pre>-->
-                      </div>
-                      <div class="col-md-4">
-                      </div>
-                      <div class="col-md-4">
-                        <!--<gmd-select ng-model="example.select3" name="select" required options="optionss" placeholder="- Selecione uma pessoa -"></gmd-select>
-                        <pre>{{example.select3 | json}}</pre>-->
+                        <gmd-select
+                          ng-model="example.select"
+                          name="select"
+                          required
+                          options="options"
+                          option="name"
+                          placeholder="Selecione uma pessoa"></gmd-select>
+                        <br>
+                        <br>
+                        <pre>{{example.select | json}}</pre>
                       </div>
                     </div>
                     <div class="row">
@@ -361,8 +306,8 @@ background    = #F5F5F5
 
                   <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="navCollapse()">Alternar Nav</button>
                   <button type="button" class="btn gmd btn-default gmd-ripple" data-ng-click="asideCollapse()">Alternar Aside</button>
-                  
-                  
+
+
                   <pre>$scope.navCollapse = function() {
   document.querySelector('.gumga-layout nav.gl-nav')
     .classList.toggle('collapsed')
@@ -385,10 +330,10 @@ $http.get('assets/data/keys.json')
   .then(function(response) {
       $scope.keys = response.data
   })</pre>
-                  
+
                   <h6>HTML</h6>
                   <pre>&lt;gl-menu menu="menu" keys="keys"&gt;&lt;/gl-menu&gt;</pre>
-                  
+
                   <h6>JSON keys</h6>
                   <pre>[
   "CRUD-BASE",
@@ -465,7 +410,7 @@ $http.get('assets/data/keys.json')
                     <h5>
                       Normal
                     </h5>
-                    
+
                     <button type="button" class="btn gmd btn-primary gmd-ripple">Primary</button>
                     <button type="button" class="btn gmd btn-default gmd-ripple">Default</button>
                     <button type="button" class="btn gmd btn-success gmd-ripple">Success</button>
@@ -486,7 +431,7 @@ $http.get('assets/data/keys.json')
                     <h5>
                       Raised
                     </h5>
-                    
+
                     <button type="button" class="btn gmd raised btn-primary gmd-ripple gmd-ripple-light">Primary</button>
                     <button type="button" class="btn gmd raised btn-default gmd-ripple gmd-ripple-light">Default</button>
                     <button type="button" class="btn gmd raised btn-success gmd-ripple gmd-ripple-light">Success</button>
@@ -505,7 +450,7 @@ $http.get('assets/data/keys.json')
                     <h6>
                       Disabled
                     </h6>
-                    
+
                     <button type="button" class="btn gmd btn-default" disabled="disabled">Default</button>
                     <button type="button" class="btn gmd btn-primary" disabled="disabled">Primary</button>
                     <button type="button" class="btn gmd btn-success" disabled="disabled">Success</button>
@@ -526,7 +471,7 @@ $http.get('assets/data/keys.json')
                     <h6>
                       Float Action Button
                     </h6>
-                    
+
                     <button type="button" class="btn gmd fab btn-primary">
                       <i class="material-icons">add</i>
                     </button>
@@ -565,12 +510,54 @@ $http.get('assets/data/keys.json')
     &lt;i class="material-icons"&gt;add&lt;/i&gt;
   &lt;/button&gt;</pre>
                   </div>
+                  <h6>Raised Checkbox</h6>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="btn-group">
+                        <label class="btn gmd raised btn-default" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable>Left</label>
+                        <label class="btn gmd raised btn-default" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable>Middle</label>
+                        <label class="btn gmd raised btn-default" ng-model="radioModel" uib-btn-radio="'Right'" uib-uncheckable="uncheckable">Right</label>
+                      </div>
+                    </div>
+                  </div>
+                  <pre>
+  &lt;/div class="btn-group"&gt;
+    &lt;/label class="btn gmd raised btn-default"
+                    ng-model="radioModel"
+                    uib-btn-radio="'Left'" uncheckable&gt;Left&lt;/label&gt;
+    &lt;/label class="btn gmd raised btn-default"
+                    ng-model="radioModel"
+                    uib-btn-radio="'Middle'" uncheckable&gt;Middle&lt;/label&gt;
+    &lt;/label class="btn gmd raised btn-default"
+                    ng-model="radioModel"
+                    uib-btn-radio="'Right'" uib-uncheckable="uncheckable"&gt;Right&lt;/label&gt;
+  &lt;/div&gt;
+                  </pre>
+
+                  <h6>Raised Radio & Uncheckable Radio
+                  </h6>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="btn-group">
+                        <label class="btn gmd raised btn-primary" ng-model="checkModel.left" uib-btn-checkbox>Left</label>
+                        <label class="btn gmd raised btn-primary" ng-model="checkModel.middle" uib-btn-checkbox>Middle</label>
+                        <label class="btn gmd raised btn-primary" ng-model="checkModel.right" uib-btn-checkbox>Right</label>
+                      </div>
+                    </div>
+                  </div>
+                  <pre>
+  &lt;div class="btn-group"&gt;
+    &lt;label class="btn gmd raised btn-primary" ng-model="checkModel.left" uib-btn-checkbox&gt;Left&lt;/label&gt;
+    &lt;label class="btn gmd raised btn-primary" ng-model="checkModel.middle" uib-btn-checkbox&gt;Middle&lt;/label&gt;
+    &lt;label class="btn gmd raised btn-primary" ng-model="checkModel.right" uib-btn-checkbox&gt;Right&lt;/label&gt;
+  &lt;/div&gt;
+                  </pre>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row">          
+          <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">
@@ -589,7 +576,7 @@ $http.get('assets/data/keys.json')
                     <div role="tabpanel" class="tab-pane" id="messages"><h2>Message content</h2></div>
                     <div role="tabpanel" class="tab-pane" id="settings"><h2>Settings</h2></div>
                   </div>
-                  
+
                   <pre>&lt;ul class="nav nav-tabs gmd" role="tablist"&gt;
     &lt;li role="presentation" class="active"&gt;&lt;a href="#home" aria-controls="home" role="tab" data-toggle="tab"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li role="presentation"&gt;&lt;a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"&gt;Profile&lt;/a&gt;&lt;/li&gt;
@@ -607,7 +594,7 @@ $http.get('assets/data/keys.json')
             </div>
           </div>
 
-          <div class="row">          
+          <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">
@@ -619,7 +606,7 @@ $http.get('assets/data/keys.json')
                     <li role="presentation"><a>Profile</a></li>
                     <li role="presentation"><a>Messages</a></li>
                   </ul>
-                  
+
                   <pre>&lt;ul class="nav gmd nav-pills"&gt;
     &lt;li role="presentation" class="active"&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li role="presentation"&gt;&lt;a&gt;Profile&lt;/a&gt;&lt;/li&gt;
@@ -630,7 +617,7 @@ $http.get('assets/data/keys.json')
             </div>
           </div>
 
-          <div class="row">          
+          <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
                 <div class="panel-heading">Badge</div>
@@ -661,7 +648,7 @@ $http.get('assets/data/keys.json')
               <div class="panel gmd">
                 <div class="panel-heading">Dropdown</div>
                 <div class="panel-body">
-                  
+
                   <div class="dropdown gmd">
                     <button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                       Dropdown
@@ -676,7 +663,7 @@ $http.get('assets/data/keys.json')
                       <li><a href="#">Separated link</a></li>
                     </ul>
                   </div>
-                  
+
                   <pre>&lt;div class="dropdown gmd"&gt;
     &lt;button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"&gt;
       Dropdown
@@ -691,7 +678,7 @@ $http.get('assets/data/keys.json')
       &lt;li&gt;&lt;a href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/div&gt;</pre>
-                  
+
                   <div class="dropup gmd">
                     <button class="btn btn-default gmd dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Dropup
@@ -705,7 +692,7 @@ $http.get('assets/data/keys.json')
                       <li><a href="#">Separated link</a></li>
                     </ul>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
@@ -760,12 +747,12 @@ $http.get('assets/data/keys.json')
                       <span class="sr-only">60% Complete</span>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
@@ -788,13 +775,13 @@ $http.get('assets/data/keys.json')
                         <span aria-hidden="true">&raquo;</span>
                       </a>
                     </li>
-                  </ul>          
-          
+                  </ul>
+
                 </div>
               </div>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
@@ -886,11 +873,11 @@ $http.get('assets/data/keys.json')
         <h3>Aside</h3>
         <h3>Aside</h3>
       </aside>
-      
+
       <footer class="gl-footer fixed">
         <p>Gumga Layout <a href="#">footer</a></p>
       </footer>
-      
+
     </div>
 
 
@@ -904,8 +891,10 @@ $http.get('assets/data/keys.json')
 
     <!--<script src="bower_components/angular/angular.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
     <script src="dist/gumga-layout.min.js"></script>
-    <!--<script src="gumga-layout/gumga-layout.min.js"></script>-->
+
     <script src="assets/js/controller.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
   </body>
 </html>
