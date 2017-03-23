@@ -52,7 +52,7 @@ function map_error(err) {
   this.end()
 }
 
-gulp.task('watch', function () {
+gulp.task('watch', ['bundle-css-production'], function () {
   var args = merge(watchify.args, { debug: true })
   var bundler = watchify(browserify('./src/components/index.js', args)).transform(babelify, { /* opts */ })
   bundle_js(bundler)
@@ -101,7 +101,7 @@ function build() {
     dest = home + '/' + dir
   }
   var dir = './gumga-layout'
-  
+
   var createFolder = () => {
     fs.mkdir(dir, function(err, folder) {
       if (!err) {
@@ -117,14 +117,14 @@ function build() {
         })
 
       }
-    })    
+    })
   }
   if (fs.existsSync(dir)) {
     fs.rmdir(dir, createFolder)
   } else {
     createFolder()
   }
-  
+
   // var iconfont = dir + '/iconfont/'
   // fs.mkdir(iconfont)
   // gulp.src('./assets/iconfont/*.{eot,woff2,woff,ttf}')
@@ -134,7 +134,7 @@ function build() {
 // gulp.task('export', build)
 // function build() {
 //   var dest,
-//       dir = (gutil.env.dest) ? gutil.env.dest : 'gumga-layout' 
+//       dir = (gutil.env.dest) ? gutil.env.dest : 'gumga-layout'
 //   if (path.isAbsolute(dir)) {
 //     dest = dir
 //   } else {
