@@ -79,12 +79,14 @@ background    = #F5F5F5
                       </div>
                     </li>
                     <li data-ng-repeat="org in organizations | filter: org_search">
-                      <a href="#" data-ng-bind="org.name"></a>
+                      <a href="#">
+                        <span data-ng-bind="org.name"></span>
+                      </a>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
                       <a href="#">
-                        Gumga
+                        Gumga Gumga 
                         <span class="glyphicon glyphicon-ok"></span>
                       </a>
                     </li>
@@ -237,7 +239,7 @@ background    = #F5F5F5
                         </div>
                       </div>
                       <div class="col-md-4">
-                        {{gmdForm.select}}
+                        {{gmdForm.select.$error}}
                       </div>
                     </div>
                   </form>

@@ -186,6 +186,7 @@ h6 {
   position: fixed;
   right: 30px;
   bottom: 30px;
+  z-index: 1007;
 }
 .btn.gmd.fab,
 .btn.btn-md.gmd.fab,
@@ -273,7 +274,6 @@ h6 {
 .btn.gmd.fab.btn-primary-color-dark {
   background-color: #2f4050;
 }
-gmd-input,
 .form-group {
   margin-bottom: 30px;
   position: relative;
@@ -285,6 +285,7 @@ gmd-input,
   box-shadow: none;
   border-radius: 0;
   border-bottom: 1px solid #ccc;
+  background-color: transparent;
 }
 .form-control.gmd:focus {
   outline: none;
@@ -514,11 +515,12 @@ li [badge]::after {
 .dropup.gmd .dropdown-header {
   padding: 10px 20px;
 }
-.navbar-nav > li > .dropdown-menu.gmd {
+.navbar-nav > gmd-option > .dropdown-menu.gmd {
   margin-top: 2px;
 }
 gmd-select .dropdown.gmd .dropdown-menu {
   top: -2px;
+  z-index: 100000;
 }
 gmd-select .dropdown.gmd button.gmd {
   background: transparent;
@@ -576,15 +578,25 @@ gmd-select .dropdown.gmd label.floating-dropdown {
 gmd-select .dropdown.gmd .placeholder {
   color: #757575;
 }
-gmd-select .dropdown.gmd .dropdown-menu li:not(:first-child) {
-  cursor: pointer;
-}
 gmd-select .dropdown.gmd .dropdown-menu li:first-child a:hover {
   background: none;
 }
 gmd-select .dropdown.gmd .dropdown-menu .active {
   color: #2f4050;
   background-color: #f5f5f5;
+}
+.dropdown-menu.gmd > gmd-option {
+  position: relative;
+  display: block;
+}
+.dropdown-menu.gmd > gmd-option > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
 }
 .panel.gmd {
   border: 0;
@@ -1147,7 +1159,7 @@ gmd-select .dropdown.gmd .dropdown-menu .active {
 .gumga-layout header > .navbar .nav .open > a,
 .gumga-layout header > .navbar .nav .open > a:hover,
 .gumga-layout header > .navbar .nav .open > a:focus {
-  color: #337ab7;
+  color: #212121;
   background-color: #2f4050;
   border-color: transparent;
 }
@@ -1341,7 +1353,7 @@ gl-menu ul li > a:hover {
   text-decoration: none;
 }
 gl-menu ul li > a.active {
-  color: #233646;
+  color: #212121;
 }
 gl-menu ul li.divider {
   height: 1px;

@@ -18,11 +18,11 @@
 .dropup.gmd .dropdown-header
   padding: 10px 20px
 
-.navbar-nav > li > .dropdown-menu.gmd
+.navbar-nav > gmd-option > .dropdown-menu.gmd
   margin-top: 2px
-
 gmd-select .dropdown.gmd .dropdown-menu
   top: -2px
+  z-index: 100000
 
 gmd-select .dropdown.gmd button.gmd
   background : transparent
@@ -78,8 +78,8 @@ gmd-select .dropdown.gmd label.floating-dropdown
 gmd-select .dropdown.gmd .placeholder
   color: colors.secundaryText
 
-gmd-select .dropdown.gmd .dropdown-menu li:not(:first-child)
-  cursor: pointer
+//gmd-select .dropdown.gmd .dropdown-menu gmd-option:not(:first-child)
+//  cursor: pointer
 
 gmd-select .dropdown.gmd .dropdown-menu li:first-child a:hover
   background: none
@@ -87,3 +87,16 @@ gmd-select .dropdown.gmd .dropdown-menu li:first-child a:hover
 gmd-select .dropdown.gmd .dropdown-menu .active
   color: colors.darkPrimary
   background-color: #f5f5f5
+
+.dropdown-menu.gmd > gmd-option
+  position: relative
+  display: block
+
+.dropdown-menu.gmd > gmd-option > a
+  display: block
+  padding: 3px 20px
+  clear: both
+  font-weight: 400
+  line-height: 1.42857143
+  color: #333
+  white-space: nowrap

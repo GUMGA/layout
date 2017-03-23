@@ -1,5 +1,6 @@
 let Component = {
   require: ['ngModel','ngRequired'],
+  transclude: true,
   bindings: {
     ngModel: '=',
     unselect: '@?',
