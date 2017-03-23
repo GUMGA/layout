@@ -119,12 +119,18 @@ h6 {
 .btn.gmd.raised.btn-default:hover {
   opacity: 1;
 }
+.btn-group .btn.gmd.raised.btn-default.active {
+  opacity: 1;
+}
 .btn.gmd.raised.btn-primary {
   color: #fff;
   background-color: #337ab7;
   opacity: 0.9;
 }
 .btn.gmd.raised.btn-primary:hover {
+  opacity: 1;
+}
+.btn-group .btn.gmd.raised.btn-primary.active {
   opacity: 1;
 }
 .btn.gmd.raised.btn-info {
@@ -135,12 +141,18 @@ h6 {
 .btn.gmd.raised.btn-info:hover {
   opacity: 1;
 }
+.btn-group .btn.gmd.raised.btn-info.active {
+  opacity: 1;
+}
 .btn.gmd.raised.btn-success {
   color: #fff;
   background-color: #5cb85c;
   opacity: 0.9;
 }
 .btn.gmd.raised.btn-success:hover {
+  opacity: 1;
+}
+.btn-group .btn.gmd.raised.btn-success.active {
   opacity: 1;
 }
 .btn.gmd.raised.btn-warning {
@@ -151,12 +163,18 @@ h6 {
 .btn.gmd.raised.btn-warning:hover {
   opacity: 1;
 }
+.btn-group .btn.gmd.raised.btn-warning.active {
+  opacity: 1;
+}
 .btn.gmd.raised.btn-danger {
   color: #fff;
   background-color: #d9534f;
   opacity: 0.9;
 }
 .btn.gmd.raised.btn-danger:hover {
+  opacity: 1;
+}
+.btn-group .btn.gmd.raised.btn-danger.active {
   opacity: 1;
 }
 .btn.gmd.fab {

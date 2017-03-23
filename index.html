@@ -33,7 +33,6 @@ background    = #F5F5F5
   </head>
   <body data-ng-controller="controller">
     <div class="gumga-layout">
-
       <header class="gl-header">
         <div class="searchbar">
           <div class="icon back">
@@ -509,6 +508,48 @@ $http.get('assets/data/keys.json')
     &lt;i class="material-icons"&gt;add&lt;/i&gt;
   &lt;/button&gt;</pre>
                   </div>
+                  <h6>Raised Checkbox</h6>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="btn-group">
+                        <label class="btn gmd raised btn-default" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable>Left</label>
+                        <label class="btn gmd raised btn-default" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable>Middle</label>
+                        <label class="btn gmd raised btn-default" ng-model="radioModel" uib-btn-radio="'Right'" uib-uncheckable="uncheckable">Right</label>
+                      </div>
+                    </div>
+                  </div>
+                  <pre>
+  &lt;/div class="btn-group"&gt;
+    &lt;/label class="btn gmd raised btn-default"
+                    ng-model="radioModel"
+                    uib-btn-radio="'Left'" uncheckable&gt;Left&lt;/label&gt;
+    &lt;/label class="btn gmd raised btn-default"
+                    ng-model="radioModel"
+                    uib-btn-radio="'Middle'" uncheckable&gt;Middle&lt;/label&gt;
+    &lt;/label class="btn gmd raised btn-default"
+                    ng-model="radioModel"
+                    uib-btn-radio="'Right'" uib-uncheckable="uncheckable"&gt;Right&lt;/label&gt;
+  &lt;/div&gt;
+                  </pre>
+
+                  <h6>Raised Radio & Uncheckable Radio
+                  </h6>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="btn-group">
+                        <label class="btn gmd raised btn-primary" ng-model="checkModel.left" uib-btn-checkbox>Left</label>
+                        <label class="btn gmd raised btn-primary" ng-model="checkModel.middle" uib-btn-checkbox>Middle</label>
+                        <label class="btn gmd raised btn-primary" ng-model="checkModel.right" uib-btn-checkbox>Right</label>
+                      </div>
+                    </div>
+                  </div>
+                  <pre>
+  &lt;div class="btn-group"&gt;
+    &lt;label class="btn gmd raised btn-primary" ng-model="checkModel.left" uib-btn-checkbox&gt;Left&lt;/label&gt;
+    &lt;label class="btn gmd raised btn-primary" ng-model="checkModel.middle" uib-btn-checkbox&gt;Middle&lt;/label&gt;
+    &lt;label class="btn gmd raised btn-primary" ng-model="checkModel.right" uib-btn-checkbox&gt;Right&lt;/label&gt;
+  &lt;/div&gt;
+                  </pre>
                 </div>
               </div>
             </div>
@@ -852,5 +893,6 @@ $http.get('assets/data/keys.json')
     <script src="dist/gumga-layout.min.js"></script>
 
     <script src="assets/js/controller.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
   </body>
 </html>
