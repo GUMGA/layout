@@ -202,6 +202,7 @@ background    = #F5F5F5
                           ng-model="example.select"
                           name="select"
                           required
+                          unselect="Selecione uma pessoa"
                           options="options"
                           option="name"
                           placeholder="Selecione uma pessoa"></gmd-select>
@@ -224,18 +225,19 @@ background    = #F5F5F5
                       <div class="col-md-4">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <input type="radio" ng-model="radio" name="optionsRadios" class="gmd" value="Masculino">
                             <span class="box"></span>
-                            Click-me
+                            Masculino
                           </label>
                         </div>
                         <div class="radio">
                           <label>
-                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <input type="radio" ng-model="radio" name="optionsRadios" class="gmd" value="Feminino">
                             <span class="box"></span>
-                            Click-me
+                            Feminino
                           </label>
                         </div>
+                        {{radio}}
                       </div>
                       <div class="col-md-4">
                         {{gmdForm.select}}
