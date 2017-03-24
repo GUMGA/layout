@@ -7,8 +7,8 @@
   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.175)
   box-shadow: 0 2px 4px rgba(0,0,0,.175)
 
-.dropdown.gmd .dropdown-menu > li > a,
-.dropup.gmd .dropdown-menu > li > a
+.dropdown.gmd .dropdown-menu > gmd-option > a,
+.dropup.gmd .dropdown-menu > gmd-option > a
   padding: 10px 20px
   transition: 0.2s ease background-color
   -moz-transition: 0.2s ease background-color
@@ -20,43 +20,30 @@
 
 .navbar-nav > gmd-option > .dropdown-menu.gmd
   margin-top: 2px
+  z-index: 100000
+
 gmd-select .dropdown.gmd .dropdown-menu
   top: -2px
   z-index: 100000
 
 gmd-select .dropdown.gmd button.gmd
-  background : transparent
   text-transform: none
   font-weight: normal
-  outline: none
-  border-bottom: 1px solid #ccc
-  width: 100%
-  max-width: 100%
-  overflow: hidden
-  text-overflow: ellipsis
-  text-align: left
-  padding: 0
-
-gmd-select .dropdown-menu
-  max-width: 100%
-
-gmd-select .item-select
-  width: 100%
-  max-width: 87%
-  display: inherit
-  text-overflow: ellipsis
-  white-space: nowrap
-  overflow: hidden
-  padding-top: 8px
-  margin: 0
-  padding-left: 10px
-  float: left
-  padding-bottom: 5px
+  background: 0 0;
+  text-transform: none;
+  font-weight: 400;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 
 gmd-select .dropdown.gmd button.gmd > .caret
-  float: right
-  margin-top: 15px
-  margin-right: 10px
+  position: absolute;
+  right: 10px;
+  top: 15px;
 
 gmd-select .select-option
   max-width: 100%
@@ -72,17 +59,17 @@ gmd-select .dropdown.gmd label.floating-dropdown
   -webkit-transition: 0.2s ease display
   font-weight: 400
 
-.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default
-  border-color: transparent;
-
 gmd-select .dropdown.gmd .placeholder
   color: colors.secundaryText
 
 //gmd-select .dropdown.gmd .dropdown-menu gmd-option:not(:first-child)
 //  cursor: pointer
 
-gmd-select .dropdown.gmd .dropdown-menu li:first-child a:hover
-  background: none
+gmd-select .dropdown.gmd .dropdown-menu gmd-option a
+  text-decoration: none
+
+gmd-select .dropdown.gmd .dropdown-menu gmd-option a:hover
+  background-color: #f5f5f5
 
 gmd-select .dropdown.gmd .dropdown-menu .active
   color: colors.darkPrimary

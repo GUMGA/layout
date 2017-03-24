@@ -45,13 +45,16 @@ angular
       console.log(event)
       console.log(item)
     }
+
     $scope.options = [
       {name: 'Guilherme', id: 1},
       {name: 'Felipe', id: 2},
       {name: 'Mateus', id: 3},
       {name: 'Mateus Miranda de Almeida de jesus legal e alguma coisa a mais', id: 4}
     ]
+
     $scope.optionss = ['Guilherme','Felipe','Mateus']
+
     $scope.change = function(option) {
       // console.log(option)
     }
@@ -59,10 +62,10 @@ angular
     $scope.example = {select:null}
 
     // $scope.example.select = {name: 'Mateus', id: 3};
+    // $scope.radio = 'Feminino';
 
-    $timeout(function() {
+    $scope.example.select = {name: 'Guilherme', id: 1}
 
-    }, 1000)
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}
     // }

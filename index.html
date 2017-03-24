@@ -86,7 +86,7 @@ background    = #F5F5F5
                     <li role="separator" class="divider"></li>
                     <li>
                       <a href="#">
-                        Gumga Gumga 
+                        Gumga Gumga
                         <span class="glyphicon glyphicon-ok"></span>
                       </a>
                     </li>
@@ -199,13 +199,10 @@ background    = #F5F5F5
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select
-                          ng-model="example.select"
-                          name="select"
-                          required
-                          options="options"
-                          option="name"
-                          placeholder="Selecione uma pessoa"></gmd-select>
+                        <gmd-select ng-model="example.select" placeholder="Selecione">
+                          <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">                            {{option.name}}
+                          </gmd-option>
+                        </gmd-select>
                         <br>
                         <br>
                         <pre>{{example.select | json}}</pre>
@@ -225,18 +222,19 @@ background    = #F5F5F5
                       <div class="col-md-4">
                         <div class="radio">
                           <label>
-                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <input type="radio" ng-model="radio" name="optionsRadios" class="gmd" value="Masculino">
                             <span class="box"></span>
-                            Click-me
+                            Masculino
                           </label>
                         </div>
                         <div class="radio">
                           <label>
-                            <input type="radio" name="optionsRadios" class="gmd" value="option1" checked>
+                            <input type="radio" ng-model="radio" name="optionsRadios" class="gmd" value="Feminino">
                             <span class="box"></span>
-                            Click-me
+                            Feminino
                           </label>
                         </div>
+                        {{radio}}
                       </div>
                       <div class="col-md-4">
                         {{gmdForm.select.$error}}
