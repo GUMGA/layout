@@ -119,12 +119,18 @@ h6 {
 .btn.gmd.raised.btn-default:hover {
   opacity: 1;
 }
+.btn-group .btn.gmd.raised.btn-default.active {
+  opacity: 1;
+}
 .btn.gmd.raised.btn-primary {
   color: #fff;
   background-color: #337ab7;
   opacity: 0.9;
 }
 .btn.gmd.raised.btn-primary:hover {
+  opacity: 1;
+}
+.btn-group .btn.gmd.raised.btn-primary.active {
   opacity: 1;
 }
 .btn.gmd.raised.btn-info {
@@ -135,12 +141,18 @@ h6 {
 .btn.gmd.raised.btn-info:hover {
   opacity: 1;
 }
+.btn-group .btn.gmd.raised.btn-info.active {
+  opacity: 1;
+}
 .btn.gmd.raised.btn-success {
   color: #fff;
   background-color: #5cb85c;
   opacity: 0.9;
 }
 .btn.gmd.raised.btn-success:hover {
+  opacity: 1;
+}
+.btn-group .btn.gmd.raised.btn-success.active {
   opacity: 1;
 }
 .btn.gmd.raised.btn-warning {
@@ -151,12 +163,18 @@ h6 {
 .btn.gmd.raised.btn-warning:hover {
   opacity: 1;
 }
+.btn-group .btn.gmd.raised.btn-warning.active {
+  opacity: 1;
+}
 .btn.gmd.raised.btn-danger {
   color: #fff;
   background-color: #d9534f;
   opacity: 0.9;
 }
 .btn.gmd.raised.btn-danger:hover {
+  opacity: 1;
+}
+.btn-group .btn.gmd.raised.btn-danger.active {
   opacity: 1;
 }
 .btn.gmd.fab {
@@ -168,6 +186,7 @@ h6 {
   position: fixed;
   right: 30px;
   bottom: 30px;
+  z-index: 1007;
 }
 .btn.gmd.fab,
 .btn.btn-md.gmd.fab,
@@ -255,7 +274,6 @@ h6 {
 .btn.gmd.fab.btn-primary-color-dark {
   background-color: #2f4050;
 }
-gmd-input,
 .form-group {
   margin-bottom: 30px;
   position: relative;
@@ -267,6 +285,7 @@ gmd-input,
   box-shadow: none;
   border-radius: 0;
   border-bottom: 1px solid #ccc;
+  background-color: transparent;
 }
 .form-control.gmd:focus {
   outline: none;
@@ -485,8 +504,8 @@ li [badge]::after {
   -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.175);
   box-shadow: 0 2px 4px rgba(0,0,0,0.175);
 }
-.dropdown.gmd .dropdown-menu > li > a,
-.dropup.gmd .dropdown-menu > li > a {
+.dropdown.gmd .dropdown-menu > gmd-option > a,
+.dropup.gmd .dropdown-menu > gmd-option > a {
   padding: 10px 20px;
   transition: 0.2s ease background-color;
   -moz-transition: 0.2s ease background-color;
@@ -496,45 +515,32 @@ li [badge]::after {
 .dropup.gmd .dropdown-header {
   padding: 10px 20px;
 }
-.navbar-nav > li > .dropdown-menu.gmd {
+.navbar-nav > gmd-option > .dropdown-menu.gmd {
   margin-top: 2px;
+  z-index: 100000;
 }
 gmd-select .dropdown.gmd .dropdown-menu {
   top: -2px;
+  z-index: 100000;
 }
 gmd-select .dropdown.gmd button.gmd {
-  background: transparent;
   text-transform: none;
   font-weight: normal;
-  outline: none;
+  background: 0 0;
+  text-transform: none;
+  font-weight: 400;
+  outline: 0;
   border-bottom: 1px solid #ccc;
   width: 100%;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  padding: 0;
-}
-gmd-select .dropdown-menu {
-  max-width: 100%;
-}
-gmd-select .item-select {
-  width: 100%;
-  max-width: 87%;
-  display: inherit;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  padding-top: 8px;
-  margin: 0;
-  padding-left: 10px;
-  float: left;
-  padding-bottom: 5px;
 }
 gmd-select .dropdown.gmd button.gmd > .caret {
-  float: right;
-  margin-top: 15px;
-  margin-right: 10px;
+  position: absolute;
+  right: 10px;
+  top: 15px;
 }
 gmd-select .select-option {
   max-width: 100%;
@@ -550,23 +556,31 @@ gmd-select .dropdown.gmd label.floating-dropdown {
   -webkit-transition: 0.2s ease display;
   font-weight: 400;
 }
-.btn-default.active,
-.btn-default:active,
-.open>.dropdown-toggle.btn-default {
-  border-color: transparent;
-}
 gmd-select .dropdown.gmd .placeholder {
   color: #757575;
 }
-gmd-select .dropdown.gmd .dropdown-menu li:not(:first-child) {
-  cursor: pointer;
+gmd-select .dropdown.gmd .dropdown-menu gmd-option a {
+  text-decoration: none;
 }
-gmd-select .dropdown.gmd .dropdown-menu li:first-child a:hover {
-  background: none;
+gmd-select .dropdown.gmd .dropdown-menu gmd-option a:hover {
+  background-color: #f5f5f5;
 }
 gmd-select .dropdown.gmd .dropdown-menu .active {
   color: #2f4050;
   background-color: #f5f5f5;
+}
+.dropdown-menu.gmd > gmd-option {
+  position: relative;
+  display: block;
+}
+.dropdown-menu.gmd > gmd-option > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
 }
 .panel.gmd {
   border: 0;
@@ -1129,7 +1143,7 @@ gmd-select .dropdown.gmd .dropdown-menu .active {
 .gumga-layout header > .navbar .nav .open > a,
 .gumga-layout header > .navbar .nav .open > a:hover,
 .gumga-layout header > .navbar .nav .open > a:focus {
-  color: #337ab7;
+  color: #212121;
   background-color: #2f4050;
   border-color: transparent;
 }
@@ -1323,7 +1337,7 @@ gl-menu ul li > a:hover {
   text-decoration: none;
 }
 gl-menu ul li > a.active {
-  color: #233646;
+  color: #212121;
 }
 gl-menu ul li.divider {
   height: 1px;

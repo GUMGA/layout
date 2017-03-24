@@ -1,5 +1,5 @@
 angular
-  .module('app', ['gumga.layout'])
+  .module('app', ['gumga.layout', 'ui.bootstrap'])
   .controller('controller', controller)
 
   controller.$inject = ['$scope', '$http', '$timeout']
@@ -64,9 +64,7 @@ angular
     // $scope.example.select = {name: 'Mateus', id: 3};
     // $scope.radio = 'Feminino';
 
-    $timeout(function() {
-      $scope.radio = 'Feminino';
-    }, 2000)
+    $scope.example.select = {name: 'Guilherme', id: 1}
 
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}

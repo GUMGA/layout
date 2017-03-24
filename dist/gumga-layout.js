@@ -13,19 +13,23 @@ var _component5 = require('./select/component.js');
 
 var _component6 = _interopRequireDefault(_component5);
 
-var _component7 = require('./input/component.js');
+var _component7 = require('./select/option/component.js');
 
 var _component8 = _interopRequireDefault(_component7);
 
-var _component9 = require('./ripple/component.js');
+var _component9 = require('./input/component.js');
 
 var _component10 = _interopRequireDefault(_component9);
 
+var _component11 = require('./ripple/component.js');
+
+var _component12 = _interopRequireDefault(_component11);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-angular.module('gumga.layout', []).component('glMenu', _component2.default).component('glNotification', _component4.default).component('gmdSelect', _component6.default).component('gmdInput', _component8.default).directive('gmdRipple', _component10.default);
+angular.module('gumga.layout', []).component('glMenu', _component2.default).component('glNotification', _component4.default).component('gmdSelect', _component6.default).component('gmdOption', _component8.default).component('gmdInput', _component10.default).directive('gmdRipple', _component12.default);
 
-},{"./input/component.js":2,"./menu/component.js":3,"./notification/component.js":4,"./ripple/component.js":5,"./select/component.js":6}],2:[function(require,module,exports){
+},{"./input/component.js":2,"./menu/component.js":3,"./notification/component.js":4,"./ripple/component.js":5,"./select/component.js":6,"./select/option/component.js":7}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -166,6 +170,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var Component = {
   require: ['ngModel', 'ngRequired'],
+  transclude: true,
   bindings: {
     ngModel: '=',
     unselect: '@?',
@@ -212,6 +217,60 @@ var Component = {
       ctrl.ngModel = undefined;
       ctrl.selected = undefined;
     };
+  }]
+};
+
+exports.default = Component;
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Component = {
+  // require: ['ngModel','ngRequired'],
+  transclude: true,
+  require: {
+    gmdSelectCtrl: '^gmdSelect'
+  },
+  bindings: {
+    ngValue: '=',
+    ngLabel: '='
+  },
+  template: '\n    <a data-ng-click="$ctrl.select($ctrl.ngValue, $ctrl.ngLabel)" ng-class="{active: $ctrl.selected}" ng-transclude></a>\n  ',
+  controller: ['$scope', '$attrs', '$timeout', '$element', '$transclude', function ($scope, $attrs, $timeout, $element, $transclude) {
+    var _this = this;
+
+    var ctrl = this;
+
+    ctrl.$onInit = function () {
+      ctrl.gmdSelectCtrl.addOption(_this);
+    };
+    ctrl.select = function () {
+      ctrl.gmdSelectCtrl.select(_this);
+    };
+
+    // $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
+    //   if (val != undefined) {
+    //     console.log(ctrl.ngModel)
+    //     // ctrl.addOption(ctrl.ngModel)
+    //   }
+    // })
+    // console.log($transclude)
+    // ,   ngModelCtrl = $element.controller('ngModel')
+
+    // ctrl.isActive = option => {
+    //   let guest = (ctrl.value? option[ctrl.value] : option)
+    //   return ctrl.selected == guest
+    // }
+    // console.log(ctrl.ngModel)
+    // console.log('parent', $scope.$parent)
+    // ctrl.select = (value, label) => ctrl.gmdSelectCtrl.select(value, label)
+    // ctrl.unselect = () => {
+    //   ctrl.ngModel = undefined
+    //   ctrl.selected = undefined
+    // }
   }]
 };
 
