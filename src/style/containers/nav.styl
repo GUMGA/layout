@@ -1,17 +1,17 @@
 @import '../config/variables'
 
 .gumga-layout nav.gl-nav
-  width: nav.width
-  background-color: nav.backgroundColor
-  z-index: layer.nav
+  width: vars.nav.width
+  background-color: vars.nav.backgroundColor
+  z-index: vars.layer.nav
   position: fixed
   top: 0
   bottom: 0
   left: 0
   overflow-x: auto
   visibility: hidden
-  -webkit-transform: translateX(-(nav.width))
-  transform: translateX(-(nav.width))
+  -webkit-transform: translateX(-(vars.nav.width))
+  transform: translateX(-(vars.nav.width))
   -webkit-transition: all .25s cubic-bezier(0.4,0.0,0.2,1), visibility 0s linear 0s;
   transition: all .25s cubic-bezier(0.4,0.0,0.2,1), visibility 0s linear 0s;
   -webkit-box-shadow: 0 0 4px rgba(0,0,0,.28);
@@ -21,10 +21,10 @@
   width: 8px
 
 .gumga-layout nav.gl-nav::-webkit-scrollbar-track
-  background-color: nav.scrollTrack
+  background-color: vars.nav.scrollTrack
  
 .gumga-layout nav.gl-nav::-webkit-scrollbar-thumb
-  background-color: nav.scrollThumb
+  background-color: vars.nav.scrollThumb
   border-radius: 3px
 
 
@@ -39,9 +39,9 @@
   width: 100%
 
 .gumga-layout nav.gl-nav ul.menu
-  border-bottom: 1px solid colors.divider
+  border-bottom: 1px solid vars.colors.divider
   
-@media (max-width: screen.sm)
+@media (max-width: vars.screen.sm)
   .gumga-layout nav.gl-nav
     bototm: 0px
 
@@ -53,21 +53,21 @@ gl-menu ul > li
   margin-top: 6px 0 0
   padding: 8px 0 8px 16px
   &:hover
-    background-color: nav.menu.navBackgroundColorHover
+    background-color: vars.nav.menu.navBackgroundColorHover
 
 gl-menu ul > li.header,
 gl-menu ul > li.header > a
   &:hover
-    color: colors.primaryText
+    color: vars.colors.primaryText
     background-color: transparent
   
 gl-menu ul > li.header > a
   &:hover
-    color: nav.menu.headerColor
+    color: vars.nav.menu.headerColor
   
 gl-menu ul li.header > a
-  font-size: nav.menu.headerSize
-  color: nav.menu.headerColor
+  font-size: vars.nav.menu.headerSize
+  color: vars.nav.menu.headerColor
   
 gl-menu ul li a > .material-icons
   font-size: 18px
@@ -76,17 +76,17 @@ gl-menu ul li > a
   display: inline-block
   font-size: 16px
   line-height: 1
-  color: nav.menu.navColor
+  color: vars.nav.menu.navColor
   &:hover
-    color: nav.menu.navColorHover
+    color: vars.nav.menu.navColorHover
     text-decoration: none
 
 gl-menu ul li > a.active
-  color: nav.menu.navColorActive
+  color: vars.nav.menu.navColorActive
 
 gl-menu ul li.divider
   height: 1px
   margin: 9px 0
   padding: 0
   overflow: hidden
-  background-color: colors.divider
+  background-color: vars.colors.divider

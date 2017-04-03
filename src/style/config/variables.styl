@@ -1,86 +1,91 @@
 // Palera de cores que será usada
-@import '../palettes/inspinia'
+@import '../palettes/gumga'
 
 colors = {
-  'darkPrimary': darkPrimary,
-  'primary': primary,
-  'lightPrimary': lightPrimary,
-  'textIcons': textIcons,
-  'accent': accent,
-  'primaryText': primaryText,
-  'secundaryText': secundaryText,
-  'divider': divider,
-  'background': background
+  darkPrimary: darkPrimary,
+  primary: primary,
+  lightPrimary: lightPrimary,
+  textIcons: textIcons,
+  accent: accent,
+  primaryText: primaryText,
+  secundaryText: secundaryText,
+  divider: divider,
+  background: background
 }
 
-screen = {
-  sm: 768px
-}
-
-layer = {
-  header: 1006
-  nav: 1005
-  aside: 1005
-  main: 1000
-  footer: 1006
-  btnFixed: 1007
-}
-
-body = {
-  backgroundColor: colors.background
-}
-
-header = {
-  height: 52px
-  navColor: colors.lightPrimary
-  navColorHover: colors.primaryText
-  navBackgroundColorHover: colors.darkPrimary
-  navBackgroundColorFocus: colors.darkPrimary
-  backgroundColor: colors.primary
-  apps: {
-    navBackgroundColorHover: colors.primary
-    backgroundColor: colors.lightPrimary
+vars = {
+  colors: {
+    darkPrimary: colors.darkPrimary,
+    primary: colors.primary,
+    lightPrimary: colors.lightPrimary,
+    textIcons: colors.textIcons,
+    accent: colors.accent,
+    primaryText: colors.primaryText,
+    secundaryText: colors.secundaryText,
+    divider: colors.divider,
+    background: colors.background
+  },
+  screen: {
+    sm: 768px
+  },
+  layer: {
+    header: 1006,
+    nav: 1005,
+    aside: 1005,
+    main: 1000,
+    footer: 1006,
+    btnFixed: 1007
+  },
+  body: {
+    backgroundColor: colors.background
+  },
+  header: {
+    height: 52px,
+    navColor: colors.lightPrimary,
+    navColorHover: colors.primaryText,
+    navBackgroundColorHover: colors.darkPrimary,
+    navBackgroundColorFocus: colors.darkPrimary,
+    backgroundColor: colors.primary,
+    apps: {
+      navBackgroundColorHover: colors.primary,
+      backgroundColor: colors.lightPrimary,
+    },
+    notifications: {
+      navBackgroundColor: colors.textIcons,
+      navBackgroundColorHover: colors.primary,
+      backgroundColor: colors.lightPrimary
+    }
+  },
+  nav: {
+    width: 250px,
+    menu: {
+      headerSize: 20px,
+      headerColor: colors.secundaryText,
+      navColor: colors.primaryText,
+      navColorHover: colors.darkPrimary,
+      navColorActive: colors.primaryText,
+      navBackgroundColorHover: colors.background
+    },
+    scrollTrack: #fff,
+    scrollThumb: colors.lightPrimary,
+    backgroundColor: #fff
+  },
+  aside: {
+    width: 300px,
+    backgroundColor: #fff
+  },
+  main: {
+    content: {
+      backgroundColor: transparent
+    }
+  },
+  footer: {
+    height: 52px,
+    padding: 15px,
+    color: colors.secundaryText,
+    fontSize: 18px,
+    navColor: colors.lightPrimary,
+    navColorHover: colors.darkPrimary,
+    backgroundColor: colors.primary
   }
-  notifications: {
-    navBackgroundColor: colors.textIcons
-    navBackgroundColorHover: colors.primary
-    backgroundColor: colors.lightPrimary
-  }
-}
-
-nav = {
-  width: 250px
-  menu: {
-    headerSize: 20px
-    headerColor: colors.secundaryText
-    navColor: colors.primaryText
-    navColorHover: colors.darkPrimary
-    navColorActive: colors.primaryText
-    navBackgroundColorHover: colors.background
-  }
-  scrollTrack: #fff
-  scrollThumb: colors.lightPrimary
-  backgroundColor: #fff
-}
-
-aside = {
-  width: 300px
-  backgroundColor: #fff
-}
-
-
-main = {
-  content: {
-    backgroundColor: transparent
-  }
-}
-
-footer = {
-  height: 52px
-  padding: 15px
-  color: colors.secundaryText
-  fontSize: 18px
-  navColor: colors.lightPrimary
-  navColorHover: colors.darkPrimary
-  backgroundColor: colors.primary
 }

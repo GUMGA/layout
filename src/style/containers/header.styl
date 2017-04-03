@@ -1,7 +1,7 @@
 @import '../config/variables'
 
 .gumga-layout .gl-header
-  z-index: layer.header
+  z-index: vars.layer.header
   position: fixed
   top: 0
   right: 0
@@ -10,11 +10,11 @@
 .gumga-layout header > .navbar
   margin-bottom: 0px
   border-radius: 0px
-  background-color: header.backgroundColor
+  background-color: vars.header.backgroundColor
   transition: all 200ms ease-out
   
 .gumga-layout header > .navbar .navbar-brand
-  color: header.navColor
+  color: vars.header.navColor
 
 .gumga-layout header > .navbar .navbar-header button.search
   margin-right: 5px
@@ -42,23 +42,23 @@
 .gumga-layout header > .navbar .navbar-form.search .form-control
   width: 100%
   box-shadow: none
-  color: header.searchColor
+  color: vars.header.searchColor
   &::placeholder
-    color: header.searchPlaceholderColor
+    color: vars.header.searchPlaceholderColor
 
 .gumga-layout header > .navbar .nav > li > a
-  color: header.navColor
+  color: vars.header.navColor
   
 .gumga-layout header > .navbar .nav > li > a:focus,
 .gumga-layout header > .navbar .nav > li > a:hover
-  color: header.navColorHover
-  background-color: header.navBackgroundColorHover
+  color: vars.header.navColorHover
+  background-color: vars.header.navBackgroundColorHover
 
 .gumga-layout header > .navbar .nav .open > a,
 .gumga-layout header > .navbar .nav .open > a:hover,
 .gumga-layout header > .navbar .nav .open > a:focus
-    color: header.navColorHover
-    background-color: header.navBackgroundColorFocus
+    color: vars.header.navColorHover
+    background-color: vars.header.navBackgroundColorFocus
     border-color: transparent
   
 .gumga-layout header > .navbar .nav.organizations > li,
@@ -75,7 +75,7 @@
   padding-bottom: 6px
 
 .gumga-layout header > .navbar .nav.apps .dropdown-menu
-  background-color: header.apps.backgroundColor
+  background-color: vars.header.apps.backgroundColor
   
 .gumga-layout header > .navbar .nav.apps .dropdown-menu > .apps-icons
   padding: 6px
@@ -87,7 +87,7 @@
   border-radius: 6px
   border-top: 0
   &:hover
-    background-color: header.apps.navBackgroundColorHover
+    background-color: vars.header.apps.navBackgroundColorHover
 
 
 .gumga-layout header > .navbar .nav.organizations > li .form-group
@@ -97,10 +97,10 @@
   width: 300px
 
 .gumga-layout header > .navbar .nav.notifications .media
-  background-color: header.notifications.navBackgroundColor
+  background-color: vars.header.notifications.navBackgroundColor
   border-radius: 4px
   &:hover
-    background-color: header.notifications.navBackgroundColorHover
+    background-color: vars.header.notifications.navBackgroundColorHover
     
 .gumga-layout header > .navbar .nav.notifications .media .media-object
   width: 60px
@@ -111,7 +111,7 @@
 .gumga-layout header > .navbar .nav.notifications ul.dropdown-menu
   font-size: 1.6rem
   padding: 10px
-  background-color: header.notifications.backgroundColor
+  background-color: vars.header.notifications.backgroundColor
 
 .gumga-layout header > .navbar .nav.notifications ul.dropdown-menu > li
   margin-bottom: 5px
