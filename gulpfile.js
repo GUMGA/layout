@@ -87,7 +87,7 @@ gulp.task('bundle-css-production', function () {
 
 gulp.task('bundle', ['bundle-js', 'bundle-css'])
 
-gulp.task('release', ['bundle-js-production', 'bundle-css-production'])
+gulp.task('release', ['bundle-css','bundle-js-production', 'bundle-css-production'])
 
 
 gulp.task('export', build)

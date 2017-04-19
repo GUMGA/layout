@@ -180,43 +180,40 @@ var Component = {
     placeholder: '@?',
     onUpdate: "&?"
   },
-  template: '\n    <div class="dropdown gmd">\n      <label class="control-label floating-dropdown" ng-show="$ctrl.selected" data-ng-bind="$ctrl.placeholder"></label>\n      <button class="btn btn-default gmd dropdown-toggle gmd-select-button"\n              type="button"\n              id="gmdSelect"\n              data-toggle="dropdown"\n              aria-haspopup="true"\n              aria-expanded="true">\n        <span class="item-select" data-ng-show="$ctrl.selected" data-ng-bind="$ctrl.selected"></span>\n        <span data-ng-bind="$ctrl.placeholder" data-ng-hide="$ctrl.selected" class="item-select placeholder"></span>\n        <span class="caret"></span>\n      </button>\n      <ul class="dropdown-menu" aria-labelledby="gmdSelect">\n        <li data-ng-click="$ctrl.clear()" ng-if="$ctrl.unselect">\n          <a data-ng-class="{active: false}">{{$ctrl.unselect}}</a>\n        </li>\n        <li data-ng-repeat="option in $ctrl.options">\n          <a class="select-option" data-ng-click="$ctrl.select(option)" data-ng-bind="option[$ctrl.option] || option" data-ng-class="{active: $ctrl.isActive(option)}"></a>\n        </li>\n      </ul>\n    </div>\n  ',
+  template: '\n  <div class="dropdown gmd">\n     <label class="control-label floating-dropdown" ng-show="$ctrl.selected" data-ng-bind="$ctrl.placeholder"></label>\n     <button class="btn btn-default gmd dropdown-toggle gmd-select-button"\n             type="button"\n             id="gmdSelect"\n             data-toggle="dropdown"\n             aria-haspopup="true"\n             aria-expanded="true">\n       <span class="item-select" data-ng-show="$ctrl.selected" data-ng-bind="$ctrl.selected"></span>\n       <span data-ng-bind="$ctrl.placeholder" data-ng-hide="$ctrl.selected" class="item-select placeholder"></span>\n       <span class="caret"></span>\n     </button>\n     <ul class="dropdown-menu" aria-labelledby="gmdSelect">\n       <li data-ng-click="$ctrl.clear()" ng-if="$ctrl.unselect">\n         <a data-ng-class="{active: false}">{{$ctrl.unselect}}</a>\n       </li>\n       <li data-ng-repeat="option in $ctrl.options">\n         <a class="select-option" data-ng-click="$ctrl.select(option)" data-ng-bind="option[$ctrl.option] || option" data-ng-class="{active: $ctrl.isActive(option)}"></a>\n       </li>\n     </ul>\n     <div class="dropdown-menu gmd" aria-labelledby="gmdSelect" ng-transclude></div>\n   </div>\n  ',
   controller: ['$scope', '$attrs', '$timeout', '$element', function ($scope, $attrs, $timeout, $element) {
     var ctrl = this,
         ngModelCtrl = $element.controller('ngModel');
 
-    var validate = function validate(input) {
-      var valid = ngModelCtrl.$isEmpty(input);
-      ngModelCtrl.$setValidity('required', valid);
-      return input;
-    };
-    ngModelCtrl.$parsers.unshift(validate);
-    ngModelCtrl.$formatters.push(validate);
-
-    ctrl.selected = ctrl.ngModel;
-
-    $scope.$parent.$watch($attrs.ngModel, function (val, oldVal) {
-      if (val != undefined) {
-        ctrl.selected = val[ctrl.option] || val;
-        ngModelCtrl.$setTouched();
-      }
-    });
-
-    ctrl.isActive = function (option) {
-      return ctrl.selected == (option[ctrl.option] || option);
-    };
-
+    var options = ctrl.options = [];
     ctrl.select = function (option) {
-      ctrl.selected = option[ctrl.option] || option;
-      ctrl.ngModel = ctrl.value ? option[ctrl.value] : option;
-      if (ctrl.onUpdate) ctrl.onUpdate({ option: option });
-      ngModelCtrl.$setTouched();
+      angular.forEach(options, function (option) {
+        option.selected = false;
+      });
+      option.selected = true;
+      ctrl.ngModel = option.ngValue;
+      ctrl.selected = option.ngLabel;
+    };
+    ctrl.addOption = function (option) {
+      options.push(option);
     };
 
-    ctrl.clear = function () {
-      ctrl.ngModel = undefined;
-      ctrl.selected = undefined;
+    var setSelected = function setSelected(value) {
+      angular.forEach(options, function (option) {
+        if (option.ngValue.$$hashKey) {
+          delete option.ngValue.$$hashKey;
+        }
+        if (angular.equals(value, option.ngValue)) {
+          ctrl.select(option);
+        }
+      });
     };
+    $timeout(function () {
+      setSelected(ctrl.ngModel);
+    }, 500);
+    $scope.$parent.$watch($attrs.ngModel, function (val, oldVal) {
+      setSelected(val);
+    });
   }]
 };
 
@@ -238,7 +235,7 @@ var Component = {
     ngValue: '=',
     ngLabel: '='
   },
-  template: '\n    <a data-ng-click="$ctrl.select($ctrl.ngValue, $ctrl.ngLabel)" ng-class="{active: $ctrl.selected}" ng-transclude></a>\n  ',
+  template: '\n    <a class="select-option" data-ng-click="$ctrl.select($ctrl.ngValue, $ctrl.ngLabel)" ng-class="{active: $ctrl.selected}" ng-transclude></a>\n  ',
   controller: ['$scope', '$attrs', '$timeout', '$element', '$transclude', function ($scope, $attrs, $timeout, $element, $transclude) {
     var _this = this;
 
