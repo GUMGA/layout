@@ -64,9 +64,12 @@ let Component = {
     $timeout(() => {
       setSelected(ctrl.ngModel)
     }, 500)
-    $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
-      setSelected(val)
-    })
+    ctrl.$doCheck = () => {
+      if (ctrl.options.length > 0) setSelected(ctrl.ngModel)
+    }
+    // $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
+    //   ctrl.setSelected(val)
+    // })
   }]
 }
 
