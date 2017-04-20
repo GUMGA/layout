@@ -28,7 +28,23 @@
         "label": "Editar",
         "state": "user.edit",
         "icon": "edit",
-        "key": "CRUD-ADMIN"
+        "key": "CRUD-ADMIN",
+        "children": [
+          {
+            "type": "item",
+            "label": "Editar novo",
+            "state": "user.new",
+            "icon": "add",
+            "key": "CRUD-USER"
+          },
+          {
+            "type": "item",
+            "label": "Editar o editar",
+            "state": "user.edit",
+            "icon": "edit",
+            "key": "CRUD-ADMIN"
+          }
+        ]
       }
     ]
   },
@@ -36,7 +52,24 @@
     "type": "item",
     "label": "Produtos",
     "state": "welcome",
-    "key": "CRUD-ADMIN"
+    "key": "CRUD-ADMIN",
+    "icon": "group",
+    "children": [
+      {
+        "type": "item",
+        "label": "Criar novo",
+        "state": "user.new",
+        "icon": "add",
+        "key": "CRUD-USER"
+      },
+      {
+        "type": "item",
+        "label": "Editar",
+        "state": "user.edit",
+        "icon": "edit",
+        "key": "CRUD-ADMIN"
+      }
+    ]
   },
   {
     "type": "separator"

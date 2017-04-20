@@ -861,7 +861,9 @@ $http.get('assets/data/keys.json')
             <img src="images/logo-gumga-studio.png" alt="">
           </figure>
         </header>
-        <gl-menu menu="menu" keys="keys"></gl-menu>
+        <input type="text" ng-model="menuSearch" class="form-control gmd" placeholder="Busca...">
+        <div class="bar"></div>
+        <gl-menu menu="menu" keys="keys" search="menuSearch"></gl-menu>
       </nav>
       <aside class="gl-aside">
         <h3>Aside</h3>
