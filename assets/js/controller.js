@@ -60,6 +60,9 @@ angular
     }
 
     $scope.example = {select:null}
+    $timeout(function() {
+      $scope.example.text = 'Gui Seek'
+    }, 2000)
 
     // $scope.example.select = {name: 'Mateus', id: 3};
     // $scope.radio = 'Feminino';
