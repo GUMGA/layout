@@ -51,18 +51,12 @@ var Component = {
         target.classList.remove('active');
       }
     };
+    ctrl.$doCheck = function () {
+      if (input && input[0]) changeActive(input[0]);
+    };
     ctrl.$postLink = function () {
       input = angular.element($element.find('input'));
       model = input.attr('ng-model') || input.attr('data-ng-model');
-      $timeout(function () {
-        $scope.$parent.$watch(model, function (val) {
-          if (val != undefined) input[0].value = val;
-          changeActive(input[0]);
-        });
-      });
-      input.bind('blur', function (e) {
-        changeActive(e.target);
-      });
     };
   }]
 };
@@ -78,18 +72,34 @@ Object.defineProperty(exports, "__esModule", {
 var Component = {
   bindings: {
     menu: '<',
-    keys: '<'
+    keys: '<',
+    search: '<?'
   },
-  template: '\n    <ul>\n      <li data-ng-repeat="item in $ctrl.menu" data-ng-show="$ctrl.allow(item)" data-ng-class="{header: item.type == \'header\', divider: item.type == \'separator\'}">\n        <a ng-if="item.type != \'separator\'" ui-sref="{{item.state}}">\n          <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n          <span ng-bind="item.label"></span>\n        </a>\n        <gl-menu data-ng-if="item.children.length > 0" menu="item.children" keys="$ctrl.keys"></gl-menu>\n      </li>\n    </ul>\n  ',
+  template: '\n    <ul>\n      <li class="slide-in-right" data-ng-show="$ctrl.previous.length > 0" data-ng-click="$ctrl.prev()">\n        <a>\n          <i class="material-icons">\n            keyboard_arrow_left\n          </i>\n          Voltar\n        </a>\n      </li>\n      <li data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search" data-ng-show="$ctrl.allow(item)" data-ng-class="[$ctrl.slide, {header: item.type == \'header\', divider: item.type == \'separator\'}]">\n        <a ng-if="item.type != \'separator\'" ui-sref="{{item.state}}" ng-click="$ctrl.next(item)">\n          <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n          <span ng-bind="item.label"></span>\n          <i data-ng-if="item.children" class="material-icons pull-right">\n            keyboard_arrow_right\n          </i>\n        </a>\n      </li>\n    </ul>\n  ',
   controller: function controller() {
     var ctrl = this;
     ctrl.keys = ctrl.keys || [];
+    ctrl.previous = [];
 
+    ctrl.prev = function () {
+      ctrl.slide = 'slide-in-left';
+      ctrl.menu = ctrl.previous.pop();
+    };
+    ctrl.next = function (item) {
+      if (item.children) {
+        ctrl.slide = 'slide-in-right';
+        ctrl.previous.push(ctrl.menu);
+        ctrl.menu = item.children;
+      }
+    };
     ctrl.allow = function (item) {
       if (ctrl.keys.length > 0) {
         if (!item.key) return true;
         return ctrl.keys.indexOf(item.key) > -1;
       }
+    };
+    ctrl.$onInit = function () {
+      ctrl.slide = 'slide-in-left';
     };
   }
 };
@@ -211,9 +221,12 @@ var Component = {
     $timeout(function () {
       setSelected(ctrl.ngModel);
     }, 500);
-    $scope.$parent.$watch($attrs.ngModel, function (val, oldVal) {
-      setSelected(val);
-    });
+    ctrl.$doCheck = function () {
+      if (ctrl.options.length > 0) setSelected(ctrl.ngModel);
+    };
+    // $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
+    //   ctrl.setSelected(val)
+    // })
   }]
 };
 
@@ -247,27 +260,6 @@ var Component = {
     ctrl.select = function () {
       ctrl.gmdSelectCtrl.select(_this);
     };
-
-    // $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
-    //   if (val != undefined) {
-    //     console.log(ctrl.ngModel)
-    //     // ctrl.addOption(ctrl.ngModel)
-    //   }
-    // })
-    // console.log($transclude)
-    // ,   ngModelCtrl = $element.controller('ngModel')
-
-    // ctrl.isActive = option => {
-    //   let guest = (ctrl.value? option[ctrl.value] : option)
-    //   return ctrl.selected == guest
-    // }
-    // console.log(ctrl.ngModel)
-    // console.log('parent', $scope.$parent)
-    // ctrl.select = (value, label) => ctrl.gmdSelectCtrl.select(value, label)
-    // ctrl.unselect = () => {
-    //   ctrl.ngModel = undefined
-    //   ctrl.selected = undefined
-    // }
   }]
 };
 
