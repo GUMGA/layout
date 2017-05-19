@@ -180,15 +180,15 @@ background    = #F5F5F5
               <div class="panel gmd">
                 <div class="panel-heading">Form</div>
                 <div class="panel-body">
-                  <form name="gmdForm">
+                  <form name="gmdForm" gumga-form="form" novalidate>
                     <div class="row">
                       <div class="col-md-4">
                         <gmd-input>
-                          <input type="text" gumga-error gumga-required class="form-control gmd" ng-model="example.text" id="text" ng-maxlength="10" required>
+                          <input type="text" name="example" class="form-control gmd" ng-model="example.text" id="text" gumga-error gumga-required gumga-min-length="2" gumga-max-length="20">
                           <span class="bar"></span>
                           <label for="text" class="control-label">Nome completo</label>
                         </gmd-input>
-                        {{example.text}}
+                        Data: {{example.text}}
                       </div>
                       <div class="col-md-4">
                         <gmd-input>
@@ -896,5 +896,6 @@ $http.get('assets/data/keys.json')
 
     <script src="assets/js/controller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="node_modules/gumga-form-ng/dist/gumga-form.min.js"></script>
   </body>
 </html>

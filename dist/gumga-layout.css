@@ -281,6 +281,7 @@ h6 {
 .form-control.gmd {
   display: block;
   width: 100%;
+  padding: 6px 0;
   border: none;
   box-shadow: none;
   border-radius: 0;
@@ -295,7 +296,7 @@ h6 {
   font-weight: normal;
   position: relative;
   pointer-events: none;
-  left: 5px;
+  left: 0px;
   top: -25px;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
@@ -306,7 +307,6 @@ h6 {
   content: attr(value);
   top: -50px;
   font-size: 14px;
-  color: #009688;
 }
 .bar {
   position: relative;
@@ -342,8 +342,17 @@ h6 {
 .form-control.gmd.ng-invalid.ng-touched {
   border-color: #d9534f;
 }
-.form-control.gmd.ng-invalid.ng-touched ~ label {
+.form-control.gmd + .list-errors {
+  padding: 4px 0 0 0;
+  position: absolute;
+  background-color: #fff;
+}
+.form-control.gmd + .list-errors > li {
   color: #d9534f;
+  list-style: none;
+}
+.form-control.gmd + .list-errors > li > label {
+  font-weight: 400;
 }
 .checkbox label,
 .radio label {
@@ -432,6 +441,13 @@ h6 {
 .radio input[type="radio"].gmd:checked + .box:before {
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);
+}
+gmd-select label {
+  color: #999;
+}
+gmd-select .btn.gmd {
+  padding: 6px 0;
+  color: #555;
 }
 .nav-tabs.gmd > li > a {
   border-radius: 0;
