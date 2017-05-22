@@ -23,15 +23,15 @@ let Component = {
        <span data-ng-bind="$ctrl.placeholder" data-ng-hide="$ctrl.selected" class="item-select placeholder"></span>
        <span class="caret"></span>
      </button>
-     <ul class="dropdown-menu" aria-labelledby="gmdSelect">
+     <ul class="dropdown-menu" aria-labelledby="gmdSelect" ng-show="$ctrl.option">
        <li data-ng-click="$ctrl.clear()" ng-if="$ctrl.unselect">
          <a data-ng-class="{active: false}">{{$ctrl.unselect}}</a>
        </li>
-       <li data-ng-repeat="option in $ctrl.options">
+       <li data-ng-repeat="option in $ctrl.options track by $index">
          <a class="select-option" data-ng-click="$ctrl.select(option)" data-ng-bind="option[$ctrl.option] || option" data-ng-class="{active: $ctrl.isActive(option)}"></a>
        </li>
      </ul>
-     <div class="dropdown-menu gmd" aria-labelledby="gmdSelect" ng-transclude></div>
+     <ul class="dropdown-menu gmd" aria-labelledby="gmdSelect" ng-show="!$ctrl.option" ng-transclude></ul>
    </div>
   `,
   controller: ['$scope','$attrs','$timeout','$element', function($scope,$attrs,$timeout,$element) {
