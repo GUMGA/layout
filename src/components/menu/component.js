@@ -1,11 +1,17 @@
 let Component = {
   bindings: {
     menu: '<',
-    keys: '<'
+    keys: '<',
+    iconFirstLevel: '@',
+    textFirstLevel: '@'
   },
   template: `
     <input type="text" data-ng-model="$ctrl.search" class="form-control gmd" placeholder="Busca...">
     <div class="bar"></div>
+    <button class="btn btn-default btn-block gmd" data-ng-click="$ctrl.goBackToFirstLevel()" data-ng-disabled="!$ctrl.previous.length" type="button">
+      <i data-ng-class="[$ctrl.iconFirstLevel]"></i>
+      <span data-ng-bind="$ctrl.textFirstLevel"></span>
+    </button>
     <ul data-ng-class="'level'.concat($ctrl.back.length)">
       <li class="goback slide-in-right" data-ng-show="$ctrl.previous.length > 0" data-ng-click="$ctrl.prev()">
         <a>
@@ -29,6 +35,7 @@ let Component = {
   controller: function() {
     let ctrl = this
     ctrl.keys = ctrl.keys || []
+    ctrl.iconFirstLevel = ctrl.iconFirstLevel || 'glyphicon glyphicon-home'
     ctrl.previous = []
     ctrl.back = []
 
@@ -44,6 +51,12 @@ let Component = {
         ctrl.menu = item.children
         ctrl.back.push(item)
       }
+    }
+    ctrl.goBackToFirstLevel = () => {
+      ctrl.slide = 'slide-in-left'
+      ctrl.menu = ctrl.previous[0]
+      ctrl.previous = []
+      ctrl.back = []      
     }
     ctrl.allow = item => {
       if (ctrl.keys.length > 0) {

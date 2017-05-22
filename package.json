@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Gumga Layout",
   "main": "index.js",
   "scripts": {
