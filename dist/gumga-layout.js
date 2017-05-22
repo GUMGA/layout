@@ -51,18 +51,12 @@ var Component = {
         target.classList.remove('active');
       }
     };
+    ctrl.$doCheck = function () {
+      if (input && input[0]) changeActive(input[0]);
+    };
     ctrl.$postLink = function () {
       input = angular.element($element.find('input'));
       model = input.attr('ng-model') || input.attr('data-ng-model');
-      $timeout(function () {
-        $scope.$parent.$watch(model, function (val) {
-          if (val != undefined) input[0].value = val;
-          changeActive(input[0]);
-        });
-      });
-      input.bind('blur', function (e) {
-        changeActive(e.target);
-      });
     };
   }]
 };
@@ -80,16 +74,34 @@ var Component = {
     menu: '<',
     keys: '<'
   },
-  template: '\n    <ul>\n      <li data-ng-repeat="item in $ctrl.menu" data-ng-show="$ctrl.allow(item)" data-ng-class="{header: item.type == \'header\', divider: item.type == \'separator\'}">\n        <a ng-if="item.type != \'separator\'" ui-sref="{{item.state}}">\n          <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n          <span ng-bind="item.label"></span>\n        </a>\n        <gl-menu data-ng-if="item.children.length > 0" menu="item.children" keys="$ctrl.keys"></gl-menu>\n      </li>\n    </ul>\n  ',
+  template: '\n    <input type="text" data-ng-model="$ctrl.search" class="form-control gmd" placeholder="Busca...">\n    <div class="bar"></div>\n    <ul data-ng-class="\'level\'.concat($ctrl.back.length)">\n      <li class="goback slide-in-right" data-ng-show="$ctrl.previous.length > 0" data-ng-click="$ctrl.prev()">\n        <a>\n          <i class="material-icons">\n            keyboard_arrow_left\n          </i>\n          <span data-ng-bind="$ctrl.back[$ctrl.back.length - 1].label"></span>\n        </a>\n      </li>\n      <li data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search"\n          data-ng-show="$ctrl.allow(item)"\n          data-ng-class="[$ctrl.slide, {header: item.type == \'header\', divider: item.type == \'separator\'}]">\n\n          <a ng-if="item.type != \'separator\' && item.state" ui-sref="{{item.state}}" ng-click="$ctrl.next(item)">\n            <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n            <span ng-bind="item.label"></span>\n            <i data-ng-if="item.children" class="material-icons pull-right">\n              keyboard_arrow_right\n            </i>\n          </a>\n\n          <a ng-if="item.type != \'separator\' && !item.state" ng-click="$ctrl.next(item)">\n            <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n            <span ng-bind="item.label"></span>\n            <i data-ng-if="item.children" class="material-icons pull-right">\n              keyboard_arrow_right\n            </i>\n          </a>\n\n      </li>\n    </ul>\n  ',
   controller: function controller() {
     var ctrl = this;
     ctrl.keys = ctrl.keys || [];
+    ctrl.previous = [];
+    ctrl.back = [];
 
+    ctrl.prev = function () {
+      ctrl.slide = 'slide-in-left';
+      ctrl.menu = ctrl.previous.pop();
+      ctrl.back.pop();
+    };
+    ctrl.next = function (item) {
+      if (item.children) {
+        ctrl.slide = 'slide-in-right';
+        ctrl.previous.push(ctrl.menu);
+        ctrl.menu = item.children;
+        ctrl.back.push(item);
+      }
+    };
     ctrl.allow = function (item) {
       if (ctrl.keys.length > 0) {
         if (!item.key) return true;
         return ctrl.keys.indexOf(item.key) > -1;
       }
+    };
+    ctrl.$onInit = function () {
+      ctrl.slide = 'slide-in-left';
     };
   }
 };
