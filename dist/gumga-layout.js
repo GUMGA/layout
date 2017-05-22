@@ -72,24 +72,26 @@ Object.defineProperty(exports, "__esModule", {
 var Component = {
   bindings: {
     menu: '<',
-    keys: '<',
-    search: '<?'
+    keys: '<'
   },
-  template: '\n    <ul>\n      <li class="slide-in-right" data-ng-show="$ctrl.previous.length > 0" data-ng-click="$ctrl.prev()">\n        <a>\n          <i class="material-icons">\n            keyboard_arrow_left\n          </i>\n          Voltar\n        </a>\n      </li>\n      <li data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search" data-ng-show="$ctrl.allow(item)" data-ng-class="[$ctrl.slide, {header: item.type == \'header\', divider: item.type == \'separator\'}]">\n        <a ng-if="item.type != \'separator\'" ui-sref="{{item.state}}" ng-click="$ctrl.next(item)">\n          <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n          <span ng-bind="item.label"></span>\n          <i data-ng-if="item.children" class="material-icons pull-right">\n            keyboard_arrow_right\n          </i>\n        </a>\n      </li>\n    </ul>\n  ',
+  template: '\n    <input type="text" data-ng-model="$ctrl.search" class="form-control gmd" placeholder="Busca...">\n    <div class="bar"></div>\n    <ul data-ng-class="\'level\'.concat($ctrl.back.length)">\n      <li class="goback slide-in-right" data-ng-show="$ctrl.previous.length > 0" data-ng-click="$ctrl.prev()">\n        <a>\n          <i class="material-icons">\n            keyboard_arrow_left\n          </i>\n          <span data-ng-bind="$ctrl.back[$ctrl.back.length - 1].label"></span>\n        </a>\n      </li>\n      <li data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search"\n          data-ng-show="$ctrl.allow(item)"\n          data-ng-class="[$ctrl.slide, {header: item.type == \'header\', divider: item.type == \'separator\'}]">\n\n          <a ng-if="item.type != \'separator\' && item.state" ui-sref="{{item.state}}" ng-click="$ctrl.next(item)">\n            <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n            <span ng-bind="item.label"></span>\n            <i data-ng-if="item.children" class="material-icons pull-right">\n              keyboard_arrow_right\n            </i>\n          </a>\n\n          <a ng-if="item.type != \'separator\' && !item.state" ng-click="$ctrl.next(item)">\n            <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>\n            <span ng-bind="item.label"></span>\n            <i data-ng-if="item.children" class="material-icons pull-right">\n              keyboard_arrow_right\n            </i>\n          </a>\n\n      </li>\n    </ul>\n  ',
   controller: function controller() {
     var ctrl = this;
     ctrl.keys = ctrl.keys || [];
     ctrl.previous = [];
+    ctrl.back = [];
 
     ctrl.prev = function () {
       ctrl.slide = 'slide-in-left';
       ctrl.menu = ctrl.previous.pop();
+      ctrl.back.pop();
     };
     ctrl.next = function (item) {
       if (item.children) {
         ctrl.slide = 'slide-in-right';
         ctrl.previous.push(ctrl.menu);
         ctrl.menu = item.children;
+        ctrl.back.push(item);
       }
     };
     ctrl.allow = function (item) {

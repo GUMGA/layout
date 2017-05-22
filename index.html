@@ -184,7 +184,7 @@ background    = #F5F5F5
                     <div class="row">
                       <div class="col-md-4">
                         <gmd-input>
-                          <input type="text" class="form-control gmd" ng-model="example.text" id="text" ng-maxlength="10" required>
+                          <input type="text" gumga-error gumga-required class="form-control gmd" ng-model="example.text" id="text" ng-maxlength="10" required>
                           <span class="bar"></span>
                           <label for="text" class="control-label">Nome completo</label>
                         </gmd-input>
@@ -861,9 +861,9 @@ $http.get('assets/data/keys.json')
             <img src="images/logo-gumga-studio.png" alt="">
           </figure>
         </header>
-        <input type="text" ng-model="menuSearch" class="form-control gmd" placeholder="Busca...">
-        <div class="bar"></div>
-        <gl-menu menu="menu" keys="keys" search="menuSearch"></gl-menu>
+        <!--<input type="text" ng-model="menuSearch" class="form-control gmd" placeholder="Busca...">
+        <div class="bar"></div>-->
+        <gl-menu menu="menu" keys="keys"></gl-menu>
       </nav>
       <aside class="gl-aside">
         <h3>Aside</h3>
@@ -892,7 +892,7 @@ $http.get('assets/data/keys.json')
     <!--<script src="bower_components/angular/angular.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
-    <script src="dist/gumga-layout.min.js"></script>
+    <script src="dist/gumga-layout.js"></script>
 
     <script src="assets/js/controller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
