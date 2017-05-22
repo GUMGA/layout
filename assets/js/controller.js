@@ -40,6 +40,7 @@ angular
         content: 'Alerta de notificação!'
       }
     ]
+
     $scope.onView = function(event, item) {
       event.stopPropagation()
       console.log(event)
@@ -52,6 +53,13 @@ angular
       {name: 'Mateus', id: 3},
       {name: 'Mateus Miranda de Almeida de jesus legal e alguma coisa a mais', id: 4}
     ]
+
+    $timeout(function(){
+      $scope.options = [
+        {name: 'Gustavo joaquim', id: 1},
+        {name: 'Augusto Carniel', id: 2}
+      ]
+    }, 5000)
 
     $scope.optionss = ['Guilherme','Felipe','Mateus']
 
