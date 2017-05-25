@@ -242,7 +242,7 @@ background    = #F5F5F5
                       </div>
                     </div>
                   </form>
-                  <pre>&lt;div class="row"&gt;
+                  <pre ng-non-bindable>&lt;div class="row"&gt;
   &lt;div class="col-md-4"&gt;
     &lt;gmd-input&gt;
       &lt;input type="text" class="form-control gmd" ng-model="example.text" id="text" ng-maxlength="10" required&gt;
@@ -258,7 +258,11 @@ background    = #F5F5F5
     &lt;/gmd-input&gt;
   &lt;/div&gt;
   &lt;div class="col-md-4"&gt;
-    &lt;gmd-select ng-model="example.select" on-update="change(option)" options="optionss" option="name" placeholder="- Selecione uma pessoa -"&gt;&lt;/gmd-select&gt;
+  &lt;gmd-select ng-model="example.select" placeholder="Selecione"&gt;
+    &lt;gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name"&gt;
+      {{option.name}}
+    &lt;/gmd-option&gt;
+  &lt;/gmd-select&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="row"&gt;
