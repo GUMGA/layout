@@ -1,10 +1,6 @@
 {
   "name": "gumga-layout",
-<<<<<<< HEAD
   "version": "1.6.0",
-=======
-  "version": "1.4.3",
->>>>>>> master
   "homepage": "https://github.com/GUMGA/layout",
   "authors": [
     "Gui Seek <guiseek@gmail.com>"
