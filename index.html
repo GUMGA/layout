@@ -178,7 +178,10 @@ background    = #F5F5F5
             </div>
             <div class="col-md-8 col-md-offset-2">
               <div class="panel gmd">
-                <div class="panel-heading">Form</div>
+                <div class="panel-heading">
+                  Form
+                  <button ng-click="disabledSelect=!disabledSelect" class="btn btn-primary pull-right">{{disabledSelect ? 'Habilitar' : 'Desabilitar'}}</button>
+                </div>
                 <div class="panel-body">
                   <form name="gmdForm" gumga-form="form" novalidate>
                     <div class="row">
@@ -199,8 +202,9 @@ background    = #F5F5F5
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" placeholder="Selecione">
-                          <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">                            {{option.name}}
+                        <gmd-select ng-model="example.select" ng-disabled="disabledSelect" placeholder="Selecione">
+                          <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">
+                            {{option.name}}
                           </gmd-option>
                         </gmd-select>
                         <br>
@@ -892,7 +896,7 @@ $http.get('assets/data/keys.json')
     <!--<script src="bower_components/angular/angular.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
-    <script src="dist/gumga-layout.min.js"></script>
+    <script src="dist/gumga-layout.js"></script>
 
     <script src="assets/js/controller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
