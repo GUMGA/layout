@@ -3,6 +3,7 @@ let Component = {
   transclude: true,
   bindings: {
     ngModel: '=',
+    ngDisabled: '=?',
     unselect: '@?',
     options: '<',
     option: '@',
@@ -17,6 +18,7 @@ let Component = {
              type="button"
              id="gmdSelect"
              data-toggle="dropdown"
+             ng-disabled="$ctrl.ngDisabled"
              aria-haspopup="true"
              aria-expanded="true">
        <span class="item-select" data-ng-show="$ctrl.selected" data-ng-bind="$ctrl.selected"></span>
