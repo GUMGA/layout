@@ -20,27 +20,6 @@ let Component = {
     ctrl.select = () => {
       ctrl.gmdSelectCtrl.select(this)
     }
-   
-    // $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
-    //   if (val != undefined) {
-    //     console.log(ctrl.ngModel)
-    //     // ctrl.addOption(ctrl.ngModel)
-    //   }
-    // })
-    // console.log($transclude)
-    // ,   ngModelCtrl = $element.controller('ngModel')
-    
-    // ctrl.isActive = option => {
-    //   let guest = (ctrl.value? option[ctrl.value] : option)
-    //   return ctrl.selected == guest
-    // }
-    // console.log(ctrl.ngModel)
-    // console.log('parent', $scope.$parent)
-    // ctrl.select = (value, label) => ctrl.gmdSelectCtrl.select(value, label)
-    // ctrl.unselect = () => {
-    //   ctrl.ngModel = undefined
-    //   ctrl.selected = undefined
-    // }
   }]
 }
 

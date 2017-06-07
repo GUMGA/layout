@@ -40,6 +40,7 @@ angular
         content: 'Alerta de notificação!'
       }
     ]
+
     $scope.onView = function(event, item) {
       event.stopPropagation()
       console.log(event)
@@ -53,6 +54,13 @@ angular
       {name: 'Mateus Miranda de Almeida de jesus legal e alguma coisa a mais', id: 4}
     ]
 
+    $timeout(function(){
+      $scope.options = [
+        {name: 'Gustavo joaquim', id: 1},
+        {name: 'Augusto Carniel', id: 2}
+      ]
+    }, 5000)
+
     $scope.optionss = ['Guilherme','Felipe','Mateus']
 
     $scope.change = function(option) {
@@ -60,6 +68,9 @@ angular
     }
 
     $scope.example = {select:null}
+    $timeout(function() {
+      $scope.example.text = 'Gui Seek'
+    }, 2000)
 
     // $scope.example.select = {name: 'Mateus', id: 3};
     // $scope.radio = 'Feminino';

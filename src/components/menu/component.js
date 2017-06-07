@@ -21,14 +21,26 @@ let Component = {
           <span data-ng-bind="$ctrl.back[$ctrl.back.length - 1].label"></span>
         </a>
       </li>
-      <li data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search" data-ng-show="$ctrl.allow(item)" data-ng-class="[$ctrl.slide, {header: item.type == 'header', divider: item.type == 'separator'}]">
-        <a ng-if="item.type != 'separator'" ui-sref="{{item.state}}" ng-click="$ctrl.next(item)">
-          <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>
-          <span ng-bind="item.label"></span>
-          <i data-ng-if="item.children" class="material-icons pull-right">
-            keyboard_arrow_right
-          </i>
-        </a>
+      <li data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search"
+          data-ng-show="$ctrl.allow(item)"
+          data-ng-class="[$ctrl.slide, {header: item.type == 'header', divider: item.type == 'separator'}]">
+
+          <a ng-if="item.type != 'separator' && item.state" ui-sref="{{item.state}}" ng-click="$ctrl.next(item)">
+            <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>
+            <span ng-bind="item.label"></span>
+            <i data-ng-if="item.children" class="material-icons pull-right">
+              keyboard_arrow_right
+            </i>
+          </a>
+
+          <a ng-if="item.type != 'separator' && !item.state" ng-click="$ctrl.next(item)">
+            <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>
+            <span ng-bind="item.label"></span>
+            <i data-ng-if="item.children" class="material-icons pull-right">
+              keyboard_arrow_right
+            </i>
+          </a>
+
       </li>
     </ul>
   `,

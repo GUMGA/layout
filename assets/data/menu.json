@@ -6,7 +6,6 @@
   {
     "type": "item",
     "label": "Home",
-    "state": "welcome",
     "icon": "home",
     "key": "CRUD-BASE"
   },
