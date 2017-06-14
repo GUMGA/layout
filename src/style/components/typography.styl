@@ -5,35 +5,34 @@ apply(props)
      {prop[0]} prop[1]
 
 if fonts.url
-  @import 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,700,900';
+  @import 'fonts';
 
 if fonts.family
   body
     font-size: fonts.size
     if fonts.family
       font-family: "Roboto", sans-serif
-    
+
 if fonts.h1
   h1
     apply(fonts.h1)
-    
+
 if fonts.h2
   h2
     apply(fonts.h2)
-    
+
 if fonts.h3
   h3
     apply(fonts.h3)
-    
+
 if fonts.h4
   h4
     apply(fonts.h4)
-    
+
 if fonts.h5
   h5
     apply(fonts.h5)
-    
+
 if fonts.h6
   h6
     apply(fonts.h6)
-    

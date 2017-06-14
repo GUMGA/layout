@@ -8,7 +8,6 @@ var gutil = require('gulp-util');
 var chalk = require('chalk');
 var stylus = require('gulp-stylus');
 var rename = require('gulp-rename');
-var data = require('gulp-data');
 var minify = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
@@ -24,9 +23,9 @@ var buffer = require('vinyl-buffer');
 var merge = require('utils-merge');
 var getInstalledPath = require('get-installed-path');
 var replace = require("replace");
-var stylusVars = require('gulp-stylus-vars');
 
 process.title = 'gumga-layout';
+
 var basePath = './', colors = {};
 
 program
@@ -39,181 +38,217 @@ program
  .option('-s --secundaryText <secundaryText>', 'Color secundaryText', '#757575')
  .option('-d --divider <divider>', 'Color divider', '#EAEAEA')
  .option('-b --background <background>', 'Color background', '#F5F5F5')
+ .option('-g --generate <generate>', 'Generate Structure', '')
  .parse(process.argv);
 
- console.log("\nSua paleta ficou assim: " + "\n" +
-   "darkPrimary  : "+program.darkPrimary  + "\n" +
-   "primary      : "+program.primary      + "\n" +
-   "lightPrimary : "+program.lightPrimary + "\n" +
-   "textIcons    : "+program.textIcons    + "\n" +
-   "accent       : "+program.accent       + "\n" +
-   "primaryText  : "+program.primaryText  + "\n" +
-   "secundaryText: "+program.secundaryText+ "\n" +
-   "divider      : "+program.divider      + "\n" +
-   "background   : "+program.background   + "\n"
-  )
+ createLayoutFiles();
 
- co(function *() {
-   var confirm = yield prompt('Confirmar? (S|N): ');
-   if(!confirm.toLowerCase()||confirm.toLowerCase()=='s'){
-     generateGumgaLayout(program.darkPrimary,
-       program.primary,
-       program.lightPrimary,
-       program.textIcons,
-       program.accent,
-       program.primaryText,
-       program.secundaryText,
-       program.divider,
-       program.background);
-   }else{
-     process.exit(0);
-   }
- });
-
- gulp.task('bundle-css', function () {
-   bundle_css()
- })
-
- function bundle_css() {
-   return gulp.src([basePath+'/src/style/containers/index.styl'])
-  //  .pipe(stylusVars(colors, { verbose: false }))
-   .pipe(stylus())
-   .pipe(concat('gumga-layout.css'))
-   .pipe(gulp.dest('./gumga-layout'))
- }
-
- gulp.task('bundle-css-production', function () {
-   return gulp.src([basePath+'/gumga-layout/gumga-layout.css'])
-   .pipe(rename('gumga-layout.min.css'))
-   .pipe(minify())
-   .pipe(gulp.dest('./gumga-layout'))
- })
-
- gulp.task('bundle-js', function () {
-   var bundler = browserify(basePath+'/src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
-
-   return bundle_js(bundler)
- })
-
- gulp.task('bundle-js-production', function () {
-   var bundler = browserify(basePath+'/src/components/index.js').transform(babelify, {/* options */ })
-
-   return bundler.bundle()
-     .on('error', map_error)
-     .pipe(source('app.js'))
-     .pipe(buffer())
-     .pipe(rename('gumga-layout.min.js'))
-     .pipe(uglify())
-     .pipe(gulp.dest('gumga-layout'))
- })
-
- function bundle_js(bundler) {
-   return bundler.bundle()
-     .on('error', map_error)
-     .pipe(source('app.js'))
-     .pipe(buffer())
-     .pipe(gulp.dest('gumga-layout'))
-     .pipe(rename('gumga-layout.min.js'))
-     .pipe(sourcemaps.init({ loadMaps: true }))
-       // capture sourcemaps from transforms
-     .pipe(uglify())
-     .pipe(sourcemaps.write('.'))
-     .pipe(gulp.dest('gumga-layout'))
- }
-
- function map_error(err) {
-   if (err.fileName) {
-     // regular error
-     gutil.log(chalk.red(err.name)
-       + ': '
-       + chalk.yellow(err.fileName.replace(__dirname + '/src/components/', ''))
-       + ': '
-       + 'Line '
-       + chalk.magenta(err.lineNumber)
-       + ' & '
-       + 'Column '
-       + chalk.magenta(err.columnNumber || err.column)
-       + ': '
-       + chalk.blue(err.description))
-   } else {
-     // browserify error..
-     gutil.log(chalk.red(err.name)
-       + ': '
-       + chalk.yellow(err.message))
+ function createLayoutFiles(){
+   if(!program.generate || program.generate == 'css'){
+     console.log("\nSua paleta ficará assim: " + "\n" +
+       "--darkPrimary  : "+program.darkPrimary  + "\n" +
+       "--primary      : "+program.primary      + "\n" +
+       "--lightPrimary : "+program.lightPrimary + "\n" +
+       "--textIcons    : "+program.textIcons    + "\n" +
+       "--accent       : "+program.accent       + "\n" +
+       "--primaryText  : "+program.primaryText  + "\n" +
+       "--secundaryText: "+program.secundaryText+ "\n" +
+       "--divider      : "+program.divider      + "\n" +
+       "--background   : "+program.background   + "\n"
+      )
    }
 
-   this.end()
- }
+   co(function *() {
+     var message = '';
+     if(!program.generate){
+       message = 'Confirmar? (S|N): ';
+     }
+     if(program.generate){
+       message = 'Confirmar criação/atualização do '+program.generate.toUpperCase()+' ? (S|N): ';
+     }
+     var confirm = yield prompt(message);
+     if(!confirm.toLowerCase()||confirm.toLowerCase()=='s'){
+       generateGumgaLayout(program.darkPrimary,
+         program.primary,
+         program.lightPrimary,
+         program.textIcons,
+         program.accent,
+         program.primaryText,
+         program.secundaryText,
+         program.divider,
+         program.background);
+     }else{
+       process.exit(0);
+     }
+   });
 
-
-  gulp.task('bundle', ['bundle-js', 'bundle-css'])
-  gulp.task('release', ['bundle-css', 'bundle-js-production', 'bundle-css-production'])
-
-  var deleteFolderRecursive = function(path) {
-    if( fs.existsSync(path) ) {
-      fs.readdirSync(path).forEach(function(file,index){
-        var curPath = path + "/" + file;
-        if(fs.lstatSync(curPath).isDirectory()) {
-          deleteFolderRecursive(curPath);
-        } else {
-          fs.unlinkSync(curPath);
-        }
-      });
-      fs.rmdirSync(path);
-    }
-  };
-
- var copyRecursiveSync = function(src, dest) {
-    var exists = fs.existsSync(src);
-    var stats = exists && fs.statSync(src);
-    var isDirectory = exists && stats.isDirectory();
-    if (exists && isDirectory) {
-      fs.mkdirSync(dest);
-      fs.readdirSync(src).forEach(function(childItemName) {
-        copyRecursiveSync(path.join(src, childItemName),
-                          path.join(dest, childItemName));
-      });
-    } else {
-      fs.linkSync(src, dest);
-    }
-  };
-
-  function replaceValue(key, value){
-    replace({
-        regex: key,
-        replacement: value,
-        paths: ['./gumga-layout/gumga-layout.css', './gumga-layout/gumga-layout.min.css'],
-        recursive: true,
-        silent: true,
-    });
-  }
-
-  function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
-    replaceValue('darkPrimary_value', darkPrimary);
-    replaceValue('primary_value', primary);
-    replaceValue('lightPrimary_value', lightPrimary);
-    replaceValue('textIcons_value', textIcons);
-    replaceValue('accent_value', accent);
-    replaceValue('primaryText_value', primaryText);
-    replaceValue('divider_value', divider);
-    replaceValue('background_value', background);
-  };
-
- function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
-   deleteFolderRecursive('./gumga-layout');
-
-   getInstalledPath('gumga-layout').then(function(pt){
-     basePath = pt;
-
-     gulp.start('bundle', function(){
-       gulp.start('release', function(){
-         var iconfont = './gumga-layout/iconfont';
-         copyRecursiveSync(basePath + '/assets/iconfont', iconfont);
-         replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
-         gutil.log(chalk.yellow('Criamos uma pasta "gumga-layout" com seu novo layout.'));
-         process.exit(0);
-       });
-     });
+   gulp.task('bundle-css', function () {
+     bundle_css()
    })
+
+   function bundle_css() {
+     return gulp.src([basePath+'/src/style/containers/index.styl'])
+     .pipe(stylus({
+       'include css': true
+     }))
+     .pipe(concat('gumga-layout.css'))
+     .pipe(gulp.dest('./gumga-layout'))
+   }
+
+   gulp.task('bundle-css-production', function () {
+     return gulp.src([basePath+'/gumga-layout/gumga-layout.css'])
+     .pipe(rename('gumga-layout.min.css'))
+     .pipe(minify())
+     .pipe(gulp.dest('./gumga-layout'))
+   })
+
+   gulp.task('bundle-js', function () {
+     var bundler = browserify(basePath+'/src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
+
+     return bundle_js(bundler)
+   })
+
+   gulp.task('bundle-js-production', function () {
+     var bundler = browserify(basePath+'/src/components/index.js').transform(babelify, {/* options */ })
+
+     return bundler.bundle()
+       .on('error', map_error)
+       .pipe(source('app.js'))
+       .pipe(buffer())
+       .pipe(rename('gumga-layout.min.js'))
+       .pipe(uglify())
+       .pipe(gulp.dest('gumga-layout'))
+   })
+
+   function bundle_js(bundler) {
+     return bundler.bundle()
+       .on('error', map_error)
+       .pipe(source('app.js'))
+       .pipe(buffer())
+       .pipe(gulp.dest('gumga-layout'))
+       .pipe(rename('gumga-layout.js'))
+       .pipe(sourcemaps.init({ loadMaps: true }))
+       .pipe(uglify())
+       .pipe(sourcemaps.write('.'))
+       .pipe(gulp.dest('gumga-layout'))
+   }
+
+   function map_error(err) {
+     if (err.fileName) {
+       // regular error
+       gutil.log(chalk.red(err.name)
+         + ': '
+         + chalk.yellow(err.fileName.replace(__dirname + '/src/components/', ''))
+         + ': '
+         + 'Line '
+         + chalk.magenta(err.lineNumber)
+         + ' & '
+         + 'Column '
+         + chalk.magenta(err.columnNumber || err.column)
+         + ': '
+         + chalk.blue(err.description))
+     } else {
+       // browserify error..
+       gutil.log(chalk.red(err.name)
+         + ': '
+         + chalk.yellow(err.message))
+     }
+
+     this.end()
+   }
+
+
+    gulp.task('release-css', ['bundle-css', 'bundle-css-production']);
+    gulp.task('release-js', ['bundle-js', 'bundle-js-production']);
+
+    gulp.task('bundle', ['bundle-js', 'bundle-css'])
+    gulp.task('release', ['bundle-css', 'bundle-js-production', 'bundle-css-production'])
+
+    var deleteFolderRecursive = function(path) {
+      if( fs.existsSync(path) ) {
+        fs.readdirSync(path).forEach(function(file,index){
+          var curPath = path + "/" + file;
+          if(fs.lstatSync(curPath).isDirectory()) {
+            deleteFolderRecursive(curPath);
+          } else {
+            fs.unlinkSync(curPath);
+          }
+        });
+        fs.rmdirSync(path);
+      }
+    };
+
+   var copyRecursiveSync = function(src, dest) {
+      var exists = fs.existsSync(src);
+      var stats = exists && fs.statSync(src);
+      var isDirectory = exists && stats.isDirectory();
+      if (exists && isDirectory) {
+        fs.mkdirSync(dest);
+        fs.readdirSync(src).forEach(function(childItemName) {
+          copyRecursiveSync(path.join(src, childItemName),
+                            path.join(dest, childItemName));
+        });
+      } else {
+        fs.linkSync(src, dest);
+      }
+    };
+
+    function replaceValue(key, value){
+      replace({
+          regex: key,
+          replacement: value,
+          paths: ['./gumga-layout/gumga-layout.css', './gumga-layout/gumga-layout.min.css'],
+          recursive: true,
+          silent: true,
+      });
+    }
+
+    function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
+      replaceValue('darkPrimary_value', darkPrimary);
+      replaceValue('primary_value', primary);
+      replaceValue('lightPrimary_value', lightPrimary);
+      replaceValue('textIcons_value', textIcons);
+      replaceValue('accent_value', accent);
+      replaceValue('primaryText_value', primaryText);
+      replaceValue('divider_value', divider);
+      replaceValue('background_value', background);
+    };
+
+    function finish(msg, darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
+      var iconfont = './gumga-layout/iconfont';
+      copyRecursiveSync(basePath + '/assets/iconfont', iconfont);
+      replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+      gutil.log(chalk.yellow(msg));
+      process.exit(0);
+    }
+
+   function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
+     getInstalledPath('gumga-layout').then(function(pt){
+       basePath = pt;
+       if(program.generate && program.generate == 'css'){
+         deleteFolderRecursive('./gumga-layout/iconfont');
+           gulp.start('release-css', function(){
+           finish('Atualizamos a pasta "gumga-layout" com seu novo layout, apenas os CSS.',
+                darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+         });
+       }else if(program.generate && program.generate == 'js'){
+         deleteFolderRecursive('./gumga-layout/iconfont');
+         gulp.start('release-js', function(){
+           finish('Atualizamos a pasta "gumga-layout" com seu novo layout, apenas com os JS.',
+               darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+         });
+       }else{
+         deleteFolderRecursive('./gumga-layout');
+         gulp.start('bundle', function(){
+           gulp.start('release', function(){
+             finish('Criamos uma pasta "gumga-layout" com seu novo layout.',
+                darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+           });
+         });
+       }
+
+     })
+   }
+
 
  }

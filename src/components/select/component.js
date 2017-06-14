@@ -52,7 +52,6 @@ let Component = {
     ctrl.addOption = function(option) {
       options.push(option);
     };
-
     let setSelected = (value) => {
       angular.forEach(options, option => {
         if (option.ngValue.$$hashKey) {
