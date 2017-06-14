@@ -3,6 +3,9 @@
   "version": "1.6.0",
   "description": "Gumga Layout",
   "main": "index.js",
+  "bin": {
+    "gmd": "./bin/gmd"
+  },
   "scripts": {
     "start": "npm-run-all -p live-server dev",
     "live-server": "live-server --port=9000",
@@ -62,6 +65,10 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0",
+    "node-sass": "^4.5.3"
   }
 }

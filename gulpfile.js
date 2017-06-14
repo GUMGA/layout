@@ -67,6 +67,7 @@ gulp.task('bundle-css', function () {
   gutil.log(chalk.yellow('CSS files updated.'))
   bundle_css()
 })
+
 function bundle_css() {
   return gulp.src(['./src/style/containers/index.styl'])
   .pipe(stylus({
@@ -75,7 +76,6 @@ function bundle_css() {
   // .pipe(stylus())
   .pipe(concat('gumga-layout.css'))
   .pipe(gulp.dest('./dist'))
-  // .pipe(livereload())
 }
 
 gulp.task('bundle-css-production', function () {

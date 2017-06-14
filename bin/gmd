@@ -1,0 +1,189 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var co = require('co');
+var prompt = require('co-prompt');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var chalk = require('chalk');
+var stylus = require('gulp-stylus');
+var rename = require('gulp-rename');
+var minify = require('gulp-minify-css');
+var concat = require('gulp-concat');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
+var browserify = require('browserify');
+var watchify = require('watchify');
+var babelify = require('babelify');
+var fs = require('fs');
+var path = require('path');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var merge = require('utils-merge');
+
+process.title = 'gumga-layout';
+
+program
+ .option('-d --darkPrimary <darkPrimary>', 'Color darkPrimary', '#00796B')
+ .option('-p --primary <primary>', 'Color primary', '#009688')
+ .option('-l --lightPrimary <lightPrimary>', 'Color lightPrimary', '#B2DFDB')
+ .option('-t --textIcons <textIcons>', 'Color textIcons', '#FFFFFF')
+ .option('-a --accent <accent>', 'Color accent', '#607D8B')
+ .option('-y --primaryText <primaryText>', 'Color primaryText', '#212121')
+ .option('-s --secundaryText <secundaryText>', 'Color secundaryText', '#757575')
+ .option('-d --divider <divider>', 'Color divider', '#EAEAEA')
+ .option('-b --background <background>', 'Color background', '#F5F5F5')
+ .parse(process.argv);
+
+ console.log("\nSua paleta ficou assim: " + "\n" +
+   "darkPrimary  : "+program.darkPrimary  + "\n" +
+   "primary      : "+program.primary      + "\n" +
+   "lightPrimary : "+program.lightPrimary + "\n" +
+   "textIcons    : "+program.textIcons    + "\n" +
+   "accent       : "+program.accent       + "\n" +
+   "primaryText  : "+program.primaryText  + "\n" +
+   "secundaryText: "+program.secundaryText+ "\n" +
+   "divider      : "+program.divider      + "\n" +
+   "background   : "+program.background   + "\n"
+  )
+
+ co(function *() {
+   var confirm = yield prompt('Confirmar? (S|N): ');
+   if(!confirm.toLowerCase()||confirm.toLowerCase()=='s'){
+     generateGumgaLayout(program.darkPrimary,
+       program.primary,
+       program.lightPrimary,
+       program.textIcons,
+       program.accent,
+       program.primaryText,
+       program.secundaryText,
+       program.divider,
+       program.background);
+   }else{
+     process.exit(0);
+   }
+ });
+
+ gulp.task('bundle-css', function () {
+   bundle_css()
+ })
+
+ function bundle_css() {
+   return gulp.src(['./src/style/containers/index.styl'])
+   .pipe(stylus({
+     'include css': true
+   }))
+   // .pipe(stylus())
+   .pipe(concat('gumga-layout.css'))
+   .pipe(gulp.dest('./gumga-layout'))
+ }
+
+ gulp.task('bundle-css-production', function () {
+   return gulp.src(['./gumga-layout/gumga-layout.css'])
+   .pipe(rename('gumga-layout.min.css'))
+   .pipe(minify())
+   .pipe(gulp.dest('./gumga-layout'))
+ })
+
+ gulp.task('bundle-js', function () {
+   var bundler = browserify('./src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
+
+   return bundle_js(bundler)
+ })
+
+ gulp.task('bundle-js-production', function () {
+   var bundler = browserify('./src/components/index.js').transform(babelify, {/* options */ })
+
+   return bundler.bundle()
+     .on('error', map_error)
+     .pipe(source('app.js'))
+     .pipe(buffer())
+     .pipe(rename('gumga-layout.min.js'))
+     .pipe(uglify())
+     .pipe(gulp.dest('gumga-layout'))
+ })
+
+ function bundle_js(bundler) {
+   return bundler.bundle()
+     .on('error', map_error)
+     .pipe(source('app.js'))
+     .pipe(buffer())
+     .pipe(gulp.dest('gumga-layout'))
+     .pipe(rename('gumga-layout.min.js'))
+     .pipe(sourcemaps.init({ loadMaps: true }))
+       // capture sourcemaps from transforms
+     .pipe(uglify())
+     .pipe(sourcemaps.write('.'))
+     .pipe(gulp.dest('gumga-layout'))
+ }
+
+ function map_error(err) {
+   if (err.fileName) {
+     // regular error
+     gutil.log(chalk.red(err.name)
+       + ': '
+       + chalk.yellow(err.fileName.replace(__dirname + '/src/components/', ''))
+       + ': '
+       + 'Line '
+       + chalk.magenta(err.lineNumber)
+       + ' & '
+       + 'Column '
+       + chalk.magenta(err.columnNumber || err.column)
+       + ': '
+       + chalk.blue(err.description))
+   } else {
+     // browserify error..
+     gutil.log(chalk.red(err.name)
+       + ': '
+       + chalk.yellow(err.message))
+   }
+
+   this.end()
+ }
+
+
+  gulp.task('bundle', ['bundle-js', 'bundle-css'])
+  gulp.task('release', ['bundle-css', 'bundle-js-production', 'bundle-css-production'])
+
+  var deleteFolderRecursive = function(path) {
+    if( fs.existsSync(path) ) {
+      fs.readdirSync(path).forEach(function(file,index){
+        var curPath = path + "/" + file;
+        if(fs.lstatSync(curPath).isDirectory()) { // recurse
+          deleteFolderRecursive(curPath);
+        } else { // delete file
+          fs.unlinkSync(curPath);
+        }
+      });
+      fs.rmdirSync(path);
+    }
+  };
+
+ var copyRecursiveSync = function(src, dest) {
+    var exists = fs.existsSync(src);
+    var stats = exists && fs.statSync(src);
+    var isDirectory = exists && stats.isDirectory();
+    if (exists && isDirectory) {
+      fs.mkdirSync(dest);
+      fs.readdirSync(src).forEach(function(childItemName) {
+        copyRecursiveSync(path.join(src, childItemName),
+                          path.join(dest, childItemName));
+      });
+    } else {
+      fs.linkSync(src, dest);
+    }
+  };
+
+ function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
+   deleteFolderRecursive('./gumga-layout');
+   gulp.start('bundle', function(){
+     gulp.start('release', function(){
+       var iconfont = './gumga-layout/iconfont';
+       copyRecursiveSync('./assets/iconfont', iconfont);
+       gutil.log(chalk.yellow('Criamos uma pasta "gumga-layout" com seu novo layout.'));
+       process.exit(0);
+     });
+   });
+
+ }
