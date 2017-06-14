@@ -8,6 +8,7 @@ var gutil = require('gulp-util');
 var chalk = require('chalk');
 var stylus = require('gulp-stylus');
 var rename = require('gulp-rename');
+var data = require('gulp-data');
 var minify = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
@@ -21,8 +22,12 @@ var path = require('path');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var merge = require('utils-merge');
+var getInstalledPath = require('get-installed-path');
+var replace = require("replace");
+var stylusVars = require('gulp-stylus-vars');
 
 process.title = 'gumga-layout';
+var basePath = './', colors = {};
 
 program
  .option('-d --darkPrimary <darkPrimary>', 'Color darkPrimary', '#00796B')
@@ -70,30 +75,28 @@ program
  })
 
  function bundle_css() {
-   return gulp.src(['./src/style/containers/index.styl'])
-   .pipe(stylus({
-     'include css': true
-   }))
-   // .pipe(stylus())
+   return gulp.src([basePath+'/src/style/containers/index.styl'])
+  //  .pipe(stylusVars(colors, { verbose: false }))
+   .pipe(stylus())
    .pipe(concat('gumga-layout.css'))
    .pipe(gulp.dest('./gumga-layout'))
  }
 
  gulp.task('bundle-css-production', function () {
-   return gulp.src(['./gumga-layout/gumga-layout.css'])
+   return gulp.src([basePath+'/gumga-layout/gumga-layout.css'])
    .pipe(rename('gumga-layout.min.css'))
    .pipe(minify())
    .pipe(gulp.dest('./gumga-layout'))
  })
 
  gulp.task('bundle-js', function () {
-   var bundler = browserify('./src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
+   var bundler = browserify(basePath+'/src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
 
    return bundle_js(bundler)
  })
 
  gulp.task('bundle-js-production', function () {
-   var bundler = browserify('./src/components/index.js').transform(babelify, {/* options */ })
+   var bundler = browserify(basePath+'/src/components/index.js').transform(babelify, {/* options */ })
 
    return bundler.bundle()
      .on('error', map_error)
@@ -150,9 +153,9 @@ program
     if( fs.existsSync(path) ) {
       fs.readdirSync(path).forEach(function(file,index){
         var curPath = path + "/" + file;
-        if(fs.lstatSync(curPath).isDirectory()) { // recurse
+        if(fs.lstatSync(curPath).isDirectory()) {
           deleteFolderRecursive(curPath);
-        } else { // delete file
+        } else {
           fs.unlinkSync(curPath);
         }
       });
@@ -175,15 +178,42 @@ program
     }
   };
 
+  function replaceValue(key, value){
+    replace({
+        regex: key,
+        replacement: value,
+        paths: ['./gumga-layout/gumga-layout.css', './gumga-layout/gumga-layout.min.css'],
+        recursive: true,
+        silent: true,
+    });
+  }
+
+  function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
+    replaceValue('darkPrimary', darkPrimary);
+    replaceValue('primary', primary);
+    replaceValue('lightPrimary', lightPrimary);
+    replaceValue('textIcons', textIcons);
+    replaceValue('accent', accent);
+    replaceValue('primaryText', primaryText);
+    replaceValue('divider', divider);
+    replaceValue('background', background);
+  };
+
  function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
    deleteFolderRecursive('./gumga-layout');
-   gulp.start('bundle', function(){
-     gulp.start('release', function(){
-       var iconfont = './gumga-layout/iconfont';
-       copyRecursiveSync('./assets/iconfont', iconfont);
-       gutil.log(chalk.yellow('Criamos uma pasta "gumga-layout" com seu novo layout.'));
-       process.exit(0);
+
+   getInstalledPath('gumga-layout').then(function(pt){
+     basePath = pt;
+
+     gulp.start('bundle', function(){
+       gulp.start('release', function(){
+         var iconfont = './gumga-layout/iconfont';
+         copyRecursiveSync(basePath + '/assets/iconfont', iconfont);
+         replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+         gutil.log(chalk.yellow('Criamos uma pasta "gumga-layout" com seu novo layout.'));
+         process.exit(0);
+       });
      });
-   });
+   })
 
  }

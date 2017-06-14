@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Gumga Layout",
   "main": "index.js",
   "bin": {
@@ -69,6 +69,10 @@
     "co": "^4.6.0",
     "co-prompt": "^1.0.0",
     "commander": "^2.9.0",
-    "node-sass": "^4.5.3"
+    "get-installed-path": "^2.0.3",
+    "gulp-data": "^1.2.1",
+    "gulp-stylus-vars": "^1.0.1",
+    "node-sass": "^4.5.3",
+    "replace": "^0.3.0"
   }
 }
