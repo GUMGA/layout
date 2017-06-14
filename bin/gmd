@@ -189,14 +189,14 @@ program
   }
 
   function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
-    replaceValue('darkPrimary', darkPrimary);
-    replaceValue('primary', primary);
-    replaceValue('lightPrimary', lightPrimary);
-    replaceValue('textIcons', textIcons);
-    replaceValue('accent', accent);
-    replaceValue('primaryText', primaryText);
-    replaceValue('divider', divider);
-    replaceValue('background', background);
+    replaceValue('darkPrimary_value', darkPrimary);
+    replaceValue('primary_value', primary);
+    replaceValue('lightPrimary_value', lightPrimary);
+    replaceValue('textIcons_value', textIcons);
+    replaceValue('accent_value', accent);
+    replaceValue('primaryText_value', primaryText);
+    replaceValue('divider_value', divider);
+    replaceValue('background_value', background);
   };
 
  function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
