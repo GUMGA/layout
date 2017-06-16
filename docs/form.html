@@ -1,0 +1,230 @@
+<div class="panel gmd">
+  <div class="panel-heading" id="form">Formulários</div>
+  <div class="panel-body">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <h5>Inputs</h5>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <gmd-input>
+                <input type="text"
+                       class="form-control gmd"
+                       ng-model="example.text" id="name"
+                       required>
+                <span class="bar"></span>
+                <label for="name" class="control-label">Nome completo</label>
+              </gmd-input>
+            </div>
+            <div class="form-group">
+              <gmd-input>
+                <input type="email" ng-disabled="true" class="form-control gmd" ng-model="example.email" id="email" required>
+                <span class="bar"></span>
+                <label for="email" class="control-label">Endereço de e-mail (disabled)</label>
+              </gmd-input>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>HTML:</h5>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <pre><code class="prettyprint">&lt;div class="form-group"&gt;
+  &lt;gmd-input&gt;
+    &lt;input type="text"
+           class="form-control gmd"
+           ng-model="example.text" id="name"
+           required&gt;
+    &lt;span class="bar"&gt;&lt;/span&gt;
+    &lt;label for="name" class="control-label"&gt;Nome completo&lt;/label&gt;
+  &lt;/gmd-input&gt;
+&lt;/div&gt;
+&lt;div class="form-group"&gt;
+  &lt;gmd-input&gt;
+    &lt;input type="email"
+    class="form-control gmd"
+    ng-model="example.email" id="email"
+    required&gt;
+    &lt;span class="bar"&gt;&lt;/span&gt;
+    &lt;label for="email" class="control-label"&gt;E-mail&lt;/label&gt;
+  &lt;/gmd-input&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <h5>Select</h5>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <gmd-select ng-model="example.select" ng-disabled="disabledSelect" placeholder="Select">
+                <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">
+                  {{option.name}}
+                </gmd-option>
+              </gmd-select>
+            </div>
+            <div class="col-md-6">
+              <gmd-select ng-model="example.select2" ng-disabled="true" placeholder="Select (disabled)" >
+                <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">
+                  {{option.name}}
+                </gmd-option>
+              </gmd-select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>HTML:</h5>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <pre><code class="prettyprint" ng-non-bindable>&lt;div class="form-group"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6"&gt;
+      &lt;gmd-select ng-model="example.select"
+                     ng-disabled="disabledSelect"
+                     placeholder="Select 1"&gt;
+        &lt;gmd-option ng-repeat="option in options"
+                       ng-value="option"
+                       ng-label="option.name"&gt;
+          {{option.name}}
+        &lt;/gmd-option&gt;
+      &lt;/gmd-select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <h5>Radio</h5>
+        </div>
+        <div class="form-group">
+          <div class="col-md-4">
+            <div class="radio">
+              <label>
+                <input type="radio" ng-model="radio" name="optionsRadios" class="gmd" value="Masculino">
+                <span class="box"></span>
+                Masculino
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" ng-model="radio" name="optionsRadios" class="gmd" value="Feminino">
+                <span class="box"></span>
+                Feminino
+              </label>
+            </div>
+            {{radio}}
+          </div>
+          <div class="col-md-4">
+            <div class="radio">
+              <label>
+                <input type="radio" ng-model="example.radio2" name="optionsRadios2" ng-disabled="true" class="gmd" value="Masculino">
+                <span class="box"></span>
+                Masculino (disabled)
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" ng-model="example.radio2" name="optionsRadios2" ng-disabled="true" class="gmd" value="Feminino">
+                <span class="box"></span>
+                Feminino (disabled)
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>HTML:</h5>
+        <div class="row">
+          <div class="col-xs-12">
+            <pre><code class="prettyprint" ng-non-bindable>&lt;div class="col-md-4"&gt;
+  &lt;div class="radio"&gt;
+    &lt;label&gt;
+      &lt;input type="radio"
+                ng-model="radio"
+                name="optionsRadios"
+                class="gmd"
+                value="Masculino"&gt;
+      &lt;span class="box"&gt;&lt;/span&gt;
+      Masculino
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="radio"&gt;
+    &lt;label&gt;
+      &lt;input type="radio"
+               ng-model="radio"
+               name="optionsRadios"
+               class="gmd"
+               value="Feminino"&gt;
+      &lt;span class="box"&gt;&lt;/span&gt;
+      Feminino
+    &lt;/label&gt;
+  &lt;/div&gt;
+  {{radio}}
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <h5>Checkbox</h5>
+        </div>
+        <div class="form-group">
+          <div class="col-md-4">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" class="gmd" data-ng-model="example.check">
+                <span class="box"></span>
+                Clique-me
+              </label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" class="gmd" disabled data-ng-model="example.check2">
+                <span class="box"></span>
+                Clique-me (disabled)
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h5>HTML:</h5>
+        <div class="row">
+          <div class="col-xs-12">
+            <pre><code class="prettyprint" ng-non-bindable>&lt;div class="checkbox"&gt;
+  &lt;label&gt;
+    &lt;input type="checkbox" class="gmd" data-ng-model="example.check"&gt;
+    &lt;span class="box"&gt;&lt;/span&gt;
+    Clique-me
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

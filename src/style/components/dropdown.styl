@@ -22,10 +22,21 @@
   margin-top: 2px
   z-index: 100000
 
+.dropdown.gmd .dropdown-menu, dropup.gmd .dropdown-menu
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12)!important
+  transition: all .4s cubic-bezier(.25,.8,.25,1)
+  border-radius: 2px
+  border: none
+
 gmd-select .dropdown.gmd .dropdown-menu
   top: -2px
   z-index: 100000
   max-width: 100%
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12)!important
+  transition: all .4s cubic-bezier(.25,.8,.25,1)
+  border-radius: 2px
+  border: none
+  width: 100%
 
 gmd-select .dropdown.gmd button.gmd
   text-transform: none
@@ -79,6 +90,7 @@ gmd-select .dropdown.gmd .dropdown-menu .active
 .dropdown-menu.gmd > gmd-option
   position: relative
   display: block
+  cursor: pointer
 
 .dropdown-menu.gmd > gmd-option > a
   display: block

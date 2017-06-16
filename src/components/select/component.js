@@ -66,7 +66,7 @@ let Component = {
       setSelected(ctrl.ngModel)
     }, 500)
     ctrl.$doCheck = () => {
-      if (ctrl.options.length > 0) setSelected(ctrl.ngModel)
+      if (ctrl.options && ctrl.options.length > 0) setSelected(ctrl.ngModel)
     }
     // $scope.$parent.$watch($attrs.ngModel, (val, oldVal) => {
     //   ctrl.setSelected(val)

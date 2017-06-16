@@ -1,0 +1,175 @@
+<div class="panel gmd">
+  <div class="panel-heading" id="nav-aside">
+    Nav & Aside
+  </div>
+  <div class="panel-body">
+
+    <button type="button" class="btn gmd btn-default gmd-ripple raised" data-ng-click="navCollapse()">Alternar Nav</button>
+    <button type="button" class="btn gmd btn-default gmd-ripple raised" data-ng-click="asideCollapse()">Alternar Aside</button>
+
+    <aside class="gl-aside">
+      <h3>Aside</h3>
+      <h3>Aside</h3>
+      <h3>Aside</h3>
+      <h3>Aside</h3>
+      <h3>Aside</h3>
+      <h3>Aside</h3>
+    </aside>
+
+    <nav class="gl-nav">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+          <i class="material-icons">menu</i>
+        </a>
+        <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+          Gumga Studio
+        </a>
+      </div>
+      <header>
+        <figure>
+          <img src="logo.png" alt="">
+        </figure>
+      </header>
+      <gl-menu menu="menu" keys="keys" icon-first-level="glyphicon glyphicon-home" text-first-level="Voltar ao primeiro nível"></gl-menu>
+    </nav>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h5>HTML</h5>
+        <pre><code class="prettyprint" ng-non-bindable>&lt;button type="button"
+        class="btn gmd btn-default gmd-ripple raised"
+        data-ng-click="navCollapse()">Alternar Nav&lt;/button&gt;
+
+&lt;button type="button"
+  class="btn gmd btn-default gmd-ripple raised"
+  data-ng-click="asideCollapse()"&gt;Alternar Aside&lt;/button&gt;
+
+&lt;aside class="gl-aside"&gt;
+  &lt;h3&gt;Aside&lt;/h3&gt;
+  &lt;h3&gt;Aside&lt;/h3&gt;
+  &lt;h3&gt;Aside&lt;/h3&gt;
+  &lt;h3&gt;Aside&lt;/h3&gt;
+  &lt;h3&gt;Aside&lt;/h3&gt;
+  &lt;h3&gt;Aside&lt;/h3&gt;
+&lt;/aside&gt;
+
+&lt;nav class="gl-nav"&gt;
+  &lt;div class="navbar-header"&gt;
+    &lt;a class="navbar-brand" href="#" data-ng-click="navCollapse()"&gt;
+      &lt;i class="material-icons"&gt;menu&lt;/i&gt;
+    &lt;/a&gt;
+    &lt;a class="navbar-brand" href="#" data-ng-click="navCollapse()"&gt;
+      Gumga Studio
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;header&gt;
+    &lt;figure&gt;
+      &lt;img src="logo.png" alt=""&gt;
+    &lt;/figure&gt;
+  &lt;/header&gt;
+  &lt;gl-menu menu="menu" keys="keys" icon-first-level="glyphicon glyphicon-home" text-first-level="Voltar ao primeiro nível"&gt;&lt;/gl-menu&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+      <div class="col-md-6">
+        <h5>JavaScript</h5>
+        <pre><code class="prettyprint" ng-non-bindable>$scope.navCollapse = function() {
+  document.querySelector('.gumga-layout nav.gl-nav')
+          .classList.toggle('collapsed')
+}
+
+$scope.asideCollapse = function() {
+  document.querySelector('.gumga-layout aside.gl-aside')
+          .classList.toggle('collapsed')
+}</code></pre>
+      </div>
+    </div>
+
+    <h6>JSON menu</h6>
+    <pre><code class="prettyprint" ng-non-bindable>[
+{
+  "type": "header",
+  "label": "Home"
+},
+{
+  "type": "item",
+  "label": "Home",
+  "icon": "home",
+  "key": "CRUD-BASE"
+},
+{
+  "type": "item",
+  "label": "Usuários",
+  "state": "user",
+  "icon": "group",
+  "children": [
+    {
+      "type": "item",
+      "label": "Criar novo",
+      "state": "user.new",
+      "icon": "add",
+      "key": "CRUD-USER"
+    },
+    {
+      "type": "item",
+      "label": "Editar",
+      "state": "user.edit",
+      "icon": "edit",
+      "key": "CRUD-ADMIN",
+      "children": [
+        {
+          "type": "item",
+          "label": "Editar novo",
+          "state": "user.new",
+          "icon": "add",
+          "key": "CRUD-USER"
+        },
+        {
+          "type": "item",
+          "label": "Editar o editar",
+          "state": "user.edit",
+          "icon": "edit",
+          "key": "CRUD-ADMIN"
+        }
+      ]
+    }
+  ]
+},
+{
+  "type": "item",
+  "label": "Produtos",
+  "state": "welcome",
+  "key": "CRUD-ADMIN",
+  "icon": "group",
+  "children": [
+    {
+      "type": "item",
+      "label": "Criar novo",
+      "state": "user.new",
+      "icon": "add",
+      "key": "CRUD-USER"
+    },
+    {
+      "type": "item",
+      "label": "Editar",
+      "state": "user.edit",
+      "icon": "edit",
+      "key": "CRUD-ADMIN"
+    }
+  ]
+},
+{
+  "type": "separator"
+},
+{
+  "type": "header",
+  "label": "Produtos"
+},
+{
+  "label": "Últimos cadastrados",
+  "state": "welcome",
+  "key": "CRUD-ADMIN"
+}
+]</code></pre>
+
+  </div>
+</div>

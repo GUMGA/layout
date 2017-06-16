@@ -37,29 +37,29 @@
   position:relative
   display:block
   width:100%
-  
+
 .bar:before,
 .bar:after
   content: ''
   height: 2px
   width: 0
-  bottom: 0 
+  bottom: 0
   position: absolute
-  background: vars.colors.darkPrimary 
-  transition: 0.2s ease all 
-  -moz-transition: 0.2s ease all 
+  background: vars.colors.darkPrimary
+  transition: 0.2s ease all
+  -moz-transition: 0.2s ease all
   -webkit-transition: 0.2s ease all
 
 .bar:before
   left: 50%
 
 .bar:after
-  right: 50% 
+  right: 50%
 
 .form-control.gmd:focus ~ .bar:before,
 .form-control.gmd:focus ~ .bar:after
   width: 50%
-  
+
 .form-control.gmd.ng-invalid.ng-touched ~ .bar:before,
 .form-control.gmd.ng-invalid.ng-touched ~ .bar:after
   background-color: #d9534f
@@ -100,7 +100,7 @@
 .radio input[type="radio"].gmd + .box:before,
 .radio input[type="radio"].gmd + .box:after
   transition: all .3s
-  
+
 .checkbox input[type="checkbox"].gmd + .box:after
   position: absolute;
   left: 4px;
@@ -114,12 +114,12 @@
   border: 2px solid #999
   border-radius: 2px
   background-color: #fff
-  z-index: 1000
-  
+  z-index: 1
+
 .checkbox input[type="checkbox"].gmd:checked + .box:after
   background-color: vars.colors.primary
   border-color: vars.colors.primary
-  
+
 .checkbox input[type="checkbox"].gmd:checked + .box:before
   transform: rotate(45deg);
   position: absolute;
@@ -133,9 +133,9 @@
   border-left: 0;
   border-color: #fff
   content: '';
-  z-index: 10000
-  
-  
+  z-index: 2
+
+
 .radio input[type="radio"].gmd + .box:after
   position: absolute;
   left: 4px;
@@ -149,7 +149,7 @@
   border: 2px solid vars.colors.primary
   border-radius: 50%
   background-color: #fff
-  z-index: 1000
+  z-index: 1
 
 .radio input[type="radio"].gmd + .box:before
   position: absolute;
@@ -160,10 +160,10 @@
   border-radius: 50%
   background-color: vars.colors.primary
   content: '';
-  z-index: 10000
+  z-index: 2
   -webkit-transform: scale3d(0, 0, 1);
   transform: scale3d(0, 0, 1);
-  
+
 .radio input[type="radio"].gmd:checked + .box:before
   -webkit-transform: scale3d(1, 1, 1);
   transform: scale3d(1, 1, 1);

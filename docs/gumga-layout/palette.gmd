@@ -1,8 +1,8 @@
-$darkPrimary:     #C2185B
-$primary:         #E91E63
-$lightPrimary:    #F8BBD0
+$darkPrimary:     #0097A7
+$primary:         #00BCD4
+$lightPrimary:    #B2EBF2
 $textIcons:       #FFFFFF
-$accent:          #00BCD4
+$accent:          #009688
 $primaryText:     #212121
 $secundaryText:   #757575
 $divider:         #BDBDBD

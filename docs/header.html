@@ -1,33 +1,35 @@
 <header class="gl-header">
-  <div class="searchbar">
-    <div class="icon back">
-      <button type="button" data-ng-click="toggleSearch()">
-        <i class="material-icons">arrow_back</i>
-      </button>
-    </div>
-    <div class="query">
-      <input type="text" class="form-control" placeholder="Pesquisar...">
-    </div>
-    <div class="icon search">
-      <button type="button">
-        <i class="material-icons">search</i>
-      </button>
-    </div>
-  </div>
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
+        <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+          <i class="material-icons">menu</i>
+        </a>
         <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
           Gumga Layout
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <i class="material-icons">more_vert</i>
         </button>
-        <button type="button" class="navbar-toggle" data-ng-click="toggleSearch()">
-          <i class="material-icons">search</i>
-        </button>
       </div>
+
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#" ng-click="goTo('getting-started')">Começando</a></li>
+          <li><a href="#" ng-click="goTo('typography')">Tipografia</a></li>
+          <li><a href="#" ng-click="goTo('form')">Formulários</a></li>
+          <li><a href="#" ng-click="goTo('nav-aside')">Nav & Aside</a></li>
+          <li><a href="#" ng-click="goTo('buttons')">Botões</a></li>
+          <li><a href="#" ng-click="goTo('pills')">Pills</a></li>
+          <li><a href="#" ng-click="goTo('tabs')">Tabs</a></li>
+          <li><a href="#" ng-click="goTo('badge')">Badge</a></li>
+          <li><a href="#" ng-click="goTo('dropdown')">Dropdown</a></li>
+          <li><a href="#" ng-click="goTo('card')">Card</a></li>
+          <li><a href="#" ng-click="goTo('progress')">Progress</a></li>
+          <li><a href="#" ng-click="goTo('pagination')">Pagination</a></li>
+          <li><a href="#" ng-click="goTo('spinner')">Spinner</a></li>
+          <li><a href="#" ng-click="goTo('alert')">Alert</a></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="active">
             <a href="https://github.com/gumga/layout" target="_blank">

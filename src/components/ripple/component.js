@@ -2,15 +2,16 @@ let Component = function() {
   return {
     restrict: 'C',
     link: function($scope, element, attrs) {
-      
-      element[0].style.position = 'relative'
+      if(!element[0].classList.contains('fixed')){
+        element[0].style.position = 'relative'
+      }
       element[0].style.overflow = 'hidden'
       element[0].style.userSelect = 'none'
 
       element[0].style.msUserSelect = 'none'
       element[0].style.mozUserSelect = 'none'
       element[0].style.webkitUserSelect = 'none'
-      
+
       function createRipple(evt) {
         var ripple = angular.element('<span class="gmd-ripple-effect animate">'),
           rect = element[0].getBoundingClientRect(),

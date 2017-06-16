@@ -50,8 +50,7 @@ angular
     $scope.options = [
       {name: 'Guilherme', id: 1},
       {name: 'Felipe', id: 2},
-      {name: 'Mateus', id: 3},
-      {name: 'Mateus Miranda de Almeida de jesus legal e alguma coisa a mais', id: 4}
+      {name: 'Mateus', id: 3}
     ]
 
     $timeout(function(){
