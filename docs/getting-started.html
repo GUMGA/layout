@@ -1,0 +1,88 @@
+<div class="panel gmd">
+  <div class="panel-heading">
+    Começando
+  </div>
+  <div class="panel-body">
+    <p>
+      Gumga layout é um framework web baseado em <b>Bootstrap</b> e <b>AngularJs</b>. seu objetivo é possibilitar a melhoria no design de aplicações web que já existem sem perder <b>compatibilidade</b>.
+    </p>
+    <br>
+    <h5>Pré requisitos</h5>
+    <p>
+      Antes de começar a usar o gumga layout é preciso verificar se seu projeto possui os seguintes itens:
+      <ul>
+        <li>
+          <a href="https://angularjs.org/" class="link" target="_blank">AngularJs.</a>
+        </li>
+        <li>
+          <a href="http://getbootstrap.com" class="link" target="_blank">Bootstrap.</a>
+        </li>
+      </ul>
+    </p>
+    <br>
+    <h5>Instalação</h5>
+    <p>
+      A instalação é muito simples, mas primeiro você precisa instalar <a class="link" href="https://nodejs.org/en/" target="_blank"><b>NodeJS.</b></a>
+    </p>
+    <p>
+      Após a instalação do <b>NodeJs</b>, execute o seguinte comando: <br> <br>
+      <pre><code class="prettyprint">npm install -g gumga-layout@latest</code></pre>
+    </p>
+    <br>
+    <h5>Gerando meu primeiro layout</h5>
+    <p>
+      Caso você não tenha ainda, recomendamos que você entre em <a href="https://www.materialpalette.com/" target="_blank" class="link">Material Palette</a> e gere sua paleta de cores.
+      Para criar os arquivos do gumga layout, é essencial termos uma <b>paleta</b> de cores.
+      <br><br>
+      Com a paleta de cores em mãos, vá até a pasta raiz do seu projeto e execute o comando <code class="prettyprint"><b>gmd</b></code>. <br>
+      Se você executar apenas o comando <b>gmd</b> iremos criar seu layout com base a nossa paleta padrão, mas você pode informar sua paleta como no exemplo abaixo: <br>
+      <br>
+      <pre><code class="prettyprint">gmd --darkPrimary=#C2185B --primary=#E91E63 --lightPrimary=#F8BBD0 --textIcons=#FFFFFF --accent=#00BCD4 --primaryText=#212121 --secundaryText=#757575 --divider=#BDBDBD --background=#F5F5F5</code></pre> <br>
+      <b>Se preferir, você pode informar um <b>arquivo gmd</b> da sua paleta, veja um exemplo: </b> <br> <br>
+      <pre><code class="prettyprint">gmd --file exemplo.gmd</code></pre> <br>
+      Veja como é um arquivo gmd: <b> exemplo.gmd </b> <br> <br>
+      <pre><code class="prettyprint">$darkPrimary:    #512DA8
+$primary:        #673AB7
+$lightPrimary:   #D1C4E9
+$textIcons:      #FFFFFF
+$accent:         #03A9F4
+$primaryText:    #212121
+$secundaryText:  #757575
+$divider:        #BDBDBD
+$background:     #F5F5F5</code></pre> <br>
+      Caso tudo tenha occorido com sucesso, você verá uma mensagem te avisando que deu tudo certo :)
+    </p>
+    <br>
+    <h5>Atualização</h5>
+    <p>
+      Se você quer atualizar seu layout, execute o seguinte comando: <br> 
+      <pre><code class="prettyprint">npm update -g gumga-layout@latest</code></pre> <br>
+      Após a atualização do pacote, entre na pasta raiz do seu projeto e execute o comando abaixo, perceba que será encontrado a paleta que foi gerado pela primeira vez:
+      <br>
+      <pre><code class="prettyprint">gmd</code></pre> <br>
+      Se quiser atualizar apenas os aquivos JS, execute: <br>
+      <pre><code class="prettyprint">gmd -g js</code></pre> <br>
+      Se quiser atualizar apenas os aquivos CSS, execute: <br>
+      <pre><code class="prettyprint">gmd -g css</code></pre>
+    </p>
+    <br>
+    <h5>Adicionando layout no projeto</h5>
+    <p>
+      Na pasta <b>gumga-layout</b> existem os arquivos que foram gerador com base a sua paleta de cores, precisamos importar os arquivos <b>gumga-layout.min.css</b> e <b>gumga-layout.min.js</b>.
+      <br><br>
+      <code class="prettyprint">
+        &lt;link rel="stylesheet" href="gumga-layout/gumga-layout.min.css"&gt;
+      </code> <br>
+      <code class="prettyprint">
+        &lt;script type="text/javascript" src="gumga-layout/gumga-layout.min.js"&gt;&lt;/script&gt;
+      </code> <br> <br>
+
+      Dentro da tag <b>&lt;body&gt;</b> adicione o seguinte elemento: <br>
+      <code class="prettyprint">
+        &lt;div class="gumga-layout"&gt; <br>
+          &nbsp;&nbsp;&lt;!--TODO HTML DO SEU PROJETO DEVE ESTAR DENTRO DESSE ELEMENTO. --&gt; <br>
+        &lt;/div&gt;
+      </code>
+    </p>
+  </div>
+</div>

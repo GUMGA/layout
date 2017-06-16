@@ -1,0 +1,42 @@
+<header class="gl-header">
+  <div class="searchbar">
+    <div class="icon back">
+      <button type="button" data-ng-click="toggleSearch()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+    </div>
+    <div class="query">
+      <input type="text" class="form-control" placeholder="Pesquisar...">
+    </div>
+    <div class="icon search">
+      <button type="button">
+        <i class="material-icons">search</i>
+      </button>
+    </div>
+  </div>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+          Gumga Layout
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <i class="material-icons">more_vert</i>
+        </button>
+        <button type="button" class="navbar-toggle" data-ng-click="toggleSearch()">
+          <i class="material-icons">search</i>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="https://github.com/gumga/layout" target="_blank">
+              <i class="fa fa-github fa-2x" style="font-size: 18px;" aria-hidden="true"></i>
+              Github
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
