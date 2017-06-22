@@ -10,7 +10,7 @@
     <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Gumga Layout -->
-    <link rel="stylesheet" href="gumga-layout/gumga-layout.css">
+    <link rel="stylesheet" href="dist/gumga-layout.css">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -174,7 +174,11 @@
                     <div class="row">
                       <div class="col-md-4">
                         <gmd-input>
-                          <input type="text" name="example" class="form-control gmd" ng-model="example.text" id="text" gumga-error gumga-required gumga-min-length="2" gumga-max-length="20">
+                          <input type="text" name="example" class="form-control gmd" ng-model="example.text" id="text"
+                                 gumga-error
+                                 gumga-required
+                                 gumga-min-length="2"
+                                 gumga-max-length="20">
                           <span class="bar"></span>
                           <label for="text" class="control-label">Nome completo</label>
                         </gmd-input>
@@ -887,7 +891,7 @@ $http.get('assets/data/keys.json')
     <!--<script src="bower_components/angular/angular.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
-    <script src="gumga-layout/gumga-layout.js"></script>
+    <script src="dist/gumga-layout.js"></script>
 
     <script src="assets/js/controller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>

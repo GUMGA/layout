@@ -68,13 +68,13 @@ angular
 
     $scope.example = {select:null}
     $timeout(function() {
-      $scope.example.text = 'Gui Seek'
+      $scope.example.text = 'Mateus'
     }, 2000)
 
     // $scope.example.select = {name: 'Mateus', id: 3};
     // $scope.radio = 'Feminino';
 
-    $scope.example.select = {name: 'Guilherme', id: 1}
+    $scope.example.select = {name: 'Mateus', id: 3}
 
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}

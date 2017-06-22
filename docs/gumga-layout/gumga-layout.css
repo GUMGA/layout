@@ -413,6 +413,9 @@ h6 {
   border-radius: 3px;
   transition: all 120ms ease-out;
 }
+.btn.gmd:active {
+  outline: none;
+}
 .btn.gmd.btn-primary {
   color: #337ab7;
   background-color: transparent;

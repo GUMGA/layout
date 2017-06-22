@@ -27,6 +27,7 @@ var chalk = require('chalk')
 
 var liveserver = require('gulp-live-server');
 var server = liveserver.static()
+var replace = require("replace");
 
 function map_error(err) {
   if (err.fileName) {
@@ -61,6 +62,8 @@ gulp.task('watch', ['bundle-css-production'], function () {
     bundle_js(bundler)
   })
   gulp.watch(['./src/style/**/*.styl'], ['bundle-css'])
+  gulp.watch(['./src/components/*.js'], ['bundle-js'])
+  gulp.watch(['./src/components/**/*.js'], ['bundle-js'])
 })
 
 gulp.task('bundle-css', function () {
@@ -68,14 +71,43 @@ gulp.task('bundle-css', function () {
   bundle_css()
 })
 
+function replaceValue(key, value){
+  replace({
+      regex: key,
+      replacement: value,
+      paths: ['./dist/gumga-layout.css'],
+      recursive: true,
+      silent: true,
+  });
+  replace({
+      regex: key,
+      replacement: value,
+      paths: ['./dist/gumga-layout.min.css'],
+      recursive: true,
+      silent: true,
+  });
+}
+
+function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background){
+  replaceValue('darkPrimary_value', darkPrimary);
+  replaceValue('primary_value', primary);
+  replaceValue('lightPrimary_value', lightPrimary);
+  replaceValue('textIcons_value', textIcons);
+  replaceValue('accent_value', accent);
+  replaceValue('primaryText_value', primaryText);
+  replaceValue('divider_value', divider);
+  replaceValue('background_value', background);
+};
+
 function bundle_css() {
-  return gulp.src(['./src/style/containers/index.styl'])
+  var stl = gulp.src(['./src/style/containers/index.styl'])
   .pipe(stylus({
     'include css': true
   }))
   // .pipe(stylus())
   .pipe(concat('gumga-layout.css'))
-  .pipe(gulp.dest('./dist'))
+  .pipe(gulp.dest('./dist'));
+  replaceValues('#0097A7', '#00BCD4', '#B2EBF2', '#FFFFFF', '#009688', '#212121', '#757575', '#BDBDBD', '#F5F5F5');
 }
 
 gulp.task('bundle-css-production', function () {
@@ -124,35 +156,7 @@ function build() {
   } else {
     createFolder()
   }
-
-  // var iconfont = dir + '/iconfont/'
-  // fs.mkdir(iconfont)
-  // gulp.src('./assets/iconfont/*.{eot,woff2,woff,ttf}')
-  //   .pipe(gulp.dest(iconfont))
 }
-
-// gulp.task('export', build)
-// function build() {
-//   var dest,
-//       dir = (gutil.env.dest) ? gutil.env.dest : 'gumga-layout'
-//   if (path.isAbsolute(dir)) {
-//     dest = dir
-//   } else {
-//     var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
-//     dest = home + '/' + dir
-//   }
-//   if (!fs.existsSync(dest)) {
-//     fs.mkdirSync(dest)
-//   }
-//   var destIcons = dest + '/icons/'
-//   fs.mkdirSync(destIcons)
-//   gulp.src('./bower_components/material-design-icons/iconfont/*.{eot,woff2,woff,ttf}')
-//     .pipe(gulp.dest(destIcons))
-//   gulp.src('./dist/*.min.{js,css}')
-//     .pipe(gulp.dest(dest))
-// }
-
-
 // Without watchify
 function bundle_js(bundler) {
   return bundler.bundle()
@@ -160,7 +164,7 @@ function bundle_js(bundler) {
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(gulp.dest('dist'))
-    .pipe(rename('gumga-layout.min.js'))
+    .pipe(rename('gumga-layout.js'))
     .pipe(sourcemaps.init({ loadMaps: true }))
       // capture sourcemaps from transforms
     .pipe(uglify())

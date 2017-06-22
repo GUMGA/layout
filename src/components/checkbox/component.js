@@ -2,7 +2,7 @@ let Component = function() {
   return {
     restrict: 'C',
     link: function($scope, element, attrs) {
-      
+
       function createRipple(evt) {
         var ripple = angular.element('<span class="gmd-ripple-effect animate">'),
           rect = element[0].getBoundingClientRect(),
@@ -19,7 +19,7 @@ let Component = function() {
 
         element.append(ripple);
       }
-
+      
       element.bind('click', createRipple);
     }
   }

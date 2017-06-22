@@ -164,7 +164,6 @@ program
 
    gulp.task('bundle-js-production', function () {
      var bundler = browserify(basePath+'/src/components/index.js').transform(babelify, {/* options */ })
-
      return bundler.bundle()
        .on('error', map_error)
        .pipe(source('app.js'))
