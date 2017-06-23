@@ -16,13 +16,13 @@
   transition: all .25s cubic-bezier(0.4,0.0,0.2,1), visibility 0s linear 0s;
   -webkit-box-shadow: 0 0 4px rgba(0,0,0,.28);
   box-shadow: 0 0 4px rgba(0,0,0,.28);
-  
+
 .gumga-layout nav.gl-nav::-webkit-scrollbar
   width: 8px
 
 .gumga-layout nav.gl-nav::-webkit-scrollbar-track
   background-color: vars.nav.scrollTrack
- 
+
 .gumga-layout nav.gl-nav::-webkit-scrollbar-thumb
   background-color: vars.nav.scrollThumb
   border-radius: 3px
@@ -34,13 +34,13 @@
   transform: translateX(0)
 
 .gumga-layout nav.gl-nav > header figure
-    
+
 .gumga-layout nav.gl-nav > header img
   width: 100%
 
 .gumga-layout nav.gl-nav ul.menu
   border-bottom: 1px solid vars.colors.divider
-  
+
 @media (max-width: vars.screen.sm)
   .gumga-layout nav.gl-nav
     bototm: 0px
@@ -48,10 +48,11 @@
 gl-menu ul
   padding: 0
   list-style: none
-  
+
 gl-menu ul > li
   margin-top: 6px 0 0
-  padding: 8px 0 8px 16px
+  cursor: pointer
+  padding: 8px 10px 8px 16px
   &:hover
     background-color: vars.nav.menu.navBackgroundColorHover
 
@@ -60,15 +61,15 @@ gl-menu ul > li.header > a
   &:hover
     color: vars.colors.primaryText
     background-color: transparent
-  
+
 gl-menu ul > li.header > a
   &:hover
     color: vars.nav.menu.headerColor
-  
+
 gl-menu ul li.header > a
   font-size: vars.nav.menu.headerSize
   color: vars.nav.menu.headerColor
-  
+
 gl-menu ul li a > .material-icons
   font-size: 18px
 
