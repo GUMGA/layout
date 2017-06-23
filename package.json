@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Gumga Layout",
   "main": "./src/components/index.js",
   "bin": {
@@ -84,6 +84,7 @@
     "node-sass": "^4.5.3",
     "npm-run-all": "^2.3.0",
     "replace": "^0.3.0",
+    "shelljs": "^0.7.8",
     "uglify-js": "^2.7.0",
     "utils-merge": "^1.0.0",
     "vinyl-buffer": "^1.0.0",

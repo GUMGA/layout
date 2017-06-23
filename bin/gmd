@@ -23,7 +23,8 @@ var buffer = require('vinyl-buffer');
 var merge = require('utils-merge');
 var getInstalledPath = require('get-installed-path');
 var replace = require("replace");
-var downloadFile = require('download-file')
+var downloadFile = require('download-file');
+var shell = require('shelljs');
 
 process.title = 'gumga-layout';
 
@@ -40,7 +41,7 @@ var basePath = './', colors = {
 };
 
 program
- .version('0.0.1')
+ .version(JSON.parse(require('fs').readFileSync(require.main.filename.match(/^(.+)\/.+$/)[1] + '/../package.json')).version)
  .option('-d --darkPrimary <darkPrimary>', 'Color darkPrimary', colors.darkPrimary)
  .option('-p --primary <primary>', 'Color primary', colors.primary)
  .option('-l --lightPrimary <lightPrimary>', 'Color lightPrimary', colors.lightPrimary)
@@ -52,7 +53,17 @@ program
  .option('-b --background <background>', 'Color background', colors.background)
  .option('-g --generate <generate>', 'Generate Structure', '')
  .option('-f --file <file>', 'Palette', '')
+ .option('-u --update <update>', 'Update Package', '')
  .parse(process.argv);
+
+ if(program.update && program.update != ''){
+   console.log(shell.exec('git commit -am "Auto-commit"'))
+   if (shell.exec('git commit -am "Auto-commit"').code !== 0) {
+      shell.echo('Error: Git commit failed');
+      shell.exit(1);
+    }
+   process.exit(0);
+ }
 
  if(program.file){
    if(!program.file.endsWith('.gmd')){
