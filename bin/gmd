@@ -57,10 +57,12 @@ program
  .parse(process.argv);
 
  if(program.update && program.update != ''){
-   console.log(shell.exec('git commit -am "Auto-commit"'))
-   if (shell.exec('git commit -am "Auto-commit"').code !== 0) {
-      shell.echo('Error: Git commit failed');
+   shell.echo('Atualizando package gumga-layout, isso pode levar uns minutos...');
+   if (shell.exec('sudo npm install -g gumga-layout@'+program.update).code !== 0) {
+      shell.echo('Erro: Falha ao atualizar gumga-layout');
       shell.exit(1);
+    }else{
+      shell.echo('Layout atualizado com sucesso, execute gmd se quiser atulizar seus arquivos.');
     }
    process.exit(0);
  }
