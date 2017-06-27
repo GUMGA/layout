@@ -28,7 +28,9 @@
   -webkit-transition: 0.2s ease all
 
 .form-control.gmd:focus ~ label,
-.form-control.gmd.active ~ label
+.form-control.gmd.active ~ label,
+.form-control.gmd[placeholder] ~ label,
+.form-control.gmd ~ label.fixed
   content: attr(value)
   top:-50px
   font-size:14px

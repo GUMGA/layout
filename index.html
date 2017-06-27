@@ -94,7 +94,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    Gui Seek <span class="caret"></span>
+                    Mateus <span class="caret"></span>
                    </a>
                   <ul class="dropdown-menu">
                     <li><a href="#">Conta</a></li>
@@ -173,8 +173,13 @@
                   <form name="gmdForm" gumga-form="form" novalidate>
                     <div class="row">
                       <div class="col-md-4">
+
                         <gmd-input>
-                          <input type="text" name="example" class="form-control gmd" ng-model="example.text" id="text"
+                          <input type="text"
+                                 name="example"
+                                 class="form-control gmd"
+                                 ng-model="example.text2"
+                                 id="text"
                                  gumga-error
                                  gumga-required
                                  gumga-min-length="2"
@@ -182,14 +187,17 @@
                           <span class="bar"></span>
                           <label for="text" class="control-label">Nome completo</label>
                         </gmd-input>
+
                         Data: {{example.text}}
                       </div>
                       <div class="col-md-4">
+
                         <gmd-input>
                           <input type="email" class="form-control gmd" ng-model="example.email" id="email" required>
                           <span class="bar"></span>
                           <label for="email" class="control-label">Endereço de e-mail</label>
                         </gmd-input>
+                        
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
@@ -203,6 +211,25 @@
                         <pre>{{example.select | json}}</pre>
                       </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                          <gmd-input>
+                            <input type="text"
+                                   name="example"
+                                   class="form-control gmd"
+                                   ng-model="example.cpf"
+                                   id="text"
+                                   gumga-mask="999.999.999-99">
+                            <span class="bar"></span>
+                            <label for="text" class="control-label">CPF</label>
+                          </gmd-input>
+
+                          <br><br>
+                        </div>
+                    </div>
+
                     <div class="row">
                       <div class="col-md-4">
                         <div class="checkbox">
@@ -896,5 +923,6 @@ $http.get('assets/data/keys.json')
     <script src="assets/js/controller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="node_modules/gumga-form-ng/dist/gumga-form.min.js"></script>
+    <script src="node_modules/gumga-mask-ng/dist/gumga-mask.min.js"></script>
   </body>
 </html>

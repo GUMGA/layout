@@ -16,6 +16,7 @@ let Component = {
      <label class="control-label floating-dropdown" ng-show="$ctrl.selected" data-ng-bind="$ctrl.placeholder"></label>
      <button class="btn btn-default gmd dropdown-toggle gmd-select-button"
              type="button"
+             style="border-radius: 0;"
              id="gmdSelect"
              data-toggle="dropdown"
              ng-disabled="$ctrl.ngDisabled"

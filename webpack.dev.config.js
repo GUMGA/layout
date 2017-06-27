@@ -12,6 +12,7 @@ module.exports = {
         filename: baseName+'.js',
         publicPath: '/dist/'
     },
+    watch: true,
     devServer: {
         inline: true,
         port: 1111

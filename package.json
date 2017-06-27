@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Gumga Layout",
   "main": "./src/components/index.js",
   "bin": {
@@ -39,6 +39,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "gumga-form-ng": "^1.0.4",
+    "gumga-mask-ng": "^1.1.0",
     "jeet": "^7.1.0",
     "nib": "^1.1.2",
     "poststylus": "^0.2.3",
