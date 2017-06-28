@@ -29,6 +29,7 @@ function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, pr
   replaceValue('textIcons_value', textIcons);
   replaceValue('accent_value', accent);
   replaceValue('primaryText_value', primaryText);
+  replaceValue('secundaryText_value', secundaryText);
   replaceValue('divider_value', divider);
   replaceValue('background_value', background);
 };

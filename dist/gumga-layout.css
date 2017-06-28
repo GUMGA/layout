@@ -565,7 +565,7 @@ h6 {
 }
 .btn.gmd.fab .material-icons .btn.gmd.raised.btn-primary-color,
 .btn.gmd.fab .material-icons color: #fff,
-.btn.gmd.fab .material-icons background-color: vars.colors.primary,
+.btn.gmd.fab .material-icons background-color: colors.primary,
 .btn.gmd.fab .material-icons opacity: .9,
 .btn.gmd.fab .material-icons:hover {
   opacity: 1;
