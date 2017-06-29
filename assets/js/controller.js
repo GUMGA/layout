@@ -41,6 +41,10 @@ angular
       }
     ]
 
+    $scope.security = function(){
+      console.log('clico');
+    }
+
     $scope.onView = function(event, item) {
       event.stopPropagation()
       console.log(event)

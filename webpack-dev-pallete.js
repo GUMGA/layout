@@ -35,7 +35,9 @@ function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, pr
 };
 
 gulp.start('bundle-css', function(){
-  setTimeout(function(){
-    replaceValues('#0097A7', '#00BCD4', '#B2EBF2', '#FFFFFF', '#009688', '#212121', '#757575', '#BDBDBD', '#F5F5F5');
-  }, 1000);
+  replaceValues('#0097A7', '#00BCD4', '#B2EBF2', '#FFFFFF', '#009688', '#212121', '#757575', '#BDBDBD', '#F5F5F5');
+  setTimeout(function(){replaceValues('#0097A7', '#00BCD4', '#B2EBF2', '#FFFFFF', '#009688', '#212121', '#757575', '#BDBDBD', '#F5F5F5');}, 1000);
+  setTimeout(function(){replaceValues('#0097A7', '#00BCD4', '#B2EBF2', '#FFFFFF', '#009688', '#212121', '#757575', '#BDBDBD', '#F5F5F5');}, 1500);
+  setTimeout(function(){replaceValues('#0097A7', '#00BCD4', '#B2EBF2', '#FFFFFF', '#009688', '#212121', '#757575', '#BDBDBD', '#F5F5F5');}, 2000);
+  setTimeout(function(){replaceValues('#0097A7', '#00BCD4', '#B2EBF2', '#FFFFFF', '#009688', '#212121', '#757575', '#BDBDBD', '#F5F5F5');}, 2500);
 });

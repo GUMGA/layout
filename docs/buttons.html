@@ -84,29 +84,147 @@
       <button type="button" class="btn gmd fab btn-danger gmd-ripple">
         <i class="material-icons">add</i>
       </button>
-      <button type="button" class="btn btn-success gmd fab fixed gmd-ripple">
-        <i class="material-icons">add</i>
-      </button>
+
+      <gmd-fab force-click="false" fixed>
+        <button class="bg-primary gmd-ripple"><span class="material-icons">add</span></button>
+        <ul>
+          <li class="btn-danger">
+            <span>Tags</span>
+            <i class="material-icons gmd-ripple">loyalty</i>
+          </li>
+          <li class="btn-primary">
+            <span>Mensagens</span>
+            <i class="material-icons gmd-ripple">drafts</i>
+          </li>
+        </ul>
+      </gmd-fab>
+
       <br><br>
       <pre><code class="prettyprint" ng-non-bindable>&lt;button type="button" class="btn gmd fab btn-primary gmd-ripple"&gt;
-&lt;i class="material-icons"&gt;add&lt;/i&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
 &lt;/button&gt;
 &lt;button type="button" class="btn gmd fab btn-success gmd-ripple"&gt;
-&lt;i class="material-icons"&gt;add&lt;/i&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
 &lt;/button&gt;
 &lt;button type="button" class="btn gmd fab btn-info gmd-ripple"&gt;
-&lt;i class="material-icons"&gt;add&lt;/i&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
 &lt;/button&gt;
 &lt;button type="button" class="btn gmd fab btn-warning gmd-ripple"&gt;
-&lt;i class="material-icons"&gt;add&lt;/i&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
 &lt;/button&gt;
 &lt;button type="button" class="btn gmd fab btn-danger gmd-ripple"&gt;
-&lt;i class="material-icons"&gt;add&lt;/i&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
 &lt;/button&gt;
 &lt;button type="button" class="btn btn-success gmd fab fixed gmd-ripple"&gt;
-&lt;i class="material-icons"&gt;add&lt;/i&gt;
+  &lt;i class="material-icons"&gt;add&lt;/i&gt;
 &lt;/button&gt;</code></pre>
     </div>
+    <div>
+      <h6>
+        Action Button Multi Items
+      </h6>
+      <p>
+        Atributo <b>fixed</b> deixa o botão sempre fixo rodapé da página. <br>
+        Atributo <b>force-click</b> obriga ou não o click para abrir as opções. <br>
+        Na tab <b>ul</b> você pode adicionar o atributo <b>left</b> que as opções irão abrir na esquerda.<br>
+      </p>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label>Hover top </label>
+          <gmd-fab force-click="false">
+            <button class="bg-primary gmd-ripple"><span class="material-icons">add</span></button>
+            <ul>
+              <li class="btn-danger">
+                <span>Segurança</span>
+                <i class="material-icons gmd-ripple">https</i>
+              </li>
+              <li class="bg-primary">
+                <span>Tags</span>
+                <i class="material-icons gmd-ripple">loyalty</i>
+              </li>
+              <li class="btn-primary">
+                <span>Mensagens</span>
+                <i class="material-icons gmd-ripple">drafts</i>
+              </li>
+              <li class="btn-warning">
+                <span>Segurança</span>
+                <i class="material-icons gmd-ripple">directions_boat</i>
+              </li>
+            </ul>
+          </gmd-fab>
+        </div>
+        <div class="col-md-4">
+          <label>Cliked Left</label>
+          <gmd-fab force-click="true">
+            <button class="btn-danger gmd-ripple"><span class="material-icons">add</span></button>
+            <ul left>
+              <li class="btn-danger">
+                <span>Tags</span>
+                <i class="material-icons gmd-ripple">loyalty</i>
+              </li>
+              <li class="btn-primary">
+                <span>Mensagens</span>
+                <i class="material-icons gmd-ripple">drafts</i>
+              </li>
+            </ul>
+          </gmd-fab>
+        </div>
+        <div class="col-md-4">
+          <label>Top And Left</label>
+          <gmd-fab>
+            <button class="btn-warning gmd-ripple"><span class="material-icons">add</span></button>
+            <ul left>
+              <li class="btn-danger">
+                <span>Tags</span>
+                <i class="material-icons gmd-ripple">loyalty</i>
+              </li>
+              <li class="btn-primary">
+                <span>Mensagens</span>
+                <i class="material-icons gmd-ripple">drafts</i>
+              </li>
+            </ul>
+            <ul >
+              <li class="btn-danger">
+                <span>Tags</span>
+                <i class="material-icons gmd-ripple">loyalty</i>
+              </li>
+              <li class="btn-primary">
+                <span>Mensagens</span>
+                <i class="material-icons gmd-ripple">drafts</i>
+              </li>
+            </ul>
+          </gmd-fab>
+        </div>
+      </div>
+
+
+
+      <br><br>
+      <pre><code class="prettyprint" ng-non-bindable>&lt;gmd-fab force-click="false" fixed&gt;
+  &lt;button class="bg-primary gmd-ripple"&gt;&lt;span class="material-icons"&gt;add&lt;/span&gt;&lt;/button&gt;
+  &lt;ul&gt; &lt;!--coloque <b>left</b> para abrir a esquerda --&gt;
+    &lt;li class="btn-danger"&gt;
+      &lt;span&gt;Segurança&lt;/span&gt;
+      &lt;i class="material-icons gmd-ripple"&gt;https&lt;/i&gt;
+    &lt;/li&gt;
+    &lt;li class="bg-primary"&gt;
+      &lt;span&gt;Tags&lt;/span&gt;
+      &lt;i class="material-icons gmd-ripple"&gt;loyalty&lt;/i&gt;
+    &lt;/li&gt;
+    &lt;li class="btn-primary"&gt;
+      &lt;span&gt;Mensagens&lt;/span&gt;
+      &lt;i class="material-icons gmd-ripple"&gt;drafts&lt;/i&gt;
+    &lt;/li&gt;
+    &lt;li class="btn-warning"&gt;
+      &lt;span&gt;Segurança&lt;/span&gt;
+      &lt;i class="material-icons gmd-ripple"&gt;directions_boat&lt;/i&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/gmd-fab&gt;</code></pre>
+    </div>
+
+
     <h6>Raised Checkbox</h6>
     <div class="row">
       <div class="col-sm-12">

@@ -620,6 +620,125 @@ h6 {
 .btn.gmd.fab.btn-primary-color-dark {
   background-color: #00796B;
 }
+gmd-fab {
+  width: 56px;
+  height: 56px;
+  transition: all 0.3s;
+  position: relative;
+}
+gmd-fab[fixed] {
+  display: none;
+  position: fixed !important;
+  right: 30px;
+  bottom: 30px;
+}
+gmd-fab > ng-transclude > ul {
+  visibility: hidden;
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s;
+}
+gmd-fab > ng-transclude > ul.open > li {
+  transition: all 0.3s;
+  transform: scale(1);
+}
+gmd-fab > ng-transclude > ul > li {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.16), 0 2px 5px 0 rgba(0,0,0,0.26);
+  margin: 0;
+  color: #fff;
+  transform: scale(0.3);
+  margin-left: 8px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.9;
+}
+gmd-fab:hover > ng-transclude > ul > li > span,
+gmd-fab > ng-transclude > ul.open > li > span {
+  position: absolute;
+  display: none;
+  background: #666;
+  padding-left: 10px;
+  border-radius: 3px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+gmd-fab:hover > ng-transclude > ul > li:hover > span {
+  display: block;
+  opacity: 1;
+}
+gmd-fab:hover > ng-transclude > ul.open > li:hover > span {
+  display: block !important;
+  opacity: 1 !important;
+}
+gmd-fab > ng-transclude > ul > li {
+  opacity: 1;
+}
+gmd-fab:hover > ng-transclude > ul > li {
+  transition: all 0.3s;
+  transform: scale(1);
+}
+gmd-fab > ng-transclude > button {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 0;
+  outline: 0;
+  font-size: 24px;
+  color: #fff;
+  z-index: 2;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.16), 0 2px 5px 0 rgba(0,0,0,0.26);
+  transition: all 0.3s;
+  left: 0;
+  top: 0;
+  vertical-align: middle;
+  display: inline-grid;
+}
+gmd-fab > ng-transclude > button:focus {
+  outline: 0;
+}
+gmd-fab > ng-transclude > button:active {
+  outline: 0;
+}
+gmd-fab > ng-transclude > button > span,
+gmd-fab > ng-transclude > button > i,
+gmd-fab > ng-transclude > button > em {
+  transition: all 0.3s;
+}
+gmd-fab:hover > ng-transclude > button > span,
+gmd-fab:hover > ng-transclude > button > i,
+gmd-fab:hover > ng-transclude > button > em {
+  transition: all 0.3s;
+}
+gmd-fab > ng-transclude > ul[left] {
+  bottom: 0px;
+  z-index: 10;
+  left: -20px;
+  transform: rotate(-90deg);
+  transition: all 0.3s;
+}
+gmd-fab > ng-transclude > ul[left] > li {
+  transform: rotate(90deg) scale(0.3);
+  transition: all 0.3s;
+}
+gmd-fab:hover > ng-transclude > ul[left] > li {
+  transform: rotate(90deg) scale(1);
+  transition: all 0.3s;
+}
 .form-group {
   margin-bottom: 30px;
   position: relative;
@@ -1542,10 +1661,10 @@ gumga-many-to-many.gmd .list-group::-webkit-scrollbar-thumb {
 .gumga-layout header > .navbar .navbar-form.search .form-control {
   width: 100%;
   box-shadow: none;
-  color: transparent;
+  color: ;
 }
 .gumga-layout header > .navbar .navbar-form.search .form-control::placeholder {
-  color: transparent;
+  color: ;
 }
 .gumga-layout header > .navbar .nav > li > a {
   color: #B2DFDB;

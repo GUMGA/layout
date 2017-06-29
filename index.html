@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Gumga Layout -->
     <link rel="stylesheet" href="dist/gumga-layout.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -197,7 +199,7 @@
                           <span class="bar"></span>
                           <label for="email" class="control-label">Endereço de e-mail</label>
                         </gmd-input>
-                        
+
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
@@ -511,9 +513,34 @@ $http.get('assets/data/keys.json')
                     <button type="button" class="btn gmd fab btn-danger">
                       <i class="material-icons">add</i>
                     </button>
-                    <button type="button" class="btn btn-success gmd fab fixed">
+                    <!-- <button type="button" class="btn btn-success gmd fab fixed">
                       <i class="material-icons">add</i>
-                    </button>
+                    </button> -->
+
+                    <gmd-fab force-click="false" fixed>
+                      <button class="btn-warning gmd-ripple"><span class="material-icons">add</span></button>
+                      <ul left>
+                        <li class="btn-danger">
+                          <span>Tags</span>
+                          <i class="material-icons gmd-ripple">loyalty</i>
+                        </li>
+                        <li class="btn-primary">
+                          <span>Mensagens</span>
+                          <i class="material-icons gmd-ripple">drafts</i>
+                        </li>
+                      </ul>
+                      <ul >
+                        <li class="btn-danger">
+                          <span>Tags</span>
+                          <i class="material-icons gmd-ripple">loyalty</i>
+                        </li>
+                        <li class="btn-primary">
+                          <span>Mensagens</span>
+                          <i class="material-icons gmd-ripple">drafts</i>
+                        </li>
+                      </ul>
+                    </gmd-fab>
+
 
                     <pre>&lt;button type="button" class="btn gmd fab btn-primary"&gt;
     &lt;i class="material-icons"&gt;add&lt;/i&gt;
@@ -900,29 +927,30 @@ $http.get('assets/data/keys.json')
         <h3>Aside</h3>
       </aside>
 
-      <footer class="gl-footer fixed">
+      <!-- <footer class="gl-footer fixed">
         <p>Gumga Layout <a href="#">footer</a></p>
-      </footer>
+      </footer> -->
 
     </div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
     <!-- Latest compiled and minified JavaScript -->
     <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!--<script src="bower_components/angular/angular.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
     <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
     <script src="dist/gumga-layout.js"></script>
 
     <script src="assets/js/controller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="node_modules/gumga-form-ng/dist/gumga-form.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="node_modules/gumga-mask-ng/dist/gumga-mask.min.js"></script>
   </body>
 </html>

@@ -4,6 +4,7 @@ import Select       from './select/component.js'
 import Option       from './select/option/component.js'
 import Input        from './input/component.js'
 import Ripple       from './ripple/component.js'
+import Fab          from './fab/component.js'
 
 angular
   .module('gumga.layout', [])
@@ -13,3 +14,4 @@ angular
   .component('gmdOption', Option)
   .component('gmdInput', Input)
   .directive('gmdRipple', Ripple)
+  .component('gmdFab', Fab)
