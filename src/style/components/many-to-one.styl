@@ -17,3 +17,11 @@ gumga-many-to-one.gmd .dropdown-menu > .active > a:focus,
 gumga-many-to-one.gmd .dropdown-menu > .active > a:hover
   color: colors.darkPrimary
   background-color: #f5f5f5
+
+gumga-many-to-one input.form-control.gmd[class*="ng-valid-many-to-one"][class*="ng-not-empty"][class*="focused"]
+  transition: all .3s;
+  border-bottom: 2px solid colors.darkPrimary;
+
+gumga-many-to-one input.form-control.gmd[class*="ng-invalid-required"][aria-expanded="true"]
+  transition: all .3s;
+  border-bottom: 2px solid #d9534f;

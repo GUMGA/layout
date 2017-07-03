@@ -705,8 +705,9 @@ gmd-fab > ng-transclude > button {
   transition: all 0.3s;
   left: 0;
   top: 0;
-  vertical-align: middle;
-  display: inline-grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 gmd-fab > ng-transclude > button:focus {
   outline: 0;
