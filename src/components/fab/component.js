@@ -8,9 +8,39 @@ let Component = {
     let ctrl = this;
 
     const handlingOptions = (elements) => {
-      angular.forEach(elements, (option) => {
-        angular.element(option).css({left: (option.offsetWidth + 30) * -1});
-      });
+      $timeout(() => {
+        angular.forEach(elements, (option) => {
+          angular.element(option).css({left: (measureText(angular.element(option).text(), '14', option.style).width + 30) * -1});
+        });
+      })
+    }
+
+    function measureText(pText, pFontSize, pStyle) {
+        var lDiv = document.createElement('div');
+
+        document.body.appendChild(lDiv);
+
+        if (pStyle != null) {
+            lDiv.style = pStyle;
+        }
+
+        lDiv.style.fontSize = "" + pFontSize + "px";
+        lDiv.style.position = "absolute";
+        lDiv.style.left = -1000;
+        lDiv.style.top = -1000;
+
+        lDiv.innerHTML = pText;
+
+        var lResult = {
+            width: lDiv.clientWidth,
+            height: lDiv.clientHeight
+        };
+
+        document.body.removeChild(lDiv);
+        
+        lDiv = null;
+
+        return lResult;
     }
 
     const withFocus = (ul) => {
@@ -64,14 +94,16 @@ let Component = {
     }
 
     $element.ready(() => {
-      angular.forEach($element.find('ul'), (ul) => {
-        verifyPosition(angular.element(ul));
-        handlingOptions(angular.element(ul).find('li > span'));
-        if(!ctrl.forceClick){
-          withFocus(angular.element(ul));
-        }else{
-          withClick(angular.element(ul));
-        }
+      $timeout(() => {
+        angular.forEach($element.find('ul'), (ul) => {
+          verifyPosition(angular.element(ul));
+          handlingOptions(angular.element(ul).find('li > span'));
+          if(!ctrl.forceClick){
+            withFocus(angular.element(ul));
+          }else{
+            withClick(angular.element(ul));
+          }
+        })
       })
     })
 
