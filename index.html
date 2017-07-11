@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Gumga Layout -->
     <link rel="stylesheet" href="dist/gumga-layout.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -861,9 +860,24 @@ $http.get('assets/data/keys.json')
               <div class="panel gmd">
                 <div class="panel-heading">Spinner</div>
                 <div class="panel-body">
-                  <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                  </svg>
+
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label>
+                        Com box
+                      </label> <br>
+                      <gmd-spinner diameter="80px" box="true"></gmd-spinner>
+                    </div>
+                    <div class="col-md-4">
+                      <label>
+                        Sem box
+                      </label> <br>
+                      <gmd-spinner diameter="80px" box="false"></gmd-spinner>
+                    </div>
+                  </div>
+
+                  <!-- <gmd-spinner fixed box="true"></gmd-spinner> -->
+
                 </div>
               </div>
             </div>
@@ -958,15 +972,11 @@ $http.get('assets/data/keys.json')
     </div>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
 
-    <!-- Latest compiled and minified JavaScript -->
-    <!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <!--<script src="bower_components/angular/angular.min.js"></script>-->
 
     <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
     <script src="dist/gumga-layout.js"></script>

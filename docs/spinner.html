@@ -1,13 +1,41 @@
 <div class="panel gmd">
   <div class="panel-heading" id="spinner">Spinner</div>
   <div class="panel-body">
-    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-    </svg>
 
-    <pre><code class="prettyprint" ng-non-bindable>&lt;svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"&gt;
-  &lt;circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"&gt;&lt;/circle&gt;
-&lt;/svg&gt;</code></pre>
+    <div class="row">
+      <div class="col-md-2">
+        <label>
+          Com box
+        </label> <br>
+        <gmd-spinner diameter="80px" box="true"></gmd-spinner>
+      </div>
+      <div class="col-md-2">
+        <label>
+          Sem box
+        </label> <br>
+        <gmd-spinner diameter="80px" box="false"></gmd-spinner>
+      </div>
+
+      <div class="col-md-2">
+        <label>
+          Fixo
+        </label> <br>
+        <gmd-spinner fixed box="true" ng-show="loading"></gmd-spinner>
+        <button type="button" class="gmd btn raised btn-primary gmd-ripple" ng-click="loading = !loading">Mostrar/Ocultar</button>
+      </div>
+
+    </div>
+    <br>
+    <pre><code class="prettyprint" ng-non-bindable>&lt;div class="row"&gt;
+  &lt;div class="col-md-2"&gt;
+    &lt;gmd-spinner diameter="80px" box="true"&gt;&lt;/gmd-spinner&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;gmd-spinner diameter="80px" box="false"&gt;&lt;/gmd-spinner&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- FIXED --&gt;
+&lt;gmd-spinner fixed box="true" ng-show="loading"&gt;&lt;/gmd-spinner&gt;</code></pre>
 
   </div>
 </div>
