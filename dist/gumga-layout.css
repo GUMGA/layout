@@ -917,6 +917,37 @@ gmd-select .btn.gmd {
   padding: 6px 0;
   color: #555;
 }
+.gmd.breadcrumb {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
+  min-height: 50px;
+}
+.gmd.breadcrumb > li {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.gmd.breadcrumb > li.active > a {
+  color: #00BCD4;
+}
+.gmd.breadcrumb > li > a {
+  color: #666;
+  text-transform: uppercase;
+}
+.gmd.breadcrumb > li > a > i,
+.gmd.breadcrumb > li > a > span,
+.gmd.breadcrumb > li > a > em {
+  vertical-align: bottom;
+}
+.gmd.breadcrumb > li > a:hover {
+  outline: none;
+  text-decoration: none;
+  color: #757575;
+}
 .nav-tabs.gmd > li > a {
   border-radius: 0;
   text-transform: uppercase;

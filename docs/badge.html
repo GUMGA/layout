@@ -1,17 +1,46 @@
 <div class="panel gmd">
-  <div class="panel-heading" id="badge">Badge</div>
+  <div class="panel-heading" id="breadcrumb">Breadcrumb</div>
   <div class="panel-body">
-    <button class="btn btn-primary gmd" badge="4" type="button">
-      Messages
-    </button>
-    <a href="#" badge="1">
-      <span class="glyphicon glyphicon-pencil"></span>
-    </a>
-    <pre><code class="prettyprint" ng-non-bindable>&lt;button class="btn btn-primary gmd" badge="4" type="button"&gt;
-  Messages
-&lt;/button&gt;
-&lt;a href="#" badge="1"&gt;
-  &lt;span class="glyphicon glyphicon-pencil"&gt;&lt;/span&gt;
-&lt;/a&gt;</code></pre>
+
+    <ol class="breadcrumb gmd">
+      <li>
+        <a class="gmd-ripple">
+          <i class="material-icons">home</i> Início
+        </a>
+      </li>
+      <li>
+        <a class="gmd-ripple">
+          <i class="material-icons">shopping_cart</i>
+          Venda
+        </a>
+      </li>
+      <li class="active">
+        <a class="gmd-ripple">
+          <i class="material-icons">supervisor_account</i>
+          Produtos
+        </a>
+      </li>
+    </ol>
+
+    <pre><code class="prettyprint" ng-non-bindable>&lt;ol class="breadcrumb gmd"&gt;
+  &lt;li&gt;
+    &lt;a class="gmd-ripple"&gt;
+      &lt;i class="material-icons"&gt;home&lt;/i&gt;
+      Início
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a class="gmd-ripple"&gt;
+      &lt;i class="material-icons"&gt;shopping_cart&lt;/i&gt;
+      Venda
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="active"&gt;
+    &lt;a class="gmd-ripple"&gt;
+      &lt;i class="material-icons"&gt;supervisor_account&lt;/i&gt;
+      Produtos
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
   </div>
 </div>
