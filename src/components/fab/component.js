@@ -1,7 +1,8 @@
 let Component = {
   transclude: true,
   bindings: {
-    forceClick: '=?'
+    forceClick: '=?',
+    opened: '=?'
   },
   template: `<ng-transclude></ng-transclude>`,
   controller: ['$scope','$element','$attrs','$timeout', '$parse', function($scope, $element, $attrs, $timeout,$parse) {
@@ -37,7 +38,7 @@ let Component = {
         };
 
         document.body.removeChild(lDiv);
-        
+
         lDiv = null;
 
         return lResult;
@@ -45,37 +46,51 @@ let Component = {
 
     const withFocus = (ul) => {
       $element.on('mouseenter', () => {
-        ul.css({visibility: "visible", opacity: '1'})
-        ul.find('li > span').css({opacity: '1', position: 'absolute'})
+        open(ul);
       });
       $element.on('mouseleave', () => {
-        ul.find('li > span').css({opacity: '0', position: 'absolute'})
-        ul.css({visibility: "hidden", opacity: '0'})
+        close(ul);
       });
+    }
+
+    const close = (ul) => {
+      if(ul[0].hasAttribute('left')){
+        ul.find('li').css({transform: 'rotate(90deg) scale(0.3)'});
+      }else{
+        ul.find('li').css({transform: 'scale(0.3)'});
+      }
+      ul.find('li > span').css({opacity: '0', position: 'absolute'})
+      ul.css({visibility: "hidden", opacity: '0'})
+      ul.removeClass('open');
+      if(ctrl.opened){
+        ctrl.opened = false;
+        $scope.$digest();
+      }
+    }
+
+    const open = (ul) => {
+      if(ul[0].hasAttribute('left')){
+        ul.find('li').css({transform: 'rotate(90deg) scale(1)'});
+      }else{
+        ul.find('li').css({transform: 'rotate(0deg) scale(1)'});
+      }
+      ul.find('li > span').hover(function(){
+        angular.element(this).css({opacity: '1', position: 'absolute'})
+      })
+      ul.css({visibility: "visible", opacity: '1'})
+      ul.addClass('open');
+      if(!ctrl.opened){
+        ctrl.opened = true;
+        $scope.$digest();
+      }
     }
 
     const withClick = (ul) => {
        $element.find('button').first().on('click', () => {
          if(ul.hasClass('open')){
-           if(ul[0].hasAttribute('left')){
-             ul.find('li').css({transform: 'rotate(90deg) scale(0.3)'});
-           }else{
-             ul.find('li').css({transform: 'scale(0.3)'});
-           }
-           ul.find('li > span').css({opacity: '0', position: 'absolute'})
-           ul.css({visibility: "hidden", opacity: '0'})
-           ul.removeClass('open');
+           close(ul);
          }else{
-           if(ul[0].hasAttribute('left')){
-             ul.find('li').css({transform: 'rotate(90deg) scale(1)'});
-           }else{
-             ul.find('li').css({transform: 'scale(1)'});
-           }
-           ul.find('li > span').hover(function(){
-             angular.element(this).css({opacity: '1', position: 'absolute'})
-           })
-           ul.css({visibility: "visible", opacity: '1'})
-           ul.addClass('open');
+           open(ul);
          }
        })
     }
@@ -92,6 +107,20 @@ let Component = {
         ul.css({top: size * -1})
       }
     }
+
+    $scope.$watch('$ctrl.opened', (value) => {
+
+        angular.forEach($element.find('ul'), (ul) => {
+          verifyPosition(angular.element(ul));
+          handlingOptions(angular.element(ul).find('li > span'));
+          if(value){
+            open(angular.element(ul));
+          }else {
+            close(angular.element(ul));
+          }
+        })
+
+    }, true);
 
     $element.ready(() => {
       $timeout(() => {

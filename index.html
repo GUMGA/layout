@@ -536,12 +536,19 @@ $http.get('assets/data/keys.json')
                     <button type="button" class="btn gmd fab btn-danger">
                       <i class="material-icons">add</i>
                     </button>
-                    <!-- <button type="button" class="btn btn-success gmd fab fixed">
-                      <i class="material-icons">add</i>
-                    </button> -->
 
-                    <gmd-fab force-click="false" fixed>
-                      <button class="btn-warning gmd-ripple"><span class="material-icons">add</span></button>
+
+                    <button type="button" class="btn btn-success" ng-click="openFab = !openFab">
+                      Teste {{openFab}}
+                    </button>
+
+                    <gmd-fab force-click="false" fixed opened="openFab">
+                      <button ng-if="!openFab" class="btn-warning gmd-ripple">
+                        <span class="material-icons">add</span>
+                      </button>
+                      <button ng-if="openFab" class="btn-warning gmd-ripple">
+                        <span class="material-icons">delete</span>
+                      </button>
                       <ul left>
                         <li class="btn-danger">
                           <span>Tags</span>
