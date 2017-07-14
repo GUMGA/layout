@@ -235,24 +235,21 @@
                         <br>
                         <pre>{{example.select | json}}</pre>
                       </div>
+
+
+
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                      <div class="col-md-3">
+                        <gmd-select ng-model="example.select" ng-disabled="disabledSelect" placeholder="Selecione">
+                          <gmd-select-search ng-model="search" placeholder="Buscar funcionarios..."></gmd-select-search>
+                          <gmd-option ng-repeat="option in options | filter: search" ng-value="option" ng-label="option.name">
+                            {{option.name}}
+                          </gmd-option>
+                        </gmd-select>
 
-                          <gmd-input>
-                            <input type="text"
-                                   name="example"
-                                   class="form-control gmd"
-                                   ng-model="example.cpf"
-                                   id="text"
-                                   gumga-mask="999.999.999-99">
-                            <span class="bar"></span>
-                            <label for="text" class="control-label">CPF</label>
-                          </gmd-input>
-
-                          <br><br>
-                        </div>
+                      </div>
                     </div>
 
                     <div class="row">

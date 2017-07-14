@@ -51,18 +51,18 @@ angular
       console.log(item)
     }
 
-    $scope.options = [
-      {name: 'Guilherme', id: 1},
-      {name: 'Felipe', id: 2},
-      {name: 'Mateus', id: 3}
-    ]
+    // $scope.options = [
+    //   {name: 'Guilherme', id: 1},
+    //   {name: 'Felipe', id: 2},
+    //   {name: 'Mateus', id: 3}
+    // ]
 
     $timeout(function(){
       $scope.options = [
         {name: 'Gustavo joaquim', id: 1},
         {name: 'Augusto Carniel', id: 2}
       ]
-    }, 5000)
+    }, 0)
 
     $scope.optionss = ['Guilherme','Felipe','Mateus']
 
@@ -71,6 +71,7 @@ angular
     }
 
     $scope.example = {select:null}
+
     $timeout(function() {
       $scope.example.text = 'Mateus'
     }, 2000)
