@@ -948,6 +948,16 @@ gmd-select .btn.gmd {
   text-decoration: none;
   color: #757575;
 }
+gmd-select-search .input-group-addon {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 0;
+  border-radius: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+}
 .nav-tabs.gmd > li > a {
   border-radius: 0;
   text-transform: uppercase;
