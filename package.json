@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Gumga Layout",
   "main": "./src/components/index.js",
   "bin": {
@@ -36,7 +36,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "bootstrap-stylus": "^0.2.2",
     "css-loader": "^0.28.2",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.1",
     "gumga-form-ng": "^1.0.4",
     "gumga-mask-ng": "^1.1.0",

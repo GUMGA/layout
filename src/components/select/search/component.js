@@ -8,11 +8,11 @@ let Component = {
     placeholder: '@?'
   },
   template: `
-    <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">
+    <div class="input-group" style="border: none;background: #f9f9f9;">
+      <span class="input-group-addon" id="basic-addon1" style="border: none;">
         <i class="material-icons">search</i>
       </span>
-      <input type="text" class="form-control gmd" ng-model="$ctrl.ngModel" placeholder="{{$ctrl.placeholder}}">
+      <input type="text" style="border: none;" class="form-control gmd" ng-model="$ctrl.ngModel" placeholder="{{$ctrl.placeholder}}">
     </div>
   `,
   controller: ['$scope','$attrs','$timeout','$element','$transclude', function($scope,$attrs,$timeout,$element,$transclude) {

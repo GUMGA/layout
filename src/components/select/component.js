@@ -34,7 +34,7 @@ let Component = {
          <a class="select-option" data-ng-click="$ctrl.select(option)" data-ng-bind="option[$ctrl.option] || option" data-ng-class="{active: $ctrl.isActive(option)}"></a>
        </li>
      </ul>
-     <ul class="dropdown-menu gmd" aria-labelledby="gmdSelect" ng-show="!$ctrl.option" ng-transclude></ul>
+     <ul class="dropdown-menu gmd" aria-labelledby="gmdSelect" ng-show="!$ctrl.option" style="max-height: 250px;overflow: auto;" ng-transclude></ul>
    </div>
   `,
   controller: ['$scope','$attrs','$timeout','$element', function($scope,$attrs,$timeout,$element) {
