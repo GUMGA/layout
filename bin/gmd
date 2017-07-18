@@ -40,8 +40,10 @@ var basePath = './', colors = {
   background : '#F5F5F5',
 };
 
+var packageFile = path.join(__dirname, '../package.json');
+
 program
- .version(JSON.parse(require('fs').readFileSync(require.main.filename.match(/^(.+)\/.+$/)[1] + '/../package.json')).version)
+ .version(JSON.parse(require('fs').readFileSync(packageFile)).version)
  .option('-d --darkPrimary <darkPrimary>', 'Color darkPrimary', colors.darkPrimary)
  .option('-p --primary <primary>', 'Color primary', colors.primary)
  .option('-l --lightPrimary <lightPrimary>', 'Color lightPrimary', colors.lightPrimary)
