@@ -1,3 +1,5 @@
+require('../attrchange/attrchange');
+
 let Component = {
   bindings: {
     menu: '<',
@@ -50,12 +52,39 @@ let Component = {
       </li>
     </ul>
   `,
-  controller: ['$timeout', function($timeout) {
+  controller: ['$timeout', '$attrs', function($timeout, $attrs) {
     let ctrl = this
     ctrl.keys = ctrl.keys || []
     ctrl.iconFirstLevel = ctrl.iconFirstLevel || 'glyphicon glyphicon-home'
     ctrl.previous = []
     ctrl.back = []
+
+    const stringToBoolean = (string) => {
+      switch(string.toLowerCase().trim()){
+        case "true": case "yes": case "1": return true;
+        case "false": case "no": case "0": case null: return false;
+        default: return Boolean(string);
+      }
+    }
+
+    const fixed = stringToBoolean($attrs.fixed || 'false');
+
+    ctrl.toggleContent = (isCollapsed) => {
+      const mainContent = angular.element('.gumga-layout > main');
+      const headerContent = angular.element('header.gl-header');
+      isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
+      isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+    }
+
+    if(fixed && angular.element.fn.attrchange){
+      angular.element("nav.gl-nav").attrchange({
+          trackValues: true,
+          callback: function(evnt) {
+              ctrl.toggleContent(evnt.newValue.indexOf('collapsed') != -1);
+          }
+      });
+      ctrl.toggleContent(true);
+    }
 
     ctrl.$onInit = () => {
       if(!ctrl.hasOwnProperty('showButtonFirstLevel')){

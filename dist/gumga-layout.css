@@ -1993,11 +1993,22 @@ gmd-spinner[fixed] .spinner-material {
   right: 0;
   left: 0;
 }
+.gumga-layout .gl-header.collapsed,
+.gumga-layout main.collapsed {
+  margin-left: 250px;
+  transition: all 200ms;
+}
+@media (max-width: 976px) {
+  .gumga-layout .gl-header.collapsed,
+  .gumga-layout main.collapsed {
+    margin-left: 0;
+  }
+}
 .gumga-layout header > .navbar {
   margin-bottom: 0px;
   border-radius: 0px;
   background-color: #00BCD4;
-  transition: all 200ms ease-out;
+  transition: all 200ms;
 }
 .gumga-layout header > .navbar .navbar-brand {
   color: #B2EBF2;

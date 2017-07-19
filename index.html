@@ -943,11 +943,11 @@ $http.get('assets/data/keys.json')
       </main>
       <nav class="gl-nav collapsed">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+          <!-- <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
             <i class="material-icons">menu</i>
-          </a>
+          </a> -->
           <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-            Gumga Studio
+            <!-- Menu -->
           </a>
         </div>
         <header>
@@ -957,7 +957,7 @@ $http.get('assets/data/keys.json')
         </header>
         <!--<input type="text" ng-model="menuSearch" class="form-control gmd" placeholder="Busca...">
         <div class="bar"></div>-->
-        <gl-menu menu="menu" keys="keys" icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" text-first-level="Voltar ao primeiro nível"></gl-menu>
+        <gl-menu menu="menu" keys="keys" fixed="true" icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" text-first-level="Voltar ao primeiro nível"></gl-menu>
       </nav>
 
       <aside class="gl-aside">
