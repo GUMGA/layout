@@ -36,12 +36,11 @@
             </button>
           </div>
         </div>
+
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-                <i class="material-icons">menu</i>
-              </a>
+              <gmd-hamburger></gmd-hamburger>
               <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
                 Gumga Studio
               </a>
@@ -957,7 +956,7 @@ $http.get('assets/data/keys.json')
         </header>
         <!--<input type="text" ng-model="menuSearch" class="form-control gmd" placeholder="Busca...">
         <div class="bar"></div>-->
-        <gl-menu menu="menu" keys="keys" fixed="true" icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" text-first-level="Voltar ao primeiro nível"></gl-menu>
+        <gl-menu menu="menu" keys="keys" fixed="false" icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" text-first-level="Voltar ao primeiro nível"></gl-menu>
       </nav>
 
       <aside class="gl-aside">

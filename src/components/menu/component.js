@@ -52,7 +52,7 @@ let Component = {
       </li>
     </ul>
   `,
-  controller: ['$timeout', '$attrs', function($timeout, $attrs) {
+  controller: ['$timeout', '$attrs', '$element', function($timeout, $attrs, $element) {
     let ctrl = this
     ctrl.keys = ctrl.keys || []
     ctrl.iconFirstLevel = ctrl.iconFirstLevel || 'glyphicon glyphicon-home'
@@ -69,21 +69,38 @@ let Component = {
 
     const fixed = stringToBoolean($attrs.fixed || 'false');
 
-    ctrl.toggleContent = (isCollapsed) => {
-      const mainContent = angular.element('.gumga-layout > main');
-      const headerContent = angular.element('header.gl-header');
-      isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
-      isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+    const onBackdropClick = (evt) => angular.element('.gumga-layout nav.gl-nav').removeClass('collapsed');
+
+    if(!fixed){
+      let elm = document.createElement('div');
+      elm.classList.add('gmd-menu-backdrop');
+      angular.element('body')[0].appendChild(elm);
+      angular.element('div.gmd-menu-backdrop').on('click', onBackdropClick);
     }
 
-    if(fixed && angular.element.fn.attrchange){
+    ctrl.toggleContent = (isCollapsed) => {
+      if(fixed){
+        const mainContent = angular.element('.gumga-layout > main');
+        const headerContent = angular.element('header.gl-header');
+        isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
+        isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+      }
+    }
+
+    const verifyBackdrop = (isCollapsed) => {
+      isCollapsed && !fixed ? angular.element('div.gmd-menu-backdrop').addClass('active') : angular.element('div.gmd-menu-backdrop').removeClass('active');
+    }
+
+    if(angular.element.fn.attrchange){
       angular.element("nav.gl-nav").attrchange({
           trackValues: true,
           callback: function(evnt) {
               ctrl.toggleContent(evnt.newValue.indexOf('collapsed') != -1);
+              verifyBackdrop(evnt.newValue.indexOf('collapsed') != -1);
           }
       });
-      ctrl.toggleContent(true);
+      ctrl.toggleContent(angular.element('nav.gl-nav').hasClass('collapsed'));
+      verifyBackdrop(angular.element('nav.gl-nav').hasClass('collapsed'));
     }
 
     ctrl.$onInit = () => {

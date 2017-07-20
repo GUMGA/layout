@@ -92,3 +92,17 @@ gl-menu ul li.divider
   padding: 0
   overflow: hidden
   background-color: colors.divider
+
+.gmd-menu-backdrop
+  display: none;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.22);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: vars.header.height;
+  bottom: 0;
+  margin-left: vars.nav.width;
+
+.gmd-menu-backdrop.active
+  display: block;

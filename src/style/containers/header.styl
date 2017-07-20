@@ -8,8 +8,8 @@
   left: 0
 
 .gumga-layout .gl-header.collapsed, .gumga-layout main.collapsed
-  margin-left: 250px
-  transition: all 200ms
+  margin-left: vars.nav.width;
+  transition: all 200ms;
 
 @media (max-width: 976px) {
 	.gumga-layout .gl-header.collapsed, .gumga-layout main.collapsed{
@@ -25,6 +25,8 @@
 
 .gumga-layout header > .navbar .navbar-brand
   color: vars.header.navColor
+  position: relative;
+  margin-left: -1px;
 
 .gumga-layout header > .navbar .navbar-header button.search
   margin-right: 5px

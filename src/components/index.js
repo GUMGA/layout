@@ -7,6 +7,7 @@ import Input        from './input/component.js'
 import Ripple       from './ripple/component.js'
 import Fab          from './fab/component.js'
 import Spinner      from './spinner/component.js'
+import Hamburger      from './hamburger/component.js'
 
 angular
   .module('gumga.layout', [])
@@ -19,3 +20,4 @@ angular
   .directive('gmdRipple', Ripple)
   .component('gmdFab', Fab)
   .component('gmdSpinner', Spinner)
+  .component('gmdHamburger', Hamburger)
