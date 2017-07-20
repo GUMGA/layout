@@ -2166,6 +2166,14 @@ gmd-spinner[fixed] .spinner-material {
   padding-bottom: 10px;
   line-height: 20px;
 }
+.gl-header div.navbar-header {
+  display: flex;
+  align-items: center;
+}
+.gl-header div.navbar-header .navbar-brand {
+  height: 100%;
+  margin: 0 auto;
+}
 main {
   margin-top: 67px;
   z-index: 1000;

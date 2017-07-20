@@ -4,6 +4,7 @@ let Component = {
   bindings: {
     menu: '<',
     keys: '<',
+    isOpened: '=?',
     iconFirstLevel: '@',
     showButtonFirstLevel: '=?',
     textFirstLevel: '@'
@@ -99,6 +100,7 @@ let Component = {
       }else{
         backContent.removeClass('active');
       }
+      $timeout(() => ctrl.isOpened = isCollapsed);
     }
 
     if(angular.element.fn.attrchange){
