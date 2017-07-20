@@ -80,15 +80,25 @@ let Component = {
 
     ctrl.toggleContent = (isCollapsed) => {
       if(fixed){
-        const mainContent = angular.element('.gumga-layout > main');
-        const headerContent = angular.element('header.gl-header');
+        const mainContent = angular.element('.gumga-layout .gl-main');
+        const headerContent = angular.element('.gumga-layout .gl-header');
         isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
         isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
       }
     }
 
     const verifyBackdrop = (isCollapsed) => {
-      isCollapsed && !fixed ? angular.element('div.gmd-menu-backdrop').addClass('active') : angular.element('div.gmd-menu-backdrop').removeClass('active');
+      const headerContent = angular.element('.gumga-layout .gl-header');
+      const backContent = angular.element('div.gmd-menu-backdrop')
+      if(isCollapsed && !fixed){
+        backContent.addClass('active');
+        let size = headerContent.height();
+        if(size > 0){
+          backContent.css({top: size})
+        }
+      }else{
+        backContent.removeClass('active');
+      }
     }
 
     if(angular.element.fn.attrchange){
