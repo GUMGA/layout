@@ -1,16 +1,18 @@
 require('../attrchange/attrchange');
 
 let Component = {
+  transclude: true,
   bindings: {
     menu: '<',
     keys: '<',
+    hideSearch: '=?',
     isOpened: '=?',
     iconFirstLevel: '@',
     showButtonFirstLevel: '=?',
     textFirstLevel: '@'
   },
   template: `
-    <div style="margin-bottom: 10px;padding-left: 10px;padding-right: 10px;" >
+    <div style="margin-bottom: 10px;padding-left: 10px;padding-right: 10px;" ng-if="!$ctrl.hideSearch">
       <input type="text" data-ng-model="$ctrl.search" class="form-control gmd" placeholder="Busca...">
       <div class="bar"></div>
     </div>
@@ -52,6 +54,9 @@ let Component = {
 
       </li>
     </ul>
+
+    <ng-transclude></ng-transclude>
+
   `,
   controller: ['$timeout', '$attrs', '$element', function($timeout, $attrs, $element) {
     let ctrl = this
