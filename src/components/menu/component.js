@@ -65,99 +65,100 @@ let Component = {
     ctrl.previous = []
     ctrl.back = []
 
-    const stringToBoolean = (string) => {
-      switch(string.toLowerCase().trim()){
-        case "true": case "yes": case "1": return true;
-        case "false": case "no": case "0": case null: return false;
-        default: return Boolean(string);
+    ctrl.$onInit = () => {
+      const stringToBoolean = (string) => {
+        switch(string.toLowerCase().trim()){
+          case "true": case "yes": case "1": return true;
+          case "false": case "no": case "0": case null: return false;
+          default: return Boolean(string);
+        }
       }
-    }
 
-    const fixed = stringToBoolean($attrs.fixed || 'false');
+      const fixed = stringToBoolean($attrs.fixed || 'false');
 
-    const onBackdropClick = (evt) => angular.element('.gumga-layout nav.gl-nav').removeClass('collapsed');
+      const onBackdropClick = (evt) => angular.element('.gumga-layout nav.gl-nav').removeClass('collapsed');
 
-    if(!fixed){
-      let elm = document.createElement('div');
-      elm.classList.add('gmd-menu-backdrop');
-      angular.element('body')[0].appendChild(elm);
-      angular.element('div.gmd-menu-backdrop').on('click', onBackdropClick);
-    }
+      if(!fixed){
+        let elm = document.createElement('div');
+        elm.classList.add('gmd-menu-backdrop');
+        angular.element('body')[0].appendChild(elm);
+        angular.element('div.gmd-menu-backdrop').on('click', onBackdropClick);
+      }
 
-    ctrl.toggleContent = (isCollapsed) => {
-      if(fixed){
-        const mainContent = angular.element('.gumga-layout .gl-main');
+      ctrl.toggleContent = (isCollapsed) => {
+        if(fixed){
+          const mainContent = angular.element('.gumga-layout .gl-main');
+          const headerContent = angular.element('.gumga-layout .gl-header');
+          isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
+          isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+        }
+      }
+
+      const verifyBackdrop = (isCollapsed) => {
         const headerContent = angular.element('.gumga-layout .gl-header');
-        isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
-        isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
-      }
-    }
-
-    const verifyBackdrop = (isCollapsed) => {
-      const headerContent = angular.element('.gumga-layout .gl-header');
-      const backContent = angular.element('div.gmd-menu-backdrop')
-      if(isCollapsed && !fixed){
-        backContent.addClass('active');
-        let size = headerContent.height();
-        if(size > 0){
-          backContent.css({top: size})
-        }
-      }else{
-        backContent.removeClass('active');
-      }
-      $timeout(() => ctrl.isOpened = isCollapsed);
-    }
-
-    if(angular.element.fn.attrchange){
-      angular.element("nav.gl-nav").attrchange({
-          trackValues: true,
-          callback: function(evnt) {
-              ctrl.toggleContent(evnt.newValue.indexOf('collapsed') != -1);
-              verifyBackdrop(evnt.newValue.indexOf('collapsed') != -1);
+        const backContent = angular.element('div.gmd-menu-backdrop')
+        if(isCollapsed && !fixed){
+          backContent.addClass('active');
+          let size = headerContent.height();
+          if(size > 0){
+            backContent.css({top: size})
           }
-      });
-      ctrl.toggleContent(angular.element('nav.gl-nav').hasClass('collapsed'));
-      verifyBackdrop(angular.element('nav.gl-nav').hasClass('collapsed'));
-    }
-
-    ctrl.$onInit = () => {
-      if(!ctrl.hasOwnProperty('showButtonFirstLevel')){
-        ctrl.showButtonFirstLevel = true;
-      }
-    }
-
-    ctrl.prev = () => {
-      $timeout(()=>{
-        ctrl.slide = 'slide-in-left';
-        ctrl.menu = ctrl.previous.pop();
-        ctrl.back.pop();
-      }, 250);
-    }
-    ctrl.next = item => {
-      $timeout(()=>{
-        if (item.children) {
-          ctrl.slide = 'slide-in-right';
-          ctrl.previous.push(ctrl.menu);
-          ctrl.menu = item.children;
-          ctrl.back.push(item);
+        }else{
+          backContent.removeClass('active');
         }
-      }, 250);
-    }
-    ctrl.goBackToFirstLevel = () => {
-      ctrl.slide = 'slide-in-left'
-      ctrl.menu = ctrl.previous[0]
-      ctrl.previous = []
-      ctrl.back = []
-    }
-    ctrl.allow = item => {
-      if (ctrl.keys.length > 0) {
-        if (!item.key) return true
-        return ctrl.keys.indexOf(item.key) > -1
+        $timeout(() => ctrl.isOpened = isCollapsed);
       }
-    }
-    ctrl.$onInit = () => {
+
+      if(angular.element.fn.attrchange){
+        angular.element("nav.gl-nav").attrchange({
+            trackValues: true,
+            callback: function(evnt) {
+                ctrl.toggleContent(evnt.newValue.indexOf('collapsed') != -1);
+                verifyBackdrop(evnt.newValue.indexOf('collapsed') != -1);
+            }
+        });
+        ctrl.toggleContent(angular.element('nav.gl-nav').hasClass('collapsed'));
+        verifyBackdrop(angular.element('nav.gl-nav').hasClass('collapsed'));
+      }
+
+      ctrl.$onInit = () => {
+        if(!ctrl.hasOwnProperty('showButtonFirstLevel')){
+          ctrl.showButtonFirstLevel = true;
+        }
+      }
+
+      ctrl.prev = () => {
+        $timeout(()=>{
+          ctrl.slide = 'slide-in-left';
+          ctrl.menu = ctrl.previous.pop();
+          ctrl.back.pop();
+        }, 250);
+      }
+      ctrl.next = item => {
+        $timeout(()=>{
+          if (item.children) {
+            ctrl.slide = 'slide-in-right';
+            ctrl.previous.push(ctrl.menu);
+            ctrl.menu = item.children;
+            ctrl.back.push(item);
+          }
+        }, 250);
+      }
+      ctrl.goBackToFirstLevel = () => {
+        ctrl.slide = 'slide-in-left'
+        ctrl.menu = ctrl.previous[0]
+        ctrl.previous = []
+        ctrl.back = []
+      }
+      ctrl.allow = item => {
+        if (ctrl.keys && ctrl.keys.length > 0) {
+          if (!item.key) return true
+          return ctrl.keys.indexOf(item.key) > -1
+        }
+      }
       ctrl.slide = 'slide-in-left'
     }
+
   }]
 }
 

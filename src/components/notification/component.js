@@ -25,7 +25,11 @@ let Component = {
   `,
   controller: function() {
     let ctrl = this
-    ctrl.view = (event, item) => ctrl.onView({event: event, item: item})
+
+    ctrl.$onInit = () => {
+      ctrl.view = (event, item) => ctrl.onView({event: event, item: item})
+    }
+    
   }
 }
 
