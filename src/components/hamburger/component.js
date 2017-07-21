@@ -18,7 +18,6 @@ let Component = {
         }
     });
 
-
     ctrl.toggleHamburger = (isCollapsed) => {
       isCollapsed ? $element.find('div.navTrigger').addClass('active') : $element.find('div.navTrigger').removeClass('active');
     }

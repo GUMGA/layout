@@ -62,10 +62,10 @@ let Component = {
       ul.find('li > span').css({opacity: '0', position: 'absolute'})
       ul.css({visibility: "hidden", opacity: '0'})
       ul.removeClass('open');
-      if(ctrl.opened){
-        ctrl.opened = false;
-        $scope.$digest();
-      }
+      // if(ctrl.opened){
+      //   ctrl.opened = false;
+      //   $scope.$digest();
+      // }
     }
 
     const open = (ul) => {
@@ -79,10 +79,10 @@ let Component = {
       })
       ul.css({visibility: "visible", opacity: '1'})
       ul.addClass('open');
-      if(!ctrl.opened){
-        ctrl.opened = true;
-        $scope.$digest();
-      }
+      // if(!ctrl.opened){
+      //   ctrl.opened = true;
+      //   $scope.$digest();
+      // }
     }
 
     const withClick = (ul) => {
