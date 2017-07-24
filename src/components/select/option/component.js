@@ -13,7 +13,7 @@ let Component = {
   `,
   controller: ['$scope','$attrs','$timeout','$element','$transclude', function($scope,$attrs,$timeout,$element,$transclude) {
     let ctrl = this
-    
+
     ctrl.$onInit = () => {
       ctrl.gmdSelectCtrl.addOption(this)
     }

@@ -226,14 +226,15 @@
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="example.select" ng-disabled="disabledSelect" placeholder="Selecione">
-                          <gmd-option ng-repeat="option in options" ng-value="option" ng-label="option.name">
-                            {{option.name}}
+                        <gmd-select ng-model="mateus" ng-disabled="disabledSelect" placeholder="Selecione">
+                          <gmd-option ng-repeat="option in strings" ng-value="option" ng-label="option">
+                            {{option}}
                           </gmd-option>
                         </gmd-select>
                         <br>
                         <br>
-                        <pre>{{example.select | json}}</pre>
+                        <pre>{{mateus | json}}</pre>
+                        <pre>{{strings | json}}</pre>
                       </div>
 
 

@@ -64,8 +64,6 @@ angular
       ]
     }, 0)
 
-    $scope.optionss = ['Guilherme','Felipe','Mateus']
-
     $scope.change = function(option) {
       // console.log(option)
     }
@@ -74,12 +72,17 @@ angular
 
     $timeout(function() {
       $scope.example.text = 'Mateus'
-    }, 2000)
+    }, 5000)
 
     // $scope.example.select = {name: 'Mateus', id: 3};
     // $scope.radio = 'Feminino';
 
-    $scope.example.select = {name: 'Mateus', id: 3}
+    $scope.mateus = "valor";
+
+    $timeout(function() {
+        $scope.strings = ["nome", "valor", "fonte"];
+
+}, 2000)
 
     // $scope.example = {
     //   select: {label: 'option 3', value: 'option3'}

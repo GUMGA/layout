@@ -41,37 +41,39 @@ let Component = {
     let ctrl = this
     ,   ngModelCtrl = $element.controller('ngModel')
 
-    let options = ctrl.options = [];
+    let options = ctrl.options || [];
 
-    ctrl.$onInit = () => {
-      ctrl.select = function(option) {
-        angular.forEach(options, function(option) {
-          option.selected = false;
-        });
-        option.selected = true;
-        ctrl.ngModel = option.ngValue
-        ctrl.selected = option.ngLabel
-      };
-      ctrl.addOption = function(option) {
-        options.push(option);
-      };
-      let setSelected = (value) => {
-        angular.forEach(options, option => {
-          if (option.ngValue.$$hashKey) {
-            delete option.ngValue.$$hashKey
-          }
-          if (angular.equals(value, option.ngValue)) {
-            ctrl.select(option)
-          }
-        })
-      }
-      $timeout(() => {
-        setSelected(ctrl.ngModel)
-      }, 500)
-      ctrl.$doCheck = () => {
-        if (ctrl.options && ctrl.options.length > 0) setSelected(ctrl.ngModel)
-      }
-    }    
+    ctrl.select = function(option) {
+      angular.forEach(options, function(option) {
+        option.selected = false;
+      });
+      option.selected = true;
+      ctrl.ngModel = option.ngValue
+      ctrl.selected = option.ngLabel
+    };
+
+    ctrl.addOption = function(option) {
+      options.push(option);
+    };
+
+    let setSelected = (value) => {
+      angular.forEach(options, option => {
+        if (option.ngValue.$$hashKey) {
+          delete option.ngValue.$$hashKey
+        }
+        if (angular.equals(value, option.ngValue)) {
+          ctrl.select(option)
+        }
+      })
+    }
+
+    $timeout(() => {
+      setSelected(ctrl.ngModel)
+    }, 0);
+
+    ctrl.$doCheck = () => {
+      if (options && options.length > 0) setSelected(ctrl.ngModel)
+    }
 
   }]
 }
