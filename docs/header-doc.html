@@ -1,0 +1,123 @@
+<div class="panel gmd">
+  <div class="panel-heading" id="header-doc">Header</div>
+  <div class="panel-body">
+    
+    <pre><code class="prettyprint" ng-non-bindable>&lt;header class="gl-header"&gt;
+&lt;div class="searchbar"&gt;
+  &lt;div class="icon back"&gt;
+    &lt;button type="button" data-ng-click="toggleSearch()"&gt;
+      &lt;i class="material-icons"&gt;arrow_back&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="query"&gt;
+    &lt;input type="text" class="form-control" placeholder="Pesquisar..."&gt;
+  &lt;/div&gt;
+  &lt;div class="icon search"&gt;
+    &lt;button type="button"&gt;
+      &lt;i class="material-icons"&gt;search&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;nav class="navbar"&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;div class="navbar-header"&gt;
+      &lt;gmd-hamburger&gt;&lt;/gmd-hamburger&gt;
+      &lt;a class="navbar-brand" href="#" data-ng-click="navCollapse()"&gt;
+        Gumga Studio
+      &lt;/a&gt;
+      &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"&gt;
+        &lt;i class="material-icons"&gt;more_vert&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;button type="button" class="navbar-toggle" data-ng-click="toggleSearch()"&gt;
+        &lt;i class="material-icons"&gt;search&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"&gt;
+      &lt;ul class="nav navbar-nav organizations"&gt;
+        &lt;li class="dropdown"&gt;
+          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"&gt;
+            &lt;i class="material-icons"&gt;domain&lt;/i&gt;
+          &lt;/a&gt;
+          &lt;ul class="dropdown-menu"&gt;
+            &lt;li&gt;
+              &lt;div class="form-group"&gt;
+                &lt;input type="text" class="form-control gmd" data-ng-model="org_search" placeholder="Pesquisar..."&gt;
+                &lt;div class="bar"&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li data-ng-repeat="org in organizations | filter: org_search"&gt;
+              &lt;a href="#"&gt;
+                &lt;span data-ng-bind="org.name"&gt;&lt;/span&gt;
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li role="separator" class="divider"&gt;&lt;/li&gt;
+            &lt;li&gt;
+              &lt;a href="#"&gt;
+                Gumga Gumga
+                &lt;span class="glyphicon glyphicon-ok"&gt;&lt;/span&gt;
+              &lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;form class="navbar-form navbar-left search hidden-sm hidden-xs"&gt;
+        &lt;div class="form-group"&gt;
+          &lt;div class="input-group"&gt;
+            &lt;span class="input-group-addon" id="basic-addon1"&gt;
+              &lt;i class="material-icons"&gt;search&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;input type="text" class="form-control" placeholder="Pesquisar..."&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+
+      &lt;ul class="nav navbar-nav navbar-right"&gt;
+        &lt;li class="dropdown"&gt;
+          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"&gt;
+            Mateus &lt;span class="caret"&gt;&lt;/span&gt;
+           &lt;/a&gt;
+          &lt;ul class="dropdown-menu"&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Conta&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Trocar senha&lt;/a&gt;&lt;/li&gt;
+            &lt;li role="separator" class="divider"&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Sair&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;ul class="nav navbar-nav navbar-right apps hidden-sm hidden-xs"&gt;
+        &lt;li class="dropdown"&gt;
+          &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"&gt;
+            &lt;i class="material-icons"&gt;apps&lt;/i&gt;
+          &lt;/a&gt;
+          &lt;ul class="dropdown-menu"&gt;
+            &lt;li class="apps-icons"&gt;
+              &lt;table class="table"&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;a href="#"&gt;&lt;img src="images/logo-gs.png" alt=""&gt;&lt;/a&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;a href="#"&gt;&lt;img src="images/logo-gs.png" alt=""&gt;&lt;/a&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;a href="#"&gt;&lt;img src="images/logo-gs.png" alt=""&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;&lt;a href="#"&gt;&lt;img src="images/logo-gs.png" alt=""&gt;&lt;/a&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;a href="#"&gt;&lt;img src="images/logo-gs.png" alt=""&gt;&lt;/a&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;a href="#"&gt;&lt;img src="images/logo-gs.png" alt=""&gt;&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/table&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;gl-notification icon="email" notifications="notifications" on-view="onView(event, item)"&gt;&lt;/gl-notification&gt;
+      &lt;gl-notification icon="notifications" notifications="notifications" on-view="onView(event, item)"&gt;&lt;/gl-notification&gt;
+      &lt;gl-notification icon="public" notifications="notifications" on-view="onView(event, item)"&gt;&lt;/gl-notification&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+  </div>
+</div>

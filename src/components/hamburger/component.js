@@ -2,7 +2,7 @@ let Component = {
   bindings: {
   },
   template: `
-    <a class="navbar-brand" href="#" data-ng-click="$ctrl.navCollapse()" style="position: relative;">
+    <a class="navbar-brand" data-ng-click="$ctrl.navCollapse()" style="position: relative;cursor: pointer;">
       <div class="navTrigger">
         <i></i><i></i><i></i>
       </div>

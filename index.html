@@ -20,6 +20,7 @@
   </head>
   <body data-ng-controller="controller">
     <div class="gumga-layout">
+
       <header class="gl-header">
         <div class="searchbar">
           <div class="icon back">
@@ -42,7 +43,7 @@
             <div class="navbar-header">
               <gmd-hamburger></gmd-hamburger>
               <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-                Gumga Studio: {{menuAberto}}
+                Gumga Studio
               </a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <i class="material-icons">more_vert</i>
@@ -954,10 +955,7 @@ $http.get('assets/data/keys.json')
             <img src="images/logo-gumga-studio.png" alt="">
           </figure>
         </header>
-        <!--<input type="text" ng-model="menuSearch" class="form-control gmd" placeholder="Busca...">
-        <div class="bar"></div>-->
         <gl-menu menu="menu"
-                 is-opened="menuAberto"
                  keys="keys"
                  fixed="true"
                  icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" text-first-level="Voltar ao primeiro nível">
