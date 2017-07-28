@@ -74,7 +74,12 @@ let Component = {
         }
       }
 
-      const fixed = stringToBoolean($attrs.fixed || 'false');
+      let fixed = stringToBoolean($attrs.fixed || 'false');
+      let fixedMain = stringToBoolean($attrs.fixedMain || 'false');
+
+      if(fixedMain){
+        fixed = true;
+      }
 
       const onBackdropClick = (evt) => angular.element('.gumga-layout nav.gl-nav').removeClass('collapsed');
 
@@ -90,7 +95,9 @@ let Component = {
           const mainContent = angular.element('.gumga-layout .gl-main');
           const headerContent = angular.element('.gumga-layout .gl-header');
           isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
-          isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+          if(!fixedMain && fixed){
+            isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+          }
         }
       }
 
