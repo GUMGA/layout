@@ -2,8 +2,21 @@ angular
   .module('app', ['gumga.layout', 'ui.bootstrap','gumga.form', 'gumga.mask'])
   .controller('controller', controller)
 
-  controller.$inject = ['$scope', '$http', '$timeout']
-  function controller($scope, $http, $timeout) {
+  controller.$inject = ['$scope', '$http', '$timeout', '$gmdAlert']
+  function controller($scope, $http, $timeout, $gmdAlert) {
+
+
+    var alert = $gmdAlert.info('SALVO!', 'Novo cliente foi salvo com sucesso.');
+
+    alert.onDismiss(function(evt){
+      console.log('onDismiss');
+    })
+    .onRollback(function(evt){
+      alert.close();
+      console.log('onRollback');
+    })
+
+
     $scope.navCollapse = function() {
       document.querySelector('.gumga-layout nav.gl-nav')
         .classList.toggle('collapsed')

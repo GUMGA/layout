@@ -1,5 +1,28 @@
 angular.module('app', ['gumga.layout', 'ui.bootstrap'])
-  .controller('ctrl', function($scope, $timeout){
+  .controller('ctrl', function($scope, $timeout, $gmdAlert){
+
+    $scope.successAlert = function(){
+      var gmdAlert = $gmdAlert.success('SALVO!', 'Mensagem para mostrar o sucesso!', 3000);
+      gmdAlert.onDismiss(function(evt){
+        console.log('onDismiss');
+      })
+      .onRollback(function(evt){
+        gmdAlert.close();
+        alert('onRollback');
+      })
+    }
+
+    $scope.errorAlert = function(){
+      $gmdAlert.error('ERRO!', 'Mensagem para mostrar o erro!', 3000);
+    }
+
+    $scope.warningAlert = function(){
+      $gmdAlert.warning('AVISO!', 'Mensagem para mostrar o aviso!', 3000);
+    }
+
+    $scope.infoAlert = function(){
+      $gmdAlert.info('AVISO!', 'Mensagem para mostrar a informação!', 3000);
+    }
 
     function reprint(time){
       setTimeout(function(){

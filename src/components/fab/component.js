@@ -45,6 +45,9 @@ let Component = {
 
     const withFocus = (ul) => {
       $element.on('mouseenter', () => {
+        if(ctrl.opened){
+          return;
+        }
         angular.forEach($element.find('ul'), (ul) => {
           verifyPosition(angular.element(ul));
           handlingOptions(angular.element(ul).find('li > span'));
@@ -52,6 +55,9 @@ let Component = {
         open(ul);
       });
       $element.on('mouseleave', () => {
+        if(ctrl.opened){
+          return;
+        }
         verifyPosition(angular.element(ul));
         close(ul);
       });

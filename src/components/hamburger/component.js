@@ -26,6 +26,12 @@ let Component = {
       ctrl.navCollapse = function() {
         document.querySelector('.gumga-layout nav.gl-nav')
           .classList.toggle('collapsed');
+        angular.element("nav.gl-nav").attrchange({
+            trackValues: true,
+            callback: function(evnt) {
+                ctrl.toggleHamburger(evnt.newValue.indexOf('collapsed') != -1);
+            }
+        });
       }
 
       ctrl.toggleHamburger(angular.element('nav.gl-nav').hasClass('collapsed'));

@@ -1,45 +1,58 @@
 <div class="panel gmd">
   <div class="panel-heading" id="alert">Alert</div>
   <div class="panel-body">
-    <div class="alert gmd alert-success alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Sucesso!</strong> Você leu este alerta com êxito.
-      <a class="action" href="#">Desfazer</a>
+
+    <div class="row">
+      <div class="col-md-4" align="center">
+        <button type="button" ng-click="successAlert()" class="gmd btn btn-success gmd" name="button">Sucesso</button> <br>
+        <button type="button" ng-click="errorAlert()" class="gmd btn btn-danger gmd" name="button">Erros</button><br>
+        <button type="button" ng-click="warningAlert()" class="gmd btn btn-warning gmd" name="button">Avisos</button><br>
+        <button type="button" ng-click="infoAlert()" class="gmd btn btn-info gmd" name="button">Informações</button><br>
+      </div>
+      <div class="col-md-8">
+        <ul class="nav nav-tabs gmd" role="tablist">
+          <li role="presentation" class="active"><a  aria-controls="home" href="#htmlAlert" role="tab" data-toggle="tab">HTML</a></li>
+          <li role="presentation"><a  aria-controls="profile" role="tab" href="#jsAlert" data-toggle="tab">JavaScript</a></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="htmlAlert">
+            <pre><code class="prettyprint" style="font-size: 11px;" ng-non-bindable>&lt;button type="button" ng-click="successAlert()" class="gmd btn btn-success gmd">Sucesso&lt;/button&gt;
+&lt;button type="button" ng-click="errorAlert()" class="gmd btn btn-danger gmd" &gt;Erros&lt;/button&gt;
+&lt;button type="button" ng-click="warningAlert()" class="gmd btn btn-warning gmd" &gt;Avisos&lt;/button&gt;
+&lt;button type="button" ng-click="infoAlert()" class="gmd btn btn-info gmd" &gt;Informações&lt;/button&gt;</code></pre>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="jsAlert">
+            <pre><code class="prettyprint" style="font-size: 13px;" ng-non-bindable>angular
+.module('app', ['gumga.layout'])
+.controller('controller', function ($scope, $http, $timeout, $gmdAlert) {
+
+    $scope.successAlert = function(){
+      var gmdAlert = $gmdAlert.success('SALVO!', 'Mensagem para mostrar o sucesso!', 3000);
+      gmdAlert.onDismiss(function(evt){
+        console.log('onDismiss');
+      })
+      .onRollback(function(evt){
+        gmdAlert.close();
+        alert('onRollback');
+      })
+    }
+
+    $scope.errorAlert = function(){
+      $gmdAlert.error('ERRO!', 'Mensagem para mostrar o erro!', 3000);
+    }
+
+    $scope.warningAlert = function(){
+      $gmdAlert.warning('AVISO!', 'Mensagem para mostrar o aviso!', 3000);
+    }
+
+    $scope.infoAlert = function(){
+      $gmdAlert.info('AVISO!', 'Mensagem para mostrar a informação!', 3000);
+    }
+    
+})</code></pre>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="alert gmd alert-info alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Atenção!</strong> Esse alerta precisa de sua atenção, mas não é super importante.
-      <a class="action" href="#">Desfazer</a>
-    </div>
-    <div class="alert gmd alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Atenção!</strong> Melhor verificar, você não está vendo muito bem.
-      <a class="action" href="#">Desfazer</a>
-    </div>
-    <div class="alert gmd alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>Falhou!</strong> Mude alguma coisa e tente novamente.
-      <a class="action" href="#">Desfazer</a>
-    </div>
-    <pre><code class="prettyprint" ng-non-bindable>&lt;div class="alert gmd alert-success alert-dismissible" role="alert"&gt;
-  &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;&lt;/button&gt;
-  &lt;strong&gt;Warning!&lt;/strong&gt; Better check yourself, you're not looking too good.
-  &lt;a class="action" href="#"&gt;Desfazer&lt;/a&gt;
-  &lt;/div&gt;
-  &lt;div class="alert gmd alert-info alert-dismissible" role="alert"&gt;
-  &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;&lt;/button&gt;
-  &lt;strong&gt;Warning!&lt;/strong&gt; Better check yourself, you're not looking too good.
-  &lt;a class="action" href="#"&gt;Desfazer&lt;/a&gt;
-  &lt;/div&gt;
-  &lt;div class="alert gmd alert-warning alert-dismissible" role="alert"&gt;
-  &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;&lt;/button&gt;
-  &lt;strong&gt;Warning!&lt;/strong&gt; Better check yourself, you're not looking too good.
-  &lt;a class="action" href="#"&gt;Desfazer&lt;/a&gt;
-  &lt;/div&gt;
-  &lt;div class="alert gmd alert-danger alert-dismissible" role="alert"&gt;
-  &lt;button type="button" class="close" data-dismiss="alert" aria-label="Close"&gt;&lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;&lt;/button&gt;
-  &lt;strong&gt;Warning!&lt;/strong&gt; Better check yourself, you're not looking too good.
-  &lt;a class="action" href="#"&gt;Desfazer&lt;/a&gt;
-&lt;/div&gt;</code></pre>
   </div>
 </div>

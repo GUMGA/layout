@@ -211,6 +211,7 @@ gmd-fab[fixed]
   display: none
   position: fixed !important
   right: 30px
+  z-index: 1
   bottom: 30px
 
 gmd-fab > ng-transclude > ul
@@ -318,3 +319,7 @@ gmd-fab > ng-transclude > ul[left] > li
 gmd-fab:hover > ng-transclude > ul[left] > li
   transform: rotate(90deg) scale(1)
   transition: all .3s
+
+gmd-fab > ng-transclude ul.open li span.visible
+  display: block !important;
+  opacity: 1 !important;

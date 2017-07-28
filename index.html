@@ -203,17 +203,14 @@
                           <input type="text"
                                  name="example"
                                  class="form-control gmd"
-                                 ng-model="example.text2"
-                                 id="text"
+                                 ng-model="example.porcent"
                                  gumga-error
-                                 gumga-required
-                                 gumga-min-length="2"
-                                 gumga-max-length="20">
+                                 gumga-mask="99.99%"
+                                 gumga-required>
                           <span class="bar"></span>
-                          <label for="text" class="control-label">Nome completo</label>
+                          <label for="text" class="control-label">Porcentagem: </label>
                         </gmd-input>
 
-                        Data: {{example.text}}
                       </div>
                       <div class="col-md-4">
 
@@ -547,23 +544,13 @@ $http.get('assets/data/keys.json')
                       <button ng-if="openFab" class="btn-warning gmd-ripple">
                         <span class="material-icons">delete</span>
                       </button>
-                      <ul left>
-                        <li class="btn-danger">
-                          <span>Tags</span>
-                          <i class="material-icons gmd-ripple">loyalty</i>
-                        </li>
-                        <li class="btn-primary">
-                          <span>Mensagens</span>
-                          <i class="material-icons gmd-ripple">drafts</i>
-                        </li>
-                      </ul>
                       <ul >
                         <li class="btn-danger">
-                          <span>Tags</span>
+                          <span class="visible">Tags</span>
                           <i class="material-icons gmd-ripple">loyalty</i>
                         </li>
                         <li class="btn-primary">
-                          <span>Reconhecimento Facial</span>
+                          <span class="visible">Reconhecimento Facial</span>
                           <i class="material-icons gmd-ripple">drafts</i>
                         </li>
                       </ul>
