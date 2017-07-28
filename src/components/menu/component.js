@@ -90,15 +90,34 @@ let Component = {
         angular.element('div.gmd-menu-backdrop').on('click', onBackdropClick);
       }
 
+      const setMenuTop = () => {
+        $timeout(() => {
+            let size = angular.element('.gumga-layout .gl-header').height();
+            if(size == 0) setMenuTop();
+            angular.element('.gumga-layout nav.gl-nav.collapsed').css({
+               top: size
+             })
+        });
+      }
+
       ctrl.toggleContent = (isCollapsed) => {
-        if(fixed){
-          const mainContent = angular.element('.gumga-layout .gl-main');
-          const headerContent = angular.element('.gumga-layout .gl-header');
-          isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
-          if(!fixedMain && fixed){
-            isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+        $timeout(() => {
+          if(fixed){
+            const mainContent = angular.element('.gumga-layout .gl-main');
+            const headerContent = angular.element('.gumga-layout .gl-header');
+
+            if(isCollapsed){
+              headerContent.ready(() => {
+                setMenuTop();
+              });
+            }
+
+            isCollapsed ? mainContent.addClass('collapsed')   : mainContent.removeClass('collapsed');
+            if(!fixedMain && fixed){
+              isCollapsed ? headerContent.addClass('collapsed') : headerContent.removeClass('collapsed');
+            }
           }
-        }
+        })
       }
 
       const verifyBackdrop = (isCollapsed) => {
@@ -120,8 +139,10 @@ let Component = {
         angular.element("nav.gl-nav").attrchange({
             trackValues: true,
             callback: function(evnt) {
-                ctrl.toggleContent(evnt.newValue.indexOf('collapsed') != -1);
-                verifyBackdrop(evnt.newValue.indexOf('collapsed') != -1);
+                if(evnt.attributeName == 'class'){
+                  ctrl.toggleContent(evnt.newValue.indexOf('collapsed') != -1);
+                  verifyBackdrop(evnt.newValue.indexOf('collapsed') != -1);
+                }
             }
         });
         ctrl.toggleContent(angular.element('nav.gl-nav').hasClass('collapsed'));

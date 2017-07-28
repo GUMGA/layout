@@ -15,7 +15,9 @@ let Component = {
       angular.element("nav.gl-nav").attrchange({
           trackValues: true,
           callback: function(evnt) {
+            if(evnt.attributeName == 'class'){
               ctrl.toggleHamburger(evnt.newValue.indexOf('collapsed') != -1);
+            }
           }
       });
 
@@ -29,7 +31,9 @@ let Component = {
         angular.element("nav.gl-nav").attrchange({
             trackValues: true,
             callback: function(evnt) {
+              if(evnt.attributeName == 'class'){
                 ctrl.toggleHamburger(evnt.newValue.indexOf('collapsed') != -1);
+              }
             }
         });
       }
