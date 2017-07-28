@@ -17,6 +17,10 @@ angular
     // })
 
 
+    $scope.teste = function(value){
+      console.log(value);
+    }
+
     $scope.navCollapse = function() {
       document.querySelector('.gumga-layout nav.gl-nav')
         .classList.toggle('collapsed')

@@ -223,7 +223,7 @@
                         {{example.email}}
                       </div>
                       <div class="col-md-4">
-                        <gmd-select ng-model="mateus" ng-disabled="disabledSelect" placeholder="Selecione">
+                        <gmd-select ng-model="mateus" on-change="teste(value)" ng-disabled="disabledSelect" placeholder="Selecione">
                           <gmd-option ng-repeat="option in strings" ng-value="option" ng-label="option">
                             {{option}}
                           </gmd-option>

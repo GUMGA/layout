@@ -9,7 +9,7 @@ let Component = {
     option: '@',
     value: '@',
     placeholder: '@?',
-    onUpdate: "&?"
+    onChange: "&?"
   },
   template: `
   <div class="dropdown gmd">

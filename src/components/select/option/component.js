@@ -18,6 +18,9 @@ let Component = {
       ctrl.gmdSelectCtrl.addOption(this)
     }
     ctrl.select = () => {
+      if(ctrl.gmdSelectCtrl.onChange){
+        ctrl.gmdSelectCtrl.onChange({value: this.ngValue});
+      }
       ctrl.gmdSelectCtrl.select(this)
     }
   }]
