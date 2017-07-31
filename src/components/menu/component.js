@@ -7,9 +7,10 @@ let Component = {
     keys: '<',
     hideSearch: '=?',
     isOpened: '=?',
-    iconFirstLevel: '@',
+    iconFirstLevel: '@?',
     showButtonFirstLevel: '=?',
-    textFirstLevel: '@'
+    textFirstLevel: '@?',
+    disableAnimations: '=?'
   },
   template: `
     <div style="margin-bottom: 10px;padding-left: 10px;padding-right: 10px;" ng-if="!$ctrl.hideSearch">
@@ -34,7 +35,7 @@ let Component = {
       <li class="gmd gmd-ripple" data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search"
           data-ng-show="$ctrl.allow(item)"
           ng-click="$ctrl.next(item)"
-          data-ng-class="[$ctrl.slide, {header: item.type == 'header', divider: item.type == 'separator'}]">
+          data-ng-class="[!$ctrl.disableAnimations ? $ctrl.slide : '', {header: item.type == 'header', divider: item.type == 'separator'}]">
 
           <a ng-if="item.type != 'separator' && item.state" ui-sref="{{item.state}}">
             <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>
@@ -66,6 +67,8 @@ let Component = {
     ctrl.back = []
 
     ctrl.$onInit = () => {
+      ctrl.disableAnimations = ctrl.disableAnimations || false;
+
       const stringToBoolean = (string) => {
         switch(string.toLowerCase().trim()){
           case "true": case "yes": case "1": return true;

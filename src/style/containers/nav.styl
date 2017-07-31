@@ -74,7 +74,28 @@ gl-menu ul li.header > a
   color: vars.nav.menu.headerColor
 
 gl-menu ul li a > .material-icons
-  font-size: 18px
+  font-size: 25px
+  vertical-align: middle;
+
+gl-menu ul li a > span
+  vertical-align: middle;
+  white-space: normal;
+  font-size: 14px;
+  color: vars.colors.secundaryText
+  padding: 13px 0 13px 28px;
+  font-weight: 500;
+  font-family: Roboto,Arial,sans-serif;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+gl-menu ul li.header a > span
+  font-weight: inherit;
+  font-size: inherit;
+  padding: inherit;
+
+gl-menu ul li
+  padding: 13px 0 13px 15px;
 
 gl-menu ul li > a
   width: 100%
@@ -110,3 +131,6 @@ gl-menu ul li.divider
 
 .gmd-menu-backdrop.active
   display: block;
+
+hr
+  border-top: 1px solid vars.colors.divider;

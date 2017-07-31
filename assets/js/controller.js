@@ -16,10 +16,12 @@ angular
     //   console.log('onRollback');
     // })
 
+    $scope.changeChannel = changeChannel;
 
-    $scope.teste = function(value){
-      console.log(value);
-    }
+    function changeChannel(option) {
+     console.log("canal:"+option);
+     console.log("canal:"+$scope.conciliation.channelId);
+   }
 
     $scope.navCollapse = function() {
       document.querySelector('.gumga-layout nav.gl-nav')
