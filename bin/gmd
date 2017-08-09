@@ -136,7 +136,7 @@ program
        message = 'Confirmar criação/atualização do '+program.generate.toUpperCase()+' ? [S/n]: ';
      }
      var confirm = yield prompt(message);
-     if(!confirm.toLowerCase()||confirm.toLowerCase()=='s'){
+     if(!confirm.toLowerCase()||confirm.toLowerCase()=='s' || confirm.toLowerCase()=='y'){
        generateGumgaLayout(program.darkPrimary,
          program.primary,
          program.lightPrimary,

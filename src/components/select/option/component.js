@@ -18,10 +18,10 @@ let Component = {
       ctrl.gmdSelectCtrl.addOption(this)
     }
     ctrl.select = () => {
+      ctrl.gmdSelectCtrl.select(this);
       if(ctrl.gmdSelectCtrl.onChange){
         ctrl.gmdSelectCtrl.onChange({value: this.ngValue});
       }
-      ctrl.gmdSelectCtrl.select(this)
     }
   }]
 }

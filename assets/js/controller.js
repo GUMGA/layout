@@ -19,8 +19,7 @@ angular
     $scope.changeChannel = changeChannel;
 
     function changeChannel(option) {
-     console.log("canal:"+option);
-     console.log("canal:"+$scope.conciliation.channelId);
+     console.log("selecionou: "+option);
    }
 
     $scope.navCollapse = function() {
