@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "2.17.0",
+  "version": "2.18.0",
   "description": "Gumga Layout",
   "main": "./src/components/index.js",
   "bin": {

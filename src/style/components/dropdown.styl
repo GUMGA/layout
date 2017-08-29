@@ -51,6 +51,11 @@ gmd-select .dropdown.gmd button.gmd
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
+  padding-bottom: 3px;
+  padding-top: 8px;
+
+gmd-select button > span.item-select
+  font-size: 1.6rem;
 
 gmd-select .dropdown.gmd button.gmd > .caret
   position: absolute;
@@ -64,15 +69,35 @@ gmd-select .select-option
   overflow: hidden
 
 gmd-select .dropdown.gmd label.floating-dropdown
-  position: absolute
-  top: -16px
-  transition: 0.2s ease display
-  -moz-transition: 0.2s ease display
-  -webkit-transition: 0.2s ease display
-  font-weight: 400
+  position: absolute;
+  top: -20px;
+  transition: 0.2s ease display;
+  -moz-transition: 0.2s ease display;
+  -webkit-transition: 0.2s ease display;
+  font-weight: 400;
+  -webkit-transform: translate3d(0, 6px, 0) scale(0.8);
+  transform: translate3d(0, 6px, 0) scale(0.8);
+  -webkit-transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-size: 1.6rem;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+  order: 1;
+  pointer-events: none;
+  -webkit-font-smoothing: antialiased;
+  padding-right: 0;
 
 gmd-select .dropdown.gmd .placeholder
-  color: colors.secundaryText
+  color: #999
+  font-size: 1.6rem
 
 //gmd-select .dropdown.gmd .dropdown-menu gmd-option:not(:first-child)
 //  cursor: pointer

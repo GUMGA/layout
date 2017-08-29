@@ -19,7 +19,7 @@ angular
     $scope.changeChannel = changeChannel;
 
     function changeChannel(option) {
-     console.log("selecionou: "+option);
+    //  console.log("selecionou: "+option);
    }
 
     $scope.navCollapse = function() {
@@ -89,13 +89,13 @@ angular
     $scope.example = {select:null}
 
     $timeout(function() {
-      $scope.example.text = 'Mateus'
+      // $scope.example.text = 'Mateus'
     }, 5000)
 
     // $scope.example.select = {name: 'Mateus', id: 3};
     // $scope.radio = 'Feminino';
 
-    $scope.mateus = "valor";
+    // $scope.mateus = "valor";
 
     $timeout(function() {
         $scope.strings = ["nome", "valor", "fonte"];

@@ -13,7 +13,9 @@ let Component = {
   },
   template: `
   <div class="dropdown gmd">
-     <label class="control-label floating-dropdown" ng-show="$ctrl.selected" data-ng-bind="$ctrl.placeholder"></label>
+     <label class="control-label floating-dropdown" ng-show="$ctrl.selected">
+      {{$ctrl.placeholder}} <span ng-if="$ctrl.validateGumgaError" ng-class="{'gmd-select-required': $ctrl.ngModelCtrl.$error.required}">*<span>
+     </label>
      <button class="btn btn-default gmd dropdown-toggle gmd-select-button"
              type="button"
              style="border-radius: 0;"
@@ -23,7 +25,10 @@ let Component = {
              aria-haspopup="true"
              aria-expanded="true">
        <span class="item-select" data-ng-show="$ctrl.selected" data-ng-bind="$ctrl.selected"></span>
-       <span data-ng-bind="$ctrl.placeholder" data-ng-hide="$ctrl.selected" class="item-select placeholder"></span>
+       <span data-ng-hide="$ctrl.selected" class="item-select placeholder">
+        {{$ctrl.placeholder}}
+       </span>
+       <span ng-if="$ctrl.ngModelCtrl.$error.required && $ctrl.validateGumgaError" class="word-required">*</span>
        <span class="caret"></span>
      </button>
      <ul class="dropdown-menu" aria-labelledby="gmdSelect" ng-show="$ctrl.option">
@@ -42,6 +47,9 @@ let Component = {
     ,   ngModelCtrl = $element.controller('ngModel')
 
     let options = ctrl.options || [];
+
+    ctrl.ngModelCtrl        = ngModelCtrl;
+    ctrl.validateGumgaError = $attrs.hasOwnProperty('gumgaRequired');
 
     ctrl.select = function(option) {
       angular.forEach(options, function(option) {
@@ -74,6 +82,7 @@ let Component = {
     ctrl.$doCheck = () => {
       if (options && options.length > 0) setSelected(ctrl.ngModel)
     }
+
 
   }]
 }

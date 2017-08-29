@@ -217,14 +217,18 @@
                         <gmd-input>
                           <input type="email" class="form-control gmd" ng-model="example.email" id="email" required>
                           <span class="bar"></span>
-                          <label for="email" class="control-label">Endereço de e-mail</label>
+                          <label for="email" class="control-label">Endereço de e-mail do cara que vai usar o sistema pra fazer alguma coisa que ele nao faria normalmente pq ele tem carrapato, na barriga.</label>
                         </gmd-input>
 
                         {{example.email}}
                       </div>
-                      
+
                       <div class="col-md-4">
-                        <gmd-select ng-model="mateus" on-change="changeChannel(value)" ng-disabled="disabledSelect" placeholder="Selecione">
+                        <gmd-select ng-model="mateus"
+                                    on-change="changeChannel(value)"
+                                    ng-disabled="disabledSelect"
+                                    placeholder="Selecione"
+                                    name="func">
                           <gmd-option ng-repeat="option in strings" ng-value="option" ng-label="option">
                             {{option}}
                           </gmd-option>
@@ -241,7 +245,7 @@
 
                     <div class="row">
                       <div class="col-md-3">
-                        <gmd-select ng-model="example.select" ng-disabled="disabledSelect" placeholder="Selecione">
+                        <gmd-select ng-model="example.select" ng-disabled="disabledSelect" placeholder="Selecione" >
                           <gmd-select-search ng-model="search" placeholder="Buscar funcionarios..."></gmd-select-search>
                           <gmd-option ng-repeat="option in options | filter: search" ng-value="option" ng-label="option.name">
                             {{option.name}}
@@ -257,7 +261,6 @@
                           <label>
                             <input type="checkbox" class="gmd" data-ng-model="example.check">
                             <span class="box"></span>
-                            <!--<span class="ripple-effect gmd-ripple"></span>-->
                             Check me out {{example.check}}
                           </label>
                         </div>
