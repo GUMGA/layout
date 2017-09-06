@@ -89,7 +89,9 @@ let Component = {
       if(!fixed){
         let elm = document.createElement('div');
         elm.classList.add('gmd-menu-backdrop');
-        angular.element('body')[0].appendChild(elm);
+        if(angular.element('div.gmd-menu-backdrop').length == 0){
+          angular.element('body')[0].appendChild(elm);
+        }
         angular.element('div.gmd-menu-backdrop').on('click', onBackdropClick);
       }
 
