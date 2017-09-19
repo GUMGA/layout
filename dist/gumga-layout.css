@@ -766,6 +766,9 @@ gmd-fab > ng-transclude ul.open li span.visible {
 .form-control.gmd:focus {
   outline: none;
 }
+gmd-input > div[ng-transclude] {
+  position: relative;
+}
 .form-control.gmd ~ label {
   color: #999;
   font-weight: normal;
@@ -798,6 +801,11 @@ gmd-fab > ng-transclude ul.open li span.visible {
   z-index: 1;
   font-size: 1.6rem;
 }
+textarea.form-control.gmd ~ label {
+  position: absolute;
+  top: -20px;
+  left: 0px;
+}
 .form-control.gmd:focus ~ label,
 .form-control.gmd.active ~ label,
 .form-control.gmd[placeholder] ~ label,
@@ -810,6 +818,14 @@ gmd-fab > ng-transclude ul.open li span.visible {
   transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+textarea.form-control.gmd:focus ~ label,
+textarea.form-control.gmd.active ~ label,
+textarea.form-control.gmd[placeholder] ~ label,
+textarea.form-control.gmd ~ label.fixed {
+  position: absolute;
+  top: -20px;
+  left: 0px;
 }
 .bar {
   position: relative;

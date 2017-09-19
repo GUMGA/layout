@@ -199,26 +199,14 @@
                     <div class="row">
                       <div class="col-md-4">
 
-                        <gmd-input>
-                          <input type="text"
-                                 name="example"
-                                 class="form-control gmd"
-                                 ng-model="example.porcent"
-                                 gumga-error
-                                 gumga-mask="99.99%"
-                                 gumga-required>
-                          <span class="bar"></span>
-                          <label for="text" class="control-label">Porcentagem: </label>
-                        </gmd-input>
+                      <gmd-input>
+                        <textarea type="text" class="form-control gmd" ng-model="example.textarea"></textarea>
+                        <span class="bar"></span>
+                        <label for="email" class="control-label">Biografia</label>
+                      </gmd-input>
 
                       </div>
                       <div class="col-md-4">
-
-                        <gmd-input>
-                          <input type="email" class="form-control gmd" ng-model="example.email" id="email" required>
-                          <span class="bar"></span>
-                          <label for="email" class="control-label">Endereço de e-mail do cara que vai usar o sistema pra fazer alguma coisa que ele nao faria normalmente pq ele tem carrapato, na barriga.</label>
-                        </gmd-input>
 
                         {{example.email}}
                       </div>
