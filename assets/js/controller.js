@@ -22,6 +22,10 @@ angular
     //  console.log("selecionou: "+option);
    }
 
+   $scope.tagsClick = function(){
+     console.log('clico')
+   }
+
     $scope.navCollapse = function() {
       document.querySelector('.gumga-layout nav.gl-nav')
         .classList.toggle('collapsed')

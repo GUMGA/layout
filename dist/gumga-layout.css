@@ -692,6 +692,10 @@ gmd-fab:hover > ng-transclude > ul > li {
   transition: all 0.3s;
   transform: scale(1);
 }
+gmd-fab ul li[disabled="disabled"] {
+  pointer-events: none;
+  opacity: 0.6;
+}
 gmd-fab > ng-transclude > button {
   position: absolute;
   width: 56px;
