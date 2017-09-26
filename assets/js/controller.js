@@ -102,7 +102,7 @@ angular
     // $scope.mateus = "valor";
 
     $timeout(function() {
-        $scope.strings = ["nome", "valor", "fonte"];
+        $scope.strings = ["nome", "valor", "fonte", "fonte1","fonte2","fonte3","fonte4","fonte5","fonte6","fonte7","fonte8","fonte9","fonte10"];
 
 }, 2000)
 

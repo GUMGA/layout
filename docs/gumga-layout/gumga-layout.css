@@ -692,6 +692,10 @@ gmd-fab:hover > ng-transclude > ul > li {
   transition: all 0.3s;
   transform: scale(1);
 }
+gmd-fab ul li[disabled="disabled"] {
+  pointer-events: none;
+  opacity: 0.6;
+}
 gmd-fab > ng-transclude > button {
   position: absolute;
   width: 56px;
@@ -762,24 +766,66 @@ gmd-fab > ng-transclude ul.open li span.visible {
 .form-control.gmd:focus {
   outline: none;
 }
+gmd-input > div[ng-transclude] {
+  position: relative;
+}
 .form-control.gmd ~ label {
   color: #999;
   font-weight: normal;
   position: relative;
   pointer-events: none;
   left: 0px;
-  top: -25px;
+  top: -54px;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
+  -webkit-transform: translate3d(0, 28px, 0) scale(1);
+  transform: translate3d(0, 28px, 0) scale(1);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  max-width: 100%;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+  order: 1;
+  pointer-events: none;
+  -webkit-font-smoothing: antialiased;
+  padding-right: 0;
+  z-index: 1;
+  font-size: 1.6rem;
+}
+textarea.form-control.gmd ~ label {
+  position: absolute;
+  top: -20px;
+  left: 0px;
 }
 .form-control.gmd:focus ~ label,
 .form-control.gmd.active ~ label,
 .form-control.gmd[placeholder] ~ label,
 .form-control.gmd ~ label.fixed {
   content: attr(value);
-  top: -50px;
-  font-size: 14px;
+  top: -54px;
+  -webkit-transform: translate3d(0, 6px, 0) scale(0.8);
+  transform: translate3d(0, 6px, 0) scale(0.8);
+  -webkit-transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+textarea.form-control.gmd:focus ~ label,
+textarea.form-control.gmd.active ~ label,
+textarea.form-control.gmd[placeholder] ~ label,
+textarea.form-control.gmd ~ label.fixed {
+  position: absolute;
+  top: -20px;
+  left: 0px;
 }
 .bar {
   position: relative;
@@ -963,6 +1009,9 @@ gmd-select-search .input-group-addon {
   padding-right: 10px;
   padding-top: 5px;
 }
+.word-required {
+  color: #dd2c00;
+}
 .nav-tabs.gmd > li > a {
   border-radius: 0;
   text-transform: uppercase;
@@ -1079,6 +1128,11 @@ gmd-select .dropdown.gmd button.gmd {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
+  padding-bottom: 3px;
+  padding-top: 8px;
+}
+gmd-select button > span.item-select {
+  font-size: 1.6rem;
 }
 gmd-select .dropdown.gmd button.gmd > .caret {
   position: absolute;
@@ -1093,14 +1147,34 @@ gmd-select .select-option {
 }
 gmd-select .dropdown.gmd label.floating-dropdown {
   position: absolute;
-  top: -16px;
+  top: -20px;
   transition: 0.2s ease display;
   -moz-transition: 0.2s ease display;
   -webkit-transition: 0.2s ease display;
   font-weight: 400;
+  -webkit-transform: translate3d(0, 6px, 0) scale(0.8);
+  transform: translate3d(0, 6px, 0) scale(0.8);
+  -webkit-transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-size: 1.6rem;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+  order: 1;
+  pointer-events: none;
+  -webkit-font-smoothing: antialiased;
+  padding-right: 0;
 }
 gmd-select .dropdown.gmd .placeholder {
-  color: #757575;
+  color: #999;
+  font-size: 1.6rem;
 }
 gmd-select .dropdown.gmd .dropdown-menu gmd-option a {
   text-decoration: none;
@@ -2240,6 +2314,9 @@ gl-menu ul {
   padding: 0;
   list-style: none;
 }
+gl-menu > ul {
+  padding-top: 25px;
+}
 gl-menu ul > li {
   margin-top: 6px 0 0;
   cursor: pointer;
@@ -2261,7 +2338,28 @@ gl-menu ul li.header > a {
   color: #757575;
 }
 gl-menu ul li a > .material-icons {
-  font-size: 18px;
+  font-size: 25px;
+  vertical-align: middle;
+}
+gl-menu ul li a > span {
+  vertical-align: middle;
+  white-space: normal;
+  font-size: 14px;
+  color: #757575;
+  padding: 13px 0 13px 28px;
+  font-weight: 500;
+  font-family: Roboto, Arial, sans-serif;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+gl-menu ul li.header a > span {
+  font-weight: inherit;
+  font-size: inherit;
+  padding: inherit;
+}
+gl-menu ul li {
+  padding: 13px 0 13px 15px;
 }
 gl-menu ul li > a {
   width: 100%;
@@ -2285,6 +2383,7 @@ gl-menu ul li.divider {
   background-color: #EAEAEA;
 }
 .gmd-menu-backdrop {
+  z-index: 9999999;
   display: none;
   position: fixed;
   background: rgba(0,0,0,0.22);
@@ -2297,6 +2396,9 @@ gl-menu ul li.divider {
 }
 .gmd-menu-backdrop.active {
   display: block;
+}
+hr {
+  border-top: 1px solid #EAEAEA;
 }
 main > .content {
   background-color: transparent;

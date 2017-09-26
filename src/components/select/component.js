@@ -51,6 +51,103 @@ let Component = {
     ctrl.ngModelCtrl        = ngModelCtrl;
     ctrl.validateGumgaError = $attrs.hasOwnProperty('gumgaRequired');
 
+    function preventDefault(e) {
+      e = e || window.event;
+      if(e.target.nodeName == 'A' && e.target.className == 'select-option'){
+        let direction = findScrollDirectionOtherBrowsers(e)
+        let scrollTop = angular.element(e.target.parentNode.parentNode).scrollTop();
+        if(scrollTop + angular.element(e.target.parentNode.parentNode).innerHeight() >= e.target.parentNode.parentNode.scrollHeight && direction != 'UP'){
+          if (e.preventDefault)
+              e.preventDefault();
+          e.returnValue = false;
+        }else if(scrollTop <= 0  && direction != 'DOWN'){
+          if (e.preventDefault)
+              e.preventDefault();
+          e.returnValue = false;
+        } else {
+          e.returnValue = true;
+          return;
+        }
+      }else{
+        if (e.preventDefault)
+            e.preventDefault();
+        e.returnValue = false;
+      }
+    }
+
+    function findScrollDirectionOtherBrowsers(event){
+      var delta;
+      if (event.wheelDelta){
+        delta = event.wheelDelta;
+      }else{
+        delta = -1 *event.deltaY;
+      }
+      if (delta < 0){
+        return "DOWN";
+      }else if (delta > 0){
+        return "UP";
+      }
+    }
+
+    function preventDefaultForScrollKeys(e) {
+        if (keys && keys[e.keyCode]) {
+            preventDefault(e);
+            return false;
+        }
+    }
+
+    function disableScroll() {
+      if (window.addEventListener){
+        window.addEventListener('scroll', preventDefault, false);
+        window.addEventListener('DOMMouseScroll', preventDefault, false);
+      }
+      window.onwheel = preventDefault; // modern standard
+      window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+      window.ontouchmove  = preventDefault; // mobile
+      document.onkeydown  = preventDefaultForScrollKeys;
+    }
+
+    function enableScroll() {
+        if (window.removeEventListener)
+            window.removeEventListener('DOMMouseScroll', preventDefault, false);
+        window.onmousewheel = document.onmousewheel = null;
+        window.onwheel = null;
+        window.ontouchmove = null;
+        document.onkeydown = null;
+    }
+
+    const getOffset = el => {
+        let _x = 0, _y = 0;
+        while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+            _x += el.offsetLeft - el.scrollLeft;
+            _y += el.offsetTop - el.scrollTop;
+            el = el.offsetParent;
+        }
+        return { top: _y, left: _x };
+    }
+
+    $element.bind('click', event => {
+      disableScroll();
+      let position = getOffset($element[0]);
+      angular.forEach($element.find('ul'), ul => {
+        angular.element(ul).css({
+          position: 'fixed',
+          left: position.left-1 + 'px',
+          top: position.top-2 + 'px',
+          width: $element.find('div.dropdown')[0].clientWidth
+        })
+      });
+      angular.element($element.find('button.dropdown-toggle')).attrchange({
+          trackValues: true,
+          callback: function(evnt) {
+            if(evnt.attributeName == 'aria-expanded' && evnt.newValue == 'false'){
+              enableScroll();
+            }
+          }
+      });
+
+    })
+
     ctrl.select = function(option) {
       angular.forEach(options, function(option) {
         option.selected = false;
