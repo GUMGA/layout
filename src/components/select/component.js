@@ -31,7 +31,7 @@ let Component = {
        <span ng-if="$ctrl.ngModelCtrl.$error.required && $ctrl.validateGumgaError" class="word-required">*</span>
        <span class="caret"></span>
      </button>
-     <ul class="dropdown-menu" aria-labelledby="gmdSelect" ng-show="$ctrl.option">
+     <ul class="dropdown-menu" aria-labelledby="gmdSelect" ng-show="$ctrl.option" style="display: none;">
        <li data-ng-click="$ctrl.clear()" ng-if="$ctrl.unselect">
          <a data-ng-class="{active: false}">{{$ctrl.unselect}}</a>
        </li>
@@ -39,10 +39,10 @@ let Component = {
          <a class="select-option" data-ng-click="$ctrl.select(option)" data-ng-bind="option[$ctrl.option] || option" data-ng-class="{active: $ctrl.isActive(option)}"></a>
        </li>
      </ul>
-     <ul class="dropdown-menu gmd" aria-labelledby="gmdSelect" ng-show="!$ctrl.option" style="max-height: 250px;overflow: auto;" ng-transclude></ul>
+     <ul class="dropdown-menu gmd" aria-labelledby="gmdSelect" ng-show="!$ctrl.option" style="max-height: 250px;overflow: auto;display: none;" ng-transclude></ul>
    </div>
   `,
-  controller: ['$scope','$attrs','$timeout','$element', function($scope,$attrs,$timeout,$element) {
+  controller: ['$scope','$attrs','$timeout','$element', '$transclude', '$compile', function($scope,$attrs,$timeout,$element,$transclude, $compile) {
     let ctrl = this
     ,   ngModelCtrl = $element.controller('ngModel')
 
@@ -117,35 +117,55 @@ let Component = {
     }
 
     const getOffset = el => {
+        var rect = el.getBoundingClientRect(),
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
         let _x = 0, _y = 0;
         while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
             _x += el.offsetLeft - el.scrollLeft;
             _y += el.offsetTop - el.scrollTop;
             el = el.offsetParent;
         }
-        return { top: _y, left: _x };
+
+
+        return { top: _y, left: rect.left + scrollLeft}
     }
 
     $element.bind('click', event => {
-      disableScroll();
+      let uls = $element.find('ul');
+      var body = angular.element(document).find('body').eq(0);
       let position = getOffset($element[0]);
-      angular.forEach($element.find('ul'), ul => {
+      angular.forEach(uls, ul => {
         angular.element(ul).css({
+          display: 'block',
           position: 'fixed',
           left: position.left-1 + 'px',
           top: position.top-2 + 'px',
           width: $element.find('div.dropdown')[0].clientWidth
         })
       });
+      let div = angular.element(document.createElement('div'));
+      div.addClass("dropdown gmd");
+      div.append(uls);
+      body.append(div);
+      disableScroll();
       angular.element($element.find('button.dropdown-toggle')).attrchange({
           trackValues: true,
           callback: function(evnt) {
             if(evnt.attributeName == 'aria-expanded' && evnt.newValue == 'false'){
               enableScroll();
+              uls = angular.element(div).find('ul');
+              angular.forEach(uls, ul => {
+                angular.element(ul).css({
+                  display: 'none'
+                })
+              });
+              $element.find('div.dropdown').append(uls);
+              div.remove();
             }
           }
       });
-
     })
 
     ctrl.select = function(option) {

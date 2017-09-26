@@ -12,13 +12,15 @@ let Component = {
     <a class="select-option" data-ng-click="$ctrl.select($ctrl.ngValue, $ctrl.ngLabel)" ng-class="{active: $ctrl.selected}" ng-transclude></a>
   `,
   controller: ['$scope','$attrs','$timeout','$element','$transclude', function($scope,$attrs,$timeout,$element,$transclude) {
-    let ctrl = this
+    let ctrl = this;
+
+    $scope.mateus = true;
 
     ctrl.$onInit = () => {
       ctrl.gmdSelectCtrl.addOption(this)
     }
     ctrl.select = () => {
-      ctrl.gmdSelectCtrl.select(this);
+      ctrl.gmdSelectCtrl.select(ctrl);
       if(ctrl.gmdSelectCtrl.onChange){
         ctrl.gmdSelectCtrl.onChange({value: this.ngValue});
       }
