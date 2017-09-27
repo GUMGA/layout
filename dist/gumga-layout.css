@@ -1200,6 +1200,9 @@ gmd-select .dropdown.gmd .placeholder {
   color: #333;
   white-space: nowrap;
 }
+body > div.dropdown ul {
+  z-index: 9999;
+}
 .panel.gmd {
   border: 0;
   border-radius: 2px;
