@@ -108,6 +108,7 @@
     &lt;div class="col-md-6"&gt;
       &lt;gmd-select ng-model="example.select"
                      ng-disabled="disabledSelect"
+                     on-change="yourCallback()"
                      placeholder="Select 1"&gt;
         &lt;gmd-option ng-repeat="option in options"
                        ng-value="option"
