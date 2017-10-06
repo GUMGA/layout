@@ -134,6 +134,10 @@ let Component = {
 
     $element.bind('click', event => {
       let uls = $element.find('ul');
+      if(uls.find('gmd-option').length == 0){
+        event.stopPropagation();
+        return;
+      }
       var body = angular.element(document).find('body').eq(0);
       let position = getOffset($element[0]);
       angular.forEach(uls, ul => {
