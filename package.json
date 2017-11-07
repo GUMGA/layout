@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "2.23.0",
+  "version": "2.26.0",
   "description": "Gumga Layout",
   "main": "./src/components/index.js",
   "bin": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guiseek/layout.git"
+    "url": "git+https://github.com/gumga/layout.git"
   },
   "keywords": [
     "gumga",
@@ -24,9 +24,9 @@
   "author": "Gui Seek",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/guiseek/layout/issues"
+    "url": "https://github.com/gumga/layout/issues"
   },
-  "homepage": "https://github.com/guiseek/layout#readme",
+  "homepage": "https://github.com/gumga/layout#readme",
   "devDependencies": {
     "angular": "^1.6.4",
     "babel-core": "^6.18.2",

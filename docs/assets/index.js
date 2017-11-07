@@ -35,9 +35,10 @@ angular.module('app', ['gumga.layout', 'ui.bootstrap'])
     reprint(3000);
 
     $scope.options = [
-      {name: 'Guilherme', id: 1},
+      {name: 'Willian', id: 1},
       {name: 'Felipe', id: 2},
-      {name: 'Mateus', id: 3}
+      {name: 'Mateus', id: 3},
+      {name: 'Munif', id: 4}
     ]
 
     $scope.example = {

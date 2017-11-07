@@ -99,6 +99,7 @@ let Component = {
         $timeout(() => {
             let size = angular.element('.gumga-layout .gl-header').height();
             if(size == 0) setMenuTop();
+            if(fixed) size = 0;
             angular.element('.gumga-layout nav.gl-nav.collapsed').css({
                top: size
              })

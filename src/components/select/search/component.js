@@ -17,6 +17,11 @@ let Component = {
   `,
   controller: ['$scope','$attrs','$timeout','$element','$transclude', function($scope,$attrs,$timeout,$element,$transclude) {
     let ctrl = this;
+
+    $element.bind('click', (evt) => {
+      evt.stopPropagation();
+    })
+
   }]
 }
 

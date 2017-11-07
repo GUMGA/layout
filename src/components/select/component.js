@@ -51,12 +51,23 @@ let Component = {
     ctrl.ngModelCtrl        = ngModelCtrl;
     ctrl.validateGumgaError = $attrs.hasOwnProperty('gumgaRequired');
 
+    function findParentByName(elm, parentName){
+      if(elm.className == parentName){
+        return elm;
+      }
+      if(elm.parentNode){
+        return findParentByName(elm.parentNode, parentName);
+      }
+      return elm;
+    }
+
     function preventDefault(e) {
       e = e || window.event;
-      if(e.target.nodeName == 'A' && e.target.className == 'select-option'){
+      let target = findParentByName(e.target, 'select-option');
+      if(target.nodeName == 'A' && target.className == 'select-option'){
         let direction = findScrollDirectionOtherBrowsers(e)
-        let scrollTop = angular.element(e.target.parentNode.parentNode).scrollTop();
-        if(scrollTop + angular.element(e.target.parentNode.parentNode).innerHeight() >= e.target.parentNode.parentNode.scrollHeight && direction != 'UP'){
+        let scrollTop = angular.element(target.parentNode.parentNode).scrollTop();
+        if(scrollTop + angular.element(target.parentNode.parentNode).innerHeight() >= target.parentNode.parentNode.scrollHeight && direction != 'UP'){
           if (e.preventDefault)
               e.preventDefault();
           e.returnValue = false;
@@ -132,29 +143,50 @@ let Component = {
         return { top: _y, left: rect.left + scrollLeft}
     }
 
-    $element.bind('click', event => {
-      let uls = $element.find('ul');
-      if(uls.find('gmd-option').length == 0){
-        event.stopPropagation();
-        return;
-      }
-      var body = angular.element(document).find('body').eq(0);
+    const getElementMaxHeight = (elm) => {
+      var scrollPosition = angular.element('body').scrollTop();
+      var elementOffset = elm.offset().top;
+      var elementDistance = (elementOffset - scrollPosition);
+      var windowHeight = angular.element(window).height();
+      return windowHeight - elementDistance;
+    }
+
+    const handlingElementStyle = ($element, uls) => {
+      let SIZE_BOTTOM_DISTANCE = 5;
       let position = getOffset($element[0]);
       angular.forEach(uls, ul => {
+        if(angular.element(ul).height() == 0) return;
+        let maxHeight = getElementMaxHeight(angular.element($element[0]));
+        
+        if(angular.element(ul).height() > maxHeight){
+          angular.element(ul).css({
+            height: maxHeight - SIZE_BOTTOM_DISTANCE + 'px'
+          });
+        }else if(angular.element(ul).height() != (maxHeight -SIZE_BOTTOM_DISTANCE)){
+          angular.element(ul).css({
+            height: 'auto'
+          });
+        }
+
         angular.element(ul).css({
           display: 'block',
           position: 'fixed',
           left: position.left-1 + 'px',
           top: position.top-2 + 'px',
-          width: $element.find('div.dropdown')[0].clientWidth
-        })
+          width: $element.find('div.dropdown')[0].clientWidth + 1
+        });
+
+
       });
+    }
+
+    const handlingElementInBody = (elm, uls) => {
+      var body = angular.element(document).find('body').eq(0);
       let div = angular.element(document.createElement('div'));
       div.addClass("dropdown gmd");
       div.append(uls);
       body.append(div);
-      disableScroll();
-      angular.element($element.find('button.dropdown-toggle')).attrchange({
+      angular.element(elm.find('button.dropdown-toggle')).attrchange({
           trackValues: true,
           callback: function(evnt) {
             if(evnt.attributeName == 'aria-expanded' && evnt.newValue == 'false'){
@@ -165,11 +197,22 @@ let Component = {
                   display: 'none'
                 })
               });
-              $element.find('div.dropdown').append(uls);
+              elm.find('div.dropdown').append(uls);
               div.remove();
             }
           }
       });
+    }
+
+    $element.bind('click', event => {
+      let uls = $element.find('ul');
+      if(uls.find('gmd-option').length == 0){
+        event.stopPropagation();
+        return;
+      }
+      handlingElementStyle($element, uls);    
+      disableScroll();
+      handlingElementInBody($element, uls);
     })
 
     ctrl.select = function(option) {
@@ -196,9 +239,7 @@ let Component = {
       })
     }
 
-    $timeout(() => {
-      setSelected(ctrl.ngModel)
-    }, 0);
+    $timeout(() => setSelected(ctrl.ngModel));
 
     ctrl.$doCheck = () => {
       if (options && options.length > 0) setSelected(ctrl.ngModel)

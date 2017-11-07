@@ -14,17 +14,17 @@ let Component = {
   controller: ['$scope','$attrs','$timeout','$element','$transclude', function($scope,$attrs,$timeout,$element,$transclude) {
     let ctrl = this;
 
-    $scope.mateus = true;
-
     ctrl.$onInit = () => {
       ctrl.gmdSelectCtrl.addOption(this)
     }
+    
     ctrl.select = () => {
       ctrl.gmdSelectCtrl.select(ctrl);
       if(ctrl.gmdSelectCtrl.onChange){
         ctrl.gmdSelectCtrl.onChange({value: this.ngValue});
       }
     }
+
   }]
 }
 

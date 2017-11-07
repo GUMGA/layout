@@ -8,7 +8,9 @@
   box-shadow: 0 2px 4px rgba(0,0,0,.175)
 
 .dropdown.gmd .dropdown-menu > gmd-option > a,
-.dropup.gmd .dropdown-menu > gmd-option > a
+.dropup.gmd .dropdown-menu > gmd-option > a,
+.dropdown.gmd .dropdown-menu > gmd-option-empty > a,
+.dropup.gmd .dropdown-menu > gmd-option-empty > a
   padding: 10px 20px
   transition: 0.2s ease background-color
   -moz-transition: 0.2s ease background-color
@@ -18,12 +20,13 @@
 .dropup.gmd .dropdown-header
   padding: 10px 20px
 
-.navbar-nav > gmd-option > .dropdown-menu.gmd
+.navbar-nav > gmd-option > .dropdown-menu.gmd,
+.navbar-nav > gmd-option-empty > .dropdown-menu.gmd
   margin-top: 2px
   z-index: 100000
 
 .dropdown.gmd .dropdown-menu, dropup.gmd .dropdown-menu
-  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12)!important
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12)
   transition: all .4s cubic-bezier(.25,.8,.25,1)
   border-radius: 2px
   border: none
@@ -99,27 +102,28 @@ gmd-select .dropdown.gmd .placeholder
   color: #999
   font-size: 1.6rem
 
-//gmd-select .dropdown.gmd .dropdown-menu gmd-option:not(:first-child)
-//  cursor: pointer
-
-.dropdown.gmd .dropdown-menu gmd-option a
+.dropdown.gmd .dropdown-menu gmd-option a,
+.dropdown.gmd .dropdown-menu gmd-option-empty a
   text-decoration: none
 
-.dropdown.gmd .dropdown-menu gmd-option a:hover
+.dropdown.gmd .dropdown-menu gmd-option a:hover,
+.dropdown.gmd .dropdown-menu gmd-option-empty a:hover
   background-color: #f5f5f5
 
 .dropdown.gmd .dropdown-menu .active
   color: colors.darkPrimary
   background-color: #f5f5f5
 
-.dropdown-menu.gmd > gmd-option
+.dropdown-menu.gmd > gmd-option,
+.dropdown-menu.gmd > gmd-option-empty
   position: relative
   display: block
   cursor: pointer
 
-.dropdown-menu.gmd > gmd-option > a
+.dropdown-menu.gmd > gmd-option > a,
+.dropdown-menu.gmd > gmd-option-empty > a
   display: block
-  padding: 3px 20px
+  padding: 10px 20px
   clear: both
   font-weight: 400
   line-height: 1.42857143
@@ -128,3 +132,9 @@ gmd-select .dropdown.gmd .placeholder
 
 body > div.dropdown ul
   z-index: 9999
+
+gmd-option-empty a.select-option,
+gmd-option a.select-option
+  height: 48px
+  display: flex !important
+  align-items: center
