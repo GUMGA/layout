@@ -9,7 +9,8 @@ let Component = {
     option: '@',
     value: '@',
     placeholder: '@?',
-    onChange: "&?"
+    onChange: "&?",
+    translateLabel: '=?'
   },
   template: `
   <div class="dropdown gmd">
@@ -24,7 +25,10 @@ let Component = {
              ng-disabled="$ctrl.ngDisabled"
              aria-haspopup="true"
              aria-expanded="true">
-       <span class="item-select" data-ng-show="$ctrl.selected" data-ng-bind="$ctrl.selected"></span>
+       <span class="item-select" ng-if="!$ctrl.translateLabel" data-ng-show="$ctrl.selected" data-ng-bind="$ctrl.selected"></span>
+       <span class="item-select" ng-if="$ctrl.translateLabel" data-ng-show="$ctrl.selected">
+          {{ $ctrl.selected | gumgaTranslate }}
+       </span>
        <span data-ng-hide="$ctrl.selected" class="item-select placeholder">
         {{$ctrl.placeholder}}
        </span>
@@ -44,7 +48,7 @@ let Component = {
   `,
   controller: ['$scope','$attrs','$timeout','$element', '$transclude', '$compile', function($scope,$attrs,$timeout,$element,$transclude, $compile) {
     let ctrl = this
-    ,   ngModelCtrl = $element.controller('ngModel')
+    ,   ngModelCtrl = $element.controller('ngModel');
 
     let options = ctrl.options || [];
 
@@ -105,6 +109,7 @@ let Component = {
             preventDefault(e);
             return false;
         }
+        console.clear();
     }
 
     function disableScroll() {

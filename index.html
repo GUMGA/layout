@@ -20,7 +20,7 @@
     <![endif]-->
 </head>
 
-<body data-ng-controller="controller">
+<body data-ng-controller="controller" gumga-translate="pt-br">
   <div class="gumga-layout">
 
     <header class="gl-header">
@@ -236,20 +236,18 @@
                       </gmd-input>
 
                     </div>
-                    <div class="col-md-4">
-
-                      {{example.email}}
-                    </div>
 
                     <div class="col-md-4">
-                      <gmd-select ng-model="mateus" on-change="changeChannel(value)" ng-disabled="disabledSelect" placeholder="Selecione" name="func">
-                        <gmd-option-empty>
-                          Nenhum
-                        </gmd-option-empty>
-                        <gmd-option ng-repeat="option in strings" ng-value="option" ng-label="option">
+                      
+                      <gmd-select   placeholder="Ola mundo" ng-model="mateus" translate-label="true">
+                        <gmd-option ng-repeat="option in strings" 
+                                    ng-value="option" 
+                                    ng-label="'person.'+option">
                           {{option}}
                         </gmd-option>
                       </gmd-select>
+
+
                       <br>
                       <br>
                     </div>
@@ -1000,13 +998,11 @@ $http.get('assets/data/keys.json')
 
   </div>
 
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
-
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/gumga-translate-ng@1.1.4/dist/gumga-translate.min.js"></script>
 
   <!-- <script src="gumga-layout/gumga-layout.min.js"></script> -->
   <script src="dist/gumga-layout.js"></script>

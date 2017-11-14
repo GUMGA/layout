@@ -1,5 +1,5 @@
 angular
-  .module('app', ['gumga.layout', 'ui.bootstrap','gumga.form', 'gumga.mask'])
+  .module('app', ['gumga.layout', 'ui.bootstrap','gumga.form', 'gumga.mask', 'gumga.translate'])
   .controller('controller', controller)
 
   controller.$inject = ['$scope', '$http', '$timeout', '$gmdAlert']
@@ -68,16 +68,8 @@ angular
     }
 
     $scope.onView = function(event, item) {
-      event.stopPropagation()
-      console.log(event)
-      console.log(item)
+      event.stopPropagation();
     }
-
-    // $scope.options = [
-    //   {name: 'Guilherme', id: 1},
-    //   {name: 'Felipe', id: 2},
-    //   {name: 'Mateus', id: 3}
-    // ]
 
     $timeout(function(){
       $scope.options = [
