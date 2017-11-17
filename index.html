@@ -43,7 +43,7 @@
       <nav class="navbar">
         <div class="container-fluid">
           <div class="navbar-header">
-            <gmd-hamburger></gmd-hamburger>
+            <!-- <gmd-hamburger></gmd-hamburger> -->
             <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
               Gumga Studio
             </a>
@@ -964,22 +964,23 @@ $http.get('assets/data/keys.json')
       </div>
 
     </main>
+
     <nav class="gl-nav collapsed">
-      <div class="navbar-header">
-        <!-- <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-            <i class="material-icons">menu</i>
-          </a> -->
-        <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-          <!-- Menu -->
-        </a>
-      </div>
       <header>
         <figure>
           <img src="images/logo-gumga-studio.png" alt="">
         </figure>
+        <icon-shrink>
+          <img src="https://cdn.filter.to/64x64/http://s3.amazonaws.com/public-ziprecruiter/uploads/3e8e4826.jpg" alt="">
+        </icon-shrink>
       </header>
-      <gl-menu menu="menu" keys="keys" icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" fixed="false"
-        text-first-level="Voltar ao primeiro nível">
+      <gl-menu menu="menu" 
+               keys="keys"
+               icon-first-level="glyphicon glyphicon-home" 
+               show-button-first-level="false"
+               shrink-mode="true"
+               fixed="false"
+               text-first-level="Voltar ao primeiro nível">
       </gl-menu>
     </nav>
 

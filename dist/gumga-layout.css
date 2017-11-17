@@ -35,6 +35,83 @@ a {
 /* Support for IE. */
   font-feature-settings: 'liga';
 }
+.gumga-layout nav.gl-nav {
+  overflow: visible !important;
+}
+.gumga-layout nav.gl-nav icon-shrink {
+  display: none;
+}
+.gumga-layout nav.gl-nav.closed icon-shrink {
+  display: block;
+}
+.gumga-layout nav.gl-nav.closed header {
+  width: 64px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 4px rgba(0,0,0,0.28);
+}
+.gumga-layout nav.gl-nav.closed header icon-shrink img {
+  width: 52px;
+}
+.gl-menu-chevron {
+  position: absolute;
+  display: none;
+  padding-top: 0;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.gl-menu-chevron li {
+  height: 52px;
+  display: flex;
+  align-items: center;
+}
+.gl-menu-chevron li > i {
+  pointer-events: none;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+  font-size: 28px;
+  transform: rotate(180deg);
+}
+.gumga-layout nav.gl-nav.closed {
+  width: 64px;
+}
+.gumga-layout nav.gl-nav.closed .gl-menu-chevron {
+  display: block;
+}
+.gumga-layout nav.gl-nav.closed header > figure,
+.gumga-layout nav.gl-nav.closed li.header,
+.gumga-layout nav.gl-nav.closed li.divider,
+.gumga-layout nav.gl-nav.closed li > a > span,
+.gumga-layout nav.gl-nav.closed li > a > i[data-ng-if="item.children"],
+.gumga-layout nav.gl-nav.closed input[data-ng-model="$ctrl.search"] {
+  display: none;
+}
+.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li {
+  padding: 13px 0 13px 20px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li > a {
+  padding-bottom: 13px;
+  padding-top: 13px;
+}
+.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li:hover {
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,0.28);
+  width: 250px;
+}
+.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li:hover a {
+  display: flex;
+  align-items: center;
+}
+.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li:hover a span {
+  display: block;
+  padding: 0px 0 0 24px;
+}
 @font-face {
   font-family: 'Roboto';
   font-style: normal;

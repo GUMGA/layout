@@ -52,7 +52,7 @@
     "label": "Produtos",
     "state": "welcome",
     "key": "CRUD-ADMIN",
-    "icon": "group",
+    "icon": "shopping_cart",
     "children": [
       {
         "type": "item",
@@ -80,6 +80,7 @@
   {
     "label": "Últimos cadastrados",
     "state": "welcome",
+    "icon": "group",
     "key": "CRUD-ADMIN"
   }
 ]
