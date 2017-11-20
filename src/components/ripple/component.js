@@ -29,7 +29,7 @@ let Component = function() {
         element.append(ripple);
       }
 
-      element.bind('click', createRipple);
+      element.bind('mousedown', createRipple);
     }
   }
 }
