@@ -41,10 +41,12 @@ a {
 .gumga-layout nav.gl-nav icon-shrink {
   display: none;
 }
-.gumga-layout nav.gl-nav.closed icon-shrink {
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) icon-shrink,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed icon-shrink {
   display: block;
 }
-.gumga-layout nav.gl-nav.closed header {
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) header,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed header {
   width: 64px;
   height: 52px;
   display: flex;
@@ -52,7 +54,8 @@ a {
   justify-content: center;
   box-shadow: 0 0 4px rgba(0,0,0,0.28);
 }
-.gumga-layout nav.gl-nav.closed header icon-shrink img {
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) header icon-shrink img,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed header icon-shrink img {
   width: 52px;
 }
 .gl-menu-chevron {
@@ -76,41 +79,67 @@ a {
   font-size: 28px;
   transform: rotate(180deg);
 }
-.gumga-layout nav.gl-nav.closed {
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover),
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed {
   width: 64px;
 }
-.gumga-layout nav.gl-nav.closed .gl-menu-chevron {
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) .gl-menu-chevron,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed .gl-menu-chevron {
   display: block;
 }
-.gumga-layout nav.gl-nav.closed header > figure,
-.gumga-layout nav.gl-nav.closed li.header,
-.gumga-layout nav.gl-nav.closed li.divider,
-.gumga-layout nav.gl-nav.closed li > a > span,
-.gumga-layout nav.gl-nav.closed li > a > i[data-ng-if="item.children"],
-.gumga-layout nav.gl-nav.closed input[data-ng-model="$ctrl.search"] {
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) header > figure,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed header > figure,
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) li.header,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed li.header,
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) li.divider,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed li.divider,
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) li > a > span,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed li > a > span,
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) li > a > i[data-ng-if="item.children"],
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed li > a > i[data-ng-if="item.children"],
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) input[data-ng-model="$ctrl.search"],
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed input[data-ng-model="$ctrl.search"] {
   display: none;
 }
-.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li {
-  padding: 13px 0 13px 20px;
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) gl-menu ul[menu] li,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed gl-menu ul[menu] li {
+  padding: 13px 0 13px 22px;
   padding-bottom: 0;
   padding-top: 0;
 }
-.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li > a {
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) gl-menu ul[menu] li > a,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed gl-menu ul[menu] li > a {
   padding-bottom: 13px;
   padding-top: 13px;
 }
-.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li:hover {
+.gumga-layout nav.gl-nav.closed[open-on-hover]:not(:hover) gl-menu ul[menu] li:hover,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed gl-menu ul[menu] li:hover {
   background: #fff;
   box-shadow: 0 0 4px rgba(0,0,0,0.28);
   width: 250px;
 }
-.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li:hover a {
+.gumga-layout nav.gl-nav.closed[open-on-hover]:not(:hover) gl-menu ul[menu] li:hover a,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed gl-menu ul[menu] li:hover a {
   display: flex;
   align-items: center;
 }
-.gumga-layout nav.gl-nav.closed gl-menu ul[menu] li:hover a span {
+.gumga-layout nav.gl-nav.closed[open-on-hover]:not(:hover) gl-menu ul[menu] li:hover a span,
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed gl-menu ul[menu] li:hover a span {
   display: block;
   padding: 0px 0 0 24px;
+}
+.gl-menu-chevron.possiblyFixed {
+  display: block;
+}
+.gl-menu-chevron.unfixed {
+  display: block;
+}
+.gl-menu-chevron.unfixed li {
+  justify-content: flex-end;
+}
+.gl-menu-chevron.unfixed li i {
+  transform: rotate(0deg);
+  margin-right: 15px;
 }
 @font-face {
   font-family: 'Roboto';
@@ -2430,8 +2459,11 @@ gl-menu ul li.header > a {
   font-size: 20px;
   color: #757575;
 }
+gl-menu ul li a > .material-icons[data-ng-if="item.children"] {
+  margin-right: 5px;
+}
 gl-menu ul li a > .material-icons {
-  font-size: 25px;
+  font-size: 18px;
   vertical-align: middle;
 }
 gl-menu ul li a > span {

@@ -2,3 +2,27 @@
   cursor: pointer;
   color: #2196F3;
 }
+
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover) header, .gumga-layout nav.gl-nav:not([open-on-hover]).closed header{
+  background: #262f3d;
+}
+
+.gumga-layout nav.gl-nav[open-on-hover].closed:not(:hover), .gumga-layout nav.gl-nav:not([open-on-hover]).closed{
+  background: #262f3d;
+}
+
+gl-menu ul li a > .material-icons, .gl-menu-chevron li > i{
+  color: #ccc;
+}
+
+.gl-menu-chevron li:hover > i{
+  color: #2196F3;
+}
+
+gl-menu ul li a > .material-icons:hover{
+  color: initial;
+}
+
+.gumga-layout nav.gl-nav:not([open-on-hover]).closed gl-menu ul[menu] li:hover a > .material-icons{
+  color: #2196F3;
+}

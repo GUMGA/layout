@@ -16,7 +16,7 @@
       <h3>Aside</h3>
     </aside>
 
-    <nav class="gl-nav">
+    <!-- <nav class="gl-nav">
       <div class="navbar-header">
         <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
           <i class="material-icons">menu</i>
@@ -31,6 +31,20 @@
         </figure>
       </header>
       <gl-menu menu="menu" fixed="true" keys="keys" icon-first-level="glyphicon glyphicon-home" text-first-level="Voltar ao primeiro nível"></gl-menu>
+    </nav> -->
+
+    <nav class="gl-nav" >
+      <header>
+        <!-- <figure>
+          <img src="assets/logo-gumga-studio.png" alt="">
+        </figure> -->
+        <icon-shrink>
+          <img src="assets/apenas-logo.png" style="width: 30px;height: 30px;">
+        </icon-shrink>
+      </header>
+      <gl-menu menu="menu" keys="keys" icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" shrink-mode="true"
+        text-first-level="Voltar ao primeiro nível">
+      </gl-menu>
     </nav>
 
     <div class="row">

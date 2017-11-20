@@ -1,0 +1,86 @@
+[
+  {
+    "type": "header",
+    "label": "Menu principal"
+  },
+  {
+    "type": "item",
+    "label": "Home",
+    "icon": "home",
+    "key": "CRUD-BASE"
+  },
+  {
+    "type": "item",
+    "label": "Usuários",
+    "state": "user",
+    "icon": "group",
+    "children": [
+      {
+        "type": "item",
+        "label": "Criar novo",
+        "state": "user.new",
+        "icon": "add",
+        "key": "CRUD-USER"
+      },
+      {
+        "type": "item",
+        "label": "Editar",
+        "state": "user.edit",
+        "icon": "edit",
+        "key": "CRUD-ADMIN",
+        "children": [
+          {
+            "type": "item",
+            "label": "Editar novo",
+            "state": "user.new",
+            "icon": "add",
+            "key": "CRUD-USER"
+          },
+          {
+            "type": "item",
+            "label": "Editar o editar",
+            "state": "user.edit",
+            "icon": "edit",
+            "key": "CRUD-ADMIN"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "item",
+    "label": "Produtos",
+    "state": "welcome",
+    "key": "CRUD-ADMIN",
+    "icon": "shopping_cart",
+    "children": [
+      {
+        "type": "item",
+        "label": "Criar novo",
+        "state": "user.new",
+        "icon": "add",
+        "key": "CRUD-USER"
+      },
+      {
+        "type": "item",
+        "label": "Editar",
+        "state": "user.edit",
+        "icon": "edit",
+        "key": "CRUD-ADMIN"
+      }
+    ]
+  },
+  {
+    "type": "separator"
+  },
+  {
+    "type": "header",
+    "label": "Produtos"
+  },
+  {
+    "label": "Últimos cadastrados",
+    "state": "welcome",
+    "icon": "group",
+    "key": "CRUD-ADMIN"
+  }
+]

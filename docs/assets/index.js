@@ -1,5 +1,5 @@
 angular.module('app', ['gumga.layout', 'ui.bootstrap'])
-  .controller('ctrl', function($scope, $timeout, $gmdAlert){
+  .controller('ctrl', function($scope, $timeout, $gmdAlert, $http){
 
     $scope.successAlert = function(){
       var gmdAlert = $gmdAlert.success('SALVO!', 'Mensagem para mostrar o sucesso!', 3000);
@@ -69,5 +69,18 @@ angular.module('app', ['gumga.layout', 'ui.bootstrap'])
     document.querySelector('.gumga-layout aside.gl-aside')
     .classList.toggle('collapsed')
     }
+
+    $http.get('assets/data/organizations.json')
+      .then(function(response) {
+        $scope.organizations = response.data
+      })
+    $http.get('assets/data/menu.json')
+      .then(function(response) {
+        $scope.menu = response.data
+      })
+    $http.get('assets/data/keys.json')
+      .then(function(response) {
+        $scope.keys = response.data
+      })
 
   })
