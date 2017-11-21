@@ -35,7 +35,8 @@ let Component = {
         </a>
       </li>
 
-      <li class="gmd gmd-ripple" data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search"
+      <li class="gmd gmd-ripple" 
+          data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search"
           data-ng-show="$ctrl.allow(item)"
           ng-click="$ctrl.next(item, $event)"
           data-ng-class="[!$ctrl.disableAnimations ? $ctrl.slide : '', {header: item.type == 'header', divider: item.type == 'separator'}]">

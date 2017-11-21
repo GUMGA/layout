@@ -23,6 +23,12 @@
 <body data-ng-controller="controller" gumga-translate="pt-br">
   <div class="gumga-layout">
 
+    <menu-shrink menu="menu" 
+                 keys="keys"
+                 class=""
+                 theme="dark">
+    </menu-shrink>
+
     <header class="gl-header">
       <div class="searchbar">
         <div class="icon back">
@@ -1068,23 +1074,8 @@ $http.get('assets/data/keys.json')
 
     </main>
 
-    <nav class="gl-nav collapsed closed" >
-      <header>
-        <figure>
-          <!-- <img src="images/logo-gumga-studio.png" alt=""> -->
-        </figure>
-        <icon-shrink>
-          <img src="https://cdn.filter.to/64x64/http://s3.amazonaws.com/public-ziprecruiter/uploads/3e8e4826.jpg" alt="">
-        </icon-shrink>
-      </header>
-      <gl-menu menu="menu" 
-               keys="keys"
-               icon-first-level="glyphicon glyphicon-home" 
-               show-button-first-level="false"
-               shrink-mode="true"
-               text-first-level="Voltar ao primeiro nível">
-      </gl-menu>
-    </nav>
+
+    
 
     <aside class="gl-aside">
       <h3>Aside</h3>
