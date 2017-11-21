@@ -13,8 +13,14 @@
   <body>
 
     <div class="gumga-layout">
-      <ng-include src="'header.html'"></ng-include>
-      <ng-include src="'main.html'"></ng-include>
+      <menu-shrink menu="menu" 
+              keys="keys"
+              logo="assets/apenas-logo.png"
+              class="fixed"
+              theme="dark">
+      </menu-shrink>
+      <header class="gl-header" ng-include="'header.html'"></header>
+      <main class="gl-main" ng-include="'main.html'"></main>
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

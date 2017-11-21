@@ -1,57 +1,98 @@
-<header class="gl-header">
-  <nav class="navbar">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <!-- <gmd-hamburger></gmd-hamburger> -->
-        <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
-          Gumga Layout
-        </a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <i class="material-icons">more_vert</i>
-        </button>
-      </div>
-
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="#" ng-click="goTo('getting-started')">Começando</a></li>
-          <li><a href="#" ng-click="goTo('colors')">Cores</a></li>
-          <li><a href="#" ng-click="goTo('typography')">Tipografia</a></li>
-          <li><a href="#" ng-click="goTo('nav-aside')">Nav & Aside</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Layout <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#" ng-click="goTo('header-doc')">Header</a></li>
-              <li><a href="#" ng-click="goTo('main-doc')">Container</a></li>
-              <li><a href="#" ng-click="goTo('menu-doc')">NavBar</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Componentes <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#" ng-click="goTo('form')">Formulários</a></li>
-              <li><a href="#" ng-click="goTo('buttons')">Botões</a></li>
-              <li><a href="#" ng-click="goTo('pills')">Pills</a></li>
-              <li><a href="#" ng-click="goTo('breadcrumb')">Breadcrumb</a></li>
-              <li><a href="#" ng-click="goTo('tabs')">Tabs</a></li>
-              <li><a href="#" ng-click="goTo('badge')">Badge</a></li>
-              <li><a href="#" ng-click="goTo('dropdown')">Dropdown</a></li>
-              <li><a href="#" ng-click="goTo('card')">Card</a></li>
-              <li><a href="#" ng-click="goTo('progress')">Progress</a></li>
-              <li><a href="#" ng-click="goTo('pagination')">Pagination</a></li>
-              <li><a href="#" ng-click="goTo('spinner')">Spinner</a></li>
-              <li><a href="#" ng-click="goTo('alert')">Alert</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active">
-            <a href="https://github.com/gumga/layout" target="_blank">
-              <i class="fa fa-github fa-2x" style="font-size: 18px;" aria-hidden="true"></i>
-              Github
-            </a>
-          </li>
-        </ul>
-      </div>
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <gmd-hamburger></gmd-hamburger> -->
+      <a class="navbar-brand" href="#" data-ng-click="navCollapse()">
+        Gumga Layout
+      </a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <i class="material-icons">more_vert</i>
+      </button>
     </div>
-  </nav>
-</header>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#" ng-click="goTo('getting-started')">Começando</a>
+        </li>
+        <li>
+          <a href="#" ng-click="goTo('colors')">Cores</a>
+        </li>
+        <li>
+          <a href="#" ng-click="goTo('typography')">Tipografia</a>
+        </li>
+        <li>
+          <a href="#" ng-click="goTo('nav-aside')">Menu</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Layout
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" ng-click="goTo('header-doc')">Header</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('main-doc')">Container</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('menu-doc')">NavBar</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Componentes
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" ng-click="goTo('form')">Formulários</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('buttons')">Botões</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('pills')">Pills</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('breadcrumb')">Breadcrumb</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('tabs')">Tabs</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('badge')">Badge</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('dropdown')">Dropdown</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('card')">Card</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('progress')">Progress</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('pagination')">Pagination</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('spinner')">Spinner</a>
+            </li>
+            <li>
+              <a href="#" ng-click="goTo('alert')">Alert</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active">
+          <a href="https://github.com/gumga/layout" target="_blank">
+            <i class="fa fa-github fa-2x" style="font-size: 18px;" aria-hidden="true"></i>
+            Github
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,11 +1,11 @@
 <div class="panel gmd">
   <div class="panel-heading" id="nav-aside">
-    Nav & Aside
+    Menu
   </div>
   <div class="panel-body">
 
-    <button type="button" class="btn gmd btn-default gmd-ripple raised" data-ng-click="navCollapse()">Alternar Nav</button>
-    <button type="button" class="btn gmd btn-default gmd-ripple raised" data-ng-click="asideCollapse()">Alternar Aside</button>
+    <!-- <button type="button" class="btn gmd btn-default gmd-ripple raised" data-ng-click="navCollapse()">Alternar Nav</button>
+    <button type="button" class="btn gmd btn-default gmd-ripple raised" data-ng-click="asideCollapse()">Alternar Aside</button> -->
 
     <aside class="gl-aside">
       <h3>Aside</h3>
@@ -32,12 +32,9 @@
       </header>
       <gl-menu menu="menu" fixed="true" keys="keys" icon-first-level="glyphicon glyphicon-home" text-first-level="Voltar ao primeiro nível"></gl-menu>
     </nav> -->
-
-    <nav class="gl-nav" >
+    
+    <!-- <nav class="gl-nav" >
       <header>
-        <!-- <figure>
-          <img src="assets/logo-gumga-studio.png" alt="">
-        </figure> -->
         <icon-shrink>
           <img src="assets/apenas-logo.png">
         </icon-shrink>
@@ -45,56 +42,17 @@
       <gl-menu menu="menu" keys="keys" icon-first-level="glyphicon glyphicon-home" show-button-first-level="false" shrink-mode="true"
         text-first-level="Voltar ao primeiro nível">
       </gl-menu>
-    </nav>
+    </nav> -->
 
     <div class="row">
       <div class="col-md-6">
         <h5>HTML</h5>
-        <pre><code class="prettyprint" ng-non-bindable>&lt;button type="button"
-        class="btn gmd btn-default gmd-ripple raised"
-        data-ng-click="navCollapse()">Alternar Nav&lt;/button&gt;
-
-&lt;button type="button"
-  class="btn gmd btn-default gmd-ripple raised"
-  data-ng-click="asideCollapse()"&gt;Alternar Aside&lt;/button&gt;
-
-&lt;aside class="gl-aside"&gt;
-  &lt;h3&gt;Aside&lt;/h3&gt;
-  &lt;h3&gt;Aside&lt;/h3&gt;
-  &lt;h3&gt;Aside&lt;/h3&gt;
-  &lt;h3&gt;Aside&lt;/h3&gt;
-  &lt;h3&gt;Aside&lt;/h3&gt;
-  &lt;h3&gt;Aside&lt;/h3&gt;
-&lt;/aside&gt;
-
-&lt;nav class="gl-nav"&gt;
-  &lt;div class="navbar-header"&gt;
-    &lt;a class="navbar-brand" href="#" data-ng-click="navCollapse()"&gt;
-      &lt;i class="material-icons"&gt;menu&lt;/i&gt;
-    &lt;/a&gt;
-    &lt;a class="navbar-brand" href="#" data-ng-click="navCollapse()"&gt;
-      Gumga Studio
-    &lt;/a&gt;
-  &lt;/div&gt;
-  &lt;header&gt;
-    &lt;figure&gt;
-      &lt;img src="logo.png" alt=""&gt;
-    &lt;/figure&gt;
-  &lt;/header&gt;
-  &lt;gl-menu menu="menu" keys="keys" icon-first-level="glyphicon glyphicon-home" text-first-level="Voltar ao primeiro nível"&gt;&lt;/gl-menu&gt;
-&lt;/nav&gt;</code></pre>
-      </div>
-      <div class="col-md-6">
-        <h5>JavaScript</h5>
-        <pre><code class="prettyprint" ng-non-bindable>$scope.navCollapse = function() {
-  document.querySelector('.gumga-layout nav.gl-nav')
-          .classList.toggle('collapsed')
-}
-
-$scope.asideCollapse = function() {
-  document.querySelector('.gumga-layout aside.gl-aside')
-          .classList.toggle('collapsed')
-}</code></pre>
+        <pre><code class="prettyprint" ng-non-bindable>&lt;menu-shrink menu="menu" 
+          keys="keys"
+          logo="logo.png"
+          class="fixed"
+          theme="dark"&gt;
+&lt;/menu-shrink&gt;</code></pre>
       </div>
     </div>
 

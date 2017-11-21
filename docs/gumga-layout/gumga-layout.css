@@ -2197,7 +2197,318 @@ gmd-spinner[fixed] .spinner-material {
     stroke: #ed1b72;
   }
 }
+menu-shrink ~ header.gl-header,
+menu-shrink ~ main.gl-main {
+  margin-left: 55px;
+  transition: all 300ms ease-in-out;
+}
+menu-shrink[theme="dark"] .main-menu:not(:hover) li.header > a:after {
+  color: rgba(255,255,255,0.3);
+}
+menu-shrink[theme="dark"] .main-menu {
+  background: #2d323e;
+}
+menu-shrink[theme="dark"] .main-menu .menu-header svg {
+  fill: rgba(255,255,255,0.7);
+}
+menu-shrink[theme="dark"] .main-menu li.divider {
+  background-color: rgba(255,255,255,0.12);
+}
+menu-shrink[theme="dark"] .main-menu li.header span {
+  color: rgba(255,255,255,0.3);
+}
+menu-shrink[theme="dark"] .main-menu li i,
+menu-shrink[theme="dark"] .main-menu li span {
+  color: rgba(255,255,255,0.7);
+}
+menu-shrink[theme="dark"] .main-menu li:hover a {
+  background-color: rgba(0,0,0,0.1);
+}
+menu-shrink.fixed ~ header.gl-header,
+menu-shrink.fixed ~ main.gl-main {
+  margin-left: 250px;
+  transition: all 300ms ease-in-out;
+}
+menu-shrink.fixed .main-menu {
+  width: 250px;
+  overflow: hidden;
+  opacity: 1;
+}
+menu-shrink.fixed .main-menu .menu-header svg {
+  fill: #039BE5;
+}
+menu-shrink.fixed .main-menu .menu-header img.small {
+  display: none;
+}
+menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) .menu-header img.small {
+  display: block;
+}
+menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) .menu-header img.large {
+  display: none;
+}
+menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) li.divider {
+  opacity: 0;
+}
+menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) li.header > a > span {
+  display: none;
+}
+menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) li.header > a:after {
+  content: '__';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  color: #ccc;
+}
+menu-shrink .menu-header {
+  height: 52px;
+  padding: 10px;
+  float: left;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
+  background-repeat: no-repeat;
+  width: 250px;
+  margin: 0px;
+  text-align: center;
+  font-size: 20px;
+}
+menu-shrink .menu-header svg {
+  display: inline-block;
+  position: relative;
+  height: 0.6em;
+  width: 1em;
+  position: absolute;
+  cursor: pointer;
+  left: 205px;
+  font-size: 1.33em;
+  padding: 0;
+  margin: 0;
+  fill: #757575;
+  transform: rotate(-45deg);
+}
+menu-shrink .menu-header img {
+  max-height: 34px;
+  position: absolute;
+  left: 5px;
+}
+menu-shrink .menu-header img.large {
+  display: none;
+  height: 34px;
+  max-width: 180px;
+  position: absolute;
+  left: 5px;
+}
+menu-shrink .menu-header img.small {
+  display: none;
+  position: absolute;
+  left: 5px;
+  width: 42px;
+  height: 34px;
+}
+menu-shrink .menu-header:hover,
+menu-shrink menu-header:focus {
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+  -moz-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+  -o-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+  transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
+}
+menu-shrink .menu-header:active,
+menu-shrink menu-header:focus {
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
+  -moz-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
+  -o-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
+  transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
+}
+menu-shrink .scrollbar {
+  height: 90%;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+menu-shrink .scrollbar ul {
+  padding-top: 10px;
+}
+menu-shrink .scrollbar:hover {
+  height: 90%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+menu-shrink .style-1::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+menu-shrink .style-1::-webkit-scrollbar {
+  width: 5px;
+  background-color: #f7f7f7;
+}
+menu-shrink .style-1::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #bfbfbf;
+}
+menu-shrink .main-menu:hover,
+menu-shrink nav.main-menu.expanded {
+  width: 250px;
+  overflow: hidden;
+  opacity: 1;
+}
+menu-shrink .main-menu:hover img.large,
+menu-shrink nav.main-menu.expanded img.large {
+  display: block;
+}
+menu-shrink .main-menu {
+  background: #f7f7f7;
+}
+menu-shrink .main-menu {
+  z-index: 1008;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  width: 55px;
+  overflow: hidden;
+  -webkit-transition: width 0.2s linear;
+  transition: width 0.2s linear;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  box-shadow: 1px 0 15px rgba(0,0,0,0.07);
+  opacity: 1;
+}
+menu-shrink .main-menu i[data-ng-if="item.icon"] {
+  font-size: 18px;
+}
+menu-shrink .main-menu > ul {
+  margin: 7px 0;
+}
+menu-shrink .main-menu li {
+  position: relative;
+  display: block;
+  width: 250px;
+}
+menu-shrink .main-menu li.divider {
+  height: 1px;
+  margin: 9px 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #EAEAEA;
+}
+menu-shrink .main-menu li.header a {
+  padding: 0;
+  line-height: 32px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+menu-shrink .main-menu li:hover {
+  cursor: pointer;
+}
+menu-shrink .main-menu li > a {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 19px 0 19px;
+  position: relative;
+  width: 250px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: #757575;
+  font-size: 13px;
+  text-decoration: none;
+  -webkit-transform: translateZ(0) scale(1, 1);
+  -webkit-transition: all 0.14s linear;
+  transition: all 0.14s linear;
+  font-family: 'Strait', sans-serif;
+}
+menu-shrink .main-menu .nav-icon {
+  position: relative;
+  display: table-cell;
+  width: 55px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+}
+menu-shrink .main-menu .nav-text {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  width: 190px;
+  margin-left: 24px;
+}
+menu-shrink .main-menu .share,
+menu-shrink .main-menu .fb-like {
+  left: 180px;
+  position: absolute;
+  top: 15px;
+}
+menu-shrink .main-menu > ul.logout {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+menu-shrink .no-touch .scrollable.hover {
+  overflow-y: hidden;
+}
+menu-shrink .no-touch .scrollable.hover:hover {
+  overflow-y: auto;
+  overflow: visible;
+}
+menu-shrink a:hover,
+menu-shrink a:focus {
+  text-decoration: none;
+  border-left: 0px solid #f7f7f7;
+}
+menu-shrink nav {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+menu-shrink nav ul,
+menu-shrink nav li {
+  outline: 0;
+  margin: 0;
+  padding: 0;
+}
+menu-shrink .darkerli {
+  background-color: #ededed;
+  text-transform: capitalize;
+}
+menu-shrink .darkerlishadow {
+  background-color: #ededed;
+  text-transform: capitalize;
+  -webkit-box-shadow: inset 0px 5px 5px -4px rgba(50,50,50,0.55);
+  -moz-box-shadow: inset 0px 5px 5px -4px rgba(50,50,50,0.55);
+  box-shadow: inset 0px 5px 5px -4px rgba(50,50,50,0.55);
+}
+menu-shrink .darkerlishadowdown {
+  background-color: #ededed;
+  text-transform: capitalize;
+  -webkit-box-shadow: inset 0px -4px 5px -4px rgba(50,50,50,0.55);
+  -moz-box-shadow: inset 0px -4px 5px -4px rgba(50,50,50,0.55);
+  box-shadow: inset 0px -4px 5px -4px rgba(50,50,50,0.55);
+}
+menu-shrink .main-menu li:hover >a,
+menu-shrink nav.main-menu li.active>a,
+menu-shrink .dropdown-menu>li>a:hover,
+menu-shrink .dropdown-menu>li>a:focus,
+menu-shrink .dropdown-menu>.active>a,
+menu-shrink .dropdown-menu>.active>a:hover,
+menu-shrink .dropdown-menu>.active>a:focus,
+menu-shrink .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+menu-shrink .dashboard-page nav.dashboard-menu ul li.active a {
+  background-color: #eceff1;
+}
+menu-shrink .area {
+  float: left;
+  background: #e2e2e2;
+  width: 100%;
+  height: 100%;
+}
 .gumga-layout .gl-header {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
   z-index: 1006;
   position: fixed;
   top: 0;
@@ -2387,6 +2698,7 @@ gmd-spinner[fixed] .spinner-material {
 }
 main {
   margin-top: 67px;
+  padding: 24px;
   z-index: 1000;
 }
 .gumga-layout nav.gl-nav {
