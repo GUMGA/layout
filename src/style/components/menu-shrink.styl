@@ -4,6 +4,7 @@ menu-shrink ~ main.gl-main
     transition: all 300ms ease-in-out;
 
 menu-shrink[theme="dark"]
+
     .main-menu:not(:hover) li.header > a:after
         color: rgba(255,255,255,.3);
 
@@ -11,6 +12,7 @@ menu-shrink[theme="dark"]
         background: #2d323e
 
         .menu-header
+            background: #383C48
             svg
                 fill: rgba(255,255,255,.7)
         
@@ -44,6 +46,8 @@ menu-shrink.fixed
                 fill: vars.colors.primary
             img.small
                 display: none
+            img.large
+                display: block
 
 menu-shrink:not([class~="fixed"]) .main-menu:not(:hover)
     .menu-header
@@ -97,7 +101,7 @@ menu-shrink
             height: 34px
             max-width: 180px
             position: absolute
-            left: 5px
+            left: 10px
         img.small
             display: none
             position: absolute

@@ -2208,6 +2208,9 @@ menu-shrink[theme="dark"] .main-menu:not(:hover) li.header > a:after {
 menu-shrink[theme="dark"] .main-menu {
   background: #2d323e;
 }
+menu-shrink[theme="dark"] .main-menu .menu-header {
+  background: #383c48;
+}
 menu-shrink[theme="dark"] .main-menu .menu-header svg {
   fill: rgba(255,255,255,0.7);
 }
@@ -2239,6 +2242,9 @@ menu-shrink.fixed .main-menu .menu-header svg {
 }
 menu-shrink.fixed .main-menu .menu-header img.small {
   display: none;
+}
+menu-shrink.fixed .main-menu .menu-header img.large {
+  display: block;
 }
 menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) .menu-header img.small {
   display: block;
@@ -2296,7 +2302,7 @@ menu-shrink .menu-header img.large {
   height: 34px;
   max-width: 180px;
   position: absolute;
-  left: 5px;
+  left: 10px;
 }
 menu-shrink .menu-header img.small {
   display: none;
