@@ -15,9 +15,6 @@ let Component = {
     template: `
 
     <nav class="main-menu">
-        <div>
-            <a class="logo" href="http://startific.com"></a>
-        </div>
         <div class="menu-header">
             <img ng-if="$ctrl.logo" ng-src="{{$ctrl.logo}}"/>
             <img class="large" ng-if="$ctrl.largeLogo" ng-src="{{$ctrl.largeLogo}}"/>
@@ -59,13 +56,13 @@ let Component = {
                     <a ng-if="item.type != 'separator' && item.state" ui-sref="{{item.state}}">
                         <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>
                         <span class="nav-text" ng-bind="item.label"></span>
-                        <i data-ng-if="item.children" class="material-icons pull-right">keyboard_arrow_right</i>
+                        <i data-ng-if="item.children && item.children.length > 0" class="material-icons pull-right">keyboard_arrow_right</i>
                     </a>
 
                     <a ng-if="item.type != 'separator' && !item.state">
                         <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>
                         <span class="nav-text" ng-bind="item.label"></span>
-                        <i data-ng-if="item.children" class="material-icons pull-right">keyboard_arrow_right</i>
+                        <i data-ng-if="item.children && item.children.length > 0" class="material-icons pull-right">keyboard_arrow_right</i>
                     </a>
 
                 </li>
@@ -99,7 +96,7 @@ let Component = {
 
         ctrl.next = (item) => {
             $timeout(() => {
-                if (item.children) {
+                if (item.children && item.children.length > 0) {
                     ctrl.previous.push(ctrl.menu);
                     ctrl.menu = item.children;
                     ctrl.back.push(item);

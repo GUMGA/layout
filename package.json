@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "2.29.0",
+  "version": "2.31.0",
   "description": "Gumga Layout",
   "main": "./src/components/index.js",
   "bin": {
@@ -21,7 +21,7 @@
     "containers",
     "front-end"
   ],
-  "author": "Gui Seek",
+  "author": "Mateus Miranda",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/gumga/layout/issues"
