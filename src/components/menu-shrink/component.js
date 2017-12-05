@@ -10,7 +10,8 @@ let Component = {
         isOpened: '=?',
         iconFirstLevel: '@?',
         showButtonFirstLevel: '=?',
-        textFirstLevel: '@?'
+        textFirstLevel: '@?',
+        itemDisabled: '&?'
     },
     template: `
 
@@ -50,8 +51,8 @@ let Component = {
                 <li class="gmd-ripple"
                     data-ng-repeat="item in $ctrl.menu | filter:$ctrl.search"
                     data-ng-show="$ctrl.allow(item)"
-                    ng-click="$ctrl.next(item, $event)"
-                    data-ng-class="[!$ctrl.disableAnimations ? $ctrl.slide : '', {header: item.type == 'header', divider: item.type == 'separator'}]">
+                    data-ng-click="$ctrl.next(item, $event)"
+                    data-ng-class="[!$ctrl.disableAnimations ? $ctrl.slide : '', {'disabled': $ctrl.itemDisabled({item: item})}, {header: item.type == 'header', divider: item.type == 'separator'}]">
                     
                     <a ng-if="item.type != 'separator' && item.state" ui-sref="{{item.state}}">
                         <i data-ng-if="item.icon" class="material-icons" data-ng-bind="item.icon"></i>

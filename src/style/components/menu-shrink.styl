@@ -67,6 +67,10 @@ menu-shrink:not([class~="fixed"]) .main-menu:not(:hover)
         color: #ccc        
 
 menu-shrink
+    ul li.disabled
+        pointer-events: none !important;
+        opacity: 0.4 !important;
+
     .menu-header
         height: vars.header.height
         padding: 10px

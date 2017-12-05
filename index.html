@@ -23,7 +23,14 @@
 <body data-ng-controller="controller" gumga-translate="pt-br">
   <div class="gumga-layout">
 
-    <menu-shrink menu="menu" keys="keys" small-logo="docs/assets/apenas-logo.png" large-logo="docs/assets/logo-rodape.png" theme="dark"></menu-shrink>
+
+    <menu-shrink menu="menu" 
+                 class="fixed" 
+                 keys="keys"
+                 item-disabled="isDisabled(item)"
+                 small-logo="docs/assets/apenas-logo.png" 
+                 large-logo="docs/assets/logo-rodape.png" theme="dark">
+    </menu-shrink>
 
     <header class="gl-header">
       <div class="searchbar">
@@ -103,7 +110,7 @@
                   Mateus
                   <span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu gmd">
                   <li>
                     <a href="#">Conta</a>
                   </li>
@@ -226,14 +233,14 @@
                       <pre><code class="prettyprint">gmd --file exemplo.gmd</code></pre> <br>
                       Veja como é um arquivo gmd: <b> exemplo.gmd </b> <br> <br>
                       <pre><code class="prettyprint">$darkPrimary:    #512DA8
-                $primary:        #673AB7
-                $lightPrimary:   #D1C4E9
-                $textIcons:      #FFFFFF
-                $accent:         #03A9F4
-                $primaryText:    #212121
-                $secundaryText:  #757575
-                $divider:        #BDBDBD
-                $background:     #F5F5F5</code></pre> <br>
+$primary:        #673AB7
+$lightPrimary:   #D1C4E9
+$textIcons:      #FFFFFF
+$accent:         #03A9F4
+$primaryText:    #212121
+$secundaryText:  #757575
+$divider:        #BDBDBD
+$background:     #F5F5F5</code></pre> <br>
                       Se tudo ocorreu com sucesso, você verá uma mensagem te avisando que deu tudo certo :)
                     </p>
                     <br>

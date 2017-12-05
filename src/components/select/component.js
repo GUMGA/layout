@@ -136,20 +136,21 @@ let Component = {
         var rect = el.getBoundingClientRect(),
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
         let _x = 0, _y = 0;
         while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-            _x += el.offsetLeft - el.scrollLeft;
-            _y += el.offsetTop - el.scrollTop;
+            _x += el.offsetLeft - el.scrollLeft;            
+            if(el.nodeName == 'BODY'){
+              _y += el.offsetTop - Math.max( angular.element("html").scrollTop(), angular.element("body").scrollTop() );
+            }else{
+              _y += el.offsetTop - el.scrollTop;
+            }
             el = el.offsetParent;
         }
-
-
-        return { top: _y, left: rect.left + scrollLeft}
+        return { top: _y, left: rect.left + scrollLeft }
     }
 
     const getElementMaxHeight = (elm) => {
-      var scrollPosition = angular.element('body').scrollTop();
+      var scrollPosition = Math.max( angular.element("html").scrollTop(), angular.element("body").scrollTop() );
       var elementOffset = elm.offset().top;
       var elementDistance = (elementOffset - scrollPosition);
       var windowHeight = angular.element(window).height();
@@ -159,10 +160,10 @@ let Component = {
     const handlingElementStyle = ($element, uls) => {
       let SIZE_BOTTOM_DISTANCE = 5;
       let position = getOffset($element[0]);
+
       angular.forEach(uls, ul => {
         if(angular.element(ul).height() == 0) return;
         let maxHeight = getElementMaxHeight(angular.element($element[0]));
-        
         if(angular.element(ul).height() > maxHeight){
           angular.element(ul).css({
             height: maxHeight - SIZE_BOTTOM_DISTANCE + 'px'
