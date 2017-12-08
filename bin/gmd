@@ -33,6 +33,8 @@ const colorsStr = require('colors');
 
 process.title = 'gumga-layout';
 
+let baseDirCreateFiles = 'gumga-layout';
+
 var basePath = './', colors = {
   darkPrimary: '#00796B',
   primary: '#009688',
@@ -47,68 +49,11 @@ var basePath = './', colors = {
 
 let packageFile = path.join(__dirname, '../package.json');
 let version = JSON.parse(require('fs').readFileSync(packageFile)).version;
+let generateLayout;
 
 let programArgs, programOptions;
 
-program
-  .version(version)
-  .command('init', 'Cria os arquivos do gumga layout')
-  .option('--darkPrimary', 'Color darkPrimary')
-  .option('--primary', 'Color primary')
-  .option('--lightPrimary', 'Color lightPrimary')
-  .option('--textIcons', 'Color textIcons')
-  .option('--accent', 'Color accent')
-  .option('--primaryText', 'Color primaryText')
-  .option('--secundaryText', 'Color secundaryText')
-  .option('--divider', 'Color divider')
-  .option('--background', 'Color background')
-  .option('--file', 'Specified file pallete')
-  .action((args, options, logger) => {
-    programArgs = args;
-    programOptions = options;
-    colors.darkPrimary = options.darkPrimary || colors.darkPrimary;
-    colors.primary = options.primary || colors.primary;
-    colors.lightPrimary = options.lightPrimary || colors.lightPrimary;
-    colors.textIcons = options.textIcons || colors.textIcons;
-    colors.accent = options.accent || colors.accent;
-    colors.primaryText = options.primaryText || colors.primaryText;
-    colors.secundaryText = options.secundaryText || colors.secundaryText;
-    colors.divider = options.divider || colors.divider;
-    colors.background = options.background || colors.background;
-    init();
-  })
-  .command('theme', 'Cria os arquivos do gumga layout baseado em um tema.')
-  .action((args, options, logger) => {
-    getInstalledPath('gumga-layout').then(function (pt) {
-      pt = pt + '/themes';
-      var files = findFilesInDir(pt, '.gmd');
-      let preCommand = {
-        type: 'list',
-        message: 'Escolha um tema',
-        name: 'choice',
-        default: 1,
-        choices: []
-      }
-      files.forEach((file) => {
-        let filename = path.basename(file).replace(path.extname(file), '');
-        preCommand.choices.push({
-          name: filename,
-          value: filename
-        });
-      });
-      inquirer.prompt(preCommand).then(answers => {
-        pt += '/' + answers.choice + '.gmd';
-        programOptions = {
-          file : pt
-        };
-        afterInit();
-      });
-    });
-  })
-
-
-program.parse(process.argv);
-
+let createPallete = require('./create-pallete');
 
 
 function findFilesInDir(startPath, filter) {
@@ -174,11 +119,11 @@ function afterInit() {
     }
     readPalette(programOptions.file);
   } else {
-    if (fs.existsSync('./gumga-layout') && fs.existsSync('./gumga-layout/palette.gmd') && program.generate != 'js') {
+    if (fs.existsSync('./'+baseDirCreateFiles) && fs.existsSync('./'+baseDirCreateFiles+'/palette.gmd') && program.generate != 'js') {
       co(function* () {
-        var confirm = yield prompt('Identificamos uma paleta na pasta gumga-layout, deseja usa-la ? [S/n] :');
+        var confirm = yield prompt('Identificamos uma paleta na pasta '+baseDirCreateFiles+', deseja usa-la ? [S/n] :');
         if (!confirm.toLowerCase() || confirm.toLowerCase() == 's') {
-          readPalette('./gumga-layout/palette.gmd');
+          readPalette('./'+baseDirCreateFiles+'/palette.gmd');
         } else {
           createLayoutFiles();
         }
@@ -248,242 +193,238 @@ function createLayoutFiles() {
     }
   });
 
-  gulp.task('bundle-css', function () {
-    bundle_css()
-  })
+}
 
-  function bundle_css() {
-    return gulp.src([basePath + '/src/style/containers/index.styl'])
-      .pipe(stylus({
-        'include css': true
-      }))
-      .pipe(concat('gumga-layout.css'))
-      .pipe(gulp.dest('./gumga-layout'))
+gulp.task('bundle-css', function () {
+  bundle_css()
+})
+
+function bundle_css() {
+  return gulp.src([basePath + '/src/style/containers/index.styl'])
+    .pipe(stylus({
+      'include css': true
+    }))
+    .pipe(concat('gumga-layout.css'))
+    .pipe(gulp.dest('./'+baseDirCreateFiles));
+}
+
+gulp.task('bundle-css-production', function () {
+  return gulp.src(['./'+baseDirCreateFiles+'/gumga-layout.css'])
+    .pipe(rename('gumga-layout.min.css'))
+    .pipe(minify())
+    .pipe(gulp.dest('./'+baseDirCreateFiles));
+})
+
+gulp.task('bundle-js', function () {
+  var bundler = browserify(basePath + '/src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
+
+  return bundle_js(bundler)
+})
+
+gulp.task('bundle-js-production', function () {
+  var bundler = browserify(basePath + '/src/components/index.js').transform(babelify, {/* options */ })
+  return bundler.bundle()
+    .on('error', map_error)
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(rename('gumga-layout.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(baseDirCreateFiles))
+})
+
+function bundle_js(bundler) {
+  return bundler.bundle()
+    .on('error', map_error)
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest(baseDirCreateFiles))
+    .pipe(rename('gumga-layout.js'))
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(baseDirCreateFiles))
+}
+
+function map_error(err) {
+  if (err.fileName) {
+    // regular error
+    gutil.log(chalk.red(err.name)
+      + ': '
+      + chalk.yellow(err.fileName.replace(__dirname + '/src/components/', ''))
+      + ': '
+      + 'Line '
+      + chalk.magenta(err.lineNumber)
+      + ' & '
+      + 'Column '
+      + chalk.magenta(err.columnNumber || err.column)
+      + ': '
+      + chalk.blue(err.description))
+  } else {
+    // browserify error..
+    gutil.log(chalk.red(err.name)
+      + ': '
+      + chalk.yellow(err.message))
   }
 
-  gulp.task('bundle-css-production', function () {
-    return gulp.src(['./gumga-layout/gumga-layout.css'])
-      .pipe(rename('gumga-layout.min.css'))
-      .pipe(minify())
-      .pipe(gulp.dest('./gumga-layout'))
-  })
-
-  gulp.task('bundle-js', function () {
-    var bundler = browserify(basePath + '/src/components/index.js', { debug: true }).transform(babelify, {/* options */ })
-
-    return bundle_js(bundler)
-  })
-
-  gulp.task('bundle-js-production', function () {
-    var bundler = browserify(basePath + '/src/components/index.js').transform(babelify, {/* options */ })
-    return bundler.bundle()
-      .on('error', map_error)
-      .pipe(source('app.js'))
-      .pipe(buffer())
-      .pipe(rename('gumga-layout.min.js'))
-      .pipe(uglify())
-      .pipe(gulp.dest('gumga-layout'))
-  })
-
-  function bundle_js(bundler) {
-    return bundler.bundle()
-      .on('error', map_error)
-      .pipe(source('app.js'))
-      .pipe(buffer())
-      .pipe(gulp.dest('gumga-layout'))
-      .pipe(rename('gumga-layout.js'))
-      .pipe(sourcemaps.init({ loadMaps: true }))
-      .pipe(uglify())
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest('gumga-layout'))
-  }
-
-  function map_error(err) {
-    if (err.fileName) {
-      // regular error
-      gutil.log(chalk.red(err.name)
-        + ': '
-        + chalk.yellow(err.fileName.replace(__dirname + '/src/components/', ''))
-        + ': '
-        + 'Line '
-        + chalk.magenta(err.lineNumber)
-        + ' & '
-        + 'Column '
-        + chalk.magenta(err.columnNumber || err.column)
-        + ': '
-        + chalk.blue(err.description))
-    } else {
-      // browserify error..
-      gutil.log(chalk.red(err.name)
-        + ': '
-        + chalk.yellow(err.message))
-    }
-
-    this.end()
-  }
+  this.end()
+}
 
 
-  gulp.task('release-css', ['bundle-css', 'bundle-css-production']);
-  gulp.task('release-js', ['bundle-js', 'bundle-js-production']);
+gulp.task('release-css', ['bundle-css', 'bundle-css-production']);
+gulp.task('release-js', ['bundle-js', 'bundle-js-production']);
 
-  gulp.task('bundle', ['bundle-js', 'bundle-css'])
-  gulp.task('release', ['bundle-css', 'bundle-js-production', 'bundle-css-production'])
+gulp.task('bundle', ['bundle-js', 'bundle-css'])
+gulp.task('release', ['bundle-css', 'bundle-js-production', 'bundle-css-production'])
 
-  var deleteFolderRecursive = function (path) {
-    if (fs.existsSync(path)) {
-      fs.readdirSync(path).forEach(function (file, index) {
-        var curPath = path + "/" + file;
-        if (fs.lstatSync(curPath).isDirectory()) {
-          deleteFolderRecursive(curPath);
-        } else {
-          fs.unlinkSync(curPath);
-        }
-      });
-      fs.rmdirSync(path);
-    }
-  };
-
-  var copyRecursiveSync = function (src, dest) {
-    var exists = fs.existsSync(src);
-    var stats = exists && fs.statSync(src);
-    var isDirectory = exists && stats.isDirectory();
-    if (exists && isDirectory) {
-      fs.mkdirSync(dest);
-      fs.readdirSync(src).forEach(function (childItemName) {
-        copyRecursiveSync(path.join(src, childItemName),
-          path.join(dest, childItemName));
-      });
-    } else {
-      fs.linkSync(src, dest);
-    }
-  };
-
-  function replaceValue(key, value) {
-    replace({
-      regex: key,
-      replacement: value,
-      paths: ['./gumga-layout/gumga-layout.css'],
-      recursive: true,
-      silent: true,
-    });
-    replace({
-      regex: key,
-      replacement: value,
-      paths: ['./gumga-layout/gumga-layout.min.css'],
-      recursive: true,
-      silent: true,
-    });
-  }
-
-  function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background) {
-    replaceValue('darkPrimary_value', darkPrimary);
-    replaceValue('primary_value', primary);
-    replaceValue('lightPrimary_value', lightPrimary);
-    replaceValue('textIcons_value', textIcons);
-    replaceValue('accent_value', accent);
-    replaceValue('primaryText_value', primaryText);
-    replaceValue('secundaryText_value', secundaryText);
-    replaceValue('divider_value', divider);
-    replaceValue('background_value', background);
-  };
-
-  function finish(msg, darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background) {
-    var urlIconfont = 'https://raw.githubusercontent.com/GUMGA/layout/master/assets/iconfont/';
-    createDirectory('./gumga-layout/iconfont');
-    replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
-    createPalette(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
-    //download icons font
-    gutil.log(chalk.yellow('Aguarde... 0%'));
-    download(urlIconfont + 'MaterialIcons-Regular.eot', './gumga-layout/iconfont/', 'MaterialIcons-Regular.eot', function () {
-      gutil.log(chalk.yellow('Aguarde... 25%'));
-      download(urlIconfont + 'MaterialIcons-Regular.ttf', './gumga-layout/iconfont/', 'MaterialIcons-Regular.ttf', function () {
-        gutil.log(chalk.yellow('Aguarde... 50%'));
-        download(urlIconfont + 'MaterialIcons-Regular.woff', './gumga-layout/iconfont/', 'MaterialIcons-Regular.woff', function () {
-          gutil.log(chalk.yellow('Aguarde... 75%'));
-          download(urlIconfont + 'MaterialIcons-Regular.woff2', './gumga-layout/iconfont/', 'MaterialIcons-Regular.woff2', function () {
-            gutil.log(chalk.yellow('Pronto... 100%'));
-            gutil.log(chalk.yellow(msg));
-            process.exit(0);
-          });
-        });
-      });
-    });
-  }
-
-  function deleteFile(dir) {
-    if (fs.existsSync(dir)) {
-      fs.unlinkSync(dir);
-    }
-  }
-
-  function createDirectory(dir) {
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
-    }
-  }
-
-  function createPalette(darkPrimary, primary, lightPrimary, textIcons, accent,
-    primaryText, secundaryText, divider, background) {
-    var palettePath = './gumga-layout/palette.gmd';
-    if (fs.existsSync('./gumga-layout') && !fs.existsSync(palettePath)) {
-      var stream = fs.createWriteStream(palettePath);
-      stream.once('open', function (fd) {
-        stream.write("$darkPrimary:     " + darkPrimary + "\n");
-        stream.write("$primary:         " + primary + "\n");
-        stream.write("$lightPrimary:    " + lightPrimary + "\n");
-        stream.write("$textIcons:       " + textIcons + "\n");
-        stream.write("$accent:          " + accent + "\n");
-        stream.write("$primaryText:     " + primaryText + "\n");
-        stream.write("$secundaryText:   " + secundaryText + "\n");
-        stream.write("$divider:         " + divider + "\n");
-        stream.write("$background:      " + background + "\n");
-        stream.end();
-      });
-    }
-  }
-
-  var download = function (url, dir, filename, cb) {
-    downloadFile(url, { directory: dir, filename: filename }, function (err) {
-      if (err) {
-        gutil.log(chalk.yellow(err));
-        process.exit(0);
-      }
-      cb();
-    })
-  }
-
-  function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background) {
-    gutil.log(chalk.yellow('Aguarde...'));
-    getInstalledPath('gumga-layout').then(function (pt) {
-      basePath = pt;
-      deleteFolderRecursive('./gumga-layout/iconfont');
-      if (program.generate && program.generate == 'css') {
-        gulp.start('release-css', function () {
-          finish('Atualizamos a pasta "gumga-layout" com seu novo layout, apenas os CSS.',
-            darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
-        });
-      } else if (program.generate && program.generate == 'js') {
-        gulp.start('release-js', function () {
-          finish('Atualizamos a pasta "gumga-layout" com seu novo layout, apenas com os JS.',
-            darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
-        });
+var deleteFolderRecursive = function (path) {
+  if (fs.existsSync(path)) {
+    fs.readdirSync(path).forEach(function (file, index) {
+      var curPath = path + "/" + file;
+      if (fs.lstatSync(curPath).isDirectory()) {
+        deleteFolderRecursive(curPath);
       } else {
-        deleteFile('./gumga-layout/gumga-layout.css');
-        deleteFile('./gumga-layout/gumga-layout.min.css');
-        deleteFile('./gumga-layout/gumga-layout.js');
-        deleteFile('./gumga-layout/gumga-layout.min.js');
-        deleteFile('./gumga-layout/gumga-layout.js.map');
-        deleteFile('./gumga-layout/app.js');
-        gulp.start('bundle', function () {
-          gulp.start('release', function () {
-            finish('Layout gerado com sucesso :)',
-              darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
-          });
-        });
+        fs.unlinkSync(curPath);
       }
-
-    })
+    });
+    fs.rmdirSync(path);
   }
+};
+
+var copyRecursiveSync = function (src, dest) {
+  var exists = fs.existsSync(src);
+  var stats = exists && fs.statSync(src);
+  var isDirectory = exists && stats.isDirectory();
+  if (exists && isDirectory) {
+    fs.mkdirSync(dest);
+    fs.readdirSync(src).forEach(function (childItemName) {
+      copyRecursiveSync(path.join(src, childItemName),
+        path.join(dest, childItemName));
+    });
+  } else {
+    fs.linkSync(src, dest);
+  }
+};
+
+function replaceValue(key, value) {
+  replace({
+    regex: key,
+    replacement: value,
+    paths: ['./'+baseDirCreateFiles+'/gumga-layout.css'],
+    recursive: true,
+    silent: true,
+  });
+  replace({
+    regex: key,
+    replacement: value,
+    paths: ['./'+baseDirCreateFiles+'/gumga-layout.min.css'],
+    recursive: true,
+    silent: true,
+  });
+}
+
+function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background) {
+  replaceValue('darkPrimary_value', darkPrimary);
+  replaceValue('primary_value', primary);
+  replaceValue('lightPrimary_value', lightPrimary);
+  replaceValue('textIcons_value', textIcons);
+  replaceValue('accent_value', accent);
+  replaceValue('primaryText_value', primaryText);
+  replaceValue('secundaryText_value', secundaryText);
+  replaceValue('divider_value', divider);
+  replaceValue('background_value', background);
+};
+
+function finish(msg, darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background) {
+  var urlIconfont = 'https://raw.githubusercontent.com/GUMGA/layout/master/assets/iconfont/';
+  createDirectory('./'+baseDirCreateFiles+'/iconfont');
+  replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+  createPalette(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+  let spinner = ora('Gerando arquivos do layout...').start();
+  download(urlIconfont + 'MaterialIcons-Regular.eot', './'+baseDirCreateFiles+'/iconfont/', 'MaterialIcons-Regular.eot', function () {
+    download(urlIconfont + 'MaterialIcons-Regular.ttf', './'+baseDirCreateFiles+'/iconfont/', 'MaterialIcons-Regular.ttf', function () {
+      download(urlIconfont + 'MaterialIcons-Regular.woff', './'+baseDirCreateFiles+'/iconfont/', 'MaterialIcons-Regular.woff', function () {
+        download(urlIconfont + 'MaterialIcons-Regular.woff2', './'+baseDirCreateFiles+'/iconfont/', 'MaterialIcons-Regular.woff2', function () {
+          spinner.succeed('Layout foi gerado com sucesso.');
+          process.exit(0);
+        });
+      });
+    });
+  });
+}
+
+function deleteFile(dir) {
+  if (fs.existsSync(dir)) {
+    fs.unlinkSync(dir);
+  }
+}
+
+function createDirectory(dir) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+}
+
+function createPalette(darkPrimary, primary, lightPrimary, textIcons, accent,
+  primaryText, secundaryText, divider, background) {
+  var palettePath = './'+baseDirCreateFiles+'/palette.gmd';
+  if (fs.existsSync('./'+baseDirCreateFiles) && !fs.existsSync(palettePath)) {
+    var stream = fs.createWriteStream(palettePath);
+    stream.once('open', function (fd) {
+      stream.write("$darkPrimary:     " + darkPrimary + "\n");
+      stream.write("$primary:         " + primary + "\n");
+      stream.write("$lightPrimary:    " + lightPrimary + "\n");
+      stream.write("$textIcons:       " + textIcons + "\n");
+      stream.write("$accent:          " + accent + "\n");
+      stream.write("$primaryText:     " + primaryText + "\n");
+      stream.write("$secundaryText:   " + secundaryText + "\n");
+      stream.write("$divider:         " + divider + "\n");
+      stream.write("$background:      " + background + "\n");
+      stream.end();
+    });
+  }
+}
+
+var download = function (url, dir, filename, cb) {
+  downloadFile(url, { directory: dir, filename: filename }, function (err) {
+    if (err) {
+      gutil.log(chalk.yellow(err));
+      process.exit(0);
+    }
+    cb();
+  })
+}
+
+function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background, themeName) {
+  baseDirCreateFiles = themeName ? baseDirCreateFiles + '/' + themeName : baseDirCreateFiles; 
+  getInstalledPath('gumga-layout').then(function (pt) {
+    basePath = pt;
+    deleteFolderRecursive('./'+baseDirCreateFiles+'/iconfont');
+    if (program.generate && program.generate == 'css') {
+      gulp.start('release-css', function () {
+        finish('Atualizamos a pasta "'+baseDirCreateFiles+'" com seu novo layout, apenas os CSS.',
+          darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+      });
+    } else if (program.generate && program.generate == 'js') {
+      gulp.start('release-js', function () {
+        finish('Atualizamos a pasta "'+baseDirCreateFiles+'" com seu novo layout, apenas com os JS.',
+          darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+      });
+    } else {
+      deleteFile('./'+baseDirCreateFiles+'/gumga-layout.css');
+      deleteFile('./'+baseDirCreateFiles+'/gumga-layout.min.css');
+      deleteFile('./'+baseDirCreateFiles+'/gumga-layout.js');
+      deleteFile('./'+baseDirCreateFiles+'/gumga-layout.min.js');
+      deleteFile('./'+baseDirCreateFiles+'/gumga-layout.js.map');
+      deleteFile('./'+baseDirCreateFiles+'/app.js');
+      gulp.start('bundle', function () {
+        gulp.start('release', function () {
+          finish('Layout gerado com sucesso :)',
+            darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+        });
+      });
+    }
+
+  })
 }
 
 
@@ -512,3 +453,79 @@ function init() {
     }
   });
 }
+
+
+
+
+
+program
+.version(version)
+.command('init', 'Cria os arquivos do gumga layout')
+.option('--darkPrimary', 'Color darkPrimary')
+.option('--primary', 'Color primary')
+.option('--lightPrimary', 'Color lightPrimary')
+.option('--textIcons', 'Color textIcons')
+.option('--accent', 'Color accent')
+.option('--primaryText', 'Color primaryText')
+.option('--secundaryText', 'Color secundaryText')
+.option('--divider', 'Color divider')
+.option('--background', 'Color background')
+.option('--file', 'Specified file pallete')
+.action((args, options, logger) => {
+  programArgs = args;
+  programOptions = options;
+  colors.darkPrimary = options.darkPrimary || colors.darkPrimary;
+  colors.primary = options.primary || colors.primary;
+  colors.lightPrimary = options.lightPrimary || colors.lightPrimary;
+  colors.textIcons = options.textIcons || colors.textIcons;
+  colors.accent = options.accent || colors.accent;
+  colors.primaryText = options.primaryText || colors.primaryText;
+  colors.secundaryText = options.secundaryText || colors.secundaryText;
+  colors.divider = options.divider || colors.divider;
+  colors.background = options.background || colors.background;
+  init();
+})
+.command('create', 'Comando para criar temas.')
+.argument('[action]', 'Cria um tema')
+.argument('[themeName]', 'Nome do tema')
+.action((args, options, logger) => {
+  if(args.action == 'theme'){
+    if(args.themeName){
+      createPallete.run(args, options, logger, generateGumgaLayout);
+    }else{
+      ora('fail').fail('Para criar um novo tema é necessário informar um nome.');
+    }
+  }
+})
+.command('theme', 'Cria os arquivos do gumga layout baseado em um tema.')
+.action((args, options, logger) => {
+  getInstalledPath('gumga-layout').then(function (pt) {
+    pt = pt + '/themes';
+    var files = findFilesInDir(pt, '.gmd');
+    let preCommand = {
+      type: 'list',
+      message: 'Escolha um tema',
+      name: 'choice',
+      default: 1,
+      choices: []
+    }
+    files.forEach((file) => {
+      let filename = path.basename(file).replace(path.extname(file), '');
+      preCommand.choices.push({
+        name: filename,
+        value: filename
+      });
+    });
+    inquirer.prompt(preCommand).then(answers => {
+      pt += '/' + answers.choice + '.gmd';
+      programOptions = {
+        file : pt
+      };
+      baseDirCreateFiles += '/' + answers.choice;
+      afterInit();
+    });
+  });
+})
+
+
+program.parse(process.argv);
