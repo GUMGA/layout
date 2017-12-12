@@ -1,0 +1,79 @@
+gumga-query.gmd
+    div.gumga-filter
+        header[class~="panel-heading"]
+            display: none;
+    div.form-inline
+        border: none;
+        h5
+            margin: 0;
+            strong
+                color: #666;
+                font-weight: 500;
+                font-size: 18px;
+                margin: 0;
+                padding: 0;
+        div.input-group
+            border: none;
+            box-shadow: none;
+            div.input-group-btn
+                border: none;
+                div.btn-group
+                    border: none;
+                    box-shadow: none;
+                    div.gumga-filter-panel
+                        box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+                        border: none;
+                        div.input-group
+                            input
+                                box-shadow: none;
+                                border: 1px solid #DDD;
+                            .input-group-addon
+                                background: transparent;
+                                border: none;
+                    button[ng-click="updateOperator(this)"]
+                        box-shadow: none;
+                        background: #F5F5F5;
+                        border-radius: 5px;
+                        outline: none;
+                        border: 1px solid #eee;
+                        color: #666;
+
+    div.input-group
+        box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+        padding: 0;
+
+    input
+        border: none;
+        border-radius: 3px;
+        outline: none;
+
+    span.input-group-btn
+        padding: 0;
+        margin: 0;
+        button
+            border: none;
+            border-radius: 0;
+            margin: 0;
+    
+    ul[uib-dropdown-menu]
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12);
+        li[role="menuitem"]:hover
+            background: #F5F5F5;
+        li[role="menuitem"]
+            display: flex;
+            padding: 0 16px;
+            height: 30px;
+            align-items: center;
+            a
+                width: 100%;
+                display: flex;
+                padding: 0;
+                align-items: center;
+                height: 100%;
+                label
+                    margin: 0;
+                    input
+                        vertical-align: middle;
+                        margin: 0;

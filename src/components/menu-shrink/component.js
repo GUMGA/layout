@@ -82,11 +82,15 @@ let Component = {
         ctrl.$onInit = () => {
             mainContent = angular.element('.gumga-layout .gl-main');
             headerContent = angular.element('.gumga-layout .gl-header');
+            if(eval(sessionStorage.getItem('gmd-menu-shrink'))){
+                $element.addClass('fixed');
+            }
         };
 
         ctrl.toggleMenu = () => {
             $element.toggleClass('fixed');
-        }
+            sessionStorage.setItem('gmd-menu-shrink', $element.hasClass('fixed'));
+        };
 
         ctrl.prev = () => {
             ctrl.menu = ctrl.previous.pop();
