@@ -945,7 +945,7 @@ textarea.form-control.gmd ~ label.fixed {
   width: 0;
   bottom: 0;
   position: absolute;
-  background: #0097A7;
+  background-color: #0097A7;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;

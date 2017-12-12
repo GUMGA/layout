@@ -945,7 +945,7 @@ textarea.form-control.gmd ~ label.fixed {
   width: 0;
   bottom: 0;
   position: absolute;
-  background: #108cc8;
+  background-color: #108cc8;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
@@ -1321,6 +1321,9 @@ gmd-option a.select-option {
   height: 48px;
   display: flex !important;
   align-items: center;
+}
+ul.organizations ul.dropdown-menu div.form-group input {
+  padding: 0px 10px 0 10px;
 }
 .panel.gmd {
   border: 0;
@@ -2208,6 +2211,9 @@ menu-shrink[theme="dark"] .main-menu:not(:hover) li.header > a:after {
 menu-shrink[theme="dark"] .main-menu {
   background: #2d323e;
 }
+menu-shrink[theme="dark"] .main-menu .menu-header {
+  background: #383c48;
+}
 menu-shrink[theme="dark"] .main-menu .menu-header svg {
   fill: rgba(255,255,255,0.7);
 }
@@ -2240,6 +2246,9 @@ menu-shrink.fixed .main-menu .menu-header svg {
 menu-shrink.fixed .main-menu .menu-header img.small {
   display: none;
 }
+menu-shrink.fixed .main-menu .menu-header img.large {
+  display: block;
+}
 menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) .menu-header img.small {
   display: block;
 }
@@ -2258,6 +2267,10 @@ menu-shrink:not([class~="fixed"]) .main-menu:not(:hover) li.header > a:after {
   top: 0;
   left: 24px;
   color: #ccc;
+}
+menu-shrink ul li.disabled {
+  pointer-events: none !important;
+  opacity: 0.4 !important;
 }
 menu-shrink .menu-header {
   height: 52px;
@@ -2296,7 +2309,7 @@ menu-shrink .menu-header img.large {
   height: 34px;
   max-width: 180px;
   position: absolute;
-  left: 5px;
+  left: 10px;
 }
 menu-shrink .menu-header img.small {
   display: none;

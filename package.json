@@ -1,6 +1,6 @@
 {
   "name": "gumga-layout",
-  "version": "2.32.5",
+  "version": "3.1.0",
   "description": "Gumga Layout",
   "main": "./src/components/index.js",
   "bin": {
@@ -70,6 +70,7 @@
     "co-prompt": "^1.0.0",
     "colors": "^1.1.2",
     "download-file": "^0.1.5",
+    "find-remove": "^1.2.0",
     "get-installed-path": "^2.0.3",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",

@@ -30,6 +30,7 @@ const exec = require('child_process').exec;
 const ora = require('ora');
 const request = require('request');
 const colorsStr = require('colors');
+var findRemoveSync = require('find-remove')
 
 process.title = 'gumga-layout';
 
@@ -334,7 +335,7 @@ function replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, pr
   replaceValue('background_value', background);
 };
 
-function finish(msg, darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background) {
+function finish(msg, darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background, themeName) {
   var urlIconfont = 'https://raw.githubusercontent.com/GUMGA/layout/master/assets/iconfont/';
   createDirectory('./'+baseDirCreateFiles+'/iconfont');
   replaceValues(darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
@@ -344,6 +345,9 @@ function finish(msg, darkPrimary, primary, lightPrimary, textIcons, accent, prim
     download(urlIconfont + 'MaterialIcons-Regular.ttf', './'+baseDirCreateFiles+'/iconfont/', 'MaterialIcons-Regular.ttf', function () {
       download(urlIconfont + 'MaterialIcons-Regular.woff', './'+baseDirCreateFiles+'/iconfont/', 'MaterialIcons-Regular.woff', function () {
         download(urlIconfont + 'MaterialIcons-Regular.woff2', './'+baseDirCreateFiles+'/iconfont/', 'MaterialIcons-Regular.woff2', function () {
+          if(themeName){
+            findRemoveSync(baseDirCreateFiles, { extensions: ['.js', '.map'] });
+          }
           spinner.succeed('Layout foi gerado com sucesso.');
           process.exit(0);
         });
@@ -419,7 +423,7 @@ function generateGumgaLayout(darkPrimary, primary, lightPrimary, textIcons, acce
       gulp.start('bundle', function () {
         gulp.start('release', function () {
           finish('Layout gerado com sucesso :)',
-            darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background);
+            darkPrimary, primary, lightPrimary, textIcons, accent, primaryText, secundaryText, divider, background, themeName);
         });
       });
     }

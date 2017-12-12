@@ -39,7 +39,7 @@
       <br>
       <pre><code class="prettyprint">gmd init --darkPrimary=#C2185B --primary=#E91E63 --lightPrimary=#F8BBD0 --textIcons=#FFFFFF --accent=#00BCD4 --primaryText=#212121 --secundaryText=#757575 --divider=#BDBDBD --background=#F5F5F5</code></pre> <br>
       <b>Se preferir, você pode informar um <b>arquivo gmd</b> da sua paleta, veja um exemplo: </b> <br> <br>
-      <pre><code class="prettyprint">gmd --file exemplo.gmd</code></pre> <br>
+      <pre><code class="prettyprint">gmd init --file exemplo.gmd</code></pre> <br>
       Veja como é um arquivo gmd: <b> exemplo.gmd </b> <br> <br>
       <pre><code class="prettyprint">$darkPrimary:    #512DA8
 $primary:        #673AB7
@@ -51,6 +51,18 @@ $secundaryText:  #757575
 $divider:        #BDBDBD
 $background:     #F5F5F5</code></pre> <br>
       Se tudo ocorreu com sucesso, você verá uma mensagem te avisando que deu tudo certo :)
+    </p>
+    <br>
+    <h5>Criando temas</h5>
+    <p>
+      Você pode criar vários temas e disponibilizar a troca de temas em tempo de execução.
+      Crie um tema executando o comando abaixo: <br>
+      <pre><code class="prettyprint">$ gmd create theme nomedotema</code></pre>
+      Para usar seu tema vocÊ chamar chamar o metodo setTheme do $gmdThemeProvider, exemplo:
+      <pre><code class="prettyprint">angular.module('yourApp', ['gumga.layout'])
+.config(['$gmdThemeProvider', function($gmdThemeProvider){
+    $gmdThemeProvider.setTheme('nomedotema');
+}])</code></pre>
     </p>
     <br>
     <h5>Adicionando layout no projeto</h5>
