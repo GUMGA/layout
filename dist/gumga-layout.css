@@ -1118,6 +1118,10 @@ gmd-select-search .input-group-addon {
 .word-required {
   color: #dd2c00;
 }
+.form-control.gmd~label {
+  font-size: 16px;
+  line-height: 1.42857143;
+}
 .nav-tabs.gmd > li > a {
   border-radius: 0;
   text-transform: uppercase;

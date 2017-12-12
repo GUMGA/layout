@@ -68,7 +68,7 @@ let Component = {
     function preventDefault(e) {
       e = e || window.event;
       let target = findParentByName(e.target, 'select-option');
-      if(target.nodeName == 'A' && target.className == 'select-option'){
+      if((target.nodeName == 'A' && target.className == 'select-option') || (e.target.nodeName == 'A' && e.target.className == 'select-option')){
         let direction = findScrollDirectionOtherBrowsers(e)
         let scrollTop = angular.element(target.parentNode.parentNode).scrollTop();
         if(scrollTop + angular.element(target.parentNode.parentNode).innerHeight() >= target.parentNode.parentNode.scrollHeight && direction != 'UP'){

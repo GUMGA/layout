@@ -89,20 +89,16 @@ let Component = {
         }
 
         ctrl.prev = () => {
-            $timeout(() => {
-                ctrl.menu = ctrl.previous.pop();
-                ctrl.back.pop();
-            }, 250);
+            ctrl.menu = ctrl.previous.pop();
+            ctrl.back.pop();
         };
 
         ctrl.next = (item) => {
-            $timeout(() => {
-                if (item.children && item.children.length > 0) {
-                    ctrl.previous.push(ctrl.menu);
-                    ctrl.menu = item.children;
-                    ctrl.back.push(item);
-                }
-            }, 250);
+            if (item.children && item.children.length > 0) {
+                ctrl.previous.push(ctrl.menu);
+                ctrl.menu = item.children;
+                ctrl.back.push(item);
+            }
         };
 
         ctrl.goBackToFirstLevel = () => {
