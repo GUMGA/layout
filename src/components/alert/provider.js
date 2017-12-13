@@ -8,6 +8,8 @@ let template = `
 
 let Provider = () => {
 
+  let alerts = [];
+
   String.prototype.toDOM = String.prototype.toDOM || function(){
     let el = document.createElement('div');
     el.innerHTML = this;
@@ -15,6 +17,16 @@ let Provider = () => {
     return frag.appendChild(el.removeChild(el.firstChild));
   };
 
+  String.prototype.hashCode = function() {
+    var hash = 0, i, chr;
+    if (this.length === 0) return hash;
+    for (i = 0; i < this.length; i++) {
+      chr   = this.charCodeAt(i);
+      hash  = ((hash << 5) - hash) + chr;
+      hash |= 0; // Convert to 32bit integer
+    }
+    return hash;
+  };
 
   const getTemplate = (type, title, message) => {
     let toReturn = template.trim().replace('ALERT_TYPE', type);
@@ -26,22 +38,23 @@ let Provider = () => {
   const getElementBody    = () => angular.element('body')[0];
 
   const success = (title, message, time) => {
-    return createAlert(getTemplate('success', title || '', message || ''), time);
+    return createAlert(getTemplate('success', title || '', message || ''), time, {title, message});
   }
 
   const error = (title, message, time) => {
-    return createAlert(getTemplate('danger', title || '', message || ''), time);
+    return createAlert(getTemplate('danger', title || '', message || ''), time, {title, message});
   }
 
   const warning = (title, message, time) => {
-    return createAlert(getTemplate('warning', title, message), time);
+    return createAlert(getTemplate('warning', title, message), time, {title, message});
   }
 
   const info = (title, message, time) => {
-    return createAlert(getTemplate('info', title, message), time);
+    return createAlert(getTemplate('info', title, message), time, {title, message});
   }
 
-  const closeAlert = (elm) => {
+  const closeAlert = (elm, config) => {
+    alerts = alerts.filter(alert => !angular.equals(config, alert));
     angular.element(elm).css({
       transform: 'scale(0.3)'
     });
@@ -50,6 +63,7 @@ let Provider = () => {
       if(body.contains(elm)){
         body.removeChild(elm);
       }
+
     }, 100);
   }
 
@@ -66,7 +80,11 @@ let Provider = () => {
     })
   }
 
-  const createAlert = (template, time) => {
+  const createAlert = (template, time, config) => {
+    if(alerts.filter(alert => angular.equals(alert, config)).length > 0){
+      return;
+    }
+    alerts.push(config);
     let onDismiss, onRollback, elm = angular.element(template.toDOM());
     getElementBody().appendChild(elm[0]);
 
@@ -80,7 +98,7 @@ let Provider = () => {
     elm.find('a[class="action"]').click((evt) => onRollback ? onRollback(evt) : angular.noop());
 
     time ? setTimeout(() => {
-      closeAlert(elm[0]);
+      closeAlert(elm[0], config);
       onDismiss ? onDismiss() : angular.noop();
     }, time) : angular.noop();
 

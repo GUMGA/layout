@@ -6,15 +6,7 @@ controller.$inject = ['$scope', '$http', '$timeout', '$gmdAlert']
 function controller($scope, $http, $timeout, $gmdAlert) {
 
 
-  // var alert = $gmdAlert.info('SALVO!', 'Novo cliente foi salvo com sucesso.');
-  //
-  // alert.onDismiss(function(evt){
-  //   console.log('onDismiss');
-  // })
-  // .onRollback(function(evt){
-  //   alert.close();
-  //   console.log('onRollback');
-  // })
+  var alert = $gmdAlert.info('SALVO!', 'Novo cliente foi salvo com sucesso.', 2000);
 
   $scope.changeChannel = changeChannel;
 
