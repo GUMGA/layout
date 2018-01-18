@@ -17,9 +17,9 @@ let Component = {
 
     <nav class="main-menu">
         <div class="menu-header">
-            <img ng-if="$ctrl.logo" ng-src="{{$ctrl.logo}}"/>
-            <img class="large" ng-if="$ctrl.largeLogo" ng-src="{{$ctrl.largeLogo}}"/>
-            <img class="small" ng-if="$ctrl.smallLogo" ng-src="{{$ctrl.smallLogo}}"/>
+            <img ng-init="$ctrl.observeError()" ng-if="$ctrl.logo" ng-src="{{$ctrl.logo}}"/>
+            <img ng-init="$ctrl.observeError()" class="large" ng-if="$ctrl.largeLogo" ng-src="{{$ctrl.largeLogo}}"/>
+            <img ng-init="$ctrl.observeError()" class="small" ng-if="$ctrl.smallLogo" ng-src="{{$ctrl.smallLogo}}"/>
 
             <svg version="1.1" ng-click="$ctrl.toggleMenu()" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 width="613.408px" height="613.408px" viewBox="0 0 613.408 613.408" xml:space="preserve">
@@ -84,8 +84,16 @@ let Component = {
             headerContent = angular.element('.gumga-layout .gl-header');
             if(eval(sessionStorage.getItem('gmd-menu-shrink'))){
                 $element.addClass('fixed');
-            }
+            }            
         };
+
+        ctrl.observeError = () => {
+            $timeout(() => {
+                let img = $element.find('img');
+                img.bind('error', () => img.css({'display' : 'none'}));
+                img.bind('load',  () => img.css({'display' : 'block'}));
+            });
+        }
 
         ctrl.toggleMenu = () => {
             $element.toggleClass('fixed');
