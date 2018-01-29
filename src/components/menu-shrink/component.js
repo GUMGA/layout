@@ -68,6 +68,10 @@ let Component = {
 
                 </li>
             </ul>
+
+            <ng-transclude></ng-transclude>
+
+        </div>
     </nav>
     
     `,
