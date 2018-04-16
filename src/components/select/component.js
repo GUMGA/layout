@@ -105,11 +105,10 @@ let Component = {
     }
 
     function preventDefaultForScrollKeys(e) {
-      if (keys && keys[e.keyCode]) {
+      if (e && e.keyCode) {
         preventDefault(e);
         return false;
       }
-      console.clear();
     }
 
     function disableScroll() {
